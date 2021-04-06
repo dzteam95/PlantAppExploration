@@ -11,8 +11,11 @@ import { Onboarding } from "./screens/";
 import { OnboardingTwo } from "./screens/";
 import { OnboardingThree} from "./screens/";
 import { OnboardingFour} from "./screens/";
-
 import { Home } from "./screens/";
+import { Profile } from "./screens/";
+import { Jardin } from "./screens/";
+import { Rappels } from "./screens/";
+import { Conseils } from "./screens/";
 
 
 // extra screens
@@ -35,13 +38,12 @@ const App = () => {
                 screenOptions={{
                     headerShown: false,
                     footerShown: false
-    
+
                 }}
-                initialRouteName={'Welcome'}
+                initialRouteName={'Home'}
             >
-                {/* Tabs */}
-                {/*<Stack.Screen name="Welcome" component={Tabs} />*/}
-                <Stack.Screen name="Welcome" component={Welcome}/>
+                {Tabs}
+                {<Stack.Screen name="Home" component={Tabs} />}
 
                 {/* Screens */}
                 <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
@@ -51,6 +53,12 @@ const App = () => {
                 <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} />
                 <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
+                <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false,footerShown:false }}/>
+                <Stack.Screen name="Profile" component={Profile}/>
+                <Stack.Screen name="Jardin" component={Jardin}/>
+                <Stack.Screen name="Rappels" component={Rappels}/>
+                <Stack.Screen name="Conseils" component={Conseils}/>
+
 
             </Stack.Navigator>
         </NavigationContainer>

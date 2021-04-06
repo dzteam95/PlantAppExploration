@@ -1,18 +1,19 @@
-import React, {useState } from 'react';
-import { StyleSheet, View,Text,TextInput,Button,CheckBox, } from 'react-native'
+import React, {useState, useEffect } from 'react';
+import { StyleSheet, View,Text,TextInput,Button,CheckBox,TouchableOpacity } from 'react-native'
 import {COLORS, SIZES} from "../constants";
 
 
 const Register = ({ navigation }) => {
+
 	const [email, setEmail] = useState({ value: '', error: '' })
 	const [username, setUsername] = useState({ value: '', error: '' })
 	const [password, setPassword] = useState({ value: '', error: '' })
-	const [isSelected, setIsSelected] = useState({ value: '', error: '' })
-	
-	
+	// const [isSelected, setIsSelected] = useState({ value: '', error: '' })
+
+
 	const onLoginPressed = () => {
-		fetch('http://localhost:4000/users/register',data)
-		
+		fetch('https://seedy.adnanenabil.com/users/register',data)
+
 		let data = {
 			method: 'POST',
 			credentials: 'same-origin',
@@ -21,7 +22,7 @@ const Register = ({ navigation }) => {
 				email:email.value,
 				username:username.value,
 				hash:password.value,
-				
+
 			}),
 			headers: {
 				'Accept': 'application/json',
@@ -31,12 +32,17 @@ const Register = ({ navigation }) => {
 		}
 		navigation.reset({
 			index: 0,
-			routes: [{ name: 'Home' }],
+			routes: [{ name: 'Welcome' }],
 		})
 	}
-	
+
 	return(
 		<View style={styles.containerGlobal} >
+			<View style={styles.row}>
+				<TouchableOpacity onPress={() => navigation.replace('Welcome')}>
+					<Text style={styles.txt}>Back</Text>
+				</TouchableOpacity>
+			</View>
 			<Text style={styles.title}>Créer un compte</Text>
 			<TextInput style={styles.input}
 					   placeholder="Email"
@@ -60,14 +66,14 @@ const Register = ({ navigation }) => {
 						onChangeText={(text) => setPassword({ value: text, error: '' })}
 						secureTextEntry
 			/>
-			<View style={styles.Containercheckbox}>
+		{/*	<View style={styles.Containercheckbox}>
 				<CheckBox
 					value={isSelected.value}
 					onValueChange={setIsSelected}
 					style={styles.checkbox}
 				/>
 				<Text style={styles.label}>En finalisant votre inscription, vous confirmez avoir lu et acceptez les conditions d'utilisation de cette application ainsi que la politique de confidentialité</Text>
-			</View>
+			</View>*/}
 			<View style={styles.enregistrer}>
 				<Button title={"enregistrer"} mode="contained" onPress={onLoginPressed}/>
 			</View>
@@ -76,15 +82,16 @@ const Register = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
-	title:{fontSize:SIZES.h1,marginTop:100,marginBottom:30,},
-	containerGlobal:{flex: 1, alignItems: 'center',width:'100%',height: '100%'},
-	input:{height:70,backgroundColor:COLORS.greenLight,marginTop:30,width:'80%',borderRadius: 10,},
-	enregistrer:{marginTop:100,alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,},
-	Containercheckbox:{width:'100%',height:'auto',textAlign:'justify', alignItems: 'center',},
-	checkbox: {paddingVertical:8,paddingHorizontal: 12, alignItems: 'center'},
-	label: {textAlign:'justify',width:'80%'},
-	
-	
+
+	title:{fontSize:SIZES.h1,margin:30},
+	containerGlobal:{flex: 1, alignItems: 'center',width:'auto',height: 'auto',marginTop:30},
+	input:{height:70,backgroundColor:COLORS.greenLight,width:'80%',borderRadius: 10,margin:30},
+	enregistrer:{alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,margin:30},
+	Containercheckbox:{width:'100%',height:'auto',textAlign:'center', alignItems: 'center',margin:10},
+	checkbox: {paddingVertical:10,paddingHorizontal: 10, alignItems: 'center',width:'auto',height:'auto',marginLeft:25,marginTop:5},
+	label: {textAlign:'center'},
+	row:{marginTop:30},
+	txt:{textAlign: 'left',marginLeft:0,},
 })
 
 export default Register

@@ -6,7 +6,7 @@ import {Boarding1} from "../constants/images";
 
 
 const Onboarding = ({ navigation }) => {
-	
+
 	
 	return (
 		<View style={styles.containerGlobal}>
@@ -38,9 +38,9 @@ const styles = StyleSheet.create({
 	containerGlobal:{marginTop:50,flex: 1, alignItems: 'center',width:'100%',height: '100%'},
 	suivant:{marginTop:150,alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,},
 	image: {flex: 1,justifyContent: "center",width:'auto',height: 'auto'},
-	
-	
-	
+
+
+
 })
 
 export default Onboarding

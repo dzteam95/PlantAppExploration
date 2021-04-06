@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, Image } from 'react-native';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import { Home } from "../screens/";
-import { Welcome } from "../screens/";
+import { Profile } from "../screens/";
+import { Jardin } from "../screens/";
+import { Rappels } from "../screens/";
+import { Conseils } from "../screens/";
 
-import { Login } from "../screens/";
-import { Register } from "../screens/";
-import { Onboarding } from "../screens/";
+
 
 
 
@@ -56,7 +56,7 @@ const Tabs = () => {
                     const tintColor = focused ? COLORS.primary : COLORS.gray;
 
                     switch (route.name) {
-                        case "Home":
+                        case "Conseils":
                             return (
                                 <Image
                                     source={require('../assets/icons/flash_icon.png')}
@@ -68,26 +68,14 @@ const Tabs = () => {
                                     }}
                                 />
                             );
-                        case "Register":
-                            return (
-                                <Image
-                                    source={require('../assets/icons/cube_icon.png')}
-                                    resizeMode="contain"
-                                    style={{
-                                        tintColor: tintColor,
-                                        width: 25,
-                                        height: 25
-                                    }}
-                                />
-                            );
-                        case "Camera":
+                        case "Profile":
                             return (
                                 <CameraButton />
                             );
-                        case "Search":
+                        case "Jardin":
                             return (
                                 <Image
-                                    source={require('../assets/icons/search_icon.png')}
+                                    source={require('../assets/icons/seed.png')}
                                     resizeMode="contain"
                                     style={{
                                         tintColor: tintColor,
@@ -96,7 +84,7 @@ const Tabs = () => {
                                     }}
                                 />
                             );
-                        case "Login":
+                        case "Rappels":
                             return (
                                 <Image
                                     source={require('../assets/icons/heart_icon.png')}
@@ -113,25 +101,21 @@ const Tabs = () => {
             })}
         >
             <Tab.Screen
-                name="Home"
-                component={Home}
+                name="Conseils"
+                component={Conseils}
             />
-           
+
             <Tab.Screen
-                name="Camera"
-                component={Home}
-            />
-            <Tab.Screen
-                name="Search"
-                component={Home}
+                name="Profile"
+                component={Profile}
             />
             <Tab.Screen
-                name="Login"
-                component={Login}
+                name="Jardin"
+                component={Jardin}
             />
             <Tab.Screen
-                name="Register"
-                component={Register}
+                name="Rappels"
+                component={Rappels}
             />
         </Tab.Navigator>
     );
