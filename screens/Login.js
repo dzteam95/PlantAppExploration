@@ -9,8 +9,6 @@ const Login = ({ navigation }) => {
 	const [password, setPassword] = useState({ value: '', error: '' })
 
 	const onLoginPressed = () => {
-		fetch('https://seedy.adnanenabil.com/users/authenticate',data)
-
 		let data = {
 			method: 'POST',
 			credentials: 'same-origin',
@@ -25,10 +23,24 @@ const Login = ({ navigation }) => {
 				//'X-CSRFToken': cookie.load('csrftoken')
 			},
 		}
-		navigation.reset({
-			index: 0,
-			routes: [{ name: 'Home' }],
-		})
+
+		fetch('https://seedy.adnanenabil.com/users/authenticate',data)
+		.then((response) => {
+			//Statut getted
+			//console.log(response.status);
+			if (response.status === 200) {
+				//console.log('aut');
+				
+				navigation.reset({
+					index: 0,
+					routes: [{ name: 'Home' }],
+				})
+			  
+			}else{
+				//console.log('not authorized');
+				//do nothing
+			}
+		  })
 	}
 
 return(
