@@ -11,33 +11,15 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2005ADDB575B1F347A2426B0 /* libPods-PlantAppExploration-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0898E4A5D6A9EDFFBBCD40 /* libPods-PlantAppExploration-tvOS.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* PlantAppExplorationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PlantAppExplorationTests.m */; };
-		301071C381AA40A98F5D5F6E /* libPods-PlantAppExploration-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58631EE4C29E65322AA50F52 /* libPods-PlantAppExploration-tvOS.a */; };
-		42E0B2FBDC628BF723995ACF /* libPods-PlantAppExploration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE735F2A03DD8DAC0E8DA36 /* libPods-PlantAppExploration.a */; };
-		5CBC8D2A5C54A0ACDCE3A742 /* libPods-PlantAppExploration-PlantAppExplorationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA2CA204833D65A6FDF5548 /* libPods-PlantAppExploration-PlantAppExplorationTests.a */; };
+		40489BF339EFCDEB39DC90EB /* libPods-PlantAppExploration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5A5239A82B78DF6B7A77F6 /* libPods-PlantAppExploration.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		EFB5ECD93F8019228A28A166 /* libPods-PlantAppExploration-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A26B4714428FE1E0BD00FA5 /* libPods-PlantAppExploration-tvOSTests.a */; };
-		25FD81CC4797474884BD3334 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2EE1D544AC8409796D64D0C /* Roboto-Black.ttf */; };
-		64C303E671B247B8ACC63DF6 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83501CB6FF5D4BEAB59D1729 /* Roboto-BlackItalic.ttf */; };
-		E6870A1A02054075B0807308 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 778058DF21F6432392C6DEDE /* Roboto-Bold.ttf */; };
-		B251390AD5134EBF8034D85F /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81436F4DF1D94AC683013AB6 /* Roboto-BoldItalic.ttf */; };
-		77659A3C44B849A289EB7B99 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D4E740F6030C45EE9339ADE1 /* Roboto-Italic.ttf */; };
-		B7BBB915ACC74510B002AA17 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26ED594342AC466296BC27E9 /* Roboto-Light.ttf */; };
-		481F2A02743642B9AC531123 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 86DBDF811FF14A3B8032F070 /* Roboto-LightItalic.ttf */; };
-		376B91B5B5BB4F95BACFB780 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51E589195636460194015038 /* Roboto-Medium.ttf */; };
-		331160D41B1D4DC697CFE9C3 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 141085C1FF50418B97387BA0 /* Roboto-MediumItalic.ttf */; };
-		52FA7DCC2BD441EB828CD8E3 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02CEEB10C190457DBA4C9330 /* Roboto-Regular.ttf */; };
-		B0F3E4D1DACC4952AD1F7E3C /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DCAE820BD10B4BBBBE62DC7E /* Roboto-Thin.ttf */; };
-		97BC129CC18C42128A4CD5D3 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 985A9BC30A76494E94BBD6F7 /* Roboto-ThinItalic.ttf */; };
-		9750B6779F2A43CF802FFAD8 /* RobotoCondensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9E05B2FEA194F6AB6A6F06D /* RobotoCondensed-Bold.ttf */; };
-		3042A88EB3CD4EF0A91C9057 /* RobotoCondensed-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 502C6D6D469644DCAEDAB18D /* RobotoCondensed-BoldItalic.ttf */; };
-		1E6810EFF24A400D8066DCFF /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59B594E6DB1E483DA6F58EC0 /* RobotoCondensed-Italic.ttf */; };
-		73F0A76512E64D8C98C9A05D /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21770552DE764F74B91DA82B /* RobotoCondensed-Light.ttf */; };
-		CF7FC54149E64BFCB4B414E7 /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3652D620A976438EB33AC807 /* RobotoCondensed-LightItalic.ttf */; };
-		B22C0B970F17472D910943BF /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00AC237216404964A75C8AD4 /* RobotoCondensed-Regular.ttf */; };
+		D82E3DAA94D2BB5ABF2C3113 /* libPods-PlantAppExploration-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9496EA7DEB5A95297AD4ED6 /* libPods-PlantAppExploration-tvOSTests.a */; };
+		FEA2916EF8DE216E3CC1B55A /* libPods-PlantAppExploration-PlantAppExplorationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80C139F883AAFFE292C4BBDF /* libPods-PlantAppExploration-PlantAppExplorationTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,47 +44,29 @@
 		00E356EE1AD99517003FC87E /* PlantAppExplorationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantAppExplorationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* PlantAppExplorationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlantAppExplorationTests.m; sourceTree = "<group>"; };
+		0C10CDB6F7E23E9B7F8E351C /* Pods-PlantAppExploration-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-tvOSTests/Pods-PlantAppExploration-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* PlantAppExploration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantAppExploration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PlantAppExploration/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PlantAppExploration/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PlantAppExploration/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PlantAppExploration/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PlantAppExploration/main.m; sourceTree = "<group>"; };
+		2917328EB8B895251496BB35 /* Pods-PlantAppExploration-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-tvOS/Pods-PlantAppExploration-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		297AAB2D2EB940A86971210C /* Pods-PlantAppExploration-PlantAppExplorationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-PlantAppExplorationTests.debug.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-PlantAppExplorationTests/Pods-PlantAppExploration-PlantAppExplorationTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2B5A5239A82B78DF6B7A77F6 /* libPods-PlantAppExploration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlantAppExploration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* PlantAppExploration-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PlantAppExploration-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* PlantAppExploration-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PlantAppExploration-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		345F4295D60E3B0426DC3ECB /* Pods-PlantAppExploration-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-tvOSTests/Pods-PlantAppExploration-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		4A26B4714428FE1E0BD00FA5 /* libPods-PlantAppExploration-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlantAppExploration-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DEB204B8AB437C3E3AE971F /* Pods-PlantAppExploration-PlantAppExplorationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-PlantAppExplorationTests.debug.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-PlantAppExplorationTests/Pods-PlantAppExploration-PlantAppExplorationTests.debug.xcconfig"; sourceTree = "<group>"; };
-		58631EE4C29E65322AA50F52 /* libPods-PlantAppExploration-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlantAppExploration-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81703C52151CE639A6E6A805 /* Pods-PlantAppExploration-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-tvOS/Pods-PlantAppExploration-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		2D03E91889D2DC6192B99BD8 /* Pods-PlantAppExploration-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-tvOS.release.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-tvOS/Pods-PlantAppExploration-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		5B0898E4A5D6A9EDFFBBCD40 /* libPods-PlantAppExploration-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlantAppExploration-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C08319B52E784E6F0FFE37F /* Pods-PlantAppExploration-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-tvOSTests/Pods-PlantAppExploration-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		80C139F883AAFFE292C4BBDF /* libPods-PlantAppExploration-PlantAppExplorationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlantAppExploration-PlantAppExplorationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = PlantAppExploration/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		87E8B37F44688F521C9A279E /* Pods-PlantAppExploration-PlantAppExplorationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-PlantAppExplorationTests.release.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-PlantAppExplorationTests/Pods-PlantAppExploration-PlantAppExplorationTests.release.xcconfig"; sourceTree = "<group>"; };
-		A2690117B8655B2B0430E76A /* Pods-PlantAppExploration-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-tvOS.release.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-tvOS/Pods-PlantAppExploration-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		AFE735F2A03DD8DAC0E8DA36 /* libPods-PlantAppExploration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlantAppExploration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C833DAA379F70D499CBA00FB /* Pods-PlantAppExploration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration.debug.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration/Pods-PlantAppExploration.debug.xcconfig"; sourceTree = "<group>"; };
-		DAA2CA204833D65A6FDF5548 /* libPods-PlantAppExploration-PlantAppExplorationTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlantAppExploration-PlantAppExplorationTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		874915EFABF73910556BD765 /* Pods-PlantAppExploration-PlantAppExplorationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-PlantAppExplorationTests.release.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-PlantAppExplorationTests/Pods-PlantAppExploration-PlantAppExplorationTests.release.xcconfig"; sourceTree = "<group>"; };
+		C9496EA7DEB5A95297AD4ED6 /* libPods-PlantAppExploration-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlantAppExploration-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3C652558D507ECDA23B086E /* Pods-PlantAppExploration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration.debug.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration/Pods-PlantAppExploration.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F2CC89C22D9D42754B626EC2 /* Pods-PlantAppExploration-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration-tvOSTests/Pods-PlantAppExploration-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F62C0450A0F4A229F36312E1 /* Pods-PlantAppExploration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration.release.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration/Pods-PlantAppExploration.release.xcconfig"; sourceTree = "<group>"; };
-		B2EE1D544AC8409796D64D0C /* Roboto-Black.ttf */ = {isa = PBXFileReference; name = "Roboto-Black.ttf"; path = "../assets/fonts/Roboto-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		83501CB6FF5D4BEAB59D1729 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-BlackItalic.ttf"; path = "../assets/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		778058DF21F6432392C6DEDE /* Roboto-Bold.ttf */ = {isa = PBXFileReference; name = "Roboto-Bold.ttf"; path = "../assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		81436F4DF1D94AC683013AB6 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-BoldItalic.ttf"; path = "../assets/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D4E740F6030C45EE9339ADE1 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; name = "Roboto-Italic.ttf"; path = "../assets/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		26ED594342AC466296BC27E9 /* Roboto-Light.ttf */ = {isa = PBXFileReference; name = "Roboto-Light.ttf"; path = "../assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		86DBDF811FF14A3B8032F070 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-LightItalic.ttf"; path = "../assets/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		51E589195636460194015038 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; name = "Roboto-Medium.ttf"; path = "../assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		141085C1FF50418B97387BA0 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-MediumItalic.ttf"; path = "../assets/fonts/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		02CEEB10C190457DBA4C9330 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DCAE820BD10B4BBBBE62DC7E /* Roboto-Thin.ttf */ = {isa = PBXFileReference; name = "Roboto-Thin.ttf"; path = "../assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		985A9BC30A76494E94BBD6F7 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; name = "Roboto-ThinItalic.ttf"; path = "../assets/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E9E05B2FEA194F6AB6A6F06D /* RobotoCondensed-Bold.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Bold.ttf"; path = "../assets/fonts/RobotoCondensed-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		502C6D6D469644DCAEDAB18D /* RobotoCondensed-BoldItalic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-BoldItalic.ttf"; path = "../assets/fonts/RobotoCondensed-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		59B594E6DB1E483DA6F58EC0 /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Italic.ttf"; path = "../assets/fonts/RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		21770552DE764F74B91DA82B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Light.ttf"; path = "../assets/fonts/RobotoCondensed-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3652D620A976438EB33AC807 /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-LightItalic.ttf"; path = "../assets/fonts/RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		00AC237216404964A75C8AD4 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Regular.ttf"; path = "../assets/fonts/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FB4A9FA6E5C78DE76783518B /* Pods-PlantAppExploration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantAppExploration.release.xcconfig"; path = "Target Support Files/Pods-PlantAppExploration/Pods-PlantAppExploration.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CBC8D2A5C54A0ACDCE3A742 /* libPods-PlantAppExploration-PlantAppExplorationTests.a in Frameworks */,
+				FEA2916EF8DE216E3CC1B55A /* libPods-PlantAppExploration-PlantAppExplorationTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42E0B2FBDC628BF723995ACF /* libPods-PlantAppExploration.a in Frameworks */,
+				40489BF339EFCDEB39DC90EB /* libPods-PlantAppExploration.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				301071C381AA40A98F5D5F6E /* libPods-PlantAppExploration-tvOS.a in Frameworks */,
+				2005ADDB575B1F347A2426B0 /* libPods-PlantAppExploration-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFB5ECD93F8019228A28A166 /* libPods-PlantAppExploration-tvOSTests.a in Frameworks */,
+				D82E3DAA94D2BB5ABF2C3113 /* libPods-PlantAppExploration-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,10 +141,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				AFE735F2A03DD8DAC0E8DA36 /* libPods-PlantAppExploration.a */,
-				DAA2CA204833D65A6FDF5548 /* libPods-PlantAppExploration-PlantAppExplorationTests.a */,
-				58631EE4C29E65322AA50F52 /* libPods-PlantAppExploration-tvOS.a */,
-				4A26B4714428FE1E0BD00FA5 /* libPods-PlantAppExploration-tvOSTests.a */,
+				2B5A5239A82B78DF6B7A77F6 /* libPods-PlantAppExploration.a */,
+				80C139F883AAFFE292C4BBDF /* libPods-PlantAppExploration-PlantAppExplorationTests.a */,
+				5B0898E4A5D6A9EDFFBBCD40 /* libPods-PlantAppExploration-tvOS.a */,
+				C9496EA7DEB5A95297AD4ED6 /* libPods-PlantAppExploration-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -200,8 +164,7 @@
 				00E356EF1AD99517003FC87E /* PlantAppExplorationTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				97B0749908598DE222494718 /* Pods */,
-				1BE24951F52546E399798B64 /* Resources */,
+				92B45BC193C673546FAE7DA8 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -219,47 +182,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		97B0749908598DE222494718 /* Pods */ = {
+		92B45BC193C673546FAE7DA8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C833DAA379F70D499CBA00FB /* Pods-PlantAppExploration.debug.xcconfig */,
-				F62C0450A0F4A229F36312E1 /* Pods-PlantAppExploration.release.xcconfig */,
-				4DEB204B8AB437C3E3AE971F /* Pods-PlantAppExploration-PlantAppExplorationTests.debug.xcconfig */,
-				87E8B37F44688F521C9A279E /* Pods-PlantAppExploration-PlantAppExplorationTests.release.xcconfig */,
-				81703C52151CE639A6E6A805 /* Pods-PlantAppExploration-tvOS.debug.xcconfig */,
-				A2690117B8655B2B0430E76A /* Pods-PlantAppExploration-tvOS.release.xcconfig */,
-				F2CC89C22D9D42754B626EC2 /* Pods-PlantAppExploration-tvOSTests.debug.xcconfig */,
-				345F4295D60E3B0426DC3ECB /* Pods-PlantAppExploration-tvOSTests.release.xcconfig */,
+				E3C652558D507ECDA23B086E /* Pods-PlantAppExploration.debug.xcconfig */,
+				FB4A9FA6E5C78DE76783518B /* Pods-PlantAppExploration.release.xcconfig */,
+				297AAB2D2EB940A86971210C /* Pods-PlantAppExploration-PlantAppExplorationTests.debug.xcconfig */,
+				874915EFABF73910556BD765 /* Pods-PlantAppExploration-PlantAppExplorationTests.release.xcconfig */,
+				2917328EB8B895251496BB35 /* Pods-PlantAppExploration-tvOS.debug.xcconfig */,
+				2D03E91889D2DC6192B99BD8 /* Pods-PlantAppExploration-tvOS.release.xcconfig */,
+				0C10CDB6F7E23E9B7F8E351C /* Pods-PlantAppExploration-tvOSTests.debug.xcconfig */,
+				5C08319B52E784E6F0FFE37F /* Pods-PlantAppExploration-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		1BE24951F52546E399798B64 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				B2EE1D544AC8409796D64D0C /* Roboto-Black.ttf */,
-				83501CB6FF5D4BEAB59D1729 /* Roboto-BlackItalic.ttf */,
-				778058DF21F6432392C6DEDE /* Roboto-Bold.ttf */,
-				81436F4DF1D94AC683013AB6 /* Roboto-BoldItalic.ttf */,
-				D4E740F6030C45EE9339ADE1 /* Roboto-Italic.ttf */,
-				26ED594342AC466296BC27E9 /* Roboto-Light.ttf */,
-				86DBDF811FF14A3B8032F070 /* Roboto-LightItalic.ttf */,
-				51E589195636460194015038 /* Roboto-Medium.ttf */,
-				141085C1FF50418B97387BA0 /* Roboto-MediumItalic.ttf */,
-				02CEEB10C190457DBA4C9330 /* Roboto-Regular.ttf */,
-				DCAE820BD10B4BBBBE62DC7E /* Roboto-Thin.ttf */,
-				985A9BC30A76494E94BBD6F7 /* Roboto-ThinItalic.ttf */,
-				E9E05B2FEA194F6AB6A6F06D /* RobotoCondensed-Bold.ttf */,
-				502C6D6D469644DCAEDAB18D /* RobotoCondensed-BoldItalic.ttf */,
-				59B594E6DB1E483DA6F58EC0 /* RobotoCondensed-Italic.ttf */,
-				21770552DE764F74B91DA82B /* RobotoCondensed-Light.ttf */,
-				3652D620A976438EB33AC807 /* RobotoCondensed-LightItalic.ttf */,
-				00AC237216404964A75C8AD4 /* RobotoCondensed-Regular.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -268,11 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PlantAppExplorationTests" */;
 			buildPhases = (
-				6A0DB799EC5258A39B0B9D8F /* [CP] Check Pods Manifest.lock */,
+				747D663351BB6E318EC8B9C2 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				9CC947C0147BAB43B0184ECD /* [CP] Copy Pods Resources */,
+				FFDC5F1CD94A2D4C811FE372 /* [CP] Embed Pods Frameworks */,
+				E122F7AFEFD21AE7EC3EB813 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -288,13 +225,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PlantAppExploration" */;
 			buildPhases = (
-				2358DEE0CB1D98485DDEFB6E /* [CP] Check Pods Manifest.lock */,
+				D2A48525A9B7B41B411378F9 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				11FABFE272BF994432D8931F /* [CP] Copy Pods Resources */,
+				C642FB8BE7E597EF3B1015BC /* [CP] Embed Pods Frameworks */,
+				063BF2B86013A7B765219005 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,7 +247,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PlantAppExploration-tvOS" */;
 			buildPhases = (
-				33833BD1CE1C21E5C0AD4092 /* [CP] Check Pods Manifest.lock */,
+				775B0099436F5A2350F4D6EE /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -329,7 +267,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PlantAppExploration-tvOSTests" */;
 			buildPhases = (
-				D979A857728F800ECC668ADE /* [CP] Check Pods Manifest.lock */,
+				D19ED8264817B03ADAAC4789 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -405,24 +343,6 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				25FD81CC4797474884BD3334 /* Roboto-Black.ttf in Resources */,
-				64C303E671B247B8ACC63DF6 /* Roboto-BlackItalic.ttf in Resources */,
-				E6870A1A02054075B0807308 /* Roboto-Bold.ttf in Resources */,
-				B251390AD5134EBF8034D85F /* Roboto-BoldItalic.ttf in Resources */,
-				77659A3C44B849A289EB7B99 /* Roboto-Italic.ttf in Resources */,
-				B7BBB915ACC74510B002AA17 /* Roboto-Light.ttf in Resources */,
-				481F2A02743642B9AC531123 /* Roboto-LightItalic.ttf in Resources */,
-				376B91B5B5BB4F95BACFB780 /* Roboto-Medium.ttf in Resources */,
-				331160D41B1D4DC697CFE9C3 /* Roboto-MediumItalic.ttf in Resources */,
-				52FA7DCC2BD441EB828CD8E3 /* Roboto-Regular.ttf in Resources */,
-				B0F3E4D1DACC4952AD1F7E3C /* Roboto-Thin.ttf in Resources */,
-				97BC129CC18C42128A4CD5D3 /* Roboto-ThinItalic.ttf in Resources */,
-				9750B6779F2A43CF802FFAD8 /* RobotoCondensed-Bold.ttf in Resources */,
-				3042A88EB3CD4EF0A91C9057 /* RobotoCondensed-BoldItalic.ttf in Resources */,
-				1E6810EFF24A400D8066DCFF /* RobotoCondensed-Italic.ttf in Resources */,
-				73F0A76512E64D8C98C9A05D /* RobotoCondensed-Light.ttf in Resources */,
-				CF7FC54149E64BFCB4B414E7 /* RobotoCondensed-LightItalic.ttf in Resources */,
-				B22C0B970F17472D910943BF /* RobotoCondensed-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +378,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		11FABFE272BF994432D8931F /* [CP] Copy Pods Resources */ = {
+		063BF2B86013A7B765219005 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -476,28 +396,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantAppExploration/Pods-PlantAppExploration-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2358DEE0CB1D98485DDEFB6E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PlantAppExploration-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,29 +410,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		33833BD1CE1C21E5C0AD4092 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PlantAppExploration-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6A0DB799EC5258A39B0B9D8F /* [CP] Check Pods Manifest.lock */ = {
+		747D663351BB6E318EC8B9C2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -556,25 +432,47 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9CC947C0147BAB43B0184ECD /* [CP] Copy Pods Resources */ = {
+		775B0099436F5A2350F4D6EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlantAppExploration-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C642FB8BE7E597EF3B1015BC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PlantAppExploration-PlantAppExplorationTests/Pods-PlantAppExploration-PlantAppExplorationTests-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-PlantAppExploration/Pods-PlantAppExploration-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantAppExploration-PlantAppExplorationTests/Pods-PlantAppExploration-PlantAppExplorationTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantAppExploration/Pods-PlantAppExploration-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D979A857728F800ECC668ADE /* [CP] Check Pods Manifest.lock */ = {
+		D19ED8264817B03ADAAC4789 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -594,6 +492,46 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2A48525A9B7B41B411378F9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlantAppExploration-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E122F7AFEFD21AE7EC3EB813 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlantAppExploration-PlantAppExplorationTests/Pods-PlantAppExploration-PlantAppExplorationTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantAppExploration-PlantAppExplorationTests/Pods-PlantAppExploration-PlantAppExplorationTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -632,6 +570,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FFDC5F1CD94A2D4C811FE372 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlantAppExploration-PlantAppExplorationTests/Pods-PlantAppExploration-PlantAppExplorationTests-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantAppExploration-PlantAppExplorationTests/Pods-PlantAppExploration-PlantAppExplorationTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -689,7 +645,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DEB204B8AB437C3E3AE971F /* Pods-PlantAppExploration-PlantAppExplorationTests.debug.xcconfig */;
+			baseConfigurationReference = 297AAB2D2EB940A86971210C /* Pods-PlantAppExploration-PlantAppExplorationTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -712,7 +668,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87E8B37F44688F521C9A279E /* Pods-PlantAppExploration-PlantAppExplorationTests.release.xcconfig */;
+			baseConfigurationReference = 874915EFABF73910556BD765 /* Pods-PlantAppExploration-PlantAppExplorationTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -732,7 +688,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C833DAA379F70D499CBA00FB /* Pods-PlantAppExploration.debug.xcconfig */;
+			baseConfigurationReference = E3C652558D507ECDA23B086E /* Pods-PlantAppExploration.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -755,7 +711,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F62C0450A0F4A229F36312E1 /* Pods-PlantAppExploration.release.xcconfig */;
+			baseConfigurationReference = FB4A9FA6E5C78DE76783518B /* Pods-PlantAppExploration.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -776,7 +732,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81703C52151CE639A6E6A805 /* Pods-PlantAppExploration-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 2917328EB8B895251496BB35 /* Pods-PlantAppExploration-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -804,7 +760,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2690117B8655B2B0430E76A /* Pods-PlantAppExploration-tvOS.release.xcconfig */;
+			baseConfigurationReference = 2D03E91889D2DC6192B99BD8 /* Pods-PlantAppExploration-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -832,7 +788,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2CC89C22D9D42754B626EC2 /* Pods-PlantAppExploration-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 0C10CDB6F7E23E9B7F8E351C /* Pods-PlantAppExploration-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -859,7 +815,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 345F4295D60E3B0426DC3ECB /* Pods-PlantAppExploration-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 5C08319B52E784E6F0FFE37F /* Pods-PlantAppExploration-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
