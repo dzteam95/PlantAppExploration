@@ -11,6 +11,10 @@ import Profile from "./Profile";
 import Jardin from "./Jardin";
 import Rappels from "./Rappels";
 import Conseils from "./Conseils";
+import Parrainage from "./Parrainage";
+import Delete from "./Delete";
+import Compte from "./Compte";
+
 
 
 export {
@@ -27,5 +31,8 @@ export {
     Jardin,
     Rappels,
     Conseils,
+    Parrainage,
+    Delete,
+    Compte,
 
 };

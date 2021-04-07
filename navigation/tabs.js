@@ -6,6 +6,7 @@ import { Profile } from "../screens/";
 import { Jardin } from "../screens/";
 import { Rappels } from "../screens/";
 import { Conseils } from "../screens/";
+import { Parrainage } from "../screens/";
 
 
 

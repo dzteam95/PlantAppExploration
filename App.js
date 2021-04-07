@@ -17,6 +17,10 @@ import { Jardin } from "./screens/";
 import { Rappels } from "./screens/";
 import { Conseils } from "./screens/";
 
+import { Parrainage } from "./screens/";
+import { Delete } from "./screens/";
+import { Compte } from "./screens/";
+
 
 // extra screens
 import Tabs from "./navigation/tabs";
@@ -37,13 +41,15 @@ const App = () => {
             <Stack.Navigator
                 screenOptions={{
                     headerShown: false,
-                    footerShown: false
+                    footerShown: true
 
                 }}
                 initialRouteName={'Home'}
             >
                 {Tabs}
-                {<Stack.Screen name="Home" component={Tabs} />}
+                {<Stack.Screen name="Home" component={Tabs}
+
+                />}
 
                 {/* Screens */}
                 <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
@@ -58,7 +64,9 @@ const App = () => {
                 <Stack.Screen name="Jardin" component={Jardin}/>
                 <Stack.Screen name="Rappels" component={Rappels}/>
                 <Stack.Screen name="Conseils" component={Conseils}/>
-
+                <Stack.Screen name="Parrainage" component={Parrainage} options={{ footerShown:true }}/>
+                <Stack.Screen name="Delete" component={Delete} options={{ footerShown:true }}/>
+                <Stack.Screen name="Compte" component={Compte} options={{ footerShown:true }}/>
 
             </Stack.Navigator>
         </NavigationContainer>

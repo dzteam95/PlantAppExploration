@@ -18,7 +18,7 @@ const Profile = ({ navigation }) => {
                         <TouchableOpacity style={styles.buttonContainer}>
                             <Text  style={styles.txt}>Mon abonnement</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Parrainage')}>
                             <Text style={styles.txt} >Parrainage</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonContainer}>
@@ -36,7 +36,7 @@ const Profile = ({ navigation }) => {
                         <TouchableOpacity style={styles.buttonContainer}>
                             <Text  style={styles.txt}>Déconnexion</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.buttonContainer}  onPress={() => navigation.replace('Compte')}>
                             <Text style={styles.txt}>Mon compte</Text>
                         </TouchableOpacity>
                     </View>
