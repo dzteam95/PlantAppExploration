@@ -194,7 +194,6 @@
 				0C10CDB6F7E23E9B7F8E351C /* Pods-PlantAppExploration-tvOSTests.debug.xcconfig */,
 				5C08319B52E784E6F0FFE37F /* Pods-PlantAppExploration-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
