@@ -33,10 +33,10 @@ const Profile = ({ navigation }) => {
                         <TouchableOpacity style={styles.buttonContainer}>
                             <Text  style={styles.txt}>Aide et contact</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Welcome')}>
                             <Text  style={styles.txt}>Déconnexion</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer}  onPress={() => navigation.replace('Compte')}>
+                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Compte')}>
                             <Text style={styles.txt}>Mon compte</Text>
                         </TouchableOpacity>
                     </View>

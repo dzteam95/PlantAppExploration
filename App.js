@@ -44,7 +44,8 @@ const App = () => {
                     footerShown: true
 
                 }}
-                initialRouteName={'Login'}
+                // initialRouteName={'Welcome'}
+                initialRouteName={'Rappels'}
             >
                 {Tabs}
                 {<Stack.Screen name="Home" component={Tabs}

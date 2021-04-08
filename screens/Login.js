@@ -27,7 +27,7 @@ const Login = ({ navigation }) => {
 		fetch('https://seedy.adnanenabil.com/users/authenticate',data)
 		.then((response) => {
 			//Statut getted
-			//console.log(response.status);
+			console.log(response);
 			if (response.status === 200) {
 				//console.log('aut');
 				
