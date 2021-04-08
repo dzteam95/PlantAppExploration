@@ -12,8 +12,7 @@ const Register = ({ navigation }) => {
 
 
 	const onLoginPressed = () => {
-		fetch('https://seedy.adnanenabil.com/users/register',data)
-
+		
 		let data = {
 			method: 'POST',
 			credentials: 'same-origin',
@@ -30,10 +29,24 @@ const Register = ({ navigation }) => {
 				//'X-CSRFToken': cookie.load('csrftoken')
 			},
 		}
-		navigation.reset({
-			index: 0,
-			routes: [{ name: 'Welcome' }],
-		})
+		
+		fetch('https://seedy.adnanenabil.com/users/register',data)
+		.then((response) => {
+			//Statut getted
+			console.log(response.status);
+			if (response.status === 200) {
+				console.log('registred');
+				
+				navigation.reset({
+					index: 0,
+					routes: [{ name: 'Welcome' }],
+				})
+			  
+			}else{
+				console.log('not registrer or contain error');
+				//do nothing
+			}
+		  })
 	}
 
 	return(
