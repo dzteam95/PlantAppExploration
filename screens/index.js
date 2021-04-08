@@ -16,6 +16,8 @@ import Delete from "./Delete";
 import Compte from "./Compte";
 import Subscription from "./Subscription";
 import SubscriptionDetail from "./SubscriptionDetail";
+import HelpUs from "./HelpUs";
+
 
 
 
@@ -38,5 +40,5 @@ export {
     Compte,
     Subscription,
     SubscriptionDetail,
-
+    HelpUs,
 };

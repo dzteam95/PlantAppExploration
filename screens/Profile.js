@@ -27,7 +27,7 @@ const Profile = ({ navigation }) => {
                         <TouchableOpacity style={styles.buttonContainer}>
                             <Text  style={styles.txt}>Mes informations</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('HelpUs')}>
                             <Text  style={styles.txt}>Améliorer mon application</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonContainer}>
