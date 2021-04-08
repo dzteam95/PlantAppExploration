@@ -14,6 +14,8 @@ import Conseils from "./Conseils";
 import Parrainage from "./Parrainage";
 import Delete from "./Delete";
 import Compte from "./Compte";
+import Subscription from "./Subscription";
+import SubscriptionDetail from "./SubscriptionDetail";
 
 
 
@@ -34,5 +36,7 @@ export {
     Parrainage,
     Delete,
     Compte,
+    Subscription,
+    SubscriptionDetail,
 
 };

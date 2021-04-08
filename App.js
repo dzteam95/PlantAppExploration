@@ -16,10 +16,13 @@ import { Profile } from "./screens/";
 import { Jardin } from "./screens/";
 import { Rappels } from "./screens/";
 import { Conseils } from "./screens/";
+import { Subscription } from "./screens/";
+import { SubscriptionDetail } from "./screens/";
 
 import { Parrainage } from "./screens/";
 import { Delete } from "./screens/";
 import { Compte } from "./screens/";
+
 
 
 // extra screens
@@ -44,13 +47,14 @@ const App = () => {
                     footerShown: true
 
                 }}
-                // initialRouteName={'Welcome'}
-                initialRouteName={'Rappels'}
+                initialRouteName={'Welcome'}
+                // initialRouteName={'Subscription'}
+                // initialRouteName={'Rappels'}
             >
-                {Tabs}
-                {<Stack.Screen name="Home" component={Tabs}
+                {/* {Tabs} */}
+                <Stack.Screen name="Home" component={Tabs}
 
-                />}
+                />
 
                 {/* Screens */}
                 <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
@@ -68,6 +72,9 @@ const App = () => {
                 <Stack.Screen name="Parrainage" component={Parrainage} options={{ footerShown:true }}/>
                 <Stack.Screen name="Delete" component={Delete} options={{ footerShown:true }}/>
                 <Stack.Screen name="Compte" component={Compte} options={{ footerShown:true }}/>
+                <Stack.Screen name="Subscription" component={Subscription} options={{ footerShown:true }}/>
+                <Stack.Screen name="SubscriptionDetail" component={SubscriptionDetail} options={{ footerShown:true }}/>
+                
 
             </Stack.Navigator>
         </NavigationContainer>
