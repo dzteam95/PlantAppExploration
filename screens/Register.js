@@ -88,7 +88,7 @@ const Register = ({ navigation }) => {
 				<Text style={styles.label}>En finalisant votre inscription, vous confirmez avoir lu et acceptez les conditions d'utilisation de cette application ainsi que la politique de confidentialité</Text>
 			</View>*/}
 			<View style={styles.enregistrer}>
-				<Button title={"enregistrer"} mode="contained" onPress={onLoginPressed}/>
+				<Button color="#ffffff" title={"enregistrer"} mode="contained" onPress={onLoginPressed}/>
 			</View>
 		</View>
 	)

@@ -16,7 +16,7 @@ const Subscription = ({ navigation }) => {
                 {id:2, name:'Jeune Pousse', price:'7,99', slug:'JeunePousse', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-Jeune-pousse-.png'},
                 {id:3, name:'Sequoia', price:'13,99', slug:'Sequoia', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-Sequoia.png'},
             ];
-            
+
 
     return (
         <View style={styles.container}>
@@ -25,6 +25,9 @@ const Subscription = ({ navigation }) => {
                     <Text style={styles.name}>
                         Abonnements
                     </Text>
+                        <TouchableOpacity onPress={() => navigation.replace('Profile')}>
+                            <Text style={styles.txt}>Retour</Text>
+                        </TouchableOpacity>
                 </View>
             </View>
 
@@ -98,7 +101,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
         marginTop:20,
         paddingLeft:20,
-        
+
     },
     infoPrice:{
         fontSize:18,
@@ -107,7 +110,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
         marginTop:20,
         paddingLeft:20,
-        
+
     },
     eventContentFirst: {
         flex:1,
