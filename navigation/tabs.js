@@ -7,6 +7,7 @@ import { Jardin } from "../screens/";
 import { Rappels } from "../screens/";
 import { Conseils } from "../screens/";
 import { Parrainage } from "../screens/";
+import { Subscription } from "../screens/";
 
 
 
@@ -96,6 +97,10 @@ const Tabs = () => {
                                         height: 25
                                     }}
                                 />
+                            );
+                        case "Abonnement":
+                            return (
+                                <CameraButton />
                             );
                     }
                 }

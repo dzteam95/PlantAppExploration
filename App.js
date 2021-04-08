@@ -45,35 +45,33 @@ const App = () => {
                 screenOptions={{
                     headerShown: false,
                     footerShown: true
-
                 }}
-                initialRouteName={'Welcome'}
+                initialRouteName={'Home'}
                 // initialRouteName={'Subscription'}
                 // initialRouteName={'Rappels'}
             >
-                {/* {Tabs} */}
-                <Stack.Screen name="Home" component={Tabs}
+                
+            {/* {Tabs} */}
+            <Stack.Screen name="Home" component={Tabs}/>
 
-                />
-
-                {/* Screens */}
-                <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
-                <Stack.Screen name="OnboardingTwo" component={OnboardingTwo} options={{ headerShown: false }} />
-                <Stack.Screen name="OnboardingThree" component={OnboardingThree} options={{ headerShown: false }} />
-                <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} />
-                <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
-                <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} />
-                <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
-                <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false,footerShown:false }}/>
-                <Stack.Screen name="Profile" component={Profile}/>
-                <Stack.Screen name="Jardin" component={Jardin}/>
-                <Stack.Screen name="Rappels" component={Rappels}/>
-                <Stack.Screen name="Conseils" component={Conseils}/>
-                <Stack.Screen name="Parrainage" component={Parrainage} options={{ footerShown:true }}/>
-                <Stack.Screen name="Delete" component={Delete} options={{ footerShown:true }}/>
-                <Stack.Screen name="Compte" component={Compte} options={{ footerShown:true }}/>
-                <Stack.Screen name="Subscription" component={Subscription} options={{ footerShown:true }}/>
-                <Stack.Screen name="SubscriptionDetail" component={SubscriptionDetail} options={{ footerShown:true }}/>
+            {/* Screens */}
+            <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
+            <Stack.Screen name="OnboardingTwo" component={OnboardingTwo} options={{ headerShown: false }} />
+            <Stack.Screen name="OnboardingThree" component={OnboardingThree} options={{ headerShown: false }} />
+            <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} />
+            <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
+            <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} />
+            <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
+            <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false,footerShown:false }}/>
+            <Stack.Screen name="Profile" component={Profile}/>
+            <Stack.Screen name="Jardin" component={Jardin}/>
+            <Stack.Screen name="Rappels" component={Rappels}/>
+            <Stack.Screen name="Conseils" component={Conseils}/>
+            <Stack.Screen name="Parrainage" component={Parrainage}/>
+            <Stack.Screen name="Delete" component={Delete}/>
+            <Stack.Screen name="Compte" component={Compte}/>
+            <Stack.Screen name="Subscription" component={Subscription}/>
+            <Stack.Screen name="SubscriptionDetail" component={SubscriptionDetail}/>
                 
 
             </Stack.Navigator>
