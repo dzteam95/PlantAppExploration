@@ -18,8 +18,6 @@ export const Boarding3 = require("../assets/images/Onboarding_3.png");
 export const Boarding4 = require("../assets/images/Onboarding_4.png");
 
 
-
-
 export default {
     plant1,
     plant2,
@@ -39,7 +37,7 @@ export default {
     Boarding2,
     Boarding3,
     Boarding4,
-    
-    
-    
+
+
+
 }

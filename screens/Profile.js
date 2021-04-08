@@ -13,9 +13,8 @@ const Profile = ({ navigation }) => {
             <View style={styles.container}>
                 <View style={styles.body}>
                     <Text style={styles.name}>Mon profil</Text>
-
                     <View style={styles.bodyContent}>
-                        <TouchableOpacity style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Subscription')}>
                             <Text  style={styles.txt}>Mon abonnement</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Parrainage')}>

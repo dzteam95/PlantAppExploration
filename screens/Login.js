@@ -72,7 +72,7 @@ return(
 		/>
 
 		<View style={styles.connexion}>
-			<Button title={"Connexion"} mode="contained" onPress={onLoginPressed}/>
+			<Button color="#ffffff" title={"Connexion"} mode="contained" onPress={onLoginPressed}/>
 
 		</View>
 		<View style={styles.row}>
