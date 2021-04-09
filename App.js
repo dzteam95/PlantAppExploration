@@ -49,7 +49,7 @@ const App = () => {
                     headerShown: false,
                     footerShown: true
                 }}
-                initialRouteName={'Welcome'}
+                initialRouteName={'Home'}
                 // initialRouteName={'Conseils'}
                 // initialRouteName={'Rappels'}
             >

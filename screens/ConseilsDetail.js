@@ -9,33 +9,56 @@ import {
     Image,
     Linking,
     ImageBackground,
+    Button,
+    Alert,
+    ScrollView,
 } from 'react-native';
 import {COLORS} from "../constants";
 
 
-const ConseilsDetail = ({route, navigation }) => {
-        const data = [
-                {id:1, name:'Rosier', slug:'Rosier', icon:'https://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.webp' , url:"" , desc:"Les roses sont cultivées depuis le moyen-âge, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Depuis, de nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent.", description:"Cupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isolé"},
-               ];
-        const { itemId } = route.params;
-        // const id = JSON.stringify(itemId)-1;
-        
-        //fetch
-        //
-        const result = data[0];
-        console.log(result);
+const ConseilsDetail = ({route, navigation,  props }) => {
+    const data = [
+            {id:1, name:'Rosier', slug:'Rosier', icon:'https://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.webp' , url:"" , desc:"Les roses sont cultivées depuis le moyen-âge, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Depuis, de nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent.", description:"Cupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isolé"},
+            ];
+    const { itemId } = route.params;
+    // const id = JSON.stringify(itemId)-1;
+    //fetch
+
+    //
+
+    const result = data[0];
+    // console.log(result);
+    
+    handleClick = () => {
+        console.log('Le lien a été cliqué.');
+        this.setState(state => ({
+            isToggleOn: !state.isToggleOn
+        }));
+    }
+
+    // action to extend block
+    eventClickListener = () => {
+
+        //Si messgae envoye alors 
+        console.log('Le lien a été cliqué.');
+        console.log(btnSelected);
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <View style={styles.headerContent}>
                     <Text style={styles.name}>
                         {result.name}
+                        <Button onClick={this.handleClick} title='z'>
+                            {this.isToggleOn ? 'ON' : 'OFF'}
+                        </Button>
                     </Text>
                 </View>
             </View>
             <View style={styles.body}>
                 <ImageBackground style={styles.bodyContent} source={{ uri: result.icon,}}>
-                    <View style={styles.eventList}>
+                    <ScrollView style={styles.eventList} >
                         <View style={styles.menuBox} >
                             <TouchableOpacity style={styles.buttonContainer}>
                                 <View style={styles.eventContentFirst}>
@@ -56,8 +79,9 @@ const ConseilsDetail = ({route, navigation }) => {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.menuBox} >
-                            <View style={styles.buttonContainer}>
+                            <TouchableOpacity style={(this.btnSelected== 1)?styles.notSelected:styles.buttonContainer} onPress={this.eventClickListener}>
                                 <View style={styles.eventContentFirst}>
+
                                     <Image style={styles.tinyLogo}/>
                                     <Text style={styles.infoName}>Description</Text>
                                     <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/>
@@ -72,7 +96,7 @@ const ConseilsDetail = ({route, navigation }) => {
                                         
                                     </View>
                                 </View>
-                            </View>
+                            </TouchableOpacity>
                         </View>
                         <View style={styles.actionRedirection} >
                             <TouchableOpacity style={styles.linkL} onPress={() => Linking.openURL(result.url)}>
@@ -90,7 +114,7 @@ const ConseilsDetail = ({route, navigation }) => {
                                 </Text>
                             </TouchableOpacity>
                         </View>
-                    </View>
+                    </ScrollView>
                 </ImageBackground>
             </View>
         </View>
@@ -98,6 +122,12 @@ const ConseilsDetail = ({route, navigation }) => {
 }
 
 const styles = StyleSheet.create({
+    btnSelected: {
+        backgroundColor:"#fff"
+    },
+    notSelected : {
+        backgroundColor:"#000"
+    },
     container:{
         // backgroundColor:"#000000",
     },
@@ -117,15 +147,16 @@ const styles = StyleSheet.create({
         fontWeight:'900',
     },
     body: {
-        flex: 2,
+        // flex: 2,
+        height: "85%",
     },
     bodyContent:{
         // flexWrap: "wrap",
         paddingLeft:20,
         paddingRight:20,
         fontWeight: "900",
-        width: 400 | "100%",
-        height: 400 | "100%",
+        // width: 400 | "100%",
+        height: "100%",
     },
     menuBox:{
         backgroundColor: "#fff",
