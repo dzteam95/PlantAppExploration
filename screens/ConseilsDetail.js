@@ -12,15 +12,37 @@ import {
     Button,
     Alert,
     ScrollView,
+    setState,
 } from 'react-native';
 import {COLORS} from "../constants";
 
+
+handleClick = () => {
+    console.log(this.isToggleOn);
+    console.log('Le lien a été cliqué.');
+    this.isToggleOn = 0;
+    console.log(isToggleOn);
+}
+
+// action to extend block
+eventClickListener = () => {
+
+    //Si messgae envoye alors 
+    console.log('Le lien a été cliqué.');
+    console.log(btnSelected);
+}
 
 const ConseilsDetail = ({route, navigation,  props }) => {
     const data = [
             {id:1, name:'Rosier', slug:'Rosier', icon:'https://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.webp' , url:"" , desc:"Les roses sont cultivées depuis le moyen-âge, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Depuis, de nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent.", description:"Cupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isolé"},
             ];
     const { itemId } = route.params;
+    const isToggleOn = 1;
+
+    // Cette liaison est nécéssaire afin de permettre
+    // // l'utilisation de `this` dans la fonction de rappel.
+    // const handleClick = handleClick.bind(this);
+
     // const id = JSON.stringify(itemId)-1;
     //fetch
 
@@ -28,21 +50,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
 
     const result = data[0];
     // console.log(result);
-    
-    handleClick = () => {
-        console.log('Le lien a été cliqué.');
-        this.setState(state => ({
-            isToggleOn: !state.isToggleOn
-        }));
-    }
 
-    // action to extend block
-    eventClickListener = () => {
-
-        //Si messgae envoye alors 
-        console.log('Le lien a été cliqué.');
-        console.log(btnSelected);
-    }
 
     return (
         <View style={styles.container}>
@@ -50,8 +58,8 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                 <View style={styles.headerContent}>
                     <Text style={styles.name}>
                         {result.name}
-                        <Button onClick={this.handleClick} title='z'>
-                            {this.isToggleOn ? 'ON' : 'OFF'}
+                        <Button onPress={this.handleClick} title='click'>
+                            click
                         </Button>
                     </Text>
                 </View>
