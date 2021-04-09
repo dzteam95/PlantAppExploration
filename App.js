@@ -73,8 +73,7 @@ const App = () => {
                 <Stack.Screen name="Subscription" component={Subscription}/>
                 <Stack.Screen name="SubscriptionDetail" component={SubscriptionDetail}/>
                 <Stack.Screen name="HelpUs" component={HelpUs}/>
-                
-                
+
 
             </Stack.Navigator>
         </NavigationContainer>
