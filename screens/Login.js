@@ -5,8 +5,8 @@ import {COLORS, SIZES} from "../constants";
 
 const Login = ({ navigation }) => {
 
-	const [username, setUsername] = useState({ value: '', error: '' })
-	const [password, setPassword] = useState({ value: '', error: '' })
+	const [username, setUsername] = useState({ value: 'Eole', error: '' })
+	const [password, setPassword] = useState({ value: 'Eole', error: '' })
 
 	const onLoginPressed = () => {
 		let data = {
