@@ -17,6 +17,7 @@ import { Jardin } from "./screens/";
 import { Rappels } from "./screens/";
 import { Conseils } from "./screens/";
 import { ConseilsList } from "./screens/";
+import { ConseilsDetail } from "./screens/";
 import { Subscription } from "./screens/";
 import { SubscriptionDetail } from "./screens/";
 import { HelpUs } from "./screens/";
@@ -49,7 +50,7 @@ const App = () => {
                     footerShown: true
                 }}
                 initialRouteName={'Welcome'}
-                //initialRouteName={'Subscription'}
+                // initialRouteName={'Conseils'}
                 // initialRouteName={'Rappels'}
             >
                 {/* {Tabs} */}
@@ -69,6 +70,7 @@ const App = () => {
                 <Stack.Screen name="Rappels" component={Rappels}/>
                 <Stack.Screen name="Conseils" component={Conseils}/>
                 <Stack.Screen name="ConseilsList" component={ConseilsList}/>
+                <Stack.Screen name="ConseilsDetail" component={ConseilsDetail}/>
                 <Stack.Screen name="Parrainage" component={Parrainage}/>
                 <Stack.Screen name="Delete" component={Delete}/>
                 <Stack.Screen name="Compte" component={Compte}/>
