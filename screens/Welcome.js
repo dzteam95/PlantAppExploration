@@ -11,21 +11,21 @@ const Welcome = ({ navigation }) => {
 		<ImageBackground source={Bg} style={styles.image}>
 		<View style={styles.containerGlobal} >
 		<Text style={styles.title}>Voici <Text style={styles.seedy}> Seedy</Text>, le conseiller en jardinage pour ne plus se prendre la tête </Text>
-			<View style={styles.decouverte}>
-				<Button
-					title="Découvrir Seedy"
-					onPress={() => navigation.replace('Onboarding')}
-				/>
-			</View>
-			<View style={styles.connexion}>
-				<Button
-					title="Me connecter"
-					onPress={() => navigation.replace('Login')}
-				/>
-			</View>
-			<TouchableOpacity onPress={() => navigation.replace('Register')}>
-			<Text style={styles.txt}>Déja convaincu?<Text style={styles.link}> m'inscrire</Text></Text>
-			</TouchableOpacity>
+		<View style={styles.decouverte}>
+			<Button
+				title="Découvrir Seedy"
+				onPress={() => navigation.replace('Onboarding')}
+			/>
+		</View>
+		<View style={styles.connexion}>
+			<Button
+				title="Me connecter"
+				onPress={() => navigation.replace('Login')}
+			/>
+		</View>
+		<TouchableOpacity onPress={() => navigation.replace('Register')}>
+		<Text style={styles.txt}>Déja convaincu?<Text style={styles.link}> m'inscrire</Text></Text>
+		</TouchableOpacity>
 		</View>
 		</ImageBackground>
 	
