@@ -21,7 +21,6 @@ const SubscriptionDetail = ({route, navigation }) => {
         const { itemId } = route.params;
         const id = JSON.stringify(itemId)-1;
         
-        const url="https://google.com";
         //fetch
         //
         const result = data[id];
@@ -82,12 +81,12 @@ const SubscriptionDetail = ({route, navigation }) => {
                             </View>
                         </View>
                         <View style={styles.actionRedirection} >
-                            <View style={styles.linkB} >
+                            <TouchableOpacity style={styles.linkB} >
                                 {/* <Text style={styles.infoRedirect}>Je m'abonne à {result.price}€ /mois</Text> */}
                                 <Text style={styles.infoRedirect} onPress={() => Linking.openURL(result.url)}>
                                     Je m'abonne à {result.price}€ /mois
                                 </Text>
-                            </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>

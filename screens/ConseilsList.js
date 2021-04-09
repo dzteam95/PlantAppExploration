@@ -6,6 +6,7 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
+    FlatList,
 } from 'react-native';
 
 searchFilterFunction = (search) => {
@@ -15,7 +16,7 @@ searchFilterFunction = (search) => {
     const newHandleSearch = search;
     // console.log(search);
     console.log('requette search is : ',newHandleSearch);
-    //copier apre lavoir fait dans conseil list
+
 //     fetch(`https://seedy.adnanenabil.com/v1/plants/name/${newHandleSearch}`)
     
     // Passertoken\
@@ -32,9 +33,22 @@ searchFilterFunction = (search) => {
 //       })
 }
 
-const Conseils = ({ navigation }) => {
+const Conseils = ({ route, navigation }) => {
     const  search = '';
     const  text = '';
+    const { item } = route.params;
+
+    const data = [
+        {id:1, name:'Fruits'},
+        {id:2, name:'Légumes'},
+        {id:3, name:'Aromates'},
+        {id:4, name:'Fleurs'},
+        {id:5, name:'Les recettes du mois'},
+        {id:6, name:'Les plus regardés'},
+        {id:7, name:'Recettes de saison'},
+        {id:8, name:'Type de plat'},
+        {id:9, name:'Avec ingrédients de mon jardin'},
+    ];
 
     return (
         <View style={styles.container}>
@@ -57,33 +71,38 @@ const Conseils = ({ navigation }) => {
                             placeholder="Rechercher"
                         />
                     </View>
-                    
                 </View>
                 <View style={styles.bodyContent}>
-
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}>
-                        <Text style={styles.info}>Glossaire</Text>
+                    {/* back  action*/}
+                    <TouchableOpacity style={styles.backAction} onPress={() => navigation.replace('Conseils')}>
+                        <Text style={styles.backText}>
+                            back {item}
+                        </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "especes"})}>
-                        <Text style={styles.info}>Fiches espèces</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "tutosvideos"})}>
-                        <Text style={styles.info}>Tutos vidéos</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "recettes"})}>
-                        <Text style={styles.info}>Recettes</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "maladies"})}>
-                        <Text style={styles.info}>Fiches maladies</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "savoirfaire"})}>
-                        <Text style={styles.info}>Fiches savoir-faire</Text>
-                    </TouchableOpacity>
+                    {/* List elements */}
+                    <FlatList
+                        enableEmptySections={true}
+                        style={styles.eventList}
+                        data={data}
+                        keyExtractor= {(item) => {
+                            return item.id;
+                        }}
+                        renderItem={({item}) => {
+                            return (
+                                <View style={styles.menuBox} >
+                                    <TouchableOpacity onPress={() => navigation.replace('ConseilsList', { item: item.name})}>
+                                        <View style={styles.eventContent}>
+                                            <View style={styles.eventContentF}>
+                                                <Text style={styles.infoName}>{item.name}</Text>
+                                            </View>
+                                            <View style={styles.eventContentS}>
+                                                <Text style={styles.infoName}>></Text>
+                                            </View>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            )}}/>
 
                 </View>
             </View>
@@ -97,6 +116,14 @@ const styles = StyleSheet.create({
         flexDirection:"column",
         padding:20,
     },
+    backAction:{
+        width:180,
+        height:100,
+    },
+    backText:{
+        fontSize:18,
+        color:"#222222",
+    },
     headerContent:{
         marginTop: 50,
         paddingBottom:30,
@@ -107,17 +134,43 @@ const styles = StyleSheet.create({
         fontWeight:'900',
     },
     bodyContent:{
-        flexWrap: "wrap",
+        // flexWrap: "wrap",
         fontWeight: "900",
         width: 400 | "100%",
         height: 400 | "100%",
 
     },
+    eventList:{
+        
+    },
+    eventContent: {
+        // flex:12,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        marginLeft:10,
+        marginRight:10,
+        width:"90%",
+        // backgroundColor: '#FFFFFF',
+        // padding:10,
+        // borderRadius:10,
+    },
+    eventContentF: {
+        flex:10,
+        // flexDirection: 'row',
+        alignItems: 'flex-start',
+        // height:50,
+    },
+    eventContentS: {
+        flex:1,
+        // flexDirection: 'row',
+        alignItems: 'flex-start',
+        // height:20,
+        // marginTop:10,
+    },
     menuBox:{
-        backgroundColor: "#ffffff",
-        borderRadius:10,
-        width:180,
-        height:100,
+        // backgroundColor: "#ffffff",
+        // width:180,
+        // height:100,
         marginRight:10,
         marginTop:10,
         marginBottom:10,
@@ -131,7 +184,7 @@ const styles = StyleSheet.create({
     },
     info:{
         fontSize:18,
-        fontWeight:'300',
+        fontWeight:'500',
         color: "#222222",
         textAlign:'center',
         marginTop:30,
