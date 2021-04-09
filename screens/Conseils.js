@@ -5,9 +5,36 @@ import {
     View,
     Image,
     TextInput,
+    TouchableOpacity,
 } from 'react-native';
 
+searchFilterFunction = (search) => {
+
+    //Met a jour le event text
+    this.setState({ search });
+    const newHandleSearch = search;
+    // console.log(search);
+    console.log('requette search is : ',newHandleSearch);
+    //copier apre lavoir fait dans conseil list
+//     fetch(`https://seedy.adnanenabil.com/v1/plants/name/${newHandleSearch}`)
+    
+    // Passertoken\
+    
+//       .then((responsesearch) => responsesearch.json())
+//       .then((jsonsearch) => {
+//         // console.debug(jsonsearch);
+//         //console.log(jsonsearch);
+//         this.setState({ datasearch: jsonsearch.data.plant });
+//       })
+//       .catch((error) => console.error(error))
+//       .finally(() => {
+//         this.setState({ isLoadingSearch: false });
+//       })
+}
+
 const Conseils = ({ navigation }) => {
+    const  search = '';
+    const  text = '';
 
     return (
         <View style={styles.container}>
@@ -17,44 +44,46 @@ const Conseils = ({ navigation }) => {
                         Nos conseils & recettes
                     </Text>
                 </View>
-
+            </View>
+            <View style={styles.body}>
                 <View style={styles.formContent}>
                     <View style={styles.inputContainer}>
                         <Image style={[styles.icon, styles.inputIcon]}/>
-                        <TextInput style={styles.inputs}
-                                   placeholder="Rechercher"
+                        <TextInput
+                            style={styles.inputs}
+                            onChangeText={this.searchFilterFunction}
+                            value={search}
+                            underlineColorAndroid="transparent"
+                            placeholder="Rechercher"
                         />
                     </View>
+                    
                 </View>
-
-            </View>
-
-            <View style={styles.body}>
                 <View style={styles.bodyContent}>
 
-                    <View style={styles.menuBox}>
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}>
                         <Text style={styles.info}>Glossaire</Text>
-                    </View>
+                    </TouchableOpacity>
 
-                    <View style={styles.menuBox}>
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "especes"})}>
                         <Text style={styles.info}>Fiches espèces</Text>
-                    </View>
+                    </TouchableOpacity>
 
-                    <View style={styles.menuBox}>
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "tutosvideos"})}>
                         <Text style={styles.info}>Tutos vidéos</Text>
-                    </View>
+                    </TouchableOpacity>
 
-                    <View style={styles.menuBox}>
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "recettes"})}>
                         <Text style={styles.info}>Recettes</Text>
-                    </View>
+                    </TouchableOpacity>
 
-                    <View style={styles.menuBox}>
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "maladies"})}>
                         <Text style={styles.info}>Fiches maladies</Text>
-                    </View>
+                    </TouchableOpacity>
 
-                    <View style={styles.menuBox}>
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "savoirfaire"})}>
                         <Text style={styles.info}>Fiches savoir-faire</Text>
-                    </View>
+                    </TouchableOpacity>
 
                 </View>
             </View>
@@ -64,18 +93,18 @@ const Conseils = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
-
+    container:{
+        flexDirection:"column",
+        padding:20,
+    },
     headerContent:{
         marginTop: 50,
-        padding:30,
+        paddingBottom:30,
     },
     name:{
         fontSize:22,
         color:"#222222",
         fontWeight:'900',
-    },
-    body: {
-        flex: 2,
     },
     bodyContent:{
         flexWrap: "wrap",
@@ -85,10 +114,13 @@ const styles = StyleSheet.create({
 
     },
     menuBox:{
-        backgroundColor: "#DCDCDC",
+        backgroundColor: "#ffffff",
+        borderRadius:10,
         width:180,
         height:100,
-        margin:10,
+        marginRight:10,
+        marginTop:10,
+        marginBottom:10,
         shadowColor: 'black',
         shadowOpacity: .2,
         shadowOffset: {
@@ -99,7 +131,7 @@ const styles = StyleSheet.create({
     },
     info:{
         fontSize:18,
-        fontWeight:'500',
+        fontWeight:'300',
         color: "#222222",
         textAlign:'center',
         marginTop:30,
@@ -120,8 +152,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems:'center',
         flex:1,
-        marginLeft:10,
-        marginRight:20,
         marginTop:20,
     },
 })
