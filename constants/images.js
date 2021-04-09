@@ -16,6 +16,7 @@ export const Boarding1 = require("../assets/images/Onboarding_1.png");
 export const Boarding2 = require("../assets/images/Onboarding_2.png");
 export const Boarding3 = require("../assets/images/Onboarding_3.png");
 export const Boarding4 = require("../assets/images/Onboarding_4.png");
+export const Reduc = require("../assets/images/FeuilleReduct.png");
 
 
 
@@ -39,7 +40,7 @@ export default {
     Boarding2,
     Boarding3,
     Boarding4,
-    
+    Reduc,
     
     
 }

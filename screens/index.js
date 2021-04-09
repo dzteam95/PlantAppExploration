@@ -19,6 +19,7 @@ import Compte from "./Compte";
 import Subscription from "./Subscription";
 import SubscriptionDetail from "./SubscriptionDetail";
 import HelpUs from "./HelpUs";
+import DataShare from "./DataShare";
 
 
 
@@ -45,4 +46,5 @@ export {
     Subscription,
     SubscriptionDetail,
     HelpUs,
+    DataShare,
 };
