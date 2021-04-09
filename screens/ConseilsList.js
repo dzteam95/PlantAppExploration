@@ -12,7 +12,7 @@ import {
 searchFilterFunction = (search) => {
 
     //Met a jour le event text
-    this.setState({ search });
+    //this.setState({ search });
     const newHandleSearch = search;
     // console.log(search);
     console.log('requette search is : ',newHandleSearch);
@@ -57,6 +57,7 @@ const Conseils = ({ route, navigation }) => {
                     <Text style={styles.name}>
                         Nos conseils & recettes
                     </Text>
+
                 </View>
             </View>
             <View style={styles.body}>
@@ -74,12 +75,21 @@ const Conseils = ({ route, navigation }) => {
                 </View>
                 <View style={styles.bodyContent}>
                     {/* back  action*/}
-                    <TouchableOpacity style={styles.backAction} onPress={() => navigation.replace('Conseils')}>
-                        <Text style={styles.backText}>
-                            back {item}
-                        </Text>
-                    </TouchableOpacity>
-
+                    <View style={styles.actionContent}>
+                        <View style={styles.actionContentF}>
+                            <TouchableOpacity style={styles.backAction} onPress={() => navigation.replace('Conseils')}>
+                                <Text style={styles.backText}>
+                                    Nos conseils & recettes
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.actionContentS}></View>
+                            <TouchableOpacity style={styles.subtitle}>
+                                <Text style={styles.subtitleText}>
+                                    {item}
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                     {/* List elements */}
                     <FlatList
                         enableEmptySections={true}
@@ -91,7 +101,7 @@ const Conseils = ({ route, navigation }) => {
                         renderItem={({item}) => {
                             return (
                                 <View style={styles.menuBox} >
-                                    <TouchableOpacity onPress={() => navigation.replace('ConseilsList', { item: item.name})}>
+                                    <TouchableOpacity onPress={() => navigation.replace('ConseilsDetail', { item: item.name})}>
                                         <View style={styles.eventContent}>
                                             <View style={styles.eventContentF}>
                                                 <Text style={styles.infoName}>{item.name}</Text>
@@ -103,7 +113,6 @@ const Conseils = ({ route, navigation }) => {
                                     </TouchableOpacity>
                                 </View>
                             )}}/>
-
                 </View>
             </View>
         </View>
@@ -117,11 +126,19 @@ const styles = StyleSheet.create({
         padding:20,
     },
     backAction:{
+        // width:180,
+        height:100,
+    },
+    subbtitle:{
         width:180,
         height:100,
     },
     backText:{
-        fontSize:18,
+        fontSize:14,
+        color:"#a9a9a9",
+    },
+    subtitleText:{
+        fontSize:14,
         color:"#222222",
     },
     headerContent:{
@@ -142,6 +159,25 @@ const styles = StyleSheet.create({
     },
     eventList:{
         
+    },
+    actionContent: {
+        // flex:12,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        marginLeft:10,
+        marginRight:10,
+        width:"90%",
+        // backgroundColor: '#FFFFFF',
+        // padding:10,
+        // borderRadius:10,
+    },
+    actionContentF: {
+        // flex:1,
+        height:50,
+    },
+    actionContentS: {
+        // flex:1,
+        paddingLeft:10,
     },
     eventContent: {
         // flex:12,
