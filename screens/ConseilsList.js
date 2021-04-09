@@ -1,0 +1,212 @@
+import React, { Component } from 'react';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TextInput,
+    TouchableOpacity,
+    FlatList,
+} from 'react-native';
+
+searchFilterFunction = (search) => {
+
+    //Met a jour le event text
+    this.setState({ search });
+    const newHandleSearch = search;
+    // console.log(search);
+    console.log('requette search is : ',newHandleSearch);
+
+//     fetch(`https://seedy.adnanenabil.com/v1/plants/name/${newHandleSearch}`)
+    
+    // Passertoken\
+    
+//       .then((responsesearch) => responsesearch.json())
+//       .then((jsonsearch) => {
+//         // console.debug(jsonsearch);
+//         //console.log(jsonsearch);
+//         this.setState({ datasearch: jsonsearch.data.plant });
+//       })
+//       .catch((error) => console.error(error))
+//       .finally(() => {
+//         this.setState({ isLoadingSearch: false });
+//       })
+}
+
+const Conseils = ({ route, navigation }) => {
+    const  search = '';
+    const  text = '';
+    const { item } = route.params;
+
+    const data = [
+        {id:1, name:'Fruits'},
+        {id:2, name:'Légumes'},
+        {id:3, name:'Aromates'},
+        {id:4, name:'Fleurs'},
+        {id:5, name:'Les recettes du mois'},
+        {id:6, name:'Les plus regardés'},
+        {id:7, name:'Recettes de saison'},
+        {id:8, name:'Type de plat'},
+        {id:9, name:'Avec ingrédients de mon jardin'},
+    ];
+
+    return (
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <View style={styles.headerContent}>
+                    <Text style={styles.name}>
+                        Nos conseils & recettes
+                    </Text>
+                </View>
+            </View>
+            <View style={styles.body}>
+                <View style={styles.formContent}>
+                    <View style={styles.inputContainer}>
+                        <Image style={[styles.icon, styles.inputIcon]}/>
+                        <TextInput
+                            style={styles.inputs}
+                            onChangeText={this.searchFilterFunction}
+                            value={search}
+                            underlineColorAndroid="transparent"
+                            placeholder="Rechercher"
+                        />
+                    </View>
+                </View>
+                <View style={styles.bodyContent}>
+                    {/* back  action*/}
+                    <TouchableOpacity style={styles.backAction} onPress={() => navigation.replace('Conseils')}>
+                        <Text style={styles.backText}>
+                            back {item}
+                        </Text>
+                    </TouchableOpacity>
+
+                    {/* List elements */}
+                    <FlatList
+                        enableEmptySections={true}
+                        style={styles.eventList}
+                        data={data}
+                        keyExtractor= {(item) => {
+                            return item.id;
+                        }}
+                        renderItem={({item}) => {
+                            return (
+                                <View style={styles.menuBox} >
+                                    <TouchableOpacity onPress={() => navigation.replace('ConseilsList', { item: item.name})}>
+                                        <View style={styles.eventContent}>
+                                            <View style={styles.eventContentF}>
+                                                <Text style={styles.infoName}>{item.name}</Text>
+                                            </View>
+                                            <View style={styles.eventContentS}>
+                                                <Text style={styles.infoName}>></Text>
+                                            </View>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            )}}/>
+
+                </View>
+            </View>
+        </View>
+    );
+
+}
+
+const styles = StyleSheet.create({
+    container:{
+        flexDirection:"column",
+        padding:20,
+    },
+    backAction:{
+        width:180,
+        height:100,
+    },
+    backText:{
+        fontSize:18,
+        color:"#222222",
+    },
+    headerContent:{
+        marginTop: 50,
+        paddingBottom:30,
+    },
+    name:{
+        fontSize:22,
+        color:"#222222",
+        fontWeight:'900',
+    },
+    bodyContent:{
+        // flexWrap: "wrap",
+        fontWeight: "900",
+        width: 400 | "100%",
+        height: 400 | "100%",
+
+    },
+    eventList:{
+        
+    },
+    eventContent: {
+        // flex:12,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        marginLeft:10,
+        marginRight:10,
+        width:"90%",
+        // backgroundColor: '#FFFFFF',
+        // padding:10,
+        // borderRadius:10,
+    },
+    eventContentF: {
+        flex:10,
+        // flexDirection: 'row',
+        alignItems: 'flex-start',
+        // height:50,
+    },
+    eventContentS: {
+        flex:1,
+        // flexDirection: 'row',
+        alignItems: 'flex-start',
+        // height:20,
+        // marginTop:10,
+    },
+    menuBox:{
+        // backgroundColor: "#ffffff",
+        // width:180,
+        // height:100,
+        marginRight:10,
+        marginTop:10,
+        marginBottom:10,
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
+    },
+    info:{
+        fontSize:18,
+        fontWeight:'500',
+        color: "#222222",
+        textAlign:'center',
+        marginTop:30,
+
+    },
+    formContent:{
+        flexDirection: 'row',
+        marginTop:5,
+        marginBottom:50,
+
+    },
+    inputContainer: {
+        borderBottomColor: '#F5FCFF',
+        backgroundColor: '#FFFFFF',
+        borderRadius:10,
+        borderBottomWidth: 1,
+        height:50,
+        flexDirection: 'row',
+        alignItems:'center',
+        flex:1,
+        marginTop:20,
+    },
+})
+
+export default Conseils
