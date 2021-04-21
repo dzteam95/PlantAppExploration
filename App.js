@@ -21,6 +21,7 @@ import { ConseilsDetail } from "./screens/";
 import { Subscription } from "./screens/";
 import { SubscriptionDetail } from "./screens/";
 import { HelpUs } from "./screens/";
+import { DataShare } from "./screens/";
 
 import { Parrainage } from "./screens/";
 import { Delete } from "./screens/";
@@ -49,9 +50,9 @@ const App = () => {
                     headerShown: false,
                     footerShown: true
                 }}
-                initialRouteName={'Home'}
+                initialRouteName={'Welcome'}
                 // initialRouteName={'Conseils'}
-                // initialRouteName={'Rappels'}
+                // initialRouteName={'DataShare'}
             >
                 {/* {Tabs} */}
                 <Stack.Screen name="Home" component={Tabs}/>
@@ -77,7 +78,9 @@ const App = () => {
                 <Stack.Screen name="Subscription" component={Subscription}/>
                 <Stack.Screen name="SubscriptionDetail" component={SubscriptionDetail}/>
                 <Stack.Screen name="HelpUs" component={HelpUs}/>
-
+                <Stack.Screen name="DataShare" component={DataShare}/>
+                
+                
 
             </Stack.Navigator>
         </NavigationContainer>
