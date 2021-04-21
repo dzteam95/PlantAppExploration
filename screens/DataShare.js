@@ -9,21 +9,33 @@ import {
     Image,
     Alert,
     TextInput,
-    Linking,
-    Clipboard,
 } from 'react-native';
 import {COLORS} from "../constants";
-import {Reduc} from "../constants/images";
 
-const Parrainage = ({ navigation }) => {
-    const reduction = "PARDES21";
+const Confidential = ({ navigation }) => {
+
+    const [message, setMessage] = useState({ value: '', error: '' })
+
+    eventClickListener = () => {
+
+        //Si messgae envoye alors 
+        Alert.alert("Merci :)", "Message envoyé");
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Home' }],
+        })
+
+    }
+
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <View style={styles.headerContent}>
                     <Text style={styles.name}>
-                        Réduction et Parrainage
+                        Partage de donnée d'utilisation
                     </Text>
                 </View>
             </View>
@@ -31,17 +43,26 @@ const Parrainage = ({ navigation }) => {
             <View style={styles.body}>
                 <View style={styles.bodyContent}>
                     <Text style={styles.subtitle}>
-                        Invites tes amis !
+                        Pourquoi nous avons besoin de certaines de vos données ?
                     </Text>
-                    <TouchableOpacity style={styles.copyButton} onPress={() => Clipboard.setString(reduction)}>
-                        <Text style={styles.copyText}>{reduction}</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.text}>Appuyer pour copier</Text>
-                    <Image
-                        source={Reduc}
-                    />
-                    <TouchableOpacity style={styles.sendButton} onPress={() => Linking.openURL("https://seedy.difego.fr")}>
-                        <Text style={styles.sendText}>Acceder au site Seedy.fr</Text>
+                    <Text style={styles.text}>
+                        Ces données nous sont préciseuse pous aider à améliorer notre application à te proposer un eexpérience personnalisée. Nous n'avons pas accès de ton téléphone ou aux informations pouvant servir à te tracer.
+                    </Text>
+                    <Text style={styles.subtitle}>
+                        Partager mes informations anonymement
+                    </Text>
+                    <View style={styles.switchCase}>
+                        <Switch
+                            trackColor={{ false: "#767577", true:COLORS.greenLight }}
+                            thumbColor={isEnabled ? COLORS.greenDark : "#f4f3f4"}
+                            style={styles.switch}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={toggleSwitch}
+                            value={isEnabled}
+                        />
+                    </View>
+                    <TouchableOpacity style={styles.sendButton} onPress={eventClickListener}>
+                        <Text style={styles.sendText}>Appliquer</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -87,7 +108,7 @@ const styles = StyleSheet.create({
         fontWeight: "900",
         width: 400 | "100%",
         height: 400 | "100%",
-        alignItems:"center",
+
     },
     sendButton:{
         // flex:1,
@@ -95,17 +116,6 @@ const styles = StyleSheet.create({
         borderRadius:10,
         height:60,
         marginTop:10,
-        marginBottom:10,
-        width:"100%",
-    },
-    copyButton:{
-        // flex:1,
-        backgroundColor:"#fff",
-        borderRadius:10,
-        height:60,
-        marginTop:10,
-        marginBottom:10,
-        width:"100%",
     },
     sendText:{
         fontSize:14,
@@ -114,14 +124,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
         marginTop:20,
     },
-    copyText:{
-        fontSize:14,
-        fontWeight:'500',
-        color: "#000",
-        textAlign:'center',
-        marginTop:20,
-    },
 })
 
 
-export default Parrainage
+export default Confidential

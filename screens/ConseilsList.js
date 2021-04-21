@@ -129,10 +129,10 @@ const styles = StyleSheet.create({
         // width:180,
         height:100,
     },
-    subbtitle:{
-        width:180,
-        height:100,
-    },
+    // subtitle:{
+    //     width:180,
+    //     height:100,
+    // },
     backText:{
         fontSize:14,
         color:"#a9a9a9",
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
         fontWeight:'900',
     },
     bodyContent:{
-        // flexWrap: "wrap",
+        flexWrap: "wrap",
         fontWeight: "900",
         width: 400 | "100%",
         height: 400 | "100%",
