@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useState } from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import {ActivityIndicator, AsyncStorage} from 'react-native';
 
 // screens
 import { PlantDetail } from "./screens/";
@@ -43,6 +44,21 @@ const theme = {
 const Stack = createStackNavigator();
 
 const App = () => {
+    const [hasToken, setState] = useState({ hasToken: false })
+
+    AsyncStorage.getItem('id_token').then((token) => {
+        setState({ hasToken: token !== null })
+    })
+
+    //set initail route var
+    initialRoute = 'Welcome'
+
+    if (hasToken){
+        tokened = AsyncStorage.getItem('id_token');
+        // console.log('User token connected in AsyncStorage : ',tokened)
+        initialRoute = 'Home'
+    }
+    
     return (
         <NavigationContainer theme={theme}>
             <Stack.Navigator
@@ -50,9 +66,7 @@ const App = () => {
                     headerShown: false,
                     footerShown: true
                 }}
-                initialRouteName={'Welcome'}
-                // initialRouteName={'Conseils'}
-                // initialRouteName={'DataShare'}
+                initialRouteName={initialRoute}
             >
                 {/* {Tabs} */}
                 <Stack.Screen name="Home" component={Tabs}/>
