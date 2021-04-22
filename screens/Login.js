@@ -38,9 +38,9 @@ const Login = ({ navigation }) => {
 				fetch('https://seedy.adnanenabil.com/users/authenticate', data)
 				.then((response) => response.json())
 				.then((responseData) => {
-					console.log(responseData.token);
-					
-					saveItem('id_token', responseData.token),
+					// console.log(responseData.token);
+					// saveItem('id_token', responseData.token),
+					saveData('id_token', responseData.token),
 					
 					navigation.reset({
 						index: 0,
@@ -53,10 +53,27 @@ const Login = ({ navigation }) => {
 			}
 		  })
 	}
-
-	const saveItem = (item, selectedValue) => {
-		AsyncStorage.setItem(item, selectedValue);
-	}
+	
+	const saveData = async (id_token, token) => {
+		try {
+		  await AsyncStorage.setItem(id_token, token)
+		  	alert('Data successfully saved')
+		} catch (e) {
+		  	alert('Failed to save the data to the storage')
+		}
+	  }
+	
+	// const saveItem = async (item, selectedValue) => {
+	// 	// console.log(item, selectedValue)
+	// 	try {
+	// 	  await AsyncStorage.setItem(item, selectedValue)
+	// 	  console.log('Data successfully saved')
+	// 	//   console.log(item)
+	// 	//   console.log(selectedValue)
+	// 	} catch (e) {
+	// 		console.log('Failed to save the data to the storage')
+	// 	}
+	// }
 
 return(
 	<View style={styles.containerGlobal} >
