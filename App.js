@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useState , useEffect} from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import {ActivityIndicator, AsyncStorage} from 'react-native';
@@ -33,6 +33,7 @@ import { Compte } from "./screens/";
 // extra screens
 import Tabs from "./navigation/tabs";
 
+
 const theme = {
     ...DefaultTheme,
     colors: {
@@ -43,22 +44,38 @@ const theme = {
 
 const Stack = createStackNavigator();
 
-const App = () => {
-    const [hasToken, setState] = useState({ hasToken: false })
+const readData = async () => {
+    try {
+      const userJeton = await AsyncStorage.getItem('id_token')
+  
+      if (userJeton !== null) {
+        // setRoute('Home')
+        // initialRoute = 'Home'
+        alert('Success to fetch the data from storage')
+      }
+    } catch (e) {
+      alert('Failed to fetch the data from storage')
+    }  
+  }
 
-    AsyncStorage.getItem('id_token').then((token) => {
-        setState({ hasToken: token !== null })
-    })
+const App = () => {
+    const [jeton, setJeton] = useState('')
+    const [initialRoute, setRoute] = useState('Welcome')
+
+    // AsyncStorage.getItem('id_token').then((token) => {
+    //     setRoute('Home')
+    //   })
+
+    useEffect(() => {
+        readData()
+    }, [])
 
     //set initail route var
-    initialRoute = 'Welcome'
+    // initialRoute = 'Welcome'
 
-    if (hasToken){
-        tokened = AsyncStorage.getItem('id_token');
-        // console.log('User token connected in AsyncStorage : ',tokened)
-        initialRoute = 'Home'
-    }
-    
+    // IsToken()
+    console.log(initialRoute)
+
     return (
         <NavigationContainer theme={theme}>
             <Stack.Navigator
