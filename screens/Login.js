@@ -1,5 +1,6 @@
 import React, {useState } from 'react';
-import { TouchableOpacity, StyleSheet, View,Text,TextInput,Button ,BackHandler, Alert} from 'react-native'
+import { TouchableOpacity, StyleSheet, View,Text,TextInput,Button ,BackHandler, Alert, AsyncStorage} from 'react-native';
+
 import {COLORS, SIZES} from "../constants";
 
 
@@ -24,23 +25,37 @@ const Login = ({ navigation }) => {
 			},
 		}
 
-		fetch('https://seedy.adnanenabil.com/users/authenticate',data)
-		.then((response) => {
+		//fetch Statu == 200
+		fetch('https://seedy.adnanenabil.com/users/authenticate', data)
+		.then( res => {
+
 			//Statut getted
-			console.log(response);
-			if (response.status === 200) {
+			// console.log(res);
+			if (res.status === 200) {
 				//console.log('aut');
 				
-				navigation.reset({
-					index: 0,
-					routes: [{ name: 'Home' }],
-				})
-			  
+				// fetch get token 
+				fetch('https://seedy.adnanenabil.com/users/authenticate', data)
+				.then((response) => response.json())
+				.then((responseData) => {
+					console.log(responseData.token);
+					
+					saveItem('id_token', responseData.token),
+					
+					navigation.reset({
+						index: 0,
+						routes: [{ name: 'Home' }],
+					})
+				})			  
 			}else{
 				//console.log('not authorized');
 				//do nothing
 			}
 		  })
+	}
+
+	const saveItem = (item, selectedValue) => {
+		AsyncStorage.setItem(item, selectedValue);
 	}
 
 return(
