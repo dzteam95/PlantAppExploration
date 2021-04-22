@@ -33,7 +33,7 @@ const Profile = ({ navigation }) => {
                         <TouchableOpacity style={styles.buttonContainer}>
                             <Text  style={styles.txt}>Aide et contact</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Welcome')}>
+                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Logout')}>
                             <Text  style={styles.txt}>Déconnexion</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Compte')}>
