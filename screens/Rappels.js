@@ -9,9 +9,7 @@ import {
     Alert,
     Image,
     FlatList,
-    TouchableOpacity,
-    ActivityIndicator,
-    AsyncStorage
+    TouchableOpacity
 } from 'react-native';
 import {COLORS} from "../constants";
 
@@ -71,17 +69,6 @@ export default class Rappels extends Component {
 
     render() {
         const { search } = this.state;
-
-        const clearStorage = async () => {
-            try {
-              await AsyncStorage.clear()
-              alert('Storage successfully cleared!')
-            } catch (e) {
-              alert('Failed to clear the async storage.')
-            }
-          }
-
-          clearStorage()
         return (
             <View style={styles.container}>
 
