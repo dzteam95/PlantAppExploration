@@ -1,6 +1,7 @@
 import Home from "./Home";
 import PlantDetail from "./PlantDetail";
 import Login from "./Login";
+import Logout from "./Logout";
 import Register from "./Register";
 import Welcome from "./Welcome";
 import Onboarding from "./Onboarding";
@@ -47,4 +48,5 @@ export {
     SubscriptionDetail,
     HelpUs,
     DataShare,
+    Logout,
 };

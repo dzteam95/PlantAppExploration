@@ -1,4 +1,4 @@
-import React, {useState , useEffect} from 'react';
+import React, {useState , useEffect, useContext, useLayoutEffect} from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import {ActivityIndicator, AsyncStorage} from 'react-native';
@@ -6,6 +6,7 @@ import {ActivityIndicator, AsyncStorage} from 'react-native';
 // screens
 import { PlantDetail } from "./screens/";
 import { Login } from "./screens/";
+import { Logout } from "./screens/";
 import { Register } from "./screens/";
 import { Welcome } from "./screens/";
 import { Onboarding } from "./screens/";
@@ -44,38 +45,30 @@ const theme = {
 
 const Stack = createStackNavigator();
 
-const readData = async () => {
-    try {
-      const userJeton = await AsyncStorage.getItem('id_token')
-  
-      if (userJeton !== null) {
-        // setRoute('Home')
-        // initialRoute = 'Home'
-        alert('Success to fetch the data from storage')
-      }
-    } catch (e) {
-      alert('Failed to fetch the data from storage')
-    }  
-  }
-
 const App = () => {
-    const [jeton, setJeton] = useState('')
     const [initialRoute, setRoute] = useState('Welcome')
-
-    // AsyncStorage.getItem('id_token').then((token) => {
-    //     setRoute('Home')
-    //   })
 
     useEffect(() => {
         readData()
     }, [])
 
-    //set initail route var
-    // initialRoute = 'Welcome'
+    
+    const readData = async () => {
+        try {
+          const userJeton = await AsyncStorage.getItem('id_token')
+      
+          if (userJeton !== null) {
+            setRoute('Home')
+            // //initialRoute = 'Home'
+            alert('Success to fetch the data from storage')
+          }
+        } catch (e) {
+          alert('Failed to fetch the data from storage')
+        }  
+      }
 
-    // IsToken()
-    console.log(initialRoute)
-
+      console.log(initialRoute)
+      
     return (
         <NavigationContainer theme={theme}>
             <Stack.Navigator
@@ -95,6 +88,7 @@ const App = () => {
                 <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} />
                 <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
                 <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} />
+                <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} />
                 <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
                 <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown:false }}/>
                 <Stack.Screen name="Profile" component={Profile}/>

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity, Pressable, Modal, Alert
+    TouchableOpacity
 } from 'react-native';
 import {COLORS} from "../constants";
 
@@ -53,6 +53,7 @@ const Profile = ({ navigation }) => {
                         </Pressable>
                     </View>
                     <Text style={styles.name}>Mon profil</Text>
+
                     <View style={styles.bodyContent}>
                         <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Subscription')}>
                             <Text  style={styles.txt}>Mon abonnement</Text>
