@@ -46,28 +46,33 @@ const theme = {
 const Stack = createStackNavigator();
 
 const App = () => {
-    const [initialRoute, setRoute] = useState('Welcome')
+    const [initialRoute, setRoute] = useState('Home')
+    const readData = async () => {
+        try {
+            const userJeton = await AsyncStorage.getItem('id_token')      
+            if (userJeton !== null) {
+                setRoute('Home')
+                // //initialRoute = 'Home'
+
+                //Return the token
+                //console.log(userJeton)
+                //alert('Token found from storage')
+            }else{
+                //alert('No Token found from storage')
+            }
+        } catch (e) {
+          //alert('Failed to fetch the data from storage')
+        }  
+    }
 
     useEffect(() => {
         readData()
+        return /*(
+            //readData()
+        )*/
     }, [])
 
-    
-    const readData = async () => {
-        try {
-          const userJeton = await AsyncStorage.getItem('id_token')
-      
-          if (userJeton !== null) {
-            setRoute('Home')
-            // //initialRoute = 'Home'
-            alert('Success to fetch the data from storage')
-          }
-        } catch (e) {
-          alert('Failed to fetch the data from storage')
-        }  
-      }
-
-      console.log(initialRoute)
+    console.log(initialRoute)
       
     return (
         <NavigationContainer theme={theme}>
@@ -93,7 +98,6 @@ const App = () => {
                 <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown:false }}/>
                 <Stack.Screen name="Profile" component={Profile}/>
                 <Stack.Screen name="Jardin" component={Jardin}/>
-                <Stack.Screen name="Rappels" component={Rappels}/>
                 <Stack.Screen name="Conseils" component={Conseils}/>
                 <Stack.Screen name="ConseilsList" component={ConseilsList}/>
                 <Stack.Screen name="ConseilsDetail" component={ConseilsDetail}/>
@@ -104,7 +108,7 @@ const App = () => {
                 <Stack.Screen name="SubscriptionDetail" component={SubscriptionDetail}/>
                 <Stack.Screen name="HelpUs" component={HelpUs}/>
                 <Stack.Screen name="DataShare" component={DataShare}/>
-                
+                <Stack.Screen name="Rappels" component={Rappels}/>
                 
 
             </Stack.Navigator>
