@@ -46,7 +46,7 @@ const theme = {
 const Stack = createStackNavigator();
 
 const App = () => {
-    const [initialRoute, setRoute] = useState('Home')
+    const [initialRoute, setRoute] = useState('ConseilsDetail')
     const readData = async () => {
         try {
             const userJeton = await AsyncStorage.getItem('id_token')      
