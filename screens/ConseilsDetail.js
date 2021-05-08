@@ -16,6 +16,13 @@ import {
 } from 'react-native';
 import {COLORS} from "../constants";
 import {Boarding1} from "../constants/images";
+import {SunConseil} from "../constants/images";
+import {WaterConseil} from "../constants/images";
+import {SpaceConseil} from "../constants/images";
+import {PHConseil} from "../constants/images";
+import {ClimatConseil} from "../constants/images";
+import {SizingConseil} from "../constants/images";
+
 
 const ConseilsDetail = ({route, navigation,  props }) => {
     const data = [
@@ -35,17 +42,11 @@ const ConseilsDetail = ({route, navigation,  props }) => {
     const result = data[0];
     // console.log(result);
 
-    const [isEnabledGeneralDatas, setIsEnabledGeneralDatas] = useState(true);
-        const toggleSwitchGeneralDatas = () => setIsEnabledGeneralDatas(previousState => !previousState);
-    const [isEnabledGuide, setIsEnabledGuide] = useState(false);
-        const toggleSwitchGuide = () => setIsEnabledGuide(previousState => !previousState);
-    const [isEnabledCalendar, setIsEnabledCalendar] = useState(false);
-        const toggleSwitchCalendar = () => setIsEnabledCalendar(previousState => !previousState);
-
-    const [isEnabledDesc, setIsEnabledDesc] = useState(false);
+    const [isEnabledDesc, setIsEnabledDesc] = useState(true);
         const toggleSwitchDesc = () => setIsEnabledDesc(previousState => !previousState);
-    const [isEnabledDescription, setIsEnabledDescription] = useState(false);
+    const [isEnabledDescription, setIsEnabledDescription] = useState(true);
         const toggleSwitchDescription = () => setIsEnabledDescription(previousState => !previousState);
+    const [isEnabledMenu, setIsEnabledMenu] = useState(1);
 
     return (
         <View style={styles.container}>
@@ -62,40 +63,42 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                         <View>
                             <View style={styles.eventContentFirst}>
                                 <Image style={styles.presentationLogo} source={{ uri: result.icon,}}/>
-                                <Text style={styles.info}>{result.name}</Text>
-                                <Text style={styles.info}>Famille : {result.name}</Text>
+                                <View >
+                                    <Text style={styles.info}>{result.name}</Text>
+                                    <Text style={styles.infoFamily}>Famille : {result.name}</Text>
+                                </View>
                             </View>
                             <View style={styles.menuRow}>
                                 {/* General */}
                                 <View style={styles.menuBoxButton} >
                                     <TouchableOpacity 
-                                            style={isEnabledGeneralDatas? styles.containerLight : styles.buttonContainer}
-                                            onPress={toggleSwitchGeneralDatas}
+                                            style={isEnabledMenu==1? styles.buttonContainer : styles.containerLight}
+                                            onPress={() => setIsEnabledMenu(1)}
                                         >
                                         <View style={styles.eventContentFirst}>
-                                            <Text style={styles.info}>General</Text>
+                                            <Text style={isEnabledMenu==1? styles.infoMenuW : styles.infoMenuB}>General</Text>
                                         </View>
                                     </TouchableOpacity>
                                 </View> 
                                 {/* Guide de Culture */} 
                                 <View style={styles.menuBoxButton} >
                                     <TouchableOpacity 
-                                            style={isEnabledGuide? styles.containerLight : styles.buttonContainer}
-                                            onPress={toggleSwitchGuide}
+                                            style={isEnabledMenu==2? styles.buttonContainer : styles.containerLight}
+                                            onPress={() => setIsEnabledMenu(2)}
                                         >
                                         <View style={styles.eventContentFirst}>
-                                            <Text style={styles.info}>Guide de Culture</Text>
+                                            <Text style={isEnabledMenu==2? styles.infoMenuW : styles.infoMenuB}>Guide de Culture</Text>
                                         </View>
                                     </TouchableOpacity>
                                 </View>
                                 {/* Calendrier */}
                                 <View style={styles.menuBoxButton} >    
                                     <TouchableOpacity 
-                                        style={isEnabledCalendar? styles.containerLight : styles.buttonContainer}
-                                        onPress={toggleSwitchCalendar}
+                                        style={isEnabledMenu==3? styles.buttonContainer : styles.containerLight}
+                                        onPress={() => setIsEnabledMenu(3)}
                                     >
                                     <View style={styles.eventContentFirst}>
-                                        <Text style={styles.info}>Calendrier</Text>
+                                        <Text style={isEnabledMenu==3? styles.infoMenuW : styles.infoMenuB}>Calendrier</Text>
                                     </View>
                                     {/* here the content of the section */}
                                     </TouchableOpacity>
@@ -103,32 +106,80 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                             </View>
                         </View>
                         {/* here the content of the section General */}
-                        <View style={isEnabledGeneralDatas? styles.containerSuperLight : styles.buttonContainerE} >
+                        <View style={isEnabledMenu==1? styles.buttonContainerE : styles.containerSuperLight} >
                             <View style={styles.menuBox} >
-                                <Text style={styles.info}>Besoin en soleil</Text>
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={SunConseil}/>
+                                        <Text style={styles.infoGeneral}>Besoin en soleil</Text>
+                                        <Text style={styles.infoSun}>Elevé</Text>
+                                    </View>
+                                </View>
                             </View>
                             <View style={styles.menuBox} >
-                                <Text style={styles.info}>Besoin en eau</Text>
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={WaterConseil}/>
+                                        <Text style={styles.infoGeneral}>Besoin en eau</Text>
+                                        <Text style={styles.infoWater}>Faible</Text>
+                                    </View>
+                                </View>
                             </View>
                             <View style={styles.menuBox} >
-                                <Text style={styles.info}>Distanciation</Text>
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={SpaceConseil}/>
+                                        <Text style={styles.infoGeneral}>Distanciation au sol</Text>
+                                        <Text style={styles.info}>15 x 15 cm</Text>
+                                    </View>
+                                </View>
                             </View>
                             <View style={styles.menuBox} >
-                                <Text style={styles.info}>Dimensions</Text>
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={SizingConseil}/>
+                                        <Text style={styles.infoGeneral}>Dimensions</Text>
+                                        <Text style={styles.info}>140 cm</Text>
+                                    </View>
+                                </View>
                             </View>
                             <View style={styles.menuBox} >
-                                <Text style={styles.info}>Ph</Text>
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={PHConseil}/>
+                                        <Text style={styles.infoGeneral}>Ph</Text>
+                                        <Text style={styles.infoPH}>6-7</Text>
+                                    </View>
+                                </View>
                             </View>
                             <View style={styles.menuBox} >
-                                <Text style={styles.info}>Climat</Text>
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={ClimatConseil}/>
+                                        <Text style={styles.infoGeneral}>Climat</Text>
+                                        <Text style={styles.infoClimat}>Continental</Text>
+                                    </View>
+                                </View>
                             </View>
                         </View>
 
                         {/* here the content of the section Guide */}
-                        <View style={isEnabledGuide? styles.containerSuperLight : styles.buttonContainerE} >
+                        <View style={isEnabledMenu==2? styles.buttonContainerE : styles.containerSuperLight} >
                             <View style={styles.menuBox} >
                                 <TouchableOpacity 
-                                    style={isEnabledDesc? styles.containerLight : styles.buttonContainer}
+                                    style={isEnabledDesc? styles.containerLight : styles.buttonContainerE}
                                     onPress={toggleSwitchDesc}
                                     >
                                     <View style={styles.eventContentFirst}>
@@ -171,15 +222,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                         </View>
 
                         {/* here the content of the section Calendar */}
-                        <View style={isEnabledCalendar? styles.containerSuperLight : styles.buttonContainerE} >
-                            <View style={styles.menuBox} >
-                                <Text style={styles.info}>Besoin en soleil</Text>
-                                <Text style={styles.info}>Besoin en eau</Text>
-                                <Text style={styles.info}>Distanciation</Text>
-                                <Text style={styles.info}>Dimensions</Text>
-                                <Text style={styles.info}>Ph</Text>
-                                <Text style={styles.info}>Climat</Text>
-                            </View>
+                        <View style={isEnabledMenu==3? styles.buttonContainerE : styles.containerSuperLight} >
                         </View> 
                        
                         {/* <View style={styles.actionRedirection} >
@@ -206,12 +249,52 @@ const ConseilsDetail = ({route, navigation,  props }) => {
 }
 
 const styles = StyleSheet.create({
+    infoFamily:{
+        fontSize:10,
+        fontWeight:'400',
+        color: "#151515",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
+    infoClimat:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#2112E1",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
+    infoPH:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#E109C3",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
+    infoWater:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#12CBE1",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
+    infoSun:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#E1BF0E",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
     containerLight:{
         height:60,
         overflow:"hidden",
     },
     buttonContainer:{
-        // height:60,
+        height:70,
         overflow:"hidden",
         backgroundColor: COLORS.greenDark,
         borderRadius:10,
@@ -248,6 +331,14 @@ const styles = StyleSheet.create({
         height: 20,
         borderRadius:10,
         margin:20,
+    },
+    tinyLogoGeneral: {
+        // width: 20,
+        // height: 20,
+        // borderRadius:10,
+        margin:20,
+        // maxWidth: '60%',
+        // height: '10%',
     },
     headerContent:{
         marginTop: 50,
@@ -330,9 +421,35 @@ const styles = StyleSheet.create({
         fontSize:14,
         fontWeight:'500',
         color: "#151515",
-        textAlign:'left',
+        // textAlign:'left',
         marginTop:20,
         paddingLeft:20,
+    },
+    infoGeneral:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#151515",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
+    infoMenuW:{
+        fontSize:12,
+        fontWeight:'500',
+        color: "#ffffff",
+        textAlign: 'center',
+        marginTop:25,
+        width: '100%',
+        // paddingLeft:20,
+    },
+    infoMenuB:{
+        fontSize:12,
+        fontWeight:'500',
+        color: "#151515",
+        textAlign: 'center',
+        marginTop:25,
+        width: '100%',
+        // paddingLeft:20,
     },
     infoRedirect:{
         fontSize:14,
