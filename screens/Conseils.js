@@ -11,7 +11,7 @@ import {
 
 
 const Conseils = ({ navigation }) => {
-    const [search, setUsername] = useState({ value: 's', error: '' })
+    const [search, setSearch] = useState({ value: 's', error: '' })
     const [token, setToken] = useState({ value: '', error: '' })
     const  text = '';
 
@@ -25,7 +25,7 @@ const Conseils = ({ navigation }) => {
     searchPlantFunction = (search) => {
 
         //Met a jour le event text
-        setUsername({ search });
+        setSearch({ search });
         const newHandleSearch = search;
         // console.log(search);
         console.log('Requette search is : ',newHandleSearch);        
@@ -45,7 +45,7 @@ const Conseils = ({ navigation }) => {
 		}
         // fetch(`https://seedy.adnanenabil.com/v1/plants/name/${newHandleSearch}`, data)
 
-        fetch(`https://seedy.adnanenabil.com/users/`, data)
+        fetch(`https://seedy.adnanenabil.com/plants/`, data)
 
         //Passertoken\
         
@@ -102,29 +102,29 @@ const Conseils = ({ navigation }) => {
                 </View>
                 <View style={styles.bodyContent}>
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}>
-                        <Text style={styles.info}>Glossaire</Text>
-                    </TouchableOpacity>
+                    {/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}   >
+                        <Text style={styles.info}>//Glossaire</Text>
+                    </TouchableOpacity> */}
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "especes"})}>
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches espèces", itemlink: "plants", tokenPass: token})}  >
                         <Text style={styles.info}>Fiches espèces</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "tutosvideos"})}>
-                        <Text style={styles.info}>Tutos vidéos</Text>
-                    </TouchableOpacity>
+                    {/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "tutosvideos"})} >
+                        <Text style={styles.info}>//Tutos vidéos</Text>
+                    </TouchableOpacity> */}
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "recettes"})}>
-                        <Text style={styles.info}>Recettes</Text>
-                    </TouchableOpacity>
+                    {/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "recettes"})}    >
+                        <Text style={styles.info}>//Recettes</Text>
+                    </TouchableOpacity> */}
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "maladies"})}>
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches maladies", itemlink: "infossicks", tokenPass: token})}  >
                         <Text style={styles.info}>Fiches maladies</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "savoirfaire"})}>
-                        <Text style={styles.info}>Fiches savoir-faire</Text>
-                    </TouchableOpacity>
+                    {/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "savoirfaire"})}    >
+                        <Text style={styles.info}>//Fiches savoir-faire</Text>
+                    </TouchableOpacity> */}
 
                 </View>
             </View>

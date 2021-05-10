@@ -25,23 +25,14 @@ import {ClimatConseil} from "../constants/images";
 import {SizingConseil} from "../constants/images";
 
 
-const ConseilsDetail = ({route, navigation,  props }) => {
-    // const data = [
-    //         {id:1, name:'Rosier', slug:'Rosier', icon:'https://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.webp' , url:"https://seedy.difego.fr" , desc:"Les roses sont cultivées depuis le moyen-âge, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Depuis, de nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent.", description:"Cupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isoléCupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isolé"},
-    //         ];
+const ConseilsDetailFiche = ({route, navigation,  props }) => {
+ 
     const [search, setSearch] = useState({ value: '', error: '' })
     const [token, setToken] = useState({ value: '', error: '' })
     const [result, setResult] = useState({ value: '', error: '' })
-    // const { itemId } = 1;
-    // const { itemId } = '6098fe7cc03d603e8323ea04';
+  
     const { itemId } = route.params.item;
-    // console.log("route.params",route.params.item);
-    // Cette liaison est nécéssaire afin de permettre
-    // // l'utilisation de `this` dans la fonction de rappel.
-    // const handleClick = handleClick.bind(this);
-
-    // const id = JSON.stringify(itemId)-1;
-    //fetch
+  
     useEffect(() => {
         // readToken()
         searchPlantBasicDetailFunction()
@@ -50,35 +41,14 @@ const ConseilsDetail = ({route, navigation,  props }) => {
         )*/
     }, [])
 
-    // const readToken = async () => {
-    //     try {
-    //         const userJeton = await AsyncStorage.getItem('id_token')      
-    //         if (userJeton !== null) {
-    //             console.log('jeton ok !')
-    //             setToken({ 
-    //                 value: userJeton,
-    //             });
-    //         }else{
-    //             //console.log('jeton pas ok')
-    //         }
-    //     } catch (e) {
-    //       //alert('Failed to fetch the data from storage')
-    //     }  
-    // }
-
     searchPlantBasicDetailFunction = async () => {
 
-        //Met a jour le event text
-        // setSearch({ search });
-        // const newHandleSearch = search;
-        // console.log(search);
         console.log('Requette search is : ',route.params.item);  
         console.log('Requette search is : ',route.params.tokenPass.value);        
         
         //copier apres lavoir fait dans conseil list
-        //let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDZkYjc4YWMwM2Q2MDNlODMyM2U5ZmIiLCJpYXQiOjE2MTk4Nzc1ODAsImV4cCI6MTYyMDQ4MjM4MH0.s7gLXojBss557Afq4N5n8Ibo0OGBOJMIjqoVhVEJDsE';
-        console.log(token.value)
-        console.log(route.params.tokenPass.value)
+        // console.log(token.value)
+        // console.log(route.params.tokenPass.value)
         let data = {
 			method: 'GET',
 			credentials: 'same-origin',
@@ -91,7 +61,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
 		}
 
         // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-        fetch(`https://seedy.adnanenabil.com/plants/${route.params.item}`, data)
+        fetch(`https://seedy.adnanenabil.com/infossicks/${route.params.item}`, data)
 
         //Passertoken\
         
@@ -114,7 +84,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
         const toggleSwitchDesc = () => setIsEnabledDesc(previousState => !previousState);
     const [isEnabledDescription, setIsEnabledDescription] = useState(true);
         const toggleSwitchDescription = () => setIsEnabledDescription(previousState => !previousState);
-    const [isEnabledMenu, setIsEnabledMenu] = useState(1);
+    const [isEnabledMenu, setIsEnabledMenu] = useState(2);
 
     return (
         <View style={styles.container}>
@@ -134,12 +104,12 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View >
                                     <Text style={styles.infoPlantName}>{result.name}</Text>
                                     <Text style={styles.infoFamily}>{result.name}</Text>
-                                    <Text style={styles.infoFamily}>Famille : {result.name}</Text>
+                                    <Text style={styles.infoFamily}>Info Maladie</Text>
                                 </View>
                             </View>
                             <View style={styles.menuRow}>
                                 {/* General */}
-                                <View style={styles.menuBoxButton} >
+                                {/* <View style={styles.menuBoxButton} >
                                     <TouchableOpacity 
                                             style={isEnabledMenu==1? styles.buttonContainer : styles.containerLight}
                                             onPress={() => setIsEnabledMenu(1)}
@@ -148,7 +118,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                             <Text style={isEnabledMenu==1? styles.infoMenuW : styles.infoMenuB}>General</Text>
                                         </View>
                                     </TouchableOpacity>
-                                </View> 
+                                </View>  */}
                                 {/* Guide de Culture */} 
                                 <View style={styles.menuBoxButton} >
                                     <TouchableOpacity 
@@ -161,7 +131,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </TouchableOpacity>
                                 </View>
                                 {/* Calendrier */}
-                                <View style={styles.menuBoxButton} >    
+                                {/* <View style={styles.menuBoxButton} >    
                                     <TouchableOpacity 
                                         style={isEnabledMenu==3? styles.buttonContainer : styles.containerLight}
                                         onPress={() => setIsEnabledMenu(3)}
@@ -169,9 +139,8 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Text style={isEnabledMenu==3? styles.infoMenuW : styles.infoMenuB}>Calendrier</Text>
                                     </View>
-                                    {/* here the content of the section */}
                                     </TouchableOpacity>
-                                </View>
+                                </View> */}
                             </View>
                         </View>
                         {/* here the content of the section General */}
@@ -258,13 +227,13 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContentL}>
-                                            <Text style={styles.info}>{result.desc}</Text>
+                                            <Text style={styles.info}>{result.description}</Text>
                                             
                                         </View>
-                                        <View style={styles.eventContentR}>
-                                            <Text style={styles.info}>{result.t1}</Text>
+                                        {/* <View style={styles.eventContentR}>
+                                            <Text style={styles.info}>{result.conseil}</Text>
                                             
-                                        </View>
+                                        </View> */}
                                     </View>
                                 </TouchableOpacity>
                             </View>
@@ -589,4 +558,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default ConseilsDetail
+export default ConseilsDetailFiche

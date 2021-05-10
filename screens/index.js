@@ -14,6 +14,7 @@ import Rappels from "./Rappels";
 import Conseils from "./Conseils";
 import ConseilsList from "./ConseilsList";
 import ConseilsDetail from "./ConseilsDetail";
+import ConseilsDetailFiche from "./ConseilsDetailFiche";
 import Parrainage from "./Parrainage";
 import Delete from "./Delete";
 import Compte from "./Compte";
@@ -41,6 +42,7 @@ export {
     Conseils,
     ConseilsList,
     ConseilsDetail,
+    ConseilsDetailFiche,
     Parrainage,
     Delete,
     Compte,
