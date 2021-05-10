@@ -9,9 +9,9 @@ const Logout = ({ navigation }) => {
 	const clearStorage = async () => {
         try {
           await AsyncStorage.clear()
-          alert('Storage successfully cleared!')
+            console.log('Storage successfully cleared!')
         } catch (e) {
-          alert('Failed to clear the async storage.')
+            console.log('Failed to clear the async storage.')
         }
       }
 

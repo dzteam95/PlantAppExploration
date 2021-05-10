@@ -17,7 +17,12 @@ export const Boarding2 = require("../assets/images/Onboarding_2.png");
 export const Boarding3 = require("../assets/images/Onboarding_3.png");
 export const Boarding4 = require("../assets/images/Onboarding_4.png");
 export const Reduc = require("../assets/images/FeuilleReduct.png");
-
+export const SunConseil = require("../assets/images/soleilConseil.png");
+export const WaterConseil = require("../assets/images/eauConseil.png");
+export const SpaceConseil = require("../assets/images/distanciationConseil.png");
+export const SizingConseil = require("../assets/images/dimensionsConseil.png");
+export const PHConseil = require("../assets/images/phConseil.png");
+export const ClimatConseil = require("../assets/images/climatConseil.png");
 
 
 
@@ -41,6 +46,11 @@ export default {
     Boarding3,
     Boarding4,
     Reduc,
-    
+    SunConseil,
+    WaterConseil,
+    SpaceConseil,
+    PHConseil,
+    ClimatConseil,
+    SizingConseil,
     
 }
