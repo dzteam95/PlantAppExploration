@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useState, useEffect } from 'react';
 import { TouchableOpacity, StyleSheet, View,Text,TextInput,Button ,BackHandler, Alert, AsyncStorage} from 'react-native';
 
 import {COLORS, SIZES} from "../constants";
@@ -6,8 +6,44 @@ import {COLORS, SIZES} from "../constants";
 
 const Login = ({ navigation }) => {
 
-	const [username, setUsername] = useState({ value: 'Eole', error: '' })
-	const [password, setPassword] = useState({ value: 'Eole', error: '' })
+	const [username, setUsername] = useState({ value: '', error: '' })
+	const [password, setPassword] = useState({ value: '', error: '' })
+
+	useEffect(() => {
+        readData()
+        // return (
+        //     readData()
+        // )
+    }, [])
+
+    const readData = async () => {
+        try {
+            const usernameValue = await AsyncStorage.getItem('usernameStorage')
+			const passwordValue = await AsyncStorage.getItem('passwordStorage')
+            
+            if (usernameValue !== null) {
+                //console.log(userValue)
+				if (passwordValue !== null) {
+					//console.log(passwordValue)
+					
+					setUsername({
+						value: usernameValue,
+					});
+					setPassword({
+						value: passwordValue,
+					});
+
+				}else{
+					//alert('No Token found from storage')
+				}
+
+            }else{
+                //alert('No Token found from storage')
+            }
+        } catch (e) {
+          //alert('Failed to fetch the data from storage')
+        }  
+      }
 
 	const onLoginPressed = () => {
 		let data = {
@@ -33,7 +69,8 @@ const Login = ({ navigation }) => {
 			// console.log(res);
 			if (res.status === 200) {
 				//console.log('aut');
-				
+				saveData('usernameStorage',username.value);
+				saveData('passwordStorage',password.value);
 				// fetch get token 
 				fetch('https://seedy.adnanenabil.com/users/authenticate', data)
 				.then((response) => response.json())
@@ -46,7 +83,8 @@ const Login = ({ navigation }) => {
 						index: 0,
 						routes: [{ name: 'Home' }],
 					})
-				})			  
+				})
+							  
 			}else{
 				//console.log('not authorized');
 				//do nothing
@@ -57,9 +95,9 @@ const Login = ({ navigation }) => {
 	const saveData = async (id_token, token) => {
 		try {
 		  await AsyncStorage.setItem(id_token, token)
-		  	alert('Data successfully saved')
+		  	//alert('Data successfully saved')
 		} catch (e) {
-		  	alert('Failed to save the data to the storage')
+		  	//alert('Failed to save the data to the storage')
 		}
 	  }
 	

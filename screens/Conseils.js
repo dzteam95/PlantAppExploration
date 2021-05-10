@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,useState,useEffect } from 'react';
 import {
     StyleSheet,
     Text,
@@ -6,35 +6,76 @@ import {
     Image,
     TextInput,
     TouchableOpacity,
+    AsyncStorage,
 } from 'react-native';
 
-searchFilterFunction = (search) => {
-
-    //Met a jour le event text
-    this.setState({ search });
-    const newHandleSearch = search;
-    // console.log(search);
-    console.log('requette search is : ',newHandleSearch);
-    //copier apre lavoir fait dans conseil list
-//     fetch(`https://seedy.adnanenabil.com/v1/plants/name/${newHandleSearch}`)
-    
-    // Passertoken\
-    
-//       .then((responsesearch) => responsesearch.json())
-//       .then((jsonsearch) => {
-//         // console.debug(jsonsearch);
-//         //console.log(jsonsearch);
-//         this.setState({ datasearch: jsonsearch.data.plant });
-//       })
-//       .catch((error) => console.error(error))
-//       .finally(() => {
-//         this.setState({ isLoadingSearch: false });
-//       })
-}
 
 const Conseils = ({ navigation }) => {
-    const  search = '';
+    const [search, setUsername] = useState({ value: 's', error: '' })
+    const [token, setToken] = useState({ value: '', error: '' })
     const  text = '';
+
+    useEffect(() => {
+        readToken()
+        return /*(
+            //readData()
+        )*/
+    }, [])
+
+    searchPlantFunction = (search) => {
+
+        //Met a jour le event text
+        setUsername({ search });
+        const newHandleSearch = search;
+        // console.log(search);
+        console.log('Requette search is : ',newHandleSearch);        
+        
+        //copier apres lavoir fait dans conseil list
+        //let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDZkYjc4YWMwM2Q2MDNlODMyM2U5ZmIiLCJpYXQiOjE2MTk4Nzc1ODAsImV4cCI6MTYyMDQ4MjM4MH0.s7gLXojBss557Afq4N5n8Ibo0OGBOJMIjqoVhVEJDsE';
+        console.log(token.value)
+        let data = {
+			method: 'GET',
+			credentials: 'same-origin',
+			mode: 'same-origin',
+			headers: {
+				'Accept': '*/*',
+				'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+token.value,
+            },
+		}
+        // fetch(`https://seedy.adnanenabil.com/v1/plants/name/${newHandleSearch}`, data)
+
+        fetch(`https://seedy.adnanenabil.com/users/`, data)
+
+        //Passertoken\
+        
+            .then((responsesearch) => responsesearch.json())
+            .then((jsonsearch) => {
+            // console.debug(jsonsearch);
+            console.log(jsonsearch);
+            //this.setState({ datasearch: jsonsearch.data.plant });
+            })
+            .catch((error) => console.error(error))
+            .finally(() => {
+            //this.setState({ isLoadingSearch: false });
+            })
+    }
+
+    const readToken = async () => {
+        try {
+            const userJeton = await AsyncStorage.getItem('id_token')      
+            if (userJeton !== null) {
+                console.log('jeton ok')
+                setToken({ 
+                    value: userJeton,
+                });
+            }else{
+                //console.log('jeton pas ok')
+            }
+        } catch (e) {
+          //alert('Failed to fetch the data from storage')
+        }  
+    }
 
     return (
         <View style={styles.container}>
@@ -51,8 +92,8 @@ const Conseils = ({ navigation }) => {
                         <Image style={[styles.icon, styles.inputIcon]}/>
                         <TextInput
                             style={styles.inputs}
-                            onChangeText={this.searchFilterFunction}
-                            value={search}
+                            onChangeText={this.searchPlantFunction}
+                            value={this.search}
                             underlineColorAndroid="transparent"
                             placeholder="Rechercher"
                         />
@@ -96,6 +137,9 @@ const styles = StyleSheet.create({
     container:{
         flexDirection:"column",
         padding:20,
+    },
+    inputs:{
+        width:"100%",
     },
     headerContent:{
         marginTop: 50,

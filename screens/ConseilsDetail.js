@@ -16,12 +16,20 @@ import {
 } from 'react-native';
 import {COLORS} from "../constants";
 import {Boarding1} from "../constants/images";
+import {SunConseil} from "../constants/images";
+import {WaterConseil} from "../constants/images";
+import {SpaceConseil} from "../constants/images";
+import {PHConseil} from "../constants/images";
+import {ClimatConseil} from "../constants/images";
+import {SizingConseil} from "../constants/images";
+
 
 const ConseilsDetail = ({route, navigation,  props }) => {
     const data = [
             {id:1, name:'Rosier', slug:'Rosier', icon:'https://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.webp' , url:"https://seedy.difego.fr" , desc:"Les roses sont cultivées depuis le moyen-âge, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Depuis, de nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent.", description:"Cupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isoléCupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isolé"},
             ];
-    const { itemId } = route.params;
+            const { itemId } = 1;
+            // const { itemId } = route.params;
     // Cette liaison est nécéssaire afin de permettre
     // // l'utilisation de `this` dans la fonction de rappel.
     // const handleClick = handleClick.bind(this);
@@ -34,10 +42,11 @@ const ConseilsDetail = ({route, navigation,  props }) => {
     const result = data[0];
     // console.log(result);
 
-    const [isEnabledDesc, setIsEnabledDesc] = useState(false);
+    const [isEnabledDesc, setIsEnabledDesc] = useState(true);
+        const toggleSwitchDesc = () => setIsEnabledDesc(previousState => !previousState);
     const [isEnabledDescription, setIsEnabledDescription] = useState(true);
-    const toggleSwitchDesc = () => setIsEnabledDesc(previousState => !previousState);
-    const toggleSwitchDescription = () => setIsEnabledDescription(previousState => !previousState);
+        const toggleSwitchDescription = () => setIsEnabledDescription(previousState => !previousState);
+    const [isEnabledMenu, setIsEnabledMenu] = useState(1);
 
     return (
         <View style={styles.container}>
@@ -49,54 +58,174 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                 </View>
             </View>
             <View style={styles.body}>
-                <ImageBackground style={styles.bodyContent} source={{ uri: result.icon,}}>
+                <ImageBackground style={styles.bodyContent} /*source={{ uri: result.icon,}}*/>
                     <ScrollView style={styles.eventList} >
-                        <View style={styles.menuBox} >
-                            <TouchableOpacity 
-                                    style={isEnabledDesc? styles.containerLight : styles.buttonContainer}
-                                    onPress={toggleSwitchDesc}
-                                >
-                                <View style={styles.eventContentFirst}>
-                                    <Image style={styles.tinyLogo} source={{ uri: result.icon,}}/>
-                                    <Text style={styles.infoName}>{result.name}</Text>
-                                    <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/>
+                        <View>
+                            <View style={styles.eventContentFirst}>
+                                <Image style={styles.presentationLogo} source={{ uri: result.icon,}}/>
+                                <View >
+                                    <Text style={styles.info}>{result.name}</Text>
+                                    <Text style={styles.infoFamily}>Famille : {result.name}</Text>
                                 </View>
-                                <View style={styles.eventContentSec}>
-                                    <View style={styles.eventContentL}>
-                                        <Text style={styles.info}>{result.desc}</Text>
-                                        
-                                    </View>
-                                    <View style={styles.eventContentR}>
-                                        <Text style={styles.info}>{result.t1}</Text>
-                                        
-                                    </View>
+                            </View>
+                            <View style={styles.menuRow}>
+                                {/* General */}
+                                <View style={styles.menuBoxButton} >
+                                    <TouchableOpacity 
+                                            style={isEnabledMenu==1? styles.buttonContainer : styles.containerLight}
+                                            onPress={() => setIsEnabledMenu(1)}
+                                        >
+                                        <View style={styles.eventContentFirst}>
+                                            <Text style={isEnabledMenu==1? styles.infoMenuW : styles.infoMenuB}>General</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                </View> 
+                                {/* Guide de Culture */} 
+                                <View style={styles.menuBoxButton} >
+                                    <TouchableOpacity 
+                                            style={isEnabledMenu==2? styles.buttonContainer : styles.containerLight}
+                                            onPress={() => setIsEnabledMenu(2)}
+                                        >
+                                        <View style={styles.eventContentFirst}>
+                                            <Text style={isEnabledMenu==2? styles.infoMenuW : styles.infoMenuB}>Guide de Culture</Text>
+                                        </View>
+                                    </TouchableOpacity>
                                 </View>
-                            </TouchableOpacity>
+                                {/* Calendrier */}
+                                <View style={styles.menuBoxButton} >    
+                                    <TouchableOpacity 
+                                        style={isEnabledMenu==3? styles.buttonContainer : styles.containerLight}
+                                        onPress={() => setIsEnabledMenu(3)}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Text style={isEnabledMenu==3? styles.infoMenuW : styles.infoMenuB}>Calendrier</Text>
+                                    </View>
+                                    {/* here the content of the section */}
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
                         </View>
-                        <View style={styles.menuBox} >
-                            <TouchableOpacity 
-                                    style={isEnabledDescription? styles.containerLight : styles.buttonContainer}
-                                    onPress={toggleSwitchDescription}
-                                >
-                                <View style={styles.eventContentFirst}>
+                        {/* here the content of the section General */}
+                        <View style={isEnabledMenu==1? styles.buttonContainerE : styles.containerSuperLight} >
+                            <View style={styles.menuBox} >
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={SunConseil}/>
+                                        <Text style={styles.infoGeneral}>Besoin en soleil</Text>
+                                        <Text style={styles.infoSun}>Elevé</Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={WaterConseil}/>
+                                        <Text style={styles.infoGeneral}>Besoin en eau</Text>
+                                        <Text style={styles.infoWater}>Faible</Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={SpaceConseil}/>
+                                        <Text style={styles.infoGeneral}>Distanciation au sol</Text>
+                                        <Text style={styles.info}>15 x 15 cm</Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={SizingConseil}/>
+                                        <Text style={styles.infoGeneral}>Dimensions</Text>
+                                        <Text style={styles.info}>140 cm</Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={PHConseil}/>
+                                        <Text style={styles.infoGeneral}>Ph</Text>
+                                        <Text style={styles.infoPH}>6-7</Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <View 
+                                    style={styles.containerLight}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={ClimatConseil}/>
+                                        <Text style={styles.infoGeneral}>Climat</Text>
+                                        <Text style={styles.infoClimat}>Continental</Text>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
 
-                                    <Image style={styles.tinyLogo} source={Boarding1}/>
-                                    <Text style={styles.infoName}>Description</Text>
-                                    <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/>
-                                </View>
-                                <View style={styles.eventContentSec}>
-                                    <View style={styles.eventContentL}>
-                                        <Text style={styles.info}>{result.description}</Text>
-                                        
+                        {/* here the content of the section Guide */}
+                        <View style={isEnabledMenu==2? styles.buttonContainerE : styles.containerSuperLight} >
+                            <View style={styles.menuBox} >
+                                <TouchableOpacity 
+                                    style={isEnabledDesc? styles.containerLight : styles.buttonContainerE}
+                                    onPress={toggleSwitchDesc}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogo} source={{ uri: result.icon,}}/>
+                                        <Text style={styles.infoName}>{result.name}</Text>
+                                        <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/>
                                     </View>
-                                    <View style={styles.eventContentR}>
-                                        <Text style={styles.info}>{result.t1}</Text>
-                                        
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentL}>
+                                            <Text style={styles.info}>{result.desc}</Text>
+                                            
+                                        </View>
+                                        <View style={styles.eventContentR}>
+                                            <Text style={styles.info}>{result.t1}</Text>
+                                            
+                                        </View>
                                     </View>
-                                </View>
-                            </TouchableOpacity>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <TouchableOpacity 
+                                style={isEnabledDescription? styles.containerLight : styles.buttonContainerE}
+                                onPress={toggleSwitchDescription}
+                                >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogo} source={Boarding1}/>
+                                        <Text style={styles.infoName}>Description</Text>
+                                        <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentL}>
+                                            <Text style={styles.info}>{result.description}</Text>
+                                        </View>
+                                        <View style={styles.eventContentR}>
+                                            <Text style={styles.info}>{result.t1}</Text>
+                                        </View>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                        <View style={styles.actionRedirection} >
+
+                        {/* here the content of the section Calendar */}
+                        <View style={isEnabledMenu==3? styles.buttonContainerE : styles.containerSuperLight} >
+                        </View> 
+                       
+                        {/* <View style={styles.actionRedirection} >
                             <TouchableOpacity style={styles.linkL} onPress={() => Linking.openURL(result.url)}>
                                 <Text style={styles.infoRedirect}>Fiches Conseils</Text>
                             </TouchableOpacity>
@@ -107,11 +236,11 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                         <View style={styles.actionRedirection} >
                             <TouchableOpacity style={styles.linkB} >
                                 {/* <Text style={styles.infoRedirect}>Je m'abonne à {result.price}€ /mois</Text> */}
-                                <Text style={styles.infoRedirectB} onPress={() => Linking.openURL(result.url)}>
-                                    Quelque chose
-                                </Text>
+                                {/* <Text style={styles.infoRedirectB} onPress={() => Linking.openURL(result.url)}> */}
+                                    {/* Quelque chose */}
+                                {/* </Text>
                             </TouchableOpacity>
-                        </View>
+                        </View> */}
                     </ScrollView>
                 </ImageBackground>
             </View>
@@ -120,8 +249,58 @@ const ConseilsDetail = ({route, navigation,  props }) => {
 }
 
 const styles = StyleSheet.create({
+    infoFamily:{
+        fontSize:10,
+        fontWeight:'400',
+        color: "#151515",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
+    infoClimat:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#2112E1",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
+    infoPH:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#E109C3",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
+    infoWater:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#12CBE1",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
+    infoSun:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#E1BF0E",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
     containerLight:{
         height:60,
+        overflow:"hidden",
+    },
+    buttonContainer:{
+        height:70,
+        overflow:"hidden",
+        backgroundColor: COLORS.greenDark,
+        borderRadius:10,
+    },
+    containerSuperLight:{
+        height:0,
         overflow:"hidden",
     },
     btnSelected: {
@@ -133,11 +312,33 @@ const styles = StyleSheet.create({
     container:{
         // backgroundColor:"#000000",
     },
+    menuRow:{
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        backgroundColor: "#fff",
+        borderRadius:10,
+        margin:10,
+    },
+    presentationLogo:{
+        width: 80,
+        height: 80,
+        borderRadius:10,
+        marginLeft:10,
+        marginBottom:20,
+    },
     tinyLogo: {
         width: 20,
         height: 20,
         borderRadius:10,
         margin:20,
+    },
+    tinyLogoGeneral: {
+        // width: 20,
+        // height: 20,
+        // borderRadius:10,
+        margin:20,
+        // maxWidth: '60%',
+        // height: '10%',
     },
     headerContent:{
         marginTop: 50,
@@ -164,6 +365,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderRadius:10,
         margin:10,
+    },
+    menuBoxButton:{
+        backgroundColor: "#fff",
+        borderRadius:10,
+        // margin:10,
+        flex:1,
     },
     actionRedirection:{
         // flex:1,
@@ -214,9 +421,35 @@ const styles = StyleSheet.create({
         fontSize:14,
         fontWeight:'500',
         color: "#151515",
-        textAlign:'left',
+        // textAlign:'left',
         marginTop:20,
         paddingLeft:20,
+    },
+    infoGeneral:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#151515",
+        // textAlign:'left',
+        marginTop:20,
+        paddingLeft:20,
+    },
+    infoMenuW:{
+        fontSize:12,
+        fontWeight:'500',
+        color: "#ffffff",
+        textAlign: 'center',
+        marginTop:25,
+        width: '100%',
+        // paddingLeft:20,
+    },
+    infoMenuB:{
+        fontSize:12,
+        fontWeight:'500',
+        color: "#151515",
+        textAlign: 'center',
+        marginTop:25,
+        width: '100%',
+        // paddingLeft:20,
     },
     infoRedirect:{
         fontSize:14,
@@ -243,7 +476,7 @@ const styles = StyleSheet.create({
         // flex:1,
         flexDirection: 'row',
         alignItems: 'flex-start',
-        height:50,
+        height:100,
     },
     eventContentSec: {
         // flex:1,
