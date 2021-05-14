@@ -48,7 +48,7 @@ const theme = {
 const Stack = createStackNavigator();
 
 const App = () => {
-    const [initialRoute, setRoute] = useState('ForgotPasswordScreen')
+    const [initialRoute, setRoute] = useState('Login')
     const readData = async () => {
         try {
             const userJeton = await AsyncStorage.getItem('id_token')      

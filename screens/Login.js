@@ -109,7 +109,8 @@ const Login = ({ navigation }) => {
 					// console.log(responseData.token);
 					// saveItem('id_token', responseData.token),
 					saveData('id_token', responseData.token),
-					
+					console.log('premiumLevelStorage : ',responseData.isP);
+					saveData('premiumLevelStorage', responseData.isP),
 					navigation.reset({
 						index: 0,
 						routes: [{ name: 'Home' }],
@@ -123,9 +124,9 @@ const Login = ({ navigation }) => {
 		  })
 	}
 	
-	const saveData = async (id_token, token) => {
+	const saveData = async (item, token) => {
 		try {
-		  await AsyncStorage.setItem(id_token, token)
+		  await AsyncStorage.setItem(item, token)
 		  	//alert('Data successfully saved')
 		} catch (e) {
 		  	//alert('Failed to save the data to the storage')
