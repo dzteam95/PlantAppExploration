@@ -109,8 +109,8 @@ const Login = ({ navigation }) => {
 					// console.log(responseData.token);
 					// saveItem('id_token', responseData.token),
 					saveData('id_token', responseData.token),
-					console.log('premiumLevelStorage : ',responseData.isP);
-					saveData('premiumLevelStorage', responseData.isP),
+					// console.log('premiumLevelStorage : ',responseData.isP);
+					// saveData('premiumLevelStorage', responseData.isP),
 					navigation.reset({
 						index: 0,
 						routes: [{ name: 'Home' }],
