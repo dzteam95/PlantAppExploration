@@ -13,18 +13,18 @@ const Logout = ({ navigation }) => {
         } catch (e) {
             console.log('Failed to clear the async storage.')
         }
-      }
+  }
 
-      clearStorage()
+  clearStorage()
 
-    navigation.reset({
-        index: 0,
-        routes: [{ name: 'Welcome' }],
-    })
-    return (
-        <View>
-        </View>
-    );
+  navigation.reset({
+      index: 0,
+      routes: [{ name: 'Welcome' }],
+  })
+  return (
+      <View>
+      </View>
+  );
 }
 
 export default Logout
