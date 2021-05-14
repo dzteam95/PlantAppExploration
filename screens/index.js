@@ -22,8 +22,7 @@ import Subscription from "./Subscription";
 import SubscriptionDetail from "./SubscriptionDetail";
 import HelpUs from "./HelpUs";
 import DataShare from "./DataShare";
-
-
+import ForgotPasswordScreen from "./ForgotPasswordScreen";
 
 
 export {
@@ -51,4 +50,5 @@ export {
     HelpUs,
     DataShare,
     Logout,
+    ForgotPasswordScreen,
 };

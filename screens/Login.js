@@ -22,6 +22,7 @@ const Login = ({ navigation }) => {
         try {
             const usernameValue = await AsyncStorage.getItem('usernameStorage')
 			const passwordValue = await AsyncStorage.getItem('passwordStorage')
+			const rememberMe = await AsyncStorage.getItem('rememberMeStorage')
             
             if (usernameValue !== null) {
                 //console.log(userValue)
@@ -34,7 +35,18 @@ const Login = ({ navigation }) => {
 					setPassword({
 						value: passwordValue,
 					});
-
+					// console.log('rememberMe : ',rememberMe)
+					if (rememberMe === 'true'){
+						setSelection({
+							isSelect: true
+						})
+						// console.log('rememberMe true : ',rememberMe)
+					} else {
+						setSelection({
+							isSelect: false
+						})
+						// console.log('rememberMe2 false : ',rememberMe)
+					}
 				}else{
 					//alert('No Token found from storage')
 				}
@@ -76,9 +88,9 @@ const Login = ({ navigation }) => {
 				const clearStorage = async () => {
 					try {
 					  await AsyncStorage.clear()
-						console.log('Storage successfully cleared!')
+						// console.log('Storage successfully cleared!')
 					} catch (e) {
-						console.log('Failed to clear the async storage.')
+						// console.log('Failed to clear the async storage.')
 					}
 				}
 				clearStorage()
@@ -87,7 +99,8 @@ const Login = ({ navigation }) => {
 				if (isSelected.isSelect == true){	
 					saveData('usernameStorage',username.value);
 					saveData('passwordStorage',password.value);
-					console.log('user saved');
+					saveData('rememberMeStorage','true');
+					// console.log('user saved');
 				}
 				// fetch get token 
 				fetch('https://seedy.adnanenabil.com/users/authenticate', data)
@@ -162,7 +175,9 @@ return(
 
 		/>
 		<View style={styles.rowInput}>
-		<Text style={styles.forgot} onPress={() => navigation.navigate('ForgotPasswordScreen')}>Mot de passe oublié ?</Text>
+			<TouchableOpacity style={styles.forgot} onPress={() => navigation.replace('ForgotPasswordScreen')}>
+				<Text>Mot de passe oublié ?</Text>
+			</TouchableOpacity>
 		</View>
 		<TextInput  style={styles.input}
 			placeholder="Mot de passe"
