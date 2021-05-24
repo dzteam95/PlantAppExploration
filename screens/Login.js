@@ -106,7 +106,7 @@ const Login = ({ navigation }) => {
 				fetch('https://seedy.adnanenabil.com/users/authenticate', data)
 				.then((response) => response.json())
 				.then((responseData) => {
-					// console.log(responseData.token);
+					console.log(responseData.token);
 					// saveItem('id_token', responseData.token),
 					saveData('id_token', responseData.token),
 					// console.log('premiumLevelStorage : ',responseData.isP);

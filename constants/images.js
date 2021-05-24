@@ -23,6 +23,13 @@ export const SpaceConseil = require("../assets/images/distanciationConseil.png")
 export const SizingConseil = require("../assets/images/dimensionsConseil.png");
 export const PHConseil = require("../assets/images/phConseil.png");
 export const ClimatConseil = require("../assets/images/climatConseil.png");
+export const Floraison = require("../assets/images/Floraison.png");
+export const Germination = require("../assets/images/germination.png");
+export const Plus = require("../assets/images/plus.png");
+export const Fruit = require("../assets/images/Fruit.png");
+export const SemisExt = require("../assets/images/arbre.png");
+export const SemisInt = require("../assets/images/SemisInterieur.png");
+export const Plantation = require("../assets/images/Plantation.png");
 
 
 
@@ -52,5 +59,11 @@ export default {
     PHConseil,
     ClimatConseil,
     SizingConseil,
-    
+    Floraison,
+    Germination,
+    Plus,
+    Fruit,
+    SemisExt,
+    SemisInt,
+    Plantation,
 }
