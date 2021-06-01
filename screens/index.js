@@ -14,6 +14,7 @@ import Rappels from "./Rappels";
 import Conseils from "./Conseils";
 import ConseilsList from "./ConseilsList";
 import ConseilsDetail from "./ConseilsDetail";
+import ConseilsDetailFiche from "./ConseilsDetailFiche";
 import Parrainage from "./Parrainage";
 import Delete from "./Delete";
 import Compte from "./Compte";
@@ -21,8 +22,7 @@ import Subscription from "./Subscription";
 import SubscriptionDetail from "./SubscriptionDetail";
 import HelpUs from "./HelpUs";
 import DataShare from "./DataShare";
-
-
+import ForgotPasswordScreen from "./ForgotPasswordScreen";
 
 
 export {
@@ -41,6 +41,7 @@ export {
     Conseils,
     ConseilsList,
     ConseilsDetail,
+    ConseilsDetailFiche,
     Parrainage,
     Delete,
     Compte,
@@ -49,4 +50,5 @@ export {
     HelpUs,
     DataShare,
     Logout,
+    ForgotPasswordScreen,
 };

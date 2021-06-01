@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {
     StyleSheet,
     Text,
@@ -13,6 +13,7 @@ import {
     Alert,
     ScrollView,
     setState,
+    AsyncStorage,
 } from 'react-native';
 import {COLORS} from "../constants";
 import {Boarding1} from "../constants/images";
@@ -22,30 +23,112 @@ import {SpaceConseil} from "../constants/images";
 import {PHConseil} from "../constants/images";
 import {ClimatConseil} from "../constants/images";
 import {SizingConseil} from "../constants/images";
+import {Floraison} from "../constants/images";
+import {Germination} from "../constants/images";
+import {Plus} from "../constants/images";
+import {Fruit} from "../constants/images";
+import {SemisExt, SemisInt, Plantation} from "../constants/images";
 
 
 const ConseilsDetail = ({route, navigation,  props }) => {
-    const data = [
-            {id:1, name:'Rosier', slug:'Rosier', icon:'https://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.webp' , url:"https://seedy.difego.fr" , desc:"Les roses sont cultivées depuis le moyen-âge, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Depuis, de nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent.", description:"Cupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isoléCupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isolé"},
-            ];
-            const { itemId } = 1;
-            // const { itemId } = route.params;
+    // const data = [
+    //         {id:1, name:'Rosier', slug:'Rosier', icon:'https://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.webp' , url:"https://seedy.difego.fr" , desc:"Les roses sont cultivées depuis le moyen-âge, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Depuis, de nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent.", description:"Cupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isoléCupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isolé"},
+    //         ];
+    const [search, setSearch] = useState({ value: '', error: '' })
+    const [token, setToken] = useState({ value: '', error: '' })
+    const [result, setResult] = useState({ value: '', error: '' })
+    // const { itemId } = 1;
+    // const { itemId } = '6098fe7cc03d603e8323ea04';
+    const { itemId } = route.params.item;
+    // console.log("route.params",route.params.item);
     // Cette liaison est nécéssaire afin de permettre
     // // l'utilisation de `this` dans la fonction de rappel.
     // const handleClick = handleClick.bind(this);
 
     // const id = JSON.stringify(itemId)-1;
     //fetch
+    useEffect(() => {
+        // readToken()
+        searchPlantBasicDetailFunction()
+        return /*(
+            //readData()
+        )*/
+    }, [])
 
-    //
+    // const readToken = async () => {
+    //     try {
+    //         const userJeton = await AsyncStorage.getItem('id_token')      
+    //         if (userJeton !== null) {
+    //             console.log('jeton ok !')
+    //             setToken({ 
+    //                 value: userJeton,
+    //             });
+    //         }else{
+    //             //console.log('jeton pas ok')
+    //         }
+    //     } catch (e) {
+    //       //alert('Failed to fetch the data from storage')
+    //     }  
+    // }
 
-    const result = data[0];
+    searchPlantBasicDetailFunction = async () => {
+
+        //Met a jour le event text
+        // setSearch({ search });
+        // const newHandleSearch = search;
+        // console.log(search);
+        console.log('Requette search is : ',route.params.item);  
+        console.log('Requette search is : ',route.params.tokenPass.value);        
+        
+        //copier apres lavoir fait dans conseil list
+        //let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDZkYjc4YWMwM2Q2MDNlODMyM2U5ZmIiLCJpYXQiOjE2MTk4Nzc1ODAsImV4cCI6MTYyMDQ4MjM4MH0.s7gLXojBss557Afq4N5n8Ibo0OGBOJMIjqoVhVEJDsE';
+        console.log(token.value)
+        console.log(route.params.tokenPass.value)
+        let data = {
+			method: 'GET',
+			credentials: 'same-origin',
+			mode: 'same-origin',
+			headers: {
+				'Accept': '*/*',
+				'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+route.params.tokenPass.value,
+            },
+		}
+
+        // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
+        fetch(`https://seedy.adnanenabil.com/plants/${route.params.item}`, data)
+
+        //Passertoken\
+        
+            .then((responsesearch) => responsesearch.json())
+            .then((jsonsearch) => {
+            // console.debug(jsonsearch);
+            console.log(jsonsearch);
+            setResult(jsonsearch);
+            //this.setState({ datasearch: jsonsearch.data.plant });
+            })
+            .catch((error) => console.error(error))
+            .finally(() => {
+            //this.setState({ isLoadingSearch: false });
+            })
+    }
+    // const result = data[0];
     // console.log(result);
+    eventClickListener = (viewId) => {
+        Alert.alert("Rappel ajouté !",result.name);
+        // console.log('Add rerminder const');
+    }
 
-    const [isEnabledDesc, setIsEnabledDesc] = useState(true);
-        const toggleSwitchDesc = () => setIsEnabledDesc(previousState => !previousState);
-    const [isEnabledDescription, setIsEnabledDescription] = useState(true);
-        const toggleSwitchDescription = () => setIsEnabledDescription(previousState => !previousState);
+    const [isEnabledGuideOne, setIsEnabledGuideOne] = useState(true);
+    const [isEnabledGuideTwo, setIsEnabledGuideTwo] = useState(true);
+    const [isEnabledGuideThr, setIsEnabledGuideThr] = useState(true);
+    const [isEnabledGuideFou, setIsEnabledGuideFou] = useState(true);
+        const toggleSwitchGuideOne = () => setIsEnabledGuideOne(previousState => !previousState);
+        const toggleSwitchGuideTwo = () => setIsEnabledGuideTwo(previousState => !previousState);
+        const toggleSwitchGuideThr = () => setIsEnabledGuideThr(previousState => !previousState);
+        const toggleSwitchGuideFou = () => setIsEnabledGuideFou(previousState => !previousState);
+    
+
     const [isEnabledMenu, setIsEnabledMenu] = useState(1);
 
     return (
@@ -61,10 +144,11 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                 <ImageBackground style={styles.bodyContent} /*source={{ uri: result.icon,}}*/>
                     <ScrollView style={styles.eventList} >
                         <View>
-                            <View style={styles.eventContentFirst}>
-                                <Image style={styles.presentationLogo} source={{ uri: result.icon,}}/>
+                            <View style={styles.eventContentHead}>
+                                <Image style={styles.presentationLogo} source={{ uri: result.photourl,}}/>
                                 <View >
-                                    <Text style={styles.info}>{result.name}</Text>
+                                    <Text style={styles.infoPlantName}>{result.name}</Text>
+                                    <Text style={styles.infoFamily}>{result.name}</Text>
                                     <Text style={styles.infoFamily}>Famille : {result.name}</Text>
                                 </View>
                             </View>
@@ -72,9 +156,9 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 {/* General */}
                                 <View style={styles.menuBoxButton} >
                                     <TouchableOpacity 
-                                            style={isEnabledMenu==1? styles.buttonContainer : styles.containerLight}
-                                            onPress={() => setIsEnabledMenu(1)}
-                                        >
+                                        style={isEnabledMenu==1? styles.buttonContainer : styles.containerLight}
+                                        onPress={() => setIsEnabledMenu(1)}
+                                    >
                                         <View style={styles.eventContentFirst}>
                                             <Text style={isEnabledMenu==1? styles.infoMenuW : styles.infoMenuB}>General</Text>
                                         </View>
@@ -83,9 +167,9 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 {/* Guide de Culture */} 
                                 <View style={styles.menuBoxButton} >
                                     <TouchableOpacity 
-                                            style={isEnabledMenu==2? styles.buttonContainer : styles.containerLight}
-                                            onPress={() => setIsEnabledMenu(2)}
-                                        >
+                                        style={isEnabledMenu==2? styles.buttonContainer : styles.containerLight}
+                                        onPress={() => setIsEnabledMenu(2)}
+                                    >
                                         <View style={styles.eventContentFirst}>
                                             <Text style={isEnabledMenu==2? styles.infoMenuW : styles.infoMenuB}>Guide de Culture</Text>
                                         </View>
@@ -97,10 +181,10 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         style={isEnabledMenu==3? styles.buttonContainer : styles.containerLight}
                                         onPress={() => setIsEnabledMenu(3)}
                                     >
-                                    <View style={styles.eventContentFirst}>
-                                        <Text style={isEnabledMenu==3? styles.infoMenuW : styles.infoMenuB}>Calendrier</Text>
-                                    </View>
-                                    {/* here the content of the section */}
+                                        <View style={styles.eventContentFirst}>
+                                            <Text style={isEnabledMenu==3? styles.infoMenuW : styles.infoMenuB}>Calendrier</Text>
+                                        </View>
+                                        {/* here the content of the section */}
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -114,7 +198,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={SunConseil}/>
                                         <Text style={styles.infoGeneral}>Besoin en soleil</Text>
-                                        <Text style={styles.infoSun}>Elevé</Text>
+                                        <Text style={styles.infoSun}>{result.sun}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -136,7 +220,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={SpaceConseil}/>
                                         <Text style={styles.infoGeneral}>Distanciation au sol</Text>
-                                        <Text style={styles.info}>15 x 15 cm</Text>
+                                        <Text style={styles.info}>{result.care_range} x {result.care_range} cm</Text>
                                     </View>
                                 </View>
                             </View>
@@ -147,7 +231,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={SizingConseil}/>
                                         <Text style={styles.infoGeneral}>Dimensions</Text>
-                                        <Text style={styles.info}>140 cm</Text>
+                                        <Text style={styles.info}>{result.weight} cm</Text>
                                     </View>
                                 </View>
                             </View>
@@ -158,7 +242,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={PHConseil}/>
                                         <Text style={styles.infoGeneral}>Ph</Text>
-                                        <Text style={styles.infoPH}>6-7</Text>
+                                        <Text style={styles.infoPH}>{result.soil_ph}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -169,7 +253,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={ClimatConseil}/>
                                         <Text style={styles.infoGeneral}>Climat</Text>
-                                        <Text style={styles.infoClimat}>Continental</Text>
+                                        <Text style={styles.infoClimat}>{result.zone}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -179,68 +263,371 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                         <View style={isEnabledMenu==2? styles.buttonContainerE : styles.containerSuperLight} >
                             <View style={styles.menuBox} >
                                 <TouchableOpacity 
-                                    style={isEnabledDesc? styles.containerLight : styles.buttonContainerE}
-                                    onPress={toggleSwitchDesc}
+                                    style={isEnabledGuideOne? styles.containerLight : styles.buttonContainerE}
+                                    onPress={toggleSwitchGuideOne}
                                     >
                                     <View style={styles.eventContentFirst}>
-                                        <Image style={styles.tinyLogo} source={{ uri: result.icon,}}/>
-                                        <Text style={styles.infoName}>{result.name}</Text>
+                                        <Image style={styles.tinyLogo} source={Germination}/>
+                                        <Text style={styles.infoName}>Germinaison</Text>
                                         <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/>
                                     </View>
+                                </TouchableOpacity>
+                                <View style={isEnabledGuideOne? styles.containerLightCard : styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
-                                        <View style={styles.eventContentL}>
-                                            <Text style={styles.info}>{result.desc}</Text>
-                                            
-                                        </View>
-                                        <View style={styles.eventContentR}>
-                                            <Text style={styles.info}>{result.t1}</Text>
-                                            
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
                                         </View>
                                     </View>
-                                </TouchableOpacity>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.GuideTrait}>                                          
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentGuideL}>
+                                            <Text style={styles.infoGuideSpe}>Arrosage</Text>
+                                        </View>
+                                        <View style={styles.eventContentGuideR}>
+                                            <Image style={styles.tinyLogoGuide} source={Plus}/>
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                </View>
                             </View>
                             <View style={styles.menuBox} >
                                 <TouchableOpacity 
-                                style={isEnabledDescription? styles.containerLight : styles.buttonContainerE}
-                                onPress={toggleSwitchDescription}
-                                >
+                                    style={isEnabledGuideTwo? styles.containerLight : styles.buttonContainerE}
+                                    onPress={toggleSwitchGuideTwo}
+                                    >
                                     <View style={styles.eventContentFirst}>
-                                        <Image style={styles.tinyLogo} source={Boarding1}/>
-                                        <Text style={styles.infoName}>Description</Text>
+                                        <Image style={styles.tinyLogo} source={SizingConseil}/>
+                                        <Text style={styles.infoName}>Croissance</Text>
                                         <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/>
                                     </View>
+                                </TouchableOpacity>
+                                <View style={isEnabledGuideTwo? styles.containerLightCard : styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
-                                        <View style={styles.eventContentL}>
-                                            <Text style={styles.info}>{result.description}</Text>
-                                        </View>
-                                        <View style={styles.eventContentR}>
-                                            <Text style={styles.info}>{result.t1}</Text>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
                                         </View>
                                     </View>
+                                    {/* Liste */}
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.GuideTrait}>                                          
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentGuideL}>
+                                            <Text style={styles.infoGuideSpe}>Sélection des plantes</Text>
+                                        </View>
+                                        <View style={styles.eventContentGuideR}>
+                                            <Image style={styles.tinyLogoGuide} source={Plus}/>
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                    {/* Liste  */}
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.GuideTrait}>                                          
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentGuideL}>
+                                            <Text style={styles.infoGuideSpe}>Arrosage</Text>
+                                        </View>
+                                        <View style={styles.eventContentGuideR}>
+                                            <Image style={styles.tinyLogoGuide} source={Plus}/>
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                    {/* Liste  */}
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.GuideTrait}>                                          
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentGuideL}>
+                                            <Text style={styles.infoGuideSpe}>Plantation</Text>
+                                        </View>
+                                        <View style={styles.eventContentGuideR}>
+                                            <Image style={styles.tinyLogoGuide} source={Plus}/>
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                    {/* Liste  */}
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.GuideTrait}>                                          
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentGuideL}>
+                                            <Text style={styles.infoGuideSpe}>Paillage</Text>
+                                        </View>
+                                        <View style={styles.eventContentGuideR}>
+                                            <Image style={styles.tinyLogoGuide} source={Plus}/>
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <TouchableOpacity 
+                                    style={isEnabledGuideThr? styles.containerLight : styles.buttonContainerE}
+                                    onPress={toggleSwitchGuideThr}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogo} source={Floraison}/>
+                                        <Text style={styles.infoName}>Floraison</Text>
+                                        <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/>
+                                    </View>
                                 </TouchableOpacity>
+                                <View style={isEnabledGuideThr? styles.containerLightCard : styles.buttonContainerE}>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                    {/* Liste */}
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.GuideTrait}>                                          
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentGuideL}>
+                                            <Text style={styles.infoGuideSpe}>1ière taille</Text>
+                                        </View>
+                                        <View style={styles.eventContentGuideR}>
+                                            <Image style={styles.tinyLogoGuide} source={Plus}/>
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                    {/* Liste */}
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.GuideTrait}>                                          
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentGuideL}>
+                                            <Text style={styles.infoGuideSpe}>Arrosage</Text>
+                                        </View>
+                                        <View style={styles.eventContentGuideR}>
+                                            <Image style={styles.tinyLogoGuide} source={Plus}/>
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                    {/* Liste */}
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.GuideTrait}>                                          
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentGuideL}>
+                                            <Text style={styles.infoGuideSpe}>2ième taille</Text>
+                                        </View>
+                                        <View style={styles.eventContentGuideR}>
+                                            <Image style={styles.tinyLogoGuide} source={Plus}/>
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <TouchableOpacity 
+                                    style={isEnabledGuideFou? styles.containerLight : styles.buttonContainerE}
+                                    onPress={toggleSwitchGuideFou}
+                                    >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogo} source={Fruit}/>
+                                        <Text style={styles.infoName}>Production</Text>
+                                        <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/>
+                                    </View>
+                                </TouchableOpacity>
+                                <View style={isEnabledGuideFou? styles.containerLightCard : styles.buttonContainerE}>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                    {/* Liste */}
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.GuideTrait}>                                          
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentGuideL}>
+                                            <Text style={styles.infoGuideSpe}>Arrosage</Text>
+                                        </View>
+                                        <View style={styles.eventContentGuideR}>
+                                            <Image style={styles.tinyLogoGuide} source={Plus}/>
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                    {/* Liste */}
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.GuideTrait}>                                          
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContentGuideL}>
+                                            <Text style={styles.infoGuideSpe}>Récolte</Text>
+                                        </View>
+                                        <View style={styles.eventContentGuideR}>
+                                            <Image style={styles.tinyLogoGuide} source={Plus}/>
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                        </View>
+                                    </View>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                    <View style={styles.actionRedirection} >
+                                        <TouchableOpacity style={styles.linkB} >
+                                            <Text style={styles.infoRedirect} onPress={() => Linking.openURL("https://seedy.difego.fr/")}>
+                                                Voir les recettes
+                                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
                             </View>
                         </View>
 
                         {/* here the content of the section Calendar */}
                         <View style={isEnabledMenu==3? styles.buttonContainerE : styles.containerSuperLight} >
+                            <View style={styles.menuBox} >
+                                <View style={styles.containerLight} >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogo} source={SemisInt}/>
+                                        <Text style={styles.infoName}>Semis d'interrieur</Text>
+                                        <Image style={styles.tinyLogoReminder} source={Plus}/>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row")}>Rappel</Text>
+                                        {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
+                                    </View>
+                                </View>
+                                <View style={styles.buttonContainerE}>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <View style={styles.containerLight} >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogo} source={SemisExt}/>
+                                        <Text style={styles.infoName}>Semis d'extérieur</Text>
+                                        <Image style={styles.tinyLogoReminder} source={Plus}/>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row")}>Rappel</Text>
+                                        {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
+                                    </View>
+                                </View>
+                                <View style={styles.buttonContainerE}>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <View style={styles.containerLight} >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogo} source={Plantation}/>
+                                        <Text style={styles.infoName}>Plantation</Text>
+                                        <Image style={styles.tinyLogoReminder} source={Plus}/>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row")}>Rappel</Text>
+                                        {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
+                                    </View>
+                                </View>
+                                <View style={styles.buttonContainerE}>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <View style={styles.containerLight} >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogo} source={Floraison}/>
+                                        <Text style={styles.infoName}>Floraison</Text>
+                                        <Image style={styles.tinyLogoReminder} source={Plus}/>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row")}>Rappel</Text>
+                                        {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
+                                    </View>
+                                </View>
+                                <View style={styles.buttonContainerE}>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={styles.menuBox} >
+                                <View style={styles.containerLight} >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogo} source={Fruit}/>
+                                        <Text style={styles.infoName}>Récolte</Text>
+                                        <Image style={styles.tinyLogoReminder} source={Plus}/>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row")}>Rappel</Text>
+                                        {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
+                                    </View>
+                                </View>
+                                <View style={styles.buttonContainerE}>
+                                    <View style={styles.eventContentSec}>
+                                        <View style={styles.eventContent}>
+                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
                         </View> 
-                       
-                        {/* <View style={styles.actionRedirection} >
-                            <TouchableOpacity style={styles.linkL} onPress={() => Linking.openURL(result.url)}>
-                                <Text style={styles.infoRedirect}>Fiches Conseils</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.linkR} onPress={() => Linking.openURL(result.url)}>
-                                <Text style={styles.infoRedirectR}>Fiches Maladies</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={styles.actionRedirection} >
-                            <TouchableOpacity style={styles.linkB} >
-                                {/* <Text style={styles.infoRedirect}>Je m'abonne à {result.price}€ /mois</Text> */}
-                                {/* <Text style={styles.infoRedirectB} onPress={() => Linking.openURL(result.url)}> */}
-                                    {/* Quelque chose */}
-                                {/* </Text>
-                            </TouchableOpacity>
-                        </View> */}
                     </ScrollView>
                 </ImageBackground>
             </View>
@@ -249,12 +636,57 @@ const ConseilsDetail = ({route, navigation,  props }) => {
 }
 
 const styles = StyleSheet.create({
+    actionRedirection:{
+        // flex:1,
+        // width:"100%",
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        height:50,
+        padding:20,
+        paddingBottom:100,
+    },
+    linkB:{
+        flex:1,
+        backgroundColor: COLORS.greenDark,
+        borderRadius:10,
+        margin:10,
+        height:60,
+    },
+    infoRedirect:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#ffffff",
+        textAlign:'center',
+        marginTop:25,
+    },
+
+
+    infoRedirectR:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#151515",
+        textAlign:'center',
+        marginTop:40,
+    },
+    infoRedirectB:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#ffffff",
+        textAlign:'center',
+        marginTop:20,
+    },
+    GuideTrait:{
+        borderBottomColor: '#eee',
+        borderBottomWidth: 1,
+        width:"85%",
+        marginLeft: 20,
+    },
     infoFamily:{
         fontSize:10,
         fontWeight:'400',
         color: "#151515",
         // textAlign:'left',
-        marginTop:20,
+        marginTop:5,
         paddingLeft:20,
     },
     infoClimat:{
@@ -293,6 +725,10 @@ const styles = StyleSheet.create({
         height:60,
         overflow:"hidden",
     },
+    containerLightCard:{
+        height:0,
+        overflow:"hidden",
+    },
     buttonContainer:{
         height:70,
         overflow:"hidden",
@@ -329,9 +765,25 @@ const styles = StyleSheet.create({
     tinyLogo: {
         width: 20,
         height: 20,
-        borderRadius:10,
+        // borderRadius:10,
         margin:20,
     },
+    tinyLogoReminder: {
+        width: 20,
+        height: 20,
+        // borderRadius:10,
+        marginTop:20,
+    },
+    tinyLogoGuide:{
+        maxHeight:19,
+        maxWidth:19,
+        width: 20,
+        height: 20,
+        flex:1,
+        // borderRadius:10,
+        // margin:20,
+    },
+    
     tinyLogoGeneral: {
         // width: 20,
         // height: 20,
@@ -348,6 +800,7 @@ const styles = StyleSheet.create({
         fontSize:22,
         color:"#222222",
         fontWeight:'900',
+        paddingLeft:10,
     },
     body: {
         // flex: 2,
@@ -372,13 +825,6 @@ const styles = StyleSheet.create({
         // margin:10,
         flex:1,
     },
-    actionRedirection:{
-        // flex:1,
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        height:50,
-        paddingBottom:120,
-    },
     linkL:{
         flex:1,
         backgroundColor: COLORS.greenDark,
@@ -392,13 +838,6 @@ const styles = StyleSheet.create({
         borderRadius:10,
         margin:10,
         height:100,
-    },
-    linkB:{
-        flex:1,
-        backgroundColor: COLORS.greenDark,
-        borderRadius:10,
-        margin:10,
-        height:60,
     },
     infoName:{
         fontSize:16,
@@ -423,6 +862,22 @@ const styles = StyleSheet.create({
         color: "#151515",
         // textAlign:'left',
         marginTop:20,
+        paddingLeft:20,
+    },
+    infoGuideSpe:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#151515",
+        // textAlign:'left',
+        marginTop:10,
+        paddingLeft:20,
+    },
+    infoPlantName:{
+        fontSize:14,
+        fontWeight:'500',
+        color: "#151515",
+        // textAlign:'left',
+        // marginTop:20,
         paddingLeft:20,
     },
     infoGeneral:{
@@ -451,38 +906,24 @@ const styles = StyleSheet.create({
         width: '100%',
         // paddingLeft:20,
     },
-    infoRedirect:{
-        fontSize:14,
-        fontWeight:'500',
-        color: "#ffffff",
-        textAlign:'center',
-        marginTop:40,
-    },
-    infoRedirectR:{
-        fontSize:14,
-        fontWeight:'500',
-        color: "#151515",
-        textAlign:'center',
-        marginTop:40,
-    },
-    infoRedirectB:{
-        fontSize:14,
-        fontWeight:'500',
-        color: "#ffffff",
-        textAlign:'center',
-        marginTop:20,
-    },
-    eventContentFirst: {
+    eventContentHead: {
         // flex:1,
         flexDirection: 'row',
         alignItems: 'flex-start',
         height:100,
     },
+    eventContentFirst: {
+        // flex:1,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        height:50,
+    },
     eventContentSec: {
         // flex:1,
         flexDirection: 'row',
         alignItems: 'flex-start',
-        height:'auto',
+        // height:'auto',
+        paddingBottom:20,
     },
     eventContentThird: {
         // flex:1,
@@ -504,7 +945,46 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         height:'auto',
     },
-
+    eventContentGuideL: {
+        flex:5,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        height:'auto',
+        // paddingBottom:30,
+    },
+    eventContentGuideR: {
+        flex:3,
+        // flexDirection: 'column',
+        // alignItems: 'flex-start',
+        color: COLORS.greenDark,
+        // height:'auto',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        height:'auto',
+    },
+    infoGuideR: {
+        color: COLORS.greenDark,
+        fontSize:12,
+        fontWeight:'500',
+        // color: "#151515",
+        // textAlign:'left',
+        // marginTop:10,
+        // paddingTop:10,
+        paddingLeft:20,
+        flex:1,
+    },
+    infoGuideReminder: {
+        color: COLORS.greenDark,
+        fontSize:12,
+        fontWeight:'500',
+        // color: "#151515",
+        // textAlign:'left',
+        // marginTop:10,
+        // paddingTop:10,
+        paddingLeft:10,
+        marginTop:20,
+        flex:1,
+    },
     eventList:{
         marginTop:20,
     },

@@ -20,6 +20,7 @@ import { Rappels } from "./screens/";
 import { Conseils } from "./screens/";
 import { ConseilsList } from "./screens/";
 import { ConseilsDetail } from "./screens/";
+import { ConseilsDetailFiche } from "./screens/";
 import { Subscription } from "./screens/";
 import { SubscriptionDetail } from "./screens/";
 import { HelpUs } from "./screens/";
@@ -28,6 +29,7 @@ import { DataShare } from "./screens/";
 import { Parrainage } from "./screens/";
 import { Delete } from "./screens/";
 import { Compte } from "./screens/";
+import { ForgotPasswordScreen } from "./screens/";
 
 
 
@@ -46,7 +48,7 @@ const theme = {
 const Stack = createStackNavigator();
 
 const App = () => {
-    const [initialRoute, setRoute] = useState('ConseilsDetail')
+    const [initialRoute, setRoute] = useState('Login')
     const readData = async () => {
         try {
             const userJeton = await AsyncStorage.getItem('id_token')      
@@ -72,7 +74,7 @@ const App = () => {
         )*/
     }, [])
 
-    console.log(initialRoute)
+    // console.log(initialRoute)
       
     return (
         <NavigationContainer theme={theme}>
@@ -101,6 +103,7 @@ const App = () => {
                 <Stack.Screen name="Conseils" component={Conseils}/>
                 <Stack.Screen name="ConseilsList" component={ConseilsList}/>
                 <Stack.Screen name="ConseilsDetail" component={ConseilsDetail}/>
+                <Stack.Screen name="ConseilsDetailFiche" component={ConseilsDetailFiche}/>
                 <Stack.Screen name="Parrainage" component={Parrainage}/>
                 <Stack.Screen name="Delete" component={Delete}/>
                 <Stack.Screen name="Compte" component={Compte}/>
@@ -109,7 +112,7 @@ const App = () => {
                 <Stack.Screen name="HelpUs" component={HelpUs}/>
                 <Stack.Screen name="DataShare" component={DataShare}/>
                 <Stack.Screen name="Rappels" component={Rappels}/>
-                
+                <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen}/>
 
             </Stack.Navigator>
         </NavigationContainer>
