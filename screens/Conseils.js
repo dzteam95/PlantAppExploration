@@ -17,6 +17,7 @@ const Conseils = ({ navigation }) => {
     const [token, setToken] = useState({ value: '', error: '' })
     const [result, setResult] = useState({ value: '', error: '' })
     const [secondresult, setSecondResult] = useState({ value: '', error: '' })
+    const [thirdresult, setThirdResult] = useState({ value: '', error: '' })
     const [finalresult, setFinalResult] = useState({ value: '', error: '' })
     const  text = '';
 
@@ -40,7 +41,7 @@ const Conseils = ({ navigation }) => {
             setIsEnabledSearch(2)
         }
         //copier apres lavoir fait dans conseil list
-        //let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDZkYjc4YWMwM2Q2MDNlODMyM2U5ZmIiLCJpYXQiOjE2MTk4Nzc1ODAsImV4cCI6MTYyMDQ4MjM4MH0.s7gLXojBss557Afq4N5n8Ibo0OGBOJMIjqoVhVEJDsE';
+        // let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjMwNzAwMjYsImV4cCI6MTYyMzY3NDgyNn0.B8cx7p61hC9ihZvFJigcTf3SU72YqCvhIBFfeeVSE10';
         // console.log(token.value)
         let data = {
 			method: 'GET',
@@ -53,7 +54,8 @@ const Conseils = ({ navigation }) => {
             },
 		}
 
-        // fetch(`https://seedy.adnanenabil.com/plants/name/${itemId}`, data)
+
+        // fetch(`http://localhost:4000/plants/name/${search}`, data)
         fetch(`https://seedy.adnanenabil.com/plants/`, data)
 
         //Passertoken\
@@ -70,7 +72,7 @@ const Conseils = ({ navigation }) => {
             //this.setState({ isLoadingSearch: false });
             })
 
-         // fetch(`https://seedy.adnanenabil.com/plants/name/${itemId}`, data)
+         // fetch(`https://seedy.adnanenabil.com/infossicks/name/${search}`, data)
          fetch(`https://seedy.adnanenabil.com/infossicks/`, data)
 
          //Passertoken\
@@ -86,9 +88,29 @@ const Conseils = ({ navigation }) => {
              .finally(() => {
              //this.setState({ isLoadingSearch: false });
              })
-        
-        setFinalResult({result,secondresult})
 
+             // fetch(`https://seedy.adnanenabil.com/infossicks/name/${search}`, data)
+         fetch(`https://seedy.adnanenabil.com/infossicks/`, data)
+
+         //Passertoken\
+         
+             .then((responsesearch) => responsesearch.json())
+             .then((thirdjsonsearch) => {
+                 // console.debug(jsonsearch);
+                 // console.log(jsonsearch);
+                 setThirdResult(thirdjsonsearch);
+                 //this.setState({ datasearch: jsonsearch.data.plant });
+             })
+             .catch((error) => console.error(error))
+             .finally(() => {
+             //this.setState({ isLoadingSearch: false });
+             })
+        // allResult = result,secondresult,thirdresult;
+        // setFinalResult(allResult);
+        // console.log("result ",result);
+        // console.log("secondresult ",secondresult);
+        // console.log("thirdresult ",thirdresult);
+        
     }  
 
     const readToken = async () => {
@@ -158,8 +180,8 @@ const Conseils = ({ navigation }) => {
 
                 </View>
                 <View style={isEnabledSearch==2? styles.bodyContent : styles.displayNone}>
-                    {/* List elements */}
-                    <Text style={isEnabledSearch==2? styles.infoGeneral : styles.displayNone}>Plantes</Text>
+                     {/* List elements */}
+                     <Text style={isEnabledSearch==2? styles.infoGeneral : styles.displayNone}>Plantes</Text>
                     <FlatList
                         enableEmptySections={true}
                         style={styles.eventList}
@@ -183,7 +205,7 @@ const Conseils = ({ navigation }) => {
                         </View>
                     )}}/>
                     {/* List elements */}
-                    <Text style={isEnabledSearch==2? styles.infoGeneral : styles.displayNone}>Maladies</Text>
+                    {/* <Text style={isEnabledSearch==2? styles.infoGeneral : styles.displayNone}>Maladies</Text>
                     <FlatList
                         enableEmptySections={true}
                         style={styles.eventList}
@@ -205,7 +227,31 @@ const Conseils = ({ navigation }) => {
                                 </View>
                             </TouchableOpacity>
                         </View>
-                    )}}/>
+                    )}}/> */}
+                    {/* List elements */}
+                    {/* <Text style={isEnabledSearch==2? styles.infoGeneral : styles.displayNone}>Maladies</Text>
+                    <FlatList
+                        enableEmptySections={true}
+                        style={styles.eventList}
+                        data={thirdresult}
+                        keyExtractor= {(item) => {
+                            return item.id;
+                        }}
+                        renderItem={({item}) => {
+                            return (
+                        <View style={styles.menuBoxList} >
+                            <TouchableOpacity 
+                                style={styles.containerLight}
+                                onPress={() => navigation.replace('ConseilsDetailFiche', { item: item.id, tokenPass: token})}
+                                >
+                                <View style={styles.eventContentFirst}>
+                                    <Image style={styles.tinyLogoGeneral} source={{ uri: item.photourl,}}/>
+                                    <Text style={styles.infoGeneral}>{item.name}</Text>
+                                    <Text style={styles.infoSun}></Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
+                    )}}/> */}
                 </View>
             </View>
         </View>

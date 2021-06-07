@@ -275,7 +275,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={isEnabledGuideOne? styles.containerLightCard : styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Germination}</Text>
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -293,7 +293,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Germination_Arrosage}</Text>
                                         </View>
                                     </View>
                                 </View>
@@ -312,7 +312,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={isEnabledGuideTwo? styles.containerLightCard : styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Croissance}</Text>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -331,7 +331,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Croissance_Selection}</Text>
                                         </View>
                                     </View>
                                     {/* Liste  */}
@@ -350,7 +350,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Croissance_Arrosage}</Text>
                                         </View>
                                     </View>
                                     {/* Liste  */}
@@ -369,7 +369,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Croissance_Plantation}</Text>
                                         </View>
                                     </View>
                                     {/* Liste  */}
@@ -388,7 +388,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Croissance_Paillage}</Text>
                                         </View>
                                     </View>
                                 </View>
@@ -407,7 +407,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={isEnabledGuideThr? styles.containerLightCard : styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Floraison}</Text>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -426,7 +426,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Floraison_Un}</Text>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -445,7 +445,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Floraison_Arrosage}</Text>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -464,7 +464,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Floraison_Deux}</Text>
                                         </View>
                                     </View>
                                 </View>
@@ -483,7 +483,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={isEnabledGuideFou? styles.containerLightCard : styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Production}</Text>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -502,7 +502,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Production_Arrosage}</Text>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -521,12 +521,12 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>{result.description_Production_Recolte}</Text>
                                         </View>
                                     </View>
                                     <View style={styles.actionRedirection} >
                                         <TouchableOpacity style={styles.linkB} >
-                                            <Text style={styles.infoRedirect} onPress={() => Linking.openURL("https://seedy.difego.fr/")}>
+                                            <Text style={styles.infoRedirect} onPress={() => Linking.openURL(result.url_link)}>
                                                 Voir les recettes
                                             </Text>
                                         </TouchableOpacity>
@@ -550,7 +550,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>De {result.reminder_txt_semis_inte_from} à {result.reminder_txt_semis_inte_to}</Text>
                                         </View>
                                     </View>
                                 </View>
@@ -568,7 +568,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>De {result.reminder_txt_semis_exte_from} à {result.reminder_txt_semis_exte_to}</Text>
                                         </View>
                                     </View>
                                 </View>
@@ -586,7 +586,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>De {result.reminder_txt_plantation_from} à {result.reminder_txt_plantation_to}</Text>
                                         </View>
                                     </View>
                                 </View>
@@ -604,7 +604,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>De {result.reminder_txt_floraison_from} à {result.reminder_txt_floraison_to}</Text>
                                         </View>
                                     </View>
                                 </View>
@@ -622,7 +622,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>Remplace {result.id}</Text>
+                                            <Text style={styles.infoGuideSpe}>De {result.reminder_txt_recolte_from} à {result.reminder_txt_recolte_to}</Text>
                                         </View>
                                     </View>
                                 </View>
