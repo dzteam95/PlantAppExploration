@@ -24,6 +24,7 @@ import {PHConseil} from "../constants/images";
 import {ClimatConseil} from "../constants/images";
 import {SizingConseil} from "../constants/images";
 
+//fiche maladie et ravages
 
 const ConseilsDetailFiche = ({route, navigation,  props }) => {
  
@@ -121,14 +122,14 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
                                 </View>  */}
                                 {/* Guide de Culture */} 
                                 <View style={styles.menuBoxButton} >
-                                    <TouchableOpacity 
+                                    <View 
                                             style={isEnabledMenu==2? styles.buttonContainer : styles.containerLight}
                                             onPress={() => setIsEnabledMenu(2)}
                                         >
                                         <View style={styles.eventContentFirst}>
                                             <Text style={isEnabledMenu==2? styles.infoMenuW : styles.infoMenuB}>Guide de Culture</Text>
                                         </View>
-                                    </TouchableOpacity>
+                                    </View>
                                 </View>
                                 {/* Calendrier */}
                                 {/* <View style={styles.menuBoxButton} >    
@@ -144,7 +145,7 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
                             </View>
                         </View>
                         {/* here the content of the section General */}
-                        <View style={isEnabledMenu==1? styles.buttonContainerE : styles.containerSuperLight} >
+                        {/* <View style={isEnabledMenu==1? styles.buttonContainerE : styles.containerSuperLight} >
                             <View style={styles.menuBox} >
                                 <View 
                                     style={styles.containerLight}
@@ -211,7 +212,7 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
                                     </View>
                                 </View>
                             </View>
-                        </View>
+                        </View> */}
 
                         {/* here the content of the section Guide */}
                         <View style={isEnabledMenu==2? styles.buttonContainerE : styles.containerSuperLight} >
@@ -259,9 +260,9 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
                             </View>
                         </View>
 
-                        {/* here the content of the section Calendar */}
+                        {/* here the content of the section Calendar
                         <View style={isEnabledMenu==3? styles.buttonContainerE : styles.containerSuperLight} >
-                        </View> 
+                        </View>  */}
                        
                         {/* <View style={styles.actionRedirection} >
                             <TouchableOpacity style={styles.linkL} onPress={() => Linking.openURL(result.url)}>

@@ -11,6 +11,7 @@ import {
     Button,
     SectionList
 } from 'react-native';
+import {COLORS} from "../constants";
 
 
 const Conseils = ({ navigation }) => {
@@ -58,7 +59,7 @@ const Conseils = ({ navigation }) => {
             setIsEnabledSearch(2)
         }
         //copier apres lavoir fait dans conseil list
-        // let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjMwNzAwMjYsImV4cCI6MTYyMzY3NDgyNn0.B8cx7p61hC9ihZvFJigcTf3SU72YqCvhIBFfeeVSE10';
+        // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjMxNTg0MTEsImV4cCI6MTYyMzc2MzIxMX0.GHICyq1jU4Eg-Cma84K6lKB07v6GeCRhDnT_Le8gk30";
         // console.log(token.value)
         let data = {
 			method: 'GET',
@@ -68,12 +69,13 @@ const Conseils = ({ navigation }) => {
 				'Accept': '*/*',
 				'Content-Type': 'application/json',
                 'Authorization': 'Bearer '+token.value,
+                // 'Authorization': 'Bearer '+token,
             },
 		}
 
 
         // fetch(`http://localhost:4000/plants/name/${search}`, data)
-        fetch(`https://seedy.adnanenabil.com/plants/`, data)
+        fetch(`https://seedy.adnanenabil.com/plants/name/${search}`, data)
             .then((responsesearch) => responsesearch.json())
             .then((jsonsearch) => {
                 setResult(jsonsearch);
@@ -83,8 +85,8 @@ const Conseils = ({ navigation }) => {
             
             })
 
-         // fetch(`https://seedy.adnanenabil.com/infossicks/name/${search}`, data)
-         fetch(`https://seedy.adnanenabil.com/infossicks/`, data)
+        // fetch(`http://localhost:4000/infossicks/name/${search}`, data)
+        fetch(`https://seedy.adnanenabil.com/infossicks/name/${search}`, data)
              .then((responsesearch) => responsesearch.json())
              .then((secondjsonsearch) => {
                  setSecondResult(secondjsonsearch);
@@ -94,8 +96,8 @@ const Conseils = ({ navigation }) => {
 
              })
 
-             // fetch(`https://seedy.adnanenabil.com/infossicks/name/${search}`, data)
-         fetch(`https://seedy.adnanenabil.com/infosravages/`, data)
+        // fetch(`http://localhost:4000/infosravages/name/${search}`, data)
+        fetch(`https://seedy.adnanenabil.com/infosravages/name/${search}`, data)
              .then((responsesearch) => responsesearch.json())
              .then((thirdjsonsearch) => {
                  setThirdResult(thirdjsonsearch);
@@ -104,6 +106,7 @@ const Conseils = ({ navigation }) => {
              .finally(() => {
 
              })
+             
         // allResult = result,secondresult,thirdresult;
         // {
         //     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -187,11 +190,42 @@ const Conseils = ({ navigation }) => {
 
                 </View>
                 <View style={isEnabledSearch==2? styles.bodyContent : styles.displayNone}>
+                    {/* <FlatList
+                        //  enableEmptySections={true}
+                         style={styles.eventList}
+                         data={result}
+                         keyExtractor= {(item) => {
+                             return item.id;
+                         }}
+                         renderItem={({item}) => {
+                             return (
+                         <View style={styles.menuBoxList} >
+                             <TouchableOpacity 
+                                 style={styles.containerLight}
+                                 onPress={() => navigation.replace('ConseilsDetailFiche', { item: item.id, tokenPass: token})}
+                                 >
+                                 <View style={styles.eventContentFirst}>
+                                     <Image style={styles.tinyLogoGeneral} source={{ uri: item.photourl,}}/>
+                                     <Text style={styles.infoGeneral}>{item.name}</Text>
+                                     <Text style={styles.infoSun}></Text>
+                                 </View>
+                             </TouchableOpacity>
+                         </View>
+                     )}}/> */}
                     <SectionList
                         sections={[
                             {title: 'Plantes', data: result},
                             {title: 'Maladies', data: secondresult},
                             {title: 'Ravages', data: thirdresult},
+                            {title: 'Plantes', data: result},
+                            {title: 'Maladies', data: secondresult},
+                            {title: 'Ravages', data: thirdresult},
+                            {title: 'Plantes', data: result},
+                            {title: 'Maladies', data: secondresult},
+                            {title: 'Ravages', data: thirdresult},
+                            {title: 'Plantes', data: result},
+                            {title: 'Maladies', data: secondresult},
+                            {title: 'Ravages', data: thirdresult}
                         ]}
                         renderItem={({item,section}) => 
                             <View style={styles.menuBoxList} >
@@ -251,7 +285,8 @@ const styles = StyleSheet.create({
         // marginTop:20,
         paddingLeft:20,
         borderRadius:10,
-        backgroundColor: '#fff',
+        // backgroundColor: COLORS.lightGray,
+        backgroundColor: "#F2F2F2",
     },
     tinyLogoGeneral: {
         width: 20,

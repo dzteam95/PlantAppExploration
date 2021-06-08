@@ -56,7 +56,6 @@ const Conseils = ({ route, navigation }) => {
 
     const [ReRoute, setReRoute] = useState('')
 
-
     useEffect(() => {
         readToken()
         // console.log("route.params.intemLink",route.params.itemlink)
