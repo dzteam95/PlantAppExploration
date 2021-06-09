@@ -105,11 +105,22 @@ const Login = ({ navigation }) => {
 				// fetch get token 
 				fetch('https://seedy.adnanenabil.com/users/authenticate', data)
 				.then((response) => response.json())
+				
 				.then((responseData) => {
+					// console.log(responseData.sexe);
 					console.log(responseData.token);
 					// saveItem('id_token', responseData.token),
+					if (responseData.sexe == true){
+					// if (responseData.isP == true){
+						isP = "p";
+					}else{
+						isP = "f";
+					}
+					saveData('isP', isP),
+					console.log(isP);
 					saveData('id_token', responseData.token),
-					// console.log('premiumLevelStorage : ',responseData.isP);
+					// premium 
+					// console.log('premiumLevelStorage : ',isP);
 					// saveData('premiumLevelStorage', responseData.isP),
 					navigation.reset({
 						index: 0,

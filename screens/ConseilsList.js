@@ -73,8 +73,8 @@ const Conseils = ({ route, navigation }) => {
                 setToken({ 
                     value: userJeton,
                 });
-                console.log('jeton ok !')
-                console.log(token.value)
+                // console.log('jeton ok !')
+                // console.log(token.value)
             }else{
                 //console.log('jeton pas ok')
             }
@@ -112,7 +112,7 @@ const Conseils = ({ route, navigation }) => {
             .then((responsesearch) => responsesearch.json())
             .then((jsonsearch) => {
                 // console.debug(jsonsearch);
-                console.log(jsonsearch);
+                // console.log(jsonsearch);
                 setResult(jsonsearch);
                 //this.setState({ datasearch: jsonsearch.data.plant });
             })
@@ -125,11 +125,11 @@ const Conseils = ({ route, navigation }) => {
     const reRouteFunction = () => {
         switch (route.params.itemlink ) {
             case 'plants':
-              console.log('plants');
+            //   console.log('plants');
                 setReRoute('ConseilsDetail')
               break;
             case 'infossicks':
-              console.log('infossicks');
+            //   console.log('infossicks');
                 setReRoute('ConseilsDetailFiche')
               break;
             default:

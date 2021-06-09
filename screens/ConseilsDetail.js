@@ -37,6 +37,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
     const [search, setSearch] = useState({ value: '', error: '' })
     const [token, setToken] = useState({ value: '', error: '' })
     const [result, setResult] = useState({ value: '', error: '' })
+    const [isP, setIsP] = useState({ value: '', error: '' })
     // const { itemId } = 1;
     // const { itemId } = '6098fe7cc03d603e8323ea04';
     const { itemId } = route.params.item;
@@ -48,7 +49,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
     // const id = JSON.stringify(itemId)-1;
     //fetch
     useEffect(() => {
-        // readToken()
+        readToken()
         searchPlantBasicDetailFunction()
         return /*(
             //readData()
@@ -77,13 +78,13 @@ const ConseilsDetail = ({route, navigation,  props }) => {
         // setSearch({ search });
         // const newHandleSearch = search;
         // console.log(search);
-        console.log('Requette search is : ',route.params.item);  
-        console.log('Requette search is : ',route.params.tokenPass.value);        
+        // console.log('Requette search is : ',route.params.item);  
+        // console.log('Requette search is : ',route.params.tokenPass.value);        
         
         //copier apres lavoir fait dans conseil list
         //let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDZkYjc4YWMwM2Q2MDNlODMyM2U5ZmIiLCJpYXQiOjE2MTk4Nzc1ODAsImV4cCI6MTYyMDQ4MjM4MH0.s7gLXojBss557Afq4N5n8Ibo0OGBOJMIjqoVhVEJDsE';
-        console.log(token.value)
-        console.log(route.params.tokenPass.value)
+        // console.log(token.value)
+        // console.log(route.params.tokenPass.value)
         let data = {
 			method: 'GET',
 			credentials: 'same-origin',
@@ -103,7 +104,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
             .then((responsesearch) => responsesearch.json())
             .then((jsonsearch) => {
             // console.debug(jsonsearch);
-            console.log(jsonsearch);
+            // console.log(jsonsearch);
             setResult(jsonsearch);
             //this.setState({ datasearch: jsonsearch.data.plant });
             })
@@ -117,6 +118,22 @@ const ConseilsDetail = ({route, navigation,  props }) => {
     eventClickListener = (viewId) => {
         Alert.alert("Rappel ajouté !",result.name);
         // console.log('Add rerminder const');
+    }
+
+    const readToken = async () => {
+        try {
+            const userIsP = await AsyncStorage.getItem('isP')      
+            if (userIsP !== null) {
+                console.log('isP ok ? : ',userIsP)
+                setIsP({ 
+                    value: userIsP,
+                });
+            }else{
+                console.log('jeton pas ok')
+            }
+        } catch (e) {
+          //alert('Failed to fetch the data from storage')
+        }  
     }
 
     const [isEnabledGuideOne, setIsEnabledGuideOne] = useState(true);
@@ -198,7 +215,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={SunConseil}/>
                                         <Text style={styles.infoGeneral}>Besoin en soleil</Text>
-                                        <Text style={styles.infoSun}>{result.sun}</Text>
+                                        <Text style={styles.infoSun}>{this.isP === "p" ? result.sun : "Info Premium"}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -209,7 +226,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={WaterConseil}/>
                                         <Text style={styles.infoGeneral}>Besoin en eau</Text>
-                                        <Text style={styles.infoWater}>Faible</Text>
+                                        <Text style={styles.infoWater}>{this.isP === "p" ? result.water : "Info Premium"}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -220,7 +237,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={SpaceConseil}/>
                                         <Text style={styles.infoGeneral}>Distanciation au sol</Text>
-                                        <Text style={styles.info}>{result.care_range} x {result.care_range} cm</Text>
+                                        <Text style={styles.info}>{this.isP === "p" ? result.zone_range : "Info Premium"} x {this.isP === "p" ? result.zone_range : "Info Premium"} cm</Text>
                                     </View>
                                 </View>
                             </View>
@@ -242,7 +259,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={PHConseil}/>
                                         <Text style={styles.infoGeneral}>Ph</Text>
-                                        <Text style={styles.infoPH}>{result.soil_ph}</Text>
+                                        <Text style={styles.infoPH}>{this.isP === "p" ? result.soil_ph : "Info Premium"}</Text>
                                     </View>
                                 </View>
                             </View>
