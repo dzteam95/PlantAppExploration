@@ -38,6 +38,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
     const [token, setToken] = useState({ value: '', error: '' })
     const [result, setResult] = useState({ value: '', error: '' })
     const [isP, setIsP] = useState({ value: '', error: '' })
+    const [userId, setUserId] = useState({ value: '', error: '' })
     // const { itemId } = 1;
     // const { itemId } = '6098fe7cc03d603e8323ea04';
     const { itemId } = route.params.item;
@@ -115,9 +116,104 @@ const ConseilsDetail = ({route, navigation,  props }) => {
     }
     // const result = data[0];
     // console.log(result);
-    eventClickListener = (viewId) => {
-        Alert.alert("Rappel ajouté !",result.name);
-        // console.log('Add rerminder const');
+    eventClickListener = (viewId,title,desc,date) => {
+        //local
+        let tokenPass = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjMzMTQyNDUsImV4cCI6MTYyMzkxOTA0NX0.F21DuctCC5oFKcl6_3iRQ05iaKH_t6KlsdE81Jdzbm8";
+        // console.log(date);
+        // get current date
+        var currentdate = new Date().getDate();
+        var currentmonth = new Date().getMonth() + 1;
+        var currentyear = new Date().getFullYear();
+        
+        var currentCompleteDate = currentyear+"-"+currentmonth+"-"+currentdate+"T09:11:00.045Z";
+        
+        let requiredmonth = date.split('-')[1].trim();
+        let requireddate = date.split('-')[0].trim();
+        
+        // console.log(requiredmonth);
+        // console.log(currentmonth);
+
+        if (requiredmonth < currentmonth){
+            // console.log("requiredmonth < currentmonth");
+            let requiredyear = currentyear+1;
+            var requiredCompleteDate = requiredyear+"-"+requiredmonth+"-"+requireddate+"T09:11:00.045Z";
+            // console.log(requiredCompleteDate);
+        }
+        else if (requiredmonth > currentmonth){
+            // console.log("requiredmonth > currentmonth");
+            var requiredCompleteDate = currentyear+"-"+requiredmonth+"-"+requireddate+"T09:11:00.045Z";
+            // console.log(requiredCompleteDate);
+        }
+        else {
+            // console.log("requiredmonth = currentmonth");
+            if (requireddate < currentdate){
+                // console.log("requireddate < currentdate");
+                let requiredyear = currentyear+1;
+                var requiredCompleteDate = requiredyear+"-"+requiredmonth+"-"+requireddate+"T09:11:00.045Z";
+                // console.log(requiredCompleteDate);
+            }
+            else if (requireddate > currentdate){
+                // console.log("requireddate < currentdate");
+                var requiredCompleteDate = currentyear+"-"+requiredmonth+"-"+requireddate+"T09:11:00.045Z";
+                // console.log(requiredCompleteDate);
+            }
+            else {
+                // console.log("requireddate = currentdate");
+                Alert.alert("C'est le moment de le faire !");
+                let requireddate = currentdate+1;
+                var requiredCompleteDate = currentyear+"-"+requiredmonth+"-"+requireddate+"T09:11:00.045Z";
+            }
+        }
+        // console.log(currentDate);
+        
+        let data = {
+			method: 'POST',
+			credentials: 'same-origin',
+			mode: 'same-origin',
+			body: JSON.stringify({
+                //local
+				id_plant: "5f0b3c733aead305c2eec26d",
+				// id_plant: result.id,
+                //local
+                id_user: "5f0b3c733aead305c2eec26d",
+                // id_user: userId.value,
+                title: title,
+                description: desc,
+                actionDate: requiredCompleteDate,
+                mode: "ON"
+
+			}),
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+                //local
+                'Authorization': 'Bearer '+tokenPass,
+                // 'Authorization': 'Bearer '+route.params.tokenPass.value,
+			},
+		}
+		// console.log(userId.value);
+        //local
+		fetch('http://localhost:4000/reminder/register',data)
+		// fetch('https://seedy.adnanenabil.com/reminder/register',data)
+		.then((response) => {
+			//Statut getted
+			console.log(response.status);
+			if (response.status === 200) {
+				Alert.alert("Rappel ajouté !");
+				// Alert.alert("Rappel ajouté !",result.name);
+                // console.log('registred');
+				
+				// navigation.reset({
+				// 	index: 0,
+				// 	routes: [{ name: 'Welcome' }],
+				// })
+			  
+			}else{
+                Alert.alert("Erreur lors de l'ajout du rappel...");
+				// console.log('not registrer or contain error');
+				//do nothing
+			}
+		  })
     }
 
     const readToken = async () => {
@@ -130,6 +226,19 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                 });
             }else{
                 console.log('jeton pas ok')
+            }
+        } catch (e) {
+          //alert('Failed to fetch the data from storage')
+        }  
+        try {
+            const userId = await AsyncStorage.getItem('userId')      
+            if (userId !== null) {
+                console.log('userId ok ? : ',userId)
+                setUserId({ 
+                    value: userId,
+                });
+            }else{
+                console.log('userId pas ok')
             }
         } catch (e) {
           //alert('Failed to fetch the data from storage')
@@ -305,7 +414,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -343,7 +452,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est le moment de selectionner ses futurs "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -362,7 +471,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -381,7 +490,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Plantez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -400,7 +509,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Paillez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -438,7 +547,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est la première taille des "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -457,7 +566,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -476,7 +585,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est la seconde taille des "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -514,7 +623,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -533,7 +642,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Récoltez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -558,9 +667,9 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={styles.containerLight} >
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogo} source={SemisInt}/>
-                                        <Text style={styles.infoName}>Semis d'interrieur</Text>
+                                        <Text style={styles.infoName}>Semis d'interieur</Text>
                                         <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row")}>Rappel</Text>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en intérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_inte_from)}>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
@@ -578,7 +687,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={SemisExt}/>
                                         <Text style={styles.infoName}>Semis d'extérieur</Text>
                                         <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row")}>Rappel</Text>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en intérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_exte_from)}>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
@@ -596,7 +705,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={Plantation}/>
                                         <Text style={styles.infoName}>Plantation</Text>
                                         <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row")}>Rappel</Text>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_plantation_from)}>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
@@ -614,7 +723,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={Floraison}/>
                                         <Text style={styles.infoName}>Floraison</Text>
                                         <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row")}>Rappel</Text>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","C'est la floraison de vos "+result.name+"s","Ne les manquez pas !",result.reminder_txt_floraison_from)}>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
@@ -632,7 +741,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={Fruit}/>
                                         <Text style={styles.infoName}>Récolte</Text>
                                         <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row")}>Rappel</Text>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Récoltez les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_recolte_from)}>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>

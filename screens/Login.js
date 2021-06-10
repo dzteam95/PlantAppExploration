@@ -117,6 +117,8 @@ const Login = ({ navigation }) => {
 						isP = "f";
 					}
 					saveData('isP', isP),
+					saveData('userId', responseData.id),
+					// console.log(responseData.id);
 					console.log(isP);
 					saveData('id_token', responseData.token),
 					// premium 
