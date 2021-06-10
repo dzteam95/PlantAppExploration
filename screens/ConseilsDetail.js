@@ -346,7 +346,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={SpaceConseil}/>
                                         <Text style={styles.infoGeneral}>Distanciation au sol</Text>
-                                        <Text style={styles.info}>{this.isP === "p" ? result.zone_range : "Info Premium"} x {this.isP === "p" ? result.zone_range : "Info Premium"} cm</Text>
+                                        <Text style={styles.info}>{this.isP === "p" ? (result.zone_range+" x "+result.zone_range+" cm")  : "Info Premium"}</Text>
                                     </View>
                                 </View>
                             </View>
@@ -414,7 +414,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !",result.description_Germination_Arrosage_date)}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -452,7 +452,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est le moment de selectionner ses futurs "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est le moment de selectionner ses futurs "+result.name+"s","Il est temps d'agir !",result.description_Croissance_Selection_date)}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -471,7 +471,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !",result.description_Croissance_Arrosage_date)}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -490,7 +490,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Plantez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Plantez les "+result.name+"s","Il est temps d'agir !",result.description_Croissance_Plantation_date)}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -509,7 +509,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Paillez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Paillez les "+result.name+"s","Il est temps d'agir !",result.description_Croissance_Paillage_date)}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -547,7 +547,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est la première taille des "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est la première taille des "+result.name+"s","Il est temps d'agir !",result.description_Floraison_Un_date)}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -566,7 +566,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !",result.description_Floraison_Arrosage_date)}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -585,7 +585,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est la seconde taille des "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est la seconde taille des "+result.name+"s","Il est temps d'agir !",result.description_Floraison_Deux_date)}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -623,7 +623,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !",result.description_Production_Arrosage_date)}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -642,7 +642,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Récoltez les "+result.name+"s","Il est temps d'agir !","10-06")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Récoltez les "+result.name+"s","Il est temps d'agir !",result.description_Production_Recolte_date)}>Rappel</Text>                                           
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>

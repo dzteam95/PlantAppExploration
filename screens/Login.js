@@ -119,8 +119,11 @@ const Login = ({ navigation }) => {
 					saveData('isP', isP),
 					saveData('userId', responseData.id),
 					// console.log(responseData.id);
-					console.log(isP);
+					// console.log(isP);
 					saveData('id_token', responseData.token),
+					// saveData('levelSubscription', responseData.levelSubscription),
+					saveData('levelSubscription', "4"),
+					// console.log(responseData.levelSubscription);
 					// premium 
 					// console.log('premiumLevelStorage : ',isP);
 					// saveData('premiumLevelStorage', responseData.isP),
