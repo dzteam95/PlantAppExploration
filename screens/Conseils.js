@@ -160,33 +160,38 @@ const Conseils = ({ navigation }) => {
                             placeholder="Rechercher"
                         />
                     </View>
-                    
                 </View>
-                <View style={isEnabledSearch==1? styles.bodyContent : styles.displayNone}>
+                <View style={isEnabledSearch==1? styles.bodyContentFiche : styles.displayNone}>
 
-                    {/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}   >
-                        <Text style={styles.info}>//Glossaire</Text>
-                    </TouchableOpacity> */}
+                    <View style={styles.menuBoxUnavailable} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}   >
+                        <Text style={styles.info}>Recettes</Text>
+                        <Text style={styles.infoSub}>Prochainnement</Text>
+                    </View>
 
                     <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches espèces", itemlink: "plants", tokenPass: token})}  >
                         <Text style={styles.info}>Fiches espèces</Text>
+                        {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
                     </TouchableOpacity>
 
-                    {/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "tutosvideos"})} >
-                        <Text style={styles.info}>//Tutos vidéos</Text>
-                    </TouchableOpacity> */}
+                    <View style={styles.menuBoxUnavailable} onPress={() => navigation.replace('ConseilsList', { item: "tutosvideos"})} >
+                        <Text style={styles.info}>Tutos vidéos</Text>
+                        <Text style={styles.infoSub}>Prochainnement</Text>
+                    </View>
 
-                    {/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "recettes"})}    >
-                        <Text style={styles.info}>//Recettes</Text>
-                    </TouchableOpacity> */}
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches ravages", itemlink: "infosravages", tokenPass: token})}  >
+                        <Text style={styles.info}>Fiches ravages</Text>
+                        {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
+                    </TouchableOpacity>
 
                     <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches maladies", itemlink: "infossicks", tokenPass: token})}  >
                         <Text style={styles.info}>Fiches maladies</Text>
+                        {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
                     </TouchableOpacity>
 
-                    {/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "savoirfaire"})}    >
-                        <Text style={styles.info}>//Fiches savoir-faire</Text>
-                    </TouchableOpacity> */}
+                    <View style={styles.menuBoxUnavailable} onPress={() => navigation.replace('ConseilsList', { item: "savoirfaire"})}    >
+                        <Text style={styles.info}>Fiches savoir-faire</Text>
+                        <Text style={styles.infoSub}>Prochainnement</Text>
+                    </View>
 
                 </View>
                 <View style={isEnabledSearch==2? styles.bodyContent : styles.displayNone}>
@@ -343,10 +348,16 @@ const styles = StyleSheet.create({
         // paddingTop: 22
         // height: 10000,
     },
+    bodyContentFiche:{
+        fontWeight: "900",
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
     menuBox:{
         backgroundColor: "#ffffff",
         borderRadius:10,
-        width:180,
+        width:170,
         height:100,
         marginRight:10,
         marginTop:10,
@@ -358,6 +369,32 @@ const styles = StyleSheet.create({
             width:-2
         },
         elevation:4,
+        // height: 100, 
+        // width: 50, 
+        // borderWidth: 1, 
+        // backgroundColor: 'orange', 
+        // marginBottom: 5
+    },
+    menuBoxUnavailable:{
+        backgroundColor: "#DADADA",
+        borderRadius:10,
+        width:170,
+        height:100,
+        marginRight:10,
+        marginTop:10,
+        marginBottom:10,
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
+        // height: 100, 
+        // width: 50, 
+        // borderWidth: 1, 
+        // backgroundColor: 'orange', 
+        // marginBottom: 5
     },
     info:{
         fontSize:18,
@@ -365,6 +402,14 @@ const styles = StyleSheet.create({
         color: "#222222",
         textAlign:'center',
         marginTop:30,
+
+    },
+    infoSub:{
+        // fontSize:18,
+        fontWeight:'400',
+        color: COLORS.greenLight,
+        textAlign:'center',
+        // marginTop:30,
 
     },
     formContent:{

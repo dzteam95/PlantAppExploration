@@ -60,23 +60,48 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
                 'Authorization': 'Bearer '+route.params.tokenPass.value,
             },
 		}
+        switch (route.params.itemlink ) {
+            case 'infossicks':
+            //   console.log('infossicks');
+                // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
+                fetch(`https://seedy.adnanenabil.com/infossicks/${route.params.item}`, data)
 
-        // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-        fetch(`https://seedy.adnanenabil.com/infossicks/${route.params.item}`, data)
+                //Passertoken\
+                
+                    .then((responsesearch) => responsesearch.json())
+                    .then((jsonsearch) => {
+                    // console.debug(jsonsearch);
+                    console.log(jsonsearch);
+                    setResult(jsonsearch);
+                    //this.setState({ datasearch: jsonsearch.data.plant });
+                    })
+                    .catch((error) => console.error(error))
+                    .finally(() => {
+                    //this.setState({ isLoadingSearch: false });
+                    })
+              break;
+            case 'infosravages':
+            //   console.log('infosravages');
+                // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
+                fetch(`https://seedy.adnanenabil.com/infosravages/${route.params.item}`, data)
 
-        //Passertoken\
-        
-            .then((responsesearch) => responsesearch.json())
-            .then((jsonsearch) => {
-            // console.debug(jsonsearch);
-            console.log(jsonsearch);
-            setResult(jsonsearch);
-            //this.setState({ datasearch: jsonsearch.data.plant });
-            })
-            .catch((error) => console.error(error))
-            .finally(() => {
-            //this.setState({ isLoadingSearch: false });
-            })
+                //Passertoken\
+                
+                    .then((responsesearch) => responsesearch.json())
+                    .then((jsonsearch) => {
+                    // console.debug(jsonsearch);
+                    console.log(jsonsearch);
+                    setResult(jsonsearch);
+                    //this.setState({ datasearch: jsonsearch.data.plant });
+                    })
+                    .catch((error) => console.error(error))
+                    .finally(() => {
+                    //this.setState({ isLoadingSearch: false });
+                    })
+              break;
+            default:
+              console.log(`Sorry, we are out of it.`);
+          }
     }
     // const result = data[0];
     // console.log(result);

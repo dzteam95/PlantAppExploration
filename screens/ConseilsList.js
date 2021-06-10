@@ -132,6 +132,10 @@ const Conseils = ({ route, navigation }) => {
             //   console.log('infossicks');
                 setReRoute('ConseilsDetailFiche')
               break;
+            case 'infosravages':
+            //   console.log('infossicks');
+                setReRoute('ConseilsDetailFiche')
+              break;
             default:
               console.log(`Sorry, we are out of it.`);
           }
@@ -188,7 +192,7 @@ const Conseils = ({ route, navigation }) => {
                         renderItem={({item}) => {
                             return (
                                 <View style={styles.menuBox} >
-                                    <TouchableOpacity onPress={() => navigation.replace(ReRoute, { item: item.id, tokenPass: token})}>
+                                    <TouchableOpacity onPress={() => navigation.replace(ReRoute, { item: item.id, tokenPass: token, itemlink: route.params.itemlink})}>
                                         <View style={styles.eventContent}>
                                             <View style={styles.eventContentF}>
                                                 <Text style={styles.infoName}>{item.name}</Text>
