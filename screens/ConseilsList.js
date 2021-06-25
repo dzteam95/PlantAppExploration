@@ -56,7 +56,6 @@ const Conseils = ({ route, navigation }) => {
 
     const [ReRoute, setReRoute] = useState('')
 
-
     useEffect(() => {
         readToken()
         // console.log("route.params.intemLink",route.params.itemlink)
@@ -74,8 +73,8 @@ const Conseils = ({ route, navigation }) => {
                 setToken({ 
                     value: userJeton,
                 });
-                console.log('jeton ok !')
-                console.log(token.value)
+                // console.log('jeton ok !')
+                // console.log(token.value)
             }else{
                 //console.log('jeton pas ok')
             }
@@ -113,7 +112,7 @@ const Conseils = ({ route, navigation }) => {
             .then((responsesearch) => responsesearch.json())
             .then((jsonsearch) => {
                 // console.debug(jsonsearch);
-                console.log(jsonsearch);
+                // console.log(jsonsearch);
                 setResult(jsonsearch);
                 //this.setState({ datasearch: jsonsearch.data.plant });
             })
@@ -126,11 +125,15 @@ const Conseils = ({ route, navigation }) => {
     const reRouteFunction = () => {
         switch (route.params.itemlink ) {
             case 'plants':
-              console.log('plants');
+            //   console.log('plants');
                 setReRoute('ConseilsDetail')
               break;
             case 'infossicks':
-              console.log('infossicks');
+            //   console.log('infossicks');
+                setReRoute('ConseilsDetailFiche')
+              break;
+            case 'infosravages':
+            //   console.log('infossicks');
                 setReRoute('ConseilsDetailFiche')
               break;
             default:
@@ -189,7 +192,7 @@ const Conseils = ({ route, navigation }) => {
                         renderItem={({item}) => {
                             return (
                                 <View style={styles.menuBox} >
-                                    <TouchableOpacity onPress={() => navigation.replace(ReRoute, { item: item.id, tokenPass: token})}>
+                                    <TouchableOpacity onPress={() => navigation.replace(ReRoute, { item: item.id, tokenPass: token, itemlink: route.params.itemlink})}>
                                         <View style={styles.eventContent}>
                                             <View style={styles.eventContentF}>
                                                 <Text style={styles.infoName}>{item.name}</Text>
