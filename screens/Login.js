@@ -1,5 +1,7 @@
 import React, {useState, useEffect } from 'react';
 import { TouchableOpacity, StyleSheet, View,Text,TextInput,Button ,BackHandler, Alert, AsyncStorage} from 'react-native';
+import CheckBox from 'react-native-check-box';
+
 
 import {COLORS, SIZES} from "../constants";
 
@@ -8,7 +10,7 @@ const Login = ({ navigation }) => {
 
 	const [username, setUsername] = useState({ value: '', error: '' })
 	const [password, setPassword] = useState({ value: '', error: '' })
-
+	const [isSelected, setSelection] = useState({ isSelect: false });
 	useEffect(() => {
         readData()
         // return (
@@ -20,6 +22,7 @@ const Login = ({ navigation }) => {
         try {
             const usernameValue = await AsyncStorage.getItem('usernameStorage')
 			const passwordValue = await AsyncStorage.getItem('passwordStorage')
+			const rememberMe = await AsyncStorage.getItem('rememberMeStorage')
             
             if (usernameValue !== null) {
                 //console.log(userValue)
@@ -32,7 +35,18 @@ const Login = ({ navigation }) => {
 					setPassword({
 						value: passwordValue,
 					});
-
+					// console.log('rememberMe : ',rememberMe)
+					if (rememberMe === 'true'){
+						setSelection({
+							isSelect: true
+						})
+						// console.log('rememberMe true : ',rememberMe)
+					} else {
+						setSelection({
+							isSelect: false
+						})
+						// console.log('rememberMe2 false : ',rememberMe)
+					}
 				}else{
 					//alert('No Token found from storage')
 				}
@@ -43,7 +57,7 @@ const Login = ({ navigation }) => {
         } catch (e) {
           //alert('Failed to fetch the data from storage')
         }  
-      }
+    }
 
 	const onLoginPressed = () => {
 		let data = {
@@ -69,16 +83,50 @@ const Login = ({ navigation }) => {
 			// console.log(res);
 			if (res.status === 200) {
 				//console.log('aut');
-				saveData('usernameStorage',username.value);
-				saveData('passwordStorage',password.value);
+
+				// Clearing old user registered 
+				const clearStorage = async () => {
+					try {
+					  await AsyncStorage.clear()
+						// console.log('Storage successfully cleared!')
+					} catch (e) {
+						// console.log('Failed to clear the async storage.')
+					}
+				}
+				clearStorage()
+				
+				  // Save user remember data if checkbox is checked
+				if (isSelected.isSelect == true){	
+					saveData('usernameStorage',username.value);
+					saveData('passwordStorage',password.value);
+					saveData('rememberMeStorage','true');
+					// console.log('user saved');
+				}
 				// fetch get token 
 				fetch('https://seedy.adnanenabil.com/users/authenticate', data)
 				.then((response) => response.json())
+				
 				.then((responseData) => {
-					// console.log(responseData.token);
+					// console.log(responseData.sexe);
+					console.log(responseData.token);
 					// saveItem('id_token', responseData.token),
+					if (responseData.sexe == true){
+					// if (responseData.isP == true){
+						isP = "p";
+					}else{
+						isP = "f";
+					}
+					saveData('isP', isP),
+					saveData('userId', responseData.id),
+					// console.log(responseData.id);
+					// console.log(isP);
 					saveData('id_token', responseData.token),
-					
+					// saveData('levelSubscription', responseData.levelSubscription),
+					saveData('levelSubscription', "4"),
+					// console.log(responseData.levelSubscription);
+					// premium 
+					// console.log('premiumLevelStorage : ',isP);
+					// saveData('premiumLevelStorage', responseData.isP),
 					navigation.reset({
 						index: 0,
 						routes: [{ name: 'Home' }],
@@ -92,15 +140,29 @@ const Login = ({ navigation }) => {
 		  })
 	}
 	
-	const saveData = async (id_token, token) => {
+	const saveData = async (item, token) => {
 		try {
-		  await AsyncStorage.setItem(id_token, token)
+		  await AsyncStorage.setItem(item, token)
 		  	//alert('Data successfully saved')
 		} catch (e) {
 		  	//alert('Failed to save the data to the storage')
 		}
-	  }
+	}
 	
+	const setSelect = async () => {
+		// console.log(isSelected);
+		if (isSelected.isSelect == false){
+			// isSelected = !isSelected;
+			setSelection({
+				isSelect: true
+			})
+		} else if (isSelected.isSelect == true){
+			setSelection({
+				isSelect: false
+			})
+		}
+		// console.log(isSelected.isSelect);
+	}
 	// const saveItem = async (item, selectedValue) => {
 	// 	// console.log(item, selectedValue)
 	// 	try {
@@ -130,7 +192,9 @@ return(
 
 		/>
 		<View style={styles.rowInput}>
-		<Text style={styles.forgot} onPress={() => navigation.navigate('ForgotPasswordScreen')}>Mot de passe oublié ?</Text>
+			<TouchableOpacity style={styles.forgot} onPress={() => navigation.replace('ForgotPasswordScreen')}>
+				<Text>Mot de passe oublié ?</Text>
+			</TouchableOpacity>
 		</View>
 		<TextInput  style={styles.input}
 			placeholder="Mot de passe"
@@ -140,7 +204,22 @@ return(
 			onChangeText={(text) => setPassword({ value: text, error: '' })}
 			secureTextEntry
 		/>
-
+		<View style={styles.container}>
+			{/* <Text>Se souvenir de moi ? {isSelected.isSelect ? "👍" : "👎"}</Text> */}
+			<View style={styles.checkboxContainer}>				
+				<CheckBox
+					style={{flex: 1, padding:70}}
+					onClick={()=>{
+						// setSelection({
+						// 	isChecked: 1
+						// })
+						setSelect()
+					}}
+					isChecked={isSelected.isSelect}
+					leftText={"Se souvenir de moi ?"}
+				/>
+			</View>
+		</View>       
 		<View style={styles.connexion}>
 			<Button color="#ffffff" title={"Connexion"} mode="contained" onPress={onLoginPressed}/>
 
@@ -165,8 +244,26 @@ const styles = StyleSheet.create({
 	rowInput:{width:'100%',alignItems: 'center',marginTop:20},
 	txt:{width:'45%',textAlign: 'right'},
 	link:{width:'45%',textAlign: 'right',color:COLORS.greenDark},
-	forgot:{color:COLORS.greenLight}
-
+	forgot:{color:COLORS.greenLight},
+	container: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+		// backgroundColor: "#fff000"
+	  },
+	  checkboxContainer: {
+		flexDirection: "row",
+		marginBottom: 20,
+	  },
+	  checkbox: {
+		// marginTop: 30,
+		// width:40,
+		// height:40,
+		alignSelf: "center",
+	  },
+	  label: {
+		margin: 8,
+	  },
 })
 
 export default Login
