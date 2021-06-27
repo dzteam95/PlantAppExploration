@@ -23,7 +23,8 @@ import SubscriptionDetail from "./SubscriptionDetail";
 import HelpUs from "./HelpUs";
 import DataShare from "./DataShare";
 import ForgotPasswordScreen from "./ForgotPasswordScreen";
-
+import GardenT from "./GardenT"
+import GardenTList from "./GardenTList"
 
 export {
     Home,
@@ -51,4 +52,6 @@ export {
     DataShare,
     Logout,
     ForgotPasswordScreen,
+    GardenT,
+    GardenTList
 };

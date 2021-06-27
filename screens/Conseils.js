@@ -75,7 +75,7 @@ const Conseils = ({ navigation }) => {
 
 
         // fetch(`http://localhost:4000/plants/name/${search}`, data)
-        fetch(`https://seedy.adnanenabil.com/plants/name/${search}`, data)
+        fetch(`https://seedyapp.tk/plants/name/${search}`, data)
             .then((responsesearch) => responsesearch.json())
             .then((jsonsearch) => {
                 setResult(jsonsearch);
@@ -86,7 +86,7 @@ const Conseils = ({ navigation }) => {
             })
 
         // fetch(`http://localhost:4000/infossicks/name/${search}`, data)
-        fetch(`https://seedy.adnanenabil.com/infossicks/name/${search}`, data)
+        fetch(`https://seedyapp.tk/infossicks/name/${search}`, data)
              .then((responsesearch) => responsesearch.json())
              .then((secondjsonsearch) => {
                  setSecondResult(secondjsonsearch);
@@ -97,7 +97,7 @@ const Conseils = ({ navigation }) => {
              })
 
         // fetch(`http://localhost:4000/infosravages/name/${search}`, data)
-        fetch(`https://seedy.adnanenabil.com/infosravages/name/${search}`, data)
+        fetch(`https://seedyapp.tk/infosravages/name/${search}`, data)
              .then((responsesearch) => responsesearch.json())
              .then((thirdjsonsearch) => {
                  setThirdResult(thirdjsonsearch);
@@ -219,15 +219,6 @@ const Conseils = ({ navigation }) => {
                      )}}/> */}
                     <SectionList
                         sections={[
-                            {title: 'Plantes', data: result},
-                            {title: 'Maladies', data: secondresult},
-                            {title: 'Ravages', data: thirdresult},
-                            {title: 'Plantes', data: result},
-                            {title: 'Maladies', data: secondresult},
-                            {title: 'Ravages', data: thirdresult},
-                            {title: 'Plantes', data: result},
-                            {title: 'Maladies', data: secondresult},
-                            {title: 'Ravages', data: thirdresult},
                             {title: 'Plantes', data: result},
                             {title: 'Maladies', data: secondresult},
                             {title: 'Ravages', data: thirdresult}

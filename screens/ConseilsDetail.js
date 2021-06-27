@@ -98,7 +98,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
 		}
 
         // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-        fetch(`https://seedy.adnanenabil.com/plants/${route.params.item}`, data)
+        fetch(`https://seedyapp.tk/plants/${route.params.item}`, data)
 
         //Passertoken\
         
@@ -172,11 +172,11 @@ const ConseilsDetail = ({route, navigation,  props }) => {
 			mode: 'same-origin',
 			body: JSON.stringify({
                 //local
-				id_plant: "5f0b3c733aead305c2eec26d",
-				// id_plant: result.id,
+				// id_plant: "5f0b3c733aead305c2eec26d",
+				id_plant: result.id,
                 //local
-                id_user: "5f0b3c733aead305c2eec26d",
-                // id_user: userId.value,
+                // id_user: "5f0b3c733aead305c2eec26d",
+                id_user: userId.value,
                 title: title,
                 description: desc,
                 actionDate: requiredCompleteDate,
@@ -193,13 +193,13 @@ const ConseilsDetail = ({route, navigation,  props }) => {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
                 //local
-                'Authorization': 'Bearer '+tokenPass,
-                // 'Authorization': 'Bearer '+route.params.tokenPass.value,
+                // 'Authorization': 'Bearer '+tokenPass,
+                'Authorization': 'Bearer '+route.params.tokenPass.value,
 			},
 		}
 		// console.log(userId.value);
         //local
-		fetch('http://localhost:4000/reminder/register',data)
+		fetch('https://seedyapp.tk/reminder/register',data)
 		// fetch('https://seedy.adnanenabil.com/reminder/register',data)
 		.then((response) => {
 			//Statut getted
@@ -694,7 +694,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={SemisExt}/>
                                         <Text style={styles.infoName}>Semis d'extérieur</Text>
                                         <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en intérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_exte_from),"Plantez en exterieur"}>Rappel</Text>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en extérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_exte_from,"Plantez en exterieur")}>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>

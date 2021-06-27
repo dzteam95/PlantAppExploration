@@ -105,7 +105,7 @@ const Conseils = ({ route, navigation }) => {
 		}
 
         // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-        fetch(`https://seedy.adnanenabil.com/${route.params.itemlink}/`, data)
+        fetch(`https://seedyapp.tk/${route.params.itemlink}/`, data)
 
         //Passertoken\
         

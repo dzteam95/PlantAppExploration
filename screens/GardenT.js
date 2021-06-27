@@ -31,7 +31,7 @@ import {Fruit} from "../constants/images";
 import {SemisExt, SemisInt, Plantation} from "../constants/images";
 
 
-const Rappels = ({route, navigation,  props }) => {
+const GardenT = ({route, navigation,  props }) => {
     const [search, setSearch] = useState({ value: '', error: '' })
     const [token, setToken] = useState({ value: '', error: '' })
     const [result, setResult] = useState({ value: '', error: '' })
@@ -60,8 +60,9 @@ const Rappels = ({route, navigation,  props }) => {
     }, [])
 
     searchUserReminderFunction = async () => {
-        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjMzMTQyNDUsImV4cCI6MTYyMzkxOTA0NX0.F21DuctCC5oFKcl6_3iRQ05iaKH_t6KlsdE81Jdzbm8"; 
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ3OTMxMzgsImV4cCI6MTYyNTM5NzkzOH0.aN0m390nMLqI3CIs3Av4BQ_1t5tSH8jyduwkW_dvNgE";
+        // Aller cehrcher tokenLocal dans le data storage
+        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjQ3OTMwNTgsImV4cCI6MTYyNTM5Nzg1OH0.YAPsZ4WWgGF7BNbQ6Kwt5Om7gQX2NEgkC77JDMjk7-g"; 
+        // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ3OTMxMzgsImV4cCI6MTYyNTM5NzkzOH0.aN0m390nMLqI3CIs3Av4BQ_1t5tSH8jyduwkW_dvNgE";
         let data = {
 			method: 'GET',
 			credentials: 'same-origin',
@@ -69,13 +70,14 @@ const Rappels = ({route, navigation,  props }) => {
 			headers: {
 				'Accept': '*/*',
 				'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+token,
-                // 'Authorization': 'Bearer '+tokenLocal,
+                // 'Authorization': 'Bearer '+token,
+                'Authorization': 'Bearer '+tokenLocal,
             },
 		}
-
+        // Aller cehrcher useritemId dans le data storage
+        useritemId = "5f0b3d696aceb4067dfcc51e";
         // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-        fetch(`https://seedyapp.tk/reminder/`, data)
+        fetch(`http://localhost:4000/gardens/user/${useritemId}`, data)
         // fetch(`https://seedyapp.tk/reminder/user/5f0b3c733aead305c2eec26d`, data)
 
         //Passertoken\
@@ -157,19 +159,19 @@ const Rappels = ({route, navigation,  props }) => {
                         renderItem={({item}) => 
                             // <View>
                                 <View style={styles.eventBox}>
-                                    <View style={styles.eventContent}>
-                                        <View style={styles.eventContentFirst}>
+                                    <TouchableOpacity style={styles.eventContent} onPress={() => navigation.replace("GardenTList", { item: item.id, tokenPass: token })}>
+
+                                        {/* <View style={styles.eventContentFirst}>
                                             <Image style={styles.tinyLogo} source={{ uri: item.plantImg,}}/>
                                             <Text  style={styles.plante}>{item.plantName} | {item.work}</Text>
-                                            {/* <Image style={styles.tinyLogo} source={{ uri: item.imgwork,}}/> */}
+                                        </View> */}
+                                        <View style={styles.eventContentSec}>
+                                            <Text  style={styles.eventTime}>{item.description}</Text>
                                         </View>
                                         <View style={styles.eventContentSec}>
-                                            <Text  style={styles.eventTime}>Le {item.actionDate}</Text>
+                                            <Text  style={styles.description}>{item.id}</Text>
                                         </View>
-                                        <View style={styles.eventContentSec}>
-                                            <Text  style={styles.description}>Vous devez : {item.title}</Text>
-                                        </View>
-                                    </View>
+                                    </TouchableOpacity>
                                 </View>
                             // </View>
                         }
@@ -307,4 +309,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Rappels
+export default GardenT

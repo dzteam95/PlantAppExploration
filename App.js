@@ -30,6 +30,8 @@ import { Parrainage } from "./screens/";
 import { Delete } from "./screens/";
 import { Compte } from "./screens/";
 import { ForgotPasswordScreen } from "./screens/";
+import { GardenT } from "./screens/";
+import { GardenTList } from "./screens/";
 
 
 
@@ -48,7 +50,7 @@ const theme = {
 const Stack = createStackNavigator();
 
 const App = () => {
-    const [initialRoute, setRoute] = useState('Login')
+    const [initialRoute, setRoute] = useState('Welcome')
     const readData = async () => {
         try {
             const userJeton = await AsyncStorage.getItem('id_token')      
@@ -113,6 +115,8 @@ const App = () => {
                 <Stack.Screen name="DataShare" component={DataShare}/>
                 <Stack.Screen name="Rappels" component={Rappels}/>
                 <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen}/>
+                <Stack.Screen name="GardenT" component={GardenT}/>
+                <Stack.Screen name="GardenTList" component={GardenTList}/>
 
             </Stack.Navigator>
         </NavigationContainer>

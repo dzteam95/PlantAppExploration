@@ -76,7 +76,7 @@ const Login = ({ navigation }) => {
 		}
 
 		//fetch Statu == 200
-		fetch('https://seedy.adnanenabil.com/users/authenticate', data)
+		fetch('https://seedyapp.tk/users/authenticate', data)
 		.then( res => {
 
 			//Statut getted
@@ -103,15 +103,15 @@ const Login = ({ navigation }) => {
 					// console.log('user saved');
 				}
 				// fetch get token 
-				fetch('https://seedy.adnanenabil.com/users/authenticate', data)
+				fetch('https://seedyapp.tk/users/authenticate', data)
 				.then((response) => response.json())
 				
 				.then((responseData) => {
 					// console.log(responseData.sexe);
 					console.log(responseData.token);
 					// saveItem('id_token', responseData.token),
-					if (responseData.sexe == true){
-					// if (responseData.isP == true){
+					// if (responseData.sexe == true){
+					if (responseData.isP == true){
 						isP = "p";
 					}else{
 						isP = "f";
@@ -121,12 +121,12 @@ const Login = ({ navigation }) => {
 					// console.log(responseData.id);
 					// console.log(isP);
 					saveData('id_token', responseData.token),
-					// saveData('levelSubscription', responseData.levelSubscription),
-					saveData('levelSubscription', "4"),
-					// console.log(responseData.levelSubscription);
+					saveData('levelSubscription', responseData.levelSubscription),
+					// saveData('levelSubscription', "4"),
+					console.log(responseData.levelSubscription);
 					// premium 
-					// console.log('premiumLevelStorage : ',isP);
-					// saveData('premiumLevelStorage', responseData.isP),
+					console.log('premiumLevelStorage : ',isP);
+					saveData('premiumLevelStorage', isP),
 					navigation.reset({
 						index: 0,
 						routes: [{ name: 'Home' }],

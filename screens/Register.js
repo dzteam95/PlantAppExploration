@@ -30,7 +30,7 @@ const Register = ({ navigation }) => {
 			},
 		}
 		
-		fetch('https://seedy.adnanenabil.com/users/register',data)
+		fetch('https://seedyapp.tk/users/register',data)
 		.then((response) => {
 			//Statut getted
 			console.log(response.status);
