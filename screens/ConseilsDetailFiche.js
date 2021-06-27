@@ -64,7 +64,7 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
             case 'infossicks':
             //   console.log('infossicks');
                 // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-                fetch(`https://seedy.adnanenabil.com/infossicks/${route.params.item}`, data)
+                fetch(`https://seedyapp.tk/infossicks/${route.params.item}`, data)
 
                 //Passertoken\
                 
@@ -83,7 +83,7 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
             case 'infosravages':
             //   console.log('infosravages');
                 // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-                fetch(`https://seedy.adnanenabil.com/infosravages/${route.params.item}`, data)
+                fetch(`https://seedyapp.tk/infosravages/${route.params.item}`, data)
 
                 //Passertoken\
                 
@@ -277,9 +277,9 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
                                         <View style={styles.eventContentL}>
                                             <Text style={styles.info}>{result.description}</Text>
                                         </View>
-                                        <View style={styles.eventContentR}>
+                                        {/* <View style={styles.eventContentR}>
                                             <Text style={styles.info}>{result.t1}</Text>
-                                        </View>
+                                        </View> */}
                                     </View>
                                 </TouchableOpacity>
                             </View>
@@ -570,12 +570,14 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         height:'auto',
         paddingBottom:30,
+        marginRight:20,
     },
     eventContentR: {
         flex:1,
         flexDirection: 'column',
         alignItems: 'flex-start',
         height:'auto',
+        
     },
 
     eventList:{
