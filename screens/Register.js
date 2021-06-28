@@ -21,7 +21,7 @@ const Register = ({ navigation }) => {
 				email:email.value,
 				username:username.value,
 				hash:password.value,
-				levelSubscription:"1",
+
 			}),
 			headers: {
 				'Accept': 'application/json',

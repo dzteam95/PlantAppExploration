@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     Text,
@@ -7,42 +7,16 @@ import {
     Switch,
     FlatList,
     Image,
-    AsyncStorage,
 } from 'react-native';
 import {COLORS} from "../constants";
 
 const Subscription = ({ navigation }) => {
-    useEffect(() => {
-        readInfo()
-        return /*(
-            //readData()
-        )*/
-    }, [])
+        const data = [
+                {id:1, name:'Petite Graine', price:'4,99', slug:'PetiteGraine', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-petite-graine.png'},
+                {id:2, name:'Jeune Pousse', price:'7,99', slug:'JeunePousse', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-Jeune-pousse-.png'},
+                {id:3, name:'Sequoia', price:'13,99', slug:'Sequoia', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-Sequoia.png'},
+            ];
 
-    const [userLevel, setLevelSubscription] = useState({ value: '', error: '' })
-    const data = [
-            {id:1,idStr:"1", name:'Free', price:'0,00', slug:'Free', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-petite-graine.png'},
-            {id:2,idStr:"2", name:'Petite Graine', price:'4,99', slug:'PetiteGraine', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-petite-graine.png'},
-            {id:3,idStr:"3", name:'Jeune Pousse', price:'7,99', slug:'JeunePousse', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-Jeune-pousse-.png'},
-            {id:4,idStr:"4", name:'Sequoia', price:'13,99', slug:'Sequoia', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-Sequoia.png'},
-        ];   
-    
-    const readInfo = async () => {
-        try {
-            const userLevel = await AsyncStorage.getItem('levelSubscription')      
-            if (userLevel !== null) {
-                // console.log('jeton ok')
-                setLevelSubscription({ 
-                    value: userLevel,
-                });
-                // console.log(userLevel);
-            }else{
-                console.log('jeton pas ok')
-            }
-        } catch (e) {
-            //alert('Failed to fetch the data from storage')
-        }  
-    }
 
     return (
         <View style={styles.container}>
@@ -51,6 +25,9 @@ const Subscription = ({ navigation }) => {
                     <Text style={styles.name}>
                         Abonnements
                     </Text>
+                        <TouchableOpacity onPress={() => navigation.replace('Profile')}>
+                            <Text style={styles.txt}>Retour</Text>
+                        </TouchableOpacity>
                 </View>
             </View>
 
@@ -65,7 +42,7 @@ const Subscription = ({ navigation }) => {
                         }}
                         renderItem={({item}) => {
                             return (
-                                <View style={ item.idStr === userLevel.value ? styles.menuBoxLevel : styles.menuBox} >
+                                <View style={styles.menuBox} >
                                     <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('SubscriptionDetail', { itemId: item.id})}>
                                         <View style={styles.eventContentFirst}>
                                             <Image style={styles.tinyLogo} source={{ uri: item.icon,}}/>
@@ -108,17 +85,11 @@ const styles = StyleSheet.create({
         paddingRight:20,
         fontWeight: "900",
         width: 400 | "100%",
-        height: 900 | "100%",
+        height: 400 | "100%",
 
     },
     menuBox:{
         backgroundColor: "#DCDCDC",
-        borderRadius:10,
-        margin:10,
-
-    },
-    menuBoxLevel:{
-        backgroundColor: COLORS.greenLight,
         borderRadius:10,
         margin:10,
 
@@ -130,7 +101,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
         marginTop:20,
         paddingLeft:20,
-        
+
     },
     infoPrice:{
         fontSize:18,
@@ -139,7 +110,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
         marginTop:20,
         paddingLeft:20,
-        
+
     },
     eventContentFirst: {
         flex:1,

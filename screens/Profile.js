@@ -1,91 +1,94 @@
-import React, { Component } from 'react';
+import React, { Component,useState } from 'react';
 import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity
+    TouchableOpacity,
+    Modal,
+    Pressable
 } from 'react-native';
 import {COLORS} from "../constants";
 
 const Profile = ({ navigation }) => {
     const [modalVisible, setModalVisible] = useState(false);
 
-        return (
-            <View style={styles.container}>
-                <View style={styles.body}>
+    return (
+        <View style={styles.container}>
+            <View style={styles.centeredView}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                    }}
+                >
                     <View style={styles.centeredView}>
-                        <Modal
-                            animationType="slide"
-                            transparent={true}
-                            visible={modalVisible}
-                            onRequestClose={() => {
-                                Alert.alert("Modal has been closed.");
-                                setModalVisible(!modalVisible);
-                            }}
-                        >
-                            <View style={styles.centeredView}>
-                                <View style={styles.modalView}>
-                                    <Pressable
-                                        style={[styles.button, styles.buttonClose]}
-                                        onPress={() => setModalVisible(!modalVisible)}
-                                    >
-                                        <Text style={styles.textStyle}>x</Text>
-                                    </Pressable>
-                                    <Text style={styles.modalText}>Envie de discuter ?</Text>
-                                    <Text style={styles.modalText}>Chez seedy, on est à l'écoute. Ne soyez pas timide, envoyez nous un petit email. on sera ravi de y'répondre</Text>
-                                    <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('Subscription')}>
-                                        <Text  style={styles.txt}>Envoyer un mail</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('Subscription')}>
-                                        <Text  style={styles.txt}>Contacte nos sur messenger</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('Subscription')}>
-                                        <Text  style={styles.txt}>Consulter notre FAQ</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                        </Modal>
-                        <Pressable
-                            style={[styles.button, styles.buttonOpen]}
-                            onPress={() => setModalVisible(true)}
-                        >
-                            <Text style={styles.textStyle}>Show Modal</Text>
-                        </Pressable>
+                        <View style={styles.modalView}>
+                            <Pressable
+                                style={[styles.button, styles.buttonClose]}
+                                onPress={() => setModalVisible(!modalVisible)}
+                            >
+                                <Text style={styles.textStyle}>x</Text>
+                            </Pressable>
+                            <Text style={styles.modalText}>Envie de discuter ?</Text>
+                            <Text style={styles.modalText}>Chez seedy, on est à l'écoute. Ne soyez pas timide, envoyez nous un petit email. on sera ravi de y'répondre</Text>
+                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('Subscription')}>
+                                <Text  style={styles.txt}>Envoyer un mail</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('Subscription')}>
+                                <Text  style={styles.txt}>Contacte nos sur messenger</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('Subscription')}>
+                                <Text  style={styles.txt}>Consulter notre FAQ</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <Text style={styles.name}>Mon profil</Text>
+                </Modal>
+                <Pressable
+                    style={[styles.button, styles.buttonOpen]}
+                    onPress={() => setModalVisible(true)}
+                >
+                    <Text style={styles.textStyle}>Show Modal</Text>
+                </Pressable>
+            <View style={styles.body}>
 
-                    <View style={styles.bodyContent}>
-                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Subscription')}>
-                            <Text  style={styles.txt}>Mon abonnement</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Parrainage')}>
-                            <Text style={styles.txt} >Parrainage</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer}>
-                            <Text  style={styles.txt}>Mes favoris</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer}>
-                            <Text  style={styles.txt}>Mes informations</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('HelpUs')}>
-                            <Text  style={styles.txt}>Améliorer mon application</Text>
-                        </TouchableOpacity>
-                        <Pressable
-                            style={[styles.button, styles.buttonContainer]}
-                            onPress={() => setModalVisible(true)}
-                        >
-                            <Text  style={styles.txt}>Aide et contact</Text>
-                        </Pressable>
-                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Welcome')}>
-                            <Text  style={styles.txt}>Déconnexion</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Compte')}>
-                            <Text style={styles.txt}>Mon compte</Text>
-                        </TouchableOpacity>
-                    </View>
+                </View>
+                <Text style={styles.name}>Mon profil</Text>
+
+                <View style={styles.bodyContent}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Subscription')}>
+                        <Text  style={styles.txt}>Mon abonnement</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Parrainage')}>
+                        <Text style={styles.txt} >Parrainage</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonContainer}>
+                        <Text  style={styles.txt}>Mes favoris</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('ProfileDetail')}>
+                        <Text  style={styles.txt}>Mes informations</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('HelpUs')}>
+                        <Text  style={styles.txt}>Améliorer mon application</Text>
+                    </TouchableOpacity>
+                    <Pressable
+                        style={[styles.button, styles.buttonContainer]}
+                        onPress={() => setModalVisible(true)}
+                    >
+                        <Text  style={styles.txt}>Aide et contact</Text>
+                    </Pressable>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Welcome')}>
+                        <Text  style={styles.txt}>Déconnexion</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Compte')}>
+                        <Text style={styles.txt}>Mon compte</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
-        );
+        </View>
+    );
 
 }
 

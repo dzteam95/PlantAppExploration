@@ -1,133 +1,76 @@
-import React, { useState,useEffect } from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
-    Switch,
-    FlatList,
-    Image,
-    Linking,
-    ImageBackground,
+    TextInput,
     Button,
+    TouchableHighlight,
     Alert,
-    ScrollView,
-    setState,
-    SectionList,
-    AsyncStorage,
+    Image,
+    FlatList,
+    TouchableOpacity
 } from 'react-native';
 import {COLORS} from "../constants";
-import {Boarding1} from "../constants/images";
-import {SunConseil} from "../constants/images";
-import {WaterConseil} from "../constants/images";
-import {SpaceConseil} from "../constants/images";
-import {PHConseil} from "../constants/images";
-import {ClimatConseil} from "../constants/images";
-import {SizingConseil} from "../constants/images";
-import {Floraison} from "../constants/images";
-import {Germination} from "../constants/images";
-import {Plus} from "../constants/images";
-import {Fruit} from "../constants/images";
-import {SemisExt, SemisInt, Plantation} from "../constants/images";
 
+export default class Rappels extends Component {
 
-const Rappels = ({route, navigation,  props }) => {
-    const [search, setSearch] = useState({ value: '', error: '' })
-    const [token, setToken] = useState({ value: '', error: '' })
-    const [result, setResult] = useState({ value: '', error: '' })
-    const [resultPlant, setResultPlant] = useState({ value: '', error: '' })
-    const [userId, setUserId] = useState({ value: '', error: '' })
-    const currentDay = new Date();
-    const weekdays= [
-        {id:0, day:'dimanche'},
-        {id:1, day:'lundi'},
-        {id:2, day:'mardi'},
-        {id:3, day:'mercredi'},
-        {id:4, day:'jeudi'},
-        {id:5, day:'vendredi'},
-        {id:6, day:'samedi'},
-    ];
-    const currentDayName = weekdays[currentDay.getDay()];
-        // console.log(currentDayName);
-
-    useEffect(() => {
-        readToken()
-        // getParsedDate(currentDay)
-        searchUserReminderFunction()
-        return /*(
-            //readData()
-        )*/
-    }, [])
-
-    searchUserReminderFunction = async () => {
-        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjMzMTQyNDUsImV4cCI6MTYyMzkxOTA0NX0.F21DuctCC5oFKcl6_3iRQ05iaKH_t6KlsdE81Jdzbm8"; 
-        let data = {
-			method: 'GET',
-			credentials: 'same-origin',
-			mode: 'same-origin',
-			headers: {
-				'Accept': '*/*',
-				'Content-Type': 'application/json',
-                // 'Authorization': 'Bearer '+token,
-                'Authorization': 'Bearer '+tokenLocal,
-            },
-		}
-
-        // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-        fetch(`http://localhost:4000/reminder/user/5f0b3c733aead305c2eec26d`, data)
-
-        //Passertoken\
-        
-            .then((responsesearch) => responsesearch.json())
-            .then((jsonsearch) => {
-            // console.debug(jsonsearch);
-            // console.log(jsonsearch);
-            
-                setResult(jsonsearch);
-            //this.setState({ datasearch: jsonsearch.data.plant });
-            })
-            .catch((error) => console.error(error))
-            .finally(() => {
-            //this.setState({ isLoadingSearch: false });
-            })
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [
+                {id:1, day:'lundi'},
+                {id:2, day:'mardi'},
+                {id:3, day:'mercredi'},
+                {id:4, day:'jeudi'},
+                {id:5, day:'vendredi'},
+                {id:6, day:'samedi'},
+                {id:7, day:'dimanche'},
+            ],
+            dataRappel: [
+                {id:1, plant: "Pivoine", work:"Arosage", imghref:"https://www.notretemps.com/cache/com_zoo_images/02/pivoine-arbustive_1e16ee07534cbe74c9f43fb1dcef81d3.jpg", imgwork:"https://leplanificateurdesciences.org/images/sae/drop-148199_640.png"},
+                {id:1, plant: "Menthe", work:"Semis", imghref:"https://img-3.journaldesfemmes.fr/DNaVMu1U2BeYLniB0GQaD88Luog=/1240x/smart/c05ed9e0c3384cbdb6537c22ecf63337/ccmcms-jdf/10660976.jpg", imgwork:"https://www.monpetitcoinvert.com/blog/wp-content/uploads/2018/12/Le-semis-a-la-volee.jpg"}
+            ],
+            search: '',
+            text: '',
+            currentDay: new Date(),
+        }
     }
-    
+
     eventClickListener = (viewId) => {
-        Alert.alert("Info", "Passez par une fiche plante pour ajouter un rappel !");
-        console.log('Date:'+currentDay ,);
+        Alert.alert("alert", "Must show input ");
+        console.log('Date:'+this.state.currentDay ,);
     }
 
-    const readToken = async () => {
-        try {
-            const userJeton = await AsyncStorage.getItem('id_token')      
-            if (userJeton !== null) {
-                console.log('jeton ok ! : ',userJeton)
-                setToken({ 
-                    value: userJeton,
-                });
-            }else{
-                console.log('jeton pas ok')
-            }
-        } catch (e) {
-                //alert('Failed to fetch the data from storage')
-        } 
-        try {
-            const userId = await AsyncStorage.getItem('userId')      
-            if (userId !== null) {
-                console.log('userId ok ! : ',userId)
-                setUserId({ 
-                    value: userId,
-                });
-            }else{
-                console.log('userId pas ok')
-            }
-        } catch (e) {
-          //alert('Failed to fetch the data from storage')
-        }  
+    searchFilterFunction = (search) => {
+
+        //Met a jour le event text
+        this.setState({ search });
+        const newHandleSearch = search;
+        // console.log(search);
+        console.log('requette search is : ',newHandleSearch);
+
+    //     // console.log(`http://localhost:3030/v1/plants/name/${newHandleSearch}`);
+    //     fetch(`https://seedy.adnanenabil.com/v1/plants/name/${newHandleSearch}`)
+        
+        // Passertoken\
+        
+    //       .then((responsesearch) => responsesearch.json())
+    //       .then((jsonsearch) => {
+    //         // console.debug(jsonsearch);
+    //         //console.log(jsonsearch);
+    //         this.setState({ datasearch: jsonsearch.data.plant });
+    //       })
+    //       .catch((error) => console.error(error))
+    //       .finally(() => {
+    //         this.setState({ isLoadingSearch: false });
+    //       });  
     }
 
-    return (
-        <View style={styles.container}>
+    render() {
+        const { search } = this.state;
+        return (
+            <View style={styles.container}>
 
                 <View style={styles.header}>
                     <View style={styles.headerContent}>
@@ -148,38 +91,10 @@ const Rappels = ({route, navigation,  props }) => {
                         /> */}
                     </View>
                 </View>
-                <SectionList
-                        sections={[
-                            {title: "", data: result},                            
-                        ]}
-                        renderItem={({item}) => 
-                            // <View>
-                                <View style={styles.eventBox}>
-                                    <View style={styles.eventContent}>
-                                        <View style={styles.eventContentFirst}>
-                                            <Image style={styles.tinyLogo} source={{ uri: item.plantImg,}}/>
-                                            <Text  style={styles.plante}>{item.plantName} | {item.work}</Text>
-                                            {/* <Image style={styles.tinyLogo} source={{ uri: item.imgwork,}}/> */}
-                                        </View>
-                                        <View style={styles.eventContentSec}>
-                                            <Text  style={styles.eventTime}>Le {item.actionDate}</Text>
-                                        </View>
-                                        <View style={styles.eventContentSec}>
-                                            <Text  style={styles.description}>Vous devez : {item.title}</Text>
-                                        </View>
-                                    </View>
-                                </View>
-                            // </View>
-                        }
-                        renderSectionHeader={({section}) => 
-                            <Text style={styles.sectionHeader}>{section.title}</Text>
-                        }
-                        keyExtractor={(item, index) => index}
-                    />
-                {/* <FlatList
+                <FlatList
                     enableEmptySections={true}
                     style={styles.eventList}
-                    data={weekdays}
+                    data={this.state.data}
                     keyExtractor= {(item) => {
                         return item.id;
                     }}
@@ -192,13 +107,13 @@ const Rappels = ({route, navigation,  props }) => {
                                 <FlatList
                                     enableEmptySections={true}
                                     style={styles.eventList}
-                                    data={result}
+                                    data={this.state.dataRappel}
                                     keyExtractor= {(item) => {
                                         return item.id;
                                     }}
                                     renderItem={({item}) => {
                                         return (
-                                            <TouchableOpacity onPress={() => this.eventClickListener("row")}>
+                                            <TouchableOpacity /*onPress={() => this.eventClickListener("row")}*/>
                                                 <View style={styles.eventBox}>
                                                     <View style={styles.eventContent}>
                                                         <View style={styles.eventContentFirst}>
@@ -209,7 +124,7 @@ const Rappels = ({route, navigation,  props }) => {
                                                         <View style={styles.eventContentSec}>
                                                             <Text  style={styles.eventTime}>10:00 am - 10:45 am</Text>
                                                             
-                                                            <Text  style={styles.description}>Lorem ipsum dolor sit amet, elit consectetur</Text>
+                                                            {/* <Text  style={styles.description}>Lorem ipsum dolor sit amet, elit consectetur</Text> */}
                                                         </View>
                                                     </View>
                                                 </View>
@@ -218,9 +133,10 @@ const Rappels = ({route, navigation,  props }) => {
                                 }}/>
                             </TouchableOpacity>
                         )
-                    }}/> */}
+                    }}/>
             </View>
-    );
+        );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -304,5 +220,3 @@ const styles = StyleSheet.create({
         fontWeight:'900',
     },
 });
-
-export default Rappels

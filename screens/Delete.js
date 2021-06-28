@@ -39,20 +39,15 @@ const Delete = ({navigation}) => {
 
   return (
     <View style={styles.containerGlobal}>
-      <View style={styles.row}>
-        <TouchableOpacity onPress={() => navigation.replace('Home')}>
-          <Text style={styles.txt}>Back</Text>
-        </TouchableOpacity>
-      </View>
       <Text style={styles.title}>Supprimer mon compte</Text>
-      <Text style={styles.titleDeux}>Supprimer mon compte</Text>
+      <Text style={styles.titleDeux}>Est-tu sûr(e)?</Text>
       <Text style={styles.txt}>
         La suppression de compte est irréversible, toutes les données seront
         supprimés, y compris l'abonnement auquel tu auras souscrit. Si il y'en a
         un !
       </Text>
 
-      <Text style={styles.txt}>
+      <Text style={styles.txtDeux}>
         Pour confirmer la suppression, renseigne ton mot de passe{' '}
       </Text>
 
@@ -67,14 +62,15 @@ const Delete = ({navigation}) => {
       />
 
       <View style={styles.connexion}>
-        <Button title={'Delete'} mode="contained" onPress={onLoginPressed} />
+        <Button color="#ffffff" title={'Supprimer'} mode="contained" onPress={onLoginPressed} />
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  title: {fontSize: SIZES.h1, marginTop: 50, marginBottom: 50},
+  title: {fontSize: SIZES.h1, marginTop: 90},
+  titleDeux:{fontSize: SIZES.h1, marginTop: 50, marginBottom: 50, color:COLORS.greenDark},
   containerGlobal: {
     flex: 1,
     alignItems: 'center',
@@ -83,13 +79,13 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 70,
-    backgroundColor: COLORS.greenLight,
+    backgroundColor: COLORS.white,
     marginTop: 30,
     width: '80%',
     borderRadius: 10,
   },
   connexion: {
-    marginTop: 150,
+    marginTop: 80,
     alignItems: 'center',
     backgroundColor: COLORS.greenDark,
     borderRadius: 10,
@@ -100,7 +96,9 @@ const styles = StyleSheet.create({
   },
   row: {width: '100%', alignItems: 'center', marginTop: 50},
   rowInput: {width: '100%', alignItems: 'center', marginTop: 20},
-  txt: {width: '45%', textAlign: 'right'},
+  txt: {width: '90%'},
+  txtDeux: {width: '90%',marginTop: 50},
+
   link: {width: '45%', textAlign: 'right', color: COLORS.greenDark},
   forgot: {color: COLORS.greenLight},
 });

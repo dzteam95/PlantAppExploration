@@ -14,6 +14,9 @@ const Compte = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.body}>
         <Text style={styles.name}>Mon compte</Text>
+        <TouchableOpacity onPress={() => navigation.replace('Profile')}>
+          <Text style={styles.txt}>Retour</Text>
+        </TouchableOpacity>
 
         <View style={styles.bodyContent}>
           <TouchableOpacity style={styles.buttonContainer}>

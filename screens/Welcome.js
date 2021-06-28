@@ -6,19 +6,21 @@ import {Bg} from "../constants/images";
 
 const Welcome = ({ navigation }) => {
 
-	
+
 	return(
 		<ImageBackground source={Bg} style={styles.image}>
 		<View style={styles.containerGlobal} >
 		<Text style={styles.title}>Voici <Text style={styles.seedy}> Seedy</Text>, le conseiller en jardinage pour ne plus se prendre la tête </Text>
 		<View style={styles.decouverte}>
 			<Button
+				color="#ffffff"
 				title="Découvrir Seedy"
 				onPress={() => navigation.replace('Onboarding')}
 			/>
 		</View>
 		<View style={styles.connexion}>
 			<Button
+				color="#ffffff"
 				title="Me connecter"
 				onPress={() => navigation.replace('Login')}
 			/>
@@ -28,9 +30,9 @@ const Welcome = ({ navigation }) => {
 		</TouchableOpacity>
 		</View>
 		</ImageBackground>
-	
+
 	)
-	
+
 }
 
 const styles = StyleSheet.create({
@@ -41,7 +43,7 @@ const styles = StyleSheet.create({
 	decouverte:{alignItems: 'center', backgroundColor:COLORS.yellowLight,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 110,fontWeight: "bold",color:COLORS.white,},
 	txt:{marginTop:20,},
 	seedy:{color:COLORS.greenDark,}
-	
+
 })
 
 export default Welcome

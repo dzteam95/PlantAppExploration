@@ -30,6 +30,8 @@ import { Parrainage } from "./screens/";
 import { Delete } from "./screens/";
 import { Compte } from "./screens/";
 import { ForgotPasswordScreen } from "./screens/";
+import { Parcelles } from "./screens/";
+import { AddParcelle } from "./screens/";
 
 
 
@@ -51,7 +53,7 @@ const App = () => {
     const [initialRoute, setRoute] = useState('Login')
     const readData = async () => {
         try {
-            const userJeton = await AsyncStorage.getItem('id_token')      
+            const userJeton = await AsyncStorage.getItem('id_token')
             if (userJeton !== null) {
                 setRoute('Home')
                 // //initialRoute = 'Home'
@@ -64,7 +66,7 @@ const App = () => {
             }
         } catch (e) {
           //alert('Failed to fetch the data from storage')
-        }  
+        }
     }
 
     useEffect(() => {
@@ -75,7 +77,7 @@ const App = () => {
     }, [])
 
     // console.log(initialRoute)
-      
+    
     return (
         <NavigationContainer theme={theme}>
             <Stack.Navigator
@@ -113,7 +115,8 @@ const App = () => {
                 <Stack.Screen name="DataShare" component={DataShare}/>
                 <Stack.Screen name="Rappels" component={Rappels}/>
                 <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen}/>
-
+	            <Stack.Screen name="Parcelles" component={Parcelles}/>
+	            <Stack.Screen name="AddParcelle" component={AddParcelle}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
@@ -121,4 +124,4 @@ const App = () => {
 
 export default () => {
     return <App />;
-};
+}

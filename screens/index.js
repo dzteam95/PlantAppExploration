@@ -23,6 +23,8 @@ import SubscriptionDetail from "./SubscriptionDetail";
 import HelpUs from "./HelpUs";
 import DataShare from "./DataShare";
 import ForgotPasswordScreen from "./ForgotPasswordScreen";
+import Parcelles from "./Parcelles";
+import AddParcelle from "./AddParcelle";
 
 
 export {
@@ -51,4 +53,7 @@ export {
     DataShare,
     Logout,
     ForgotPasswordScreen,
+    Parcelles,
+    AddParcelle,
+
 };

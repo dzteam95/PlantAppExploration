@@ -1,12 +1,10 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home} from '../screens/';
 import {Profile} from '../screens/';
 import {Jardin} from '../screens/';
 import {Rappels} from '../screens/';
 import {Conseils} from '../screens/';
-import {Parrainage} from '../screens/';
 
 import {COLORS} from '../constants';
 import {ProfilVertFonce} from "../constants/icons";
@@ -14,7 +12,8 @@ import {ProfilVertFonce} from "../constants/icons";
 const Tab = createBottomTabNavigator();
 
 const tabOptions = {
-  showLabel: false,
+  	tabBarVisible:true,
+		showLabel: false,
   style: {
     height: '10%',
   },
