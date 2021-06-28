@@ -64,7 +64,7 @@ const GardenTList = ({route, navigation,  props }) => {
 
     searchUserReminderFunction = async () => {
         // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjMzMTQyNDUsImV4cCI6MTYyMzkxOTA0NX0.F21DuctCC5oFKcl6_3iRQ05iaKH_t6KlsdE81Jdzbm8"; 
-        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ3OTMxMzgsImV4cCI6MTYyNTM5NzkzOH0.aN0m390nMLqI3CIs3Av4BQ_1t5tSH8jyduwkW_dvNgE";
+        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ4ODM1MDUsImV4cCI6MTYyNTQ4ODMwNX0.yBtRJRua9JL_fnAuwX4OGG9nO08mbnvk0Fpm1UaR3fQ";
         let data = {
 			method: 'GET',
 			credentials: 'same-origin',
@@ -78,14 +78,11 @@ const GardenTList = ({route, navigation,  props }) => {
             },
 		}
 
-        // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-        // fetch(`http://localhost:4000/plantspositions/${gardenId}`, data)
         fetch(`http://localhost:4000/plantspositions/garden/${route.params.item}`, data)
-        // fetch(`https://seedyapp.tk/reminder/user/5f0b3c733aead305c2eec26d`, data)
 
         //Passertoken\
         
-            .then((responsesearch) => responsesearch.json())
+            .then((jsonsearch) => jsonsearch.json())
             .then((jsonsearch) => {
             // console.debug(jsonsearch);
             // console.log(jsonsearch);
@@ -94,52 +91,38 @@ const GardenTList = ({route, navigation,  props }) => {
                 for (var i = 0; i < jsonsearch.length; i++){
                     var obj = jsonsearch[i];
                     
+                    //console.log(obj)
+
                     for (var key in obj){
                         var value = obj[key];
-                        // console.log(key + " : " + value)
                         if (key === "id_plant"){
-                            // console.log([plantsInfos, {id_plant : value}, {id_plant : value}] )
-                            // console.log(key)
-                            // console.log(value)
+                            // console.log(key + " : " + value)
+
+                    //         // console.log([plantsInfos, {id_plant : value}, {id_plant : value}] )
+                    //         // console.log(key)
+                    //         // console.log(value)
 
                             fetch(`http://localhost:4000/plants/${value}`, data)
-                            // .then((responsesearch) => responsesearch.json())
-                            .then((jsonsearch) => {
-                                console.log(jsonsearch)
-                                setPlantsInfos((plantsInfos) => [
-                                        ...plantsInfos,
-                                        value,
-                                      ]);
-                            })
-                            .catch((error) => console.error(error))
-                            .finally(() => {
-                            //this.setState({ isLoadingSearch: false });
-                            })
+                                .then((responseSecond) => responseSecond.json())
+                                .then((responseSecond) => {
+                                    // console.log(value , responseSecond)
+
+                                    // console.log("plantsInfos",plantsInfos)
+                                    setPlantsInfos((plantsInfos) => [
+                                            ...plantsInfos,
+                                            responseSecond,
+                                          ]);
+                                })
+                                .catch((error) => console.error(error))
+                                .finally(() => {
+                                //this.setState({ isLoadingSearch: false });
+                                })
 
                         }    
                     }
                 }
                 
-                // for (var i = 0; i < plantsInfos.length; i++){
-                //     var obj = plantsInfos[i];
-                    
-                //     for (var key in obj){
-                //         var value = obj[key];
-                //         // console.log(key + " : " + value)
-                //         console.log(plantsInfos) 
-                //     }
-                // }
-                // fetch(`http://localhost:4000/plantspositions/garden/${route.params.item}`, data)
-                // .then((responsesearch) => responsesearch.json())
-                // .then((jsonsearch) => {
-                //     console.log("yea")
-                // })
-                // .catch((error) => console.error(error))
-                // .finally(() => {
-                // //this.setState({ isLoadingSearch: false });
-                // })
-                // console.log(plantsInfos)
-            //this.setState({ datasearch: jsonsearch.data.plant });
+                
             })
             .catch((error) => console.error(error))
             .finally(() => {
@@ -168,7 +151,7 @@ const GardenTList = ({route, navigation,  props }) => {
         try {
             const userJeton = await AsyncStorage.getItem('id_token')      
             if (userJeton !== null) {
-                console.log('jeton ok ! : ',userJeton)
+                // console.log('jeton ok ! : ',userJeton)
                 setToken({ 
                     value: userJeton,
                 });
@@ -181,7 +164,7 @@ const GardenTList = ({route, navigation,  props }) => {
         try {
             const userId = await AsyncStorage.getItem('userId')      
             if (userId !== null) {
-                console.log('userId ok ! : ',userId)
+                // console.log('userId ok ! : ',userId)
                 setUserId({ 
                     value: userId,
                 });
@@ -192,27 +175,25 @@ const GardenTList = ({route, navigation,  props }) => {
           //alert('Failed to fetch the data from storage')
         }  
     }
-
+    // console.log("plantingfos result : ",plantsInfos)
     return (
         <View style={styles.container}>
 
                 <View style={styles.header}>
                     <View style={styles.headerContent}>
-                        <Text style={styles.name}>
-                           Rappels
+                        <Text style={styles.nameHeader}>
+                           Jardin Digital
                         </Text>
-                        <TouchableOpacity onPress={() => this.eventClickListener("row")}>
+                        <TouchableOpacity style={styles.addheader} onPress={() => navigation.replace("GardenTListV2", { item: route.params.item, tokenPass: this.tokenLocal })}>
+                            <Text style={styles.add}>
+                            V1
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.addheader} onPress={() => this.eventClickListener("row")}>
                             <Text style={styles.add}>
                             +
                             </Text>
                         </TouchableOpacity>
-                        {/* <TextInput
-                            style={styles.textInputStyle}
-                            onChangeText={this.searchFilterFunction}
-                            value={this.state.search}
-                            underlineColorAndroid="transparent"
-                            placeholder="Rechercher ... "
-                        /> */}
                     </View>
                 </View>
                 <SectionList
@@ -223,12 +204,15 @@ const GardenTList = ({route, navigation,  props }) => {
                             // <View>
                                 <View style={styles.eventBox}>
                                     <View style={styles.eventContent}>
-                                        <View style={styles.eventContentSec}>
+                                        {/* <View style={styles.eventContentSec}>
                                             <Text  style={styles.eventTime}>id_plant {item.id_plant}</Text>
-                                        </View>
+                                        </View> */}
                                         <View style={styles.eventContentSec}>
-                                            <Text  style={styles.description}>position_x {item.position_x} & position_y {item.position_y}</Text>
+                                            <Text  style={styles.eventTime}>{item.name}</Text>
                                         </View>
+                                        {/* <View style={styles.eventContentSec}>
+                                            <Text  style={styles.description}>position_x {item.position_x} & position_y {item.position_y}</Text>
+                                        </View> */}
                                     </View>
                                 </View>
                             // </View>
@@ -291,7 +275,6 @@ const styles = StyleSheet.create({
         height: "100%",
         borderRadius:10
     },
-    
     eventList:{
         marginTop:20,
     },
@@ -348,11 +331,19 @@ const styles = StyleSheet.create({
         color:"#151515",
         width:"70%",
     },
-
+    addheader:{
+        flex: 1,
+    },
     headerContent:{
         marginTop: 50,
         padding:30,
         flexDirection: 'row',
+    },
+    nameHeader:{
+        flex:5,
+        fontSize:22,
+        color:"#222222",
+        fontWeight:'900',
     },
     name:{
         fontSize:22,
@@ -360,7 +351,7 @@ const styles = StyleSheet.create({
         fontWeight:'900',
     },
     add:{
-        paddingLeft:"60%",
+        // paddingLeft:"20%",
         fontSize:22,
         color:"#222222",
         fontWeight:'900',

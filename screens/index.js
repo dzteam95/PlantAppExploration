@@ -25,6 +25,7 @@ import DataShare from "./DataShare";
 import ForgotPasswordScreen from "./ForgotPasswordScreen";
 import GardenT from "./GardenT"
 import GardenTList from "./GardenTList"
+import GardenTListV2 from "./GardenTListV2"
 
 export {
     Home,
@@ -53,5 +54,6 @@ export {
     Logout,
     ForgotPasswordScreen,
     GardenT,
-    GardenTList
+    GardenTList,
+    GardenTListV2
 };

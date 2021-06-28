@@ -61,7 +61,7 @@ const GardenT = ({route, navigation,  props }) => {
 
     searchUserReminderFunction = async () => {
         // Aller cehrcher tokenLocal dans le data storage
-        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjQ3OTMwNTgsImV4cCI6MTYyNTM5Nzg1OH0.YAPsZ4WWgGF7BNbQ6Kwt5Om7gQX2NEgkC77JDMjk7-g"; 
+        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ4ODM1MDUsImV4cCI6MTYyNTQ4ODMwNX0.yBtRJRua9JL_fnAuwX4OGG9nO08mbnvk0Fpm1UaR3fQ"; 
         // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ3OTMxMzgsImV4cCI6MTYyNTM5NzkzOH0.aN0m390nMLqI3CIs3Av4BQ_1t5tSH8jyduwkW_dvNgE";
         let data = {
 			method: 'GET',
