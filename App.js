@@ -32,6 +32,8 @@ import { Compte } from "./screens/";
 import { ForgotPasswordScreen } from "./screens/";
 import { Parcelles } from "./screens/";
 import { AddParcelle } from "./screens/";
+import { GardenT } from "./screens/";
+import { GardenTList } from "./screens/";
 
 
 
@@ -50,10 +52,10 @@ const theme = {
 const Stack = createStackNavigator();
 
 const App = () => {
-    const [initialRoute, setRoute] = useState('Login')
+    const [initialRoute, setRoute] = useState('Welcome')
     const readData = async () => {
         try {
-            const userJeton = await AsyncStorage.getItem('id_token')
+            const userJeton = await AsyncStorage.getItem('id_token')      
             if (userJeton !== null) {
                 setRoute('Home')
                 // //initialRoute = 'Home'
@@ -66,7 +68,7 @@ const App = () => {
             }
         } catch (e) {
           //alert('Failed to fetch the data from storage')
-        }
+        }  
     }
 
     useEffect(() => {
@@ -77,7 +79,7 @@ const App = () => {
     }, [])
 
     // console.log(initialRoute)
-    
+      
     return (
         <NavigationContainer theme={theme}>
             <Stack.Navigator
@@ -117,6 +119,9 @@ const App = () => {
                 <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen}/>
 	            <Stack.Screen name="Parcelles" component={Parcelles}/>
 	            <Stack.Screen name="AddParcelle" component={AddParcelle}/>
+                <Stack.Screen name="GardenT" component={GardenT}/>
+                <Stack.Screen name="GardenTList" component={GardenTList}/>
+
             </Stack.Navigator>
         </NavigationContainer>
     );
@@ -124,4 +129,4 @@ const App = () => {
 
 export default () => {
     return <App />;
-}
+};
