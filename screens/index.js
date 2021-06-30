@@ -25,6 +25,9 @@ import DataShare from "./DataShare";
 import ForgotPasswordScreen from "./ForgotPasswordScreen";
 import GardenT from "./GardenT"
 import GardenTList from "./GardenTList"
+import Parcelles from "./Parcelles";
+import AddParcelle from "./AddParcelle";
+import ProfileDetail from "./ProfileDetail";
 
 export {
     Home,
@@ -53,5 +56,8 @@ export {
     Logout,
     ForgotPasswordScreen,
     GardenT,
-    GardenTList
+    GardenTList,
+    Parcelles,
+    AddParcelle,
+    ProfileDetail
 };

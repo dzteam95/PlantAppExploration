@@ -1,124 +1,131 @@
-import React, { Component } from 'react';
+import React, {useState,Component} from 'react';
 import {
-	StyleSheet,
-	Text,
-	View,
-	TextInput,
-	Button,
-	TouchableHighlight,
-	Alert
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  TouchableHighlight,
+  Alert, TouchableOpacity,
 } from 'react-native';
-import {COLORS} from "../constants";
+import {COLORS, SIZES} from '../constants';
 
-export default class AddParcelle extends Component {
-	
-	constructor(props) {
-		super(props);
-		state = {
-			shape_area: '',
-			size_l: '',
-			size_y: '',
-			size_c: '',
-			size_d: '',
-			description: '',
-		}
-	}
-	
-	onClickListener = (viewId) => {
-		Alert.alert("Alert", "Button pressed "+viewId);
-	}
-	
-	render() {
-		return (
-			<View style={styles.container}>
-				<View style={styles.inputContainer}>
-					<TextInput style={styles.inputs}
-					           placeholder="shape_area"
-					           underlineColorAndroid='transparent'
-					           onChangeText={(shape_area) => this.setState({shape_area})}/>
-				</View>
-				
-				<View style={styles.inputContainer}>
-					<TextInput style={styles.inputs}
-					           placeholder="size_l"
-					           keyboardType="numeric"
-					           underlineColorAndroid='transparent'
-					           onChangeText={(size_l) => this.setState({size_l})}/>
-				</View>
-				
-				<View style={styles.inputContainer}>
-					<TextInput style={styles.inputs}
-					           placeholder="size_y"
-					           secureTextEntry={true}
-					           underlineColorAndroid='transparent'
-					           onChangeText={(size_y) => this.setState({size_y})}/>
-				</View>
-				<View style={styles.inputContainer}>
-					<TextInput style={styles.inputs}
-					           placeholder="size_c"
-					           secureTextEntry={true}
-					           underlineColorAndroid='transparent'
-					           onChangeText={(size_c) => this.setState({size_c})}/>
-				</View>
-				<View style={styles.inputContainer}>
-					<TextInput style={styles.inputs}
-					           placeholder="size_d"
-					           secureTextEntry={true}
-					           underlineColorAndroid='transparent'
-					           onChangeText={(size_d) => this.setState({size_d})}/>
-				</View>
-				<View style={styles.inputContainer}>
-					<TextInput style={styles.inputs}
-					           placeholder="description"
-					           underlineColorAndroid='transparent'
-					           onChangeText={(description) => this.setState({description})}/>
-				</View>
-				
-				<TouchableHighlight style={[styles.buttonContainer, styles.addButton]} onPress={() => this.onClickListener('add')}>
-					<Text style={styles.addText}>Ajouter une parcelle</Text>
-				</TouchableHighlight>
-			</View>
-		);
-	}
+
+
+
+const AddParcelle = ({ navigation }) => {
+
+  const [shape_area, setShape_area] = useState({ value: '', error: '' })
+  const [size_l, setSize_l] = useState({ value: '', error: '' })
+  const [size_y, setSize_y] = useState({ value: '', error: '' })
+  const [size_c, setSize_c] = useState({ value: '', error: '' })
+  const [size_d, setSize_d] = useState({ value: '', error: '' })
+  const [description, setDescription] = useState({ value: '', error: '' })
+  const add = () => {
+
+    let data = {
+      method: 'POST',
+      credentials: 'same-origin',
+      mode: 'same-origin',
+      body: JSON.stringify({
+        shape_area:shape_area.value,
+        size_l:size_l.value,
+        size_y:size_y.value,
+        size_c:size_c.value,
+        size_d:size_d.value,
+        description:description.value,
+
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        //'X-CSRFToken': cookie.load('csrftoken')
+      },
+    }
+
+    fetch('https://seedyapp.tk/gardens/register',data)
+        .then((response) => {
+          //Statut getted
+          console.log(response.status);
+          if (response.status === 200) {
+            console.log('registred');
+
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'Parcelles' }],
+            })
+
+          }else{
+            console.log('not registrer or contain error');
+            //do nothing
+          }
+        })
+  }
+
+
+
+    return (
+        <View style={styles.containerGlobal} >
+          <View style={styles.row}>
+            <TouchableOpacity onPress={() => navigation.replace('Parcelles')}>
+              <Text style={styles.txt}>Retour</Text>
+            </TouchableOpacity>
+          </View>
+
+          <Text style={styles.title}>Créer une parcelle</Text>
+          <TextInput style={styles.input}
+                     placeholder="shape_area"
+                     label="shape_area"
+                     returnKeyType="next"
+                     value={shape_area.value}
+                     onChangeText={(text) => setShape_area({ value: text, error: '' })}
+          />
+          <TextInput style={styles.input}
+                     placeholder="size_l"
+                     label="size_l"
+                     returnKeyType="next"
+                     value={size_l.value}
+                     onChangeText={(text) => setSize_l({ value: text, error: '' })}
+          />
+          <TextInput  style={styles.input}
+                      placeholder="size_y"
+                      label="size_y"
+                      returnKeyType="next"
+                      value={size_y.value}
+                      onChangeText={(text) => setSize_y({ value: text, error: '' })}
+          />
+          <TextInput  style={styles.input}
+                      placeholder="size_c"
+                      label="size_c"
+                      returnKeyType="next"
+                      value={size_c.value}
+                      onChangeText={(text) => setSize_c({ value: text, error: '' })}
+          />
+          <TextInput  style={styles.input}
+                      placeholder="size_d"
+                      label="size_d"
+                      returnKeyType="next"
+                      value={size_d.value}
+                      onChangeText={(text) => setSize_d({ value: text, error: '' })}
+          />
+
+          <View style={styles.ajouter}>
+            <Button color="#ffffff" title={"ajouter"} mode="contained" onPress={add}/>
+          </View>
+        </View>
+)
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	inputContainer: {
-		borderBottomColor: '#F5FCFF',
-		backgroundColor: '#FFFFFF',
-		borderRadius:30,
-		borderBottomWidth: 1,
-		width:250,
-		height:45,
-		marginBottom:20,
-		flexDirection: 'row',
-		alignItems:'center'
-	},
-	inputs:{
-		height:45,
-		marginLeft:16,
-		borderBottomColor: '#FFFFFF',
-		flex:1,
-	},
-	
-	buttonContainer: {
-		height:45,
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginBottom:20,
-		width:250,
-		borderRadius:30,
-	},
-	addButton: {
-		backgroundColor:COLORS.greenLight,
-	},
-	addText: {
-		color: 'white',
-	}
-});
+
+  title:{fontSize:SIZES.h1,margin:30},
+  containerGlobal:{flex: 1, alignItems: 'center',width:'auto',height: 'auto',marginTop:30},
+  input:{height:50,backgroundColor:COLORS.greenLight,width:'80%',borderRadius: 10,margin:30},
+  enregistrer:{alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,marginTop:30},
+  Containercheckbox:{width:'100%',height:'auto',textAlign:'center', alignItems: 'center',margin:10},
+  checkbox: {paddingVertical:10,paddingHorizontal: 10, alignItems: 'center',width:'auto',height:'auto',marginLeft:25,marginTop:5},
+  label: {textAlign:'center'},
+  row:{marginTop:30},
+  txt:{textAlign: 'left',marginLeft:0,},
+})
+export default AddParcelle

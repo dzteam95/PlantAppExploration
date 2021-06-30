@@ -25,7 +25,6 @@ import { Subscription } from "./screens/";
 import { SubscriptionDetail } from "./screens/";
 import { HelpUs } from "./screens/";
 import { DataShare } from "./screens/";
-
 import { Parrainage } from "./screens/";
 import { Delete } from "./screens/";
 import { Compte } from "./screens/";
@@ -34,6 +33,7 @@ import { Parcelles } from "./screens/";
 import { AddParcelle } from "./screens/";
 import { GardenT } from "./screens/";
 import { GardenTList } from "./screens/";
+import { ProfileDetail } from "./screens/";
 
 
 
@@ -121,6 +121,7 @@ const App = () => {
 	            <Stack.Screen name="AddParcelle" component={AddParcelle}/>
                 <Stack.Screen name="GardenT" component={GardenT}/>
                 <Stack.Screen name="GardenTList" component={GardenTList}/>
+                <Stack.Screen name="ProfileDetail" component={ProfileDetail}/>
 
             </Stack.Navigator>
         </NavigationContainer>

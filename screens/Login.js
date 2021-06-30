@@ -205,8 +205,7 @@ return(
 			secureTextEntry
 		/>
 		<View style={styles.container}>
-			{/* <Text>Se souvenir de moi ? {isSelected.isSelect ? "👍" : "👎"}</Text> */}
-			<View style={styles.checkboxContainer}>				
+			<View style={styles.checkboxContainer}>
 				<CheckBox
 					style={{flex: 1, padding:70}}
 					onClick={()=>{
@@ -221,7 +220,7 @@ return(
 			</View>
 		</View>       
 		<View style={styles.connexion}>
-			<Button title={"Connexion"} mode="contained" onPress={onLoginPressed}/>
+			<Button  color={COLORS.white} title={"Connexion"} mode="contained" onPress={onLoginPressed}/>
 
 		</View>
 		<View style={styles.row}>

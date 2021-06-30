@@ -7,7 +7,7 @@ const OnboardingTwo = ({navigation}) => {
   return (
     <View style={styles.containerGlobal}>
       <View style={styles.container}>
-        <Button color="#222222" title="Passer" onPress={() => navigation.replace('Login')} />
+        <Button color="#222222" title="Passer" onPress={() => navigation.replace('Register')} />
         <Text style={styles.title}>Organisez</Text>
         <Text style={styles.txt}>
           Imaginez et créez votre jardin grâce à notre outil de virtualisation
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.yellowLight,
   },
   suivant: {
-    marginTop: 20,
+    marginTop: 200,
     alignItems: 'center',
     backgroundColor: COLORS.white,
     borderRadius: 10,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: COLORS.white,
   },
-  image: {flex: 1, justifyContent: 'center', width: 'auto', height: 'auto'},
+  image: {flex: 1, justifyContent: 'center', width: 'auto',  marginTop:100,},
 });
 
 export default OnboardingTwo;
