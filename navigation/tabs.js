@@ -44,13 +44,13 @@ const Tabs = () => {
       tabBarOptions={tabOptions}
       screenOptions={({route}) => ({
         tabBarIcon: ({focused}) => {
-          const tintColor = focused ? COLORS.primary : COLORS.gray;
+          const tintColor = focused ? COLORS.greenLight : COLORS.gray;
 
           switch (route.name) {
             case 'Conseils':
               return (
                 <Image
-                  source={require('../assets/icons/flash_icon.png')}
+                  source={require('../assets/icons/Fiches_vert_clair.png')}
                   resizeMode="contain"
                   style={{
                     tintColor: tintColor,
@@ -59,12 +59,11 @@ const Tabs = () => {
                   }}
                 />
               );
-            case 'Profile':
-              return <CameraButton />;
+
             case 'Jardin':
               return (
                 <Image
-                  source={require('../assets/icons/seed.png')}
+                  source={require('../assets/icons/Jardin_vert_clair.png')}
                   resizeMode="contain"
                   style={{
                     tintColor: tintColor,
@@ -76,7 +75,7 @@ const Tabs = () => {
             case 'Rappels':
               return (
                 <Image
-                  source={require('../assets/icons/heart_icon.png')}
+                  source={require('../assets/icons/Rappels_vert_clair.png')}
                   resizeMode="contain"
                   style={{
                     tintColor: tintColor,
@@ -85,13 +84,26 @@ const Tabs = () => {
                   }}
                 />
               );
+              case 'Profile':
+                  return (
+                      <Image
+                          source={require('../assets/icons/Profil_vert_clair.png')}
+                          resizeMode="contain"
+                          style={{
+                              tintColor: tintColor,
+                              width: 25,
+                              height: 25,
+                          }}
+                      />
+                  );
           }
         },
       })}>
       <Tab.Screen name="Conseils" component={Conseils} />
-      <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="Jardin" component={Jardin} />
       <Tab.Screen name="Rappels" component={Rappels} />
+        <Tab.Screen name="Profile" component={Profile} />
+
     </Tab.Navigator>
   );
 };

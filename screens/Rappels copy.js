@@ -51,72 +51,81 @@ const Rappels = ({route, navigation,  props }) => {
         // console.log(currentDayName);
 
     useEffect(() => {
+        readToken()
         // getParsedDate(currentDay)
         searchUserReminderFunction()
-        return /*() => {
-            readToken()
-        }*/
+        return /*(
+            //readData()
+        )*/
     }, [])
 
-    const searchUserReminderFunction = async () => {
+    searchUserReminderFunction = async () => {
+        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjMzMTQyNDUsImV4cCI6MTYyMzkxOTA0NX0.F21DuctCC5oFKcl6_3iRQ05iaKH_t6KlsdE81Jdzbm8"; 
+        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ3OTMxMzgsImV4cCI6MTYyNTM5NzkzOH0.aN0m390nMLqI3CIs3Av4BQ_1t5tSH8jyduwkW_dvNgE";
+        let data = {
+			method: 'GET',
+			credentials: 'same-origin',
+			mode: 'same-origin',
+			headers: {
+				'Accept': '*/*',
+				'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+token,
+                // 'Authorization': 'Bearer '+tokenLocal,
+            },
+		}
+
+        // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
+        fetch(`https://seedyapp.tk/reminder/`, data)
+        // fetch(`https://seedyapp.tk/reminder/user/5f0b3c733aead305c2eec26d`, data)
+
+        //Passertoken\
+        
+            .then((responsesearch) => responsesearch.json())
+            .then((jsonsearch) => {
+            // console.debug(jsonsearch);
+            // console.log(jsonsearch);
+            
+                setResult(jsonsearch);
+            //this.setState({ datasearch: jsonsearch.data.plant });
+            })
+            .catch((error) => console.error(error))
+            .finally(() => {
+            //this.setState({ isLoadingSearch: false });
+            })
+    }
+    
+    eventClickListener = (viewId) => {
+        Alert.alert("Info", "Passez par une fiche plante pour ajouter un rappel !");
+        console.log('Date:'+currentDay ,);
+    }
+
+    const readToken = async () => {
         try {
-            const token = await AsyncStorage.getItem('id_token')
-            if (token !== null) {
-                // console.log('jeton ok ! : ',token)
-                setToken({
-                    value: token,
+            const userJeton = await AsyncStorage.getItem('id_token')      
+            if (userJeton !== null) {
+                console.log('jeton ok ! : ',userJeton)
+                setToken({ 
+                    value: userJeton,
                 });
-                try {
-                    const userId = await AsyncStorage.getItem('userId')
-                    if (userId !== null) {
-                        let data = {
-                            method: 'GET',
-                            credentials: 'same-origin',
-                            mode: 'same-origin',
-                            headers: {
-                                'Accept': '*/*',
-                                'Content-Type': 'application/json',
-                                'Authorization': 'Bearer '+token,
-                                // 'Authorization': 'Bearer '+tokenLocal,
-                            },
-                        }
-                        // console.log("test :",userId)
-
-                        // fetch(`https://seedyapp.tk/reminder/user/60d838a3dfba4207d80744c0`, data)
-                        fetch(`https://seedyapp.tk/reminder/user/${userId}`, data)
-
-                        //Passertoken\
-
-                        .then((responsesearch) => responsesearch.json())
-                        .then((jsonsearch) => {
-                            // console.debug(jsonsearch);
-                            // console.log(jsonsearch);
-
-                                setResult(jsonsearch);
-                            //this.setState({ datasearch: jsonsearch.data.plant });
-                        })
-                        .catch((error) => console.error(error))
-                        .finally(() => {
-                        //this.setState({ isLoadingSearch: false });
-                        })
-                    }else{
-                        console.log('userId pas ok')
-                    }
-                } catch (e) {
-                //alert('Failed to fetch the data from storage')
-                }
             }else{
                 console.log('jeton pas ok')
             }
         } catch (e) {
                 //alert('Failed to fetch the data from storage')
-        }
-
-    }
-
-    eventClickListener = (viewId) => {
-        Alert.alert("Info", "Passez par une fiche plante pour ajouter un rappel !");
-        console.log('Date:'+currentDay ,);
+        } 
+        try {
+            const userId = await AsyncStorage.getItem('userId')      
+            if (userId !== null) {
+                console.log('userId ok ! : ',userId)
+                setUserId({ 
+                    value: userId,
+                });
+            }else{
+                console.log('userId pas ok')
+            }
+        } catch (e) {
+          //alert('Failed to fetch the data from storage')
+        }  
     }
 
     return (
@@ -297,6 +306,5 @@ const styles = StyleSheet.create({
         fontWeight:'900',
     },
 });
-
 
 export default Rappels

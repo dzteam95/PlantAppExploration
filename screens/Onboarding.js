@@ -6,7 +6,7 @@ import {Boarding1} from '../constants/images';
 const Onboarding = ({navigation}) => {
   return (
     <View style={styles.containerGlobal}>
-      <Button  color="#222222" title="Passer" onPress={() => navigation.replace('Login')} />
+      <Button  color="#222222" title="Passer" onPress={() => navigation.replace('Register')} />
       <Text style={styles.title}>Cultivez vous et votre jardin</Text>
       <Text style={styles.txt}>
         Cultivez fruits, légumes et plantes dans le jardin de vos rêves à l'aide

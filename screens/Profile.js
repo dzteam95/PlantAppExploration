@@ -5,7 +5,9 @@ import {
     View,
     TouchableOpacity,
     Modal,
-    Pressable
+    Pressable,
+    Linking,
+
 } from 'react-native';
 import {COLORS} from "../constants";
 
@@ -34,13 +36,14 @@ const Profile = ({ navigation }) => {
                             </Pressable>
                             <Text style={styles.modalText}>Envie de discuter ?</Text>
                             <Text style={styles.modalText}>Chez seedy, on est à l'écoute. Ne soyez pas timide, envoyez nous un petit email. on sera ravi de y'répondre</Text>
-                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('Subscription')}>
+                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('HelpUs')}>
                                 <Text  style={styles.txt}>Envoyer un mail</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('Subscription')}>
+                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace(Linking.openURL("https://www.facebook.com/"))}>
+
                                 <Text  style={styles.txt}>Contacte nos sur messenger</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('Subscription')}>
+                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace( Linking.openURL("https://seedy.difego.fr/foire-au-question-faq/"))}>
                                 <Text  style={styles.txt}>Consulter notre FAQ</Text>
                             </TouchableOpacity>
                         </View>
@@ -79,7 +82,7 @@ const Profile = ({ navigation }) => {
                     >
                         <Text  style={styles.txt}>Aide et contact</Text>
                     </Pressable>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Welcome')}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Logout')}>
                         <Text  style={styles.txt}>Déconnexion</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Compte')}>

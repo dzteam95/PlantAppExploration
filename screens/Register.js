@@ -30,7 +30,7 @@ const Register = ({ navigation }) => {
 			},
 		}
 		
-		fetch('https://seedy.adnanenabil.com/users/register',data)
+		fetch('https://seedyapp.tk/users/register',data)
 		.then((response) => {
 			//Statut getted
 			console.log(response.status);
@@ -53,7 +53,7 @@ const Register = ({ navigation }) => {
 		<View style={styles.containerGlobal} >
 			<View style={styles.row}>
 				<TouchableOpacity onPress={() => navigation.replace('Welcome')}>
-					<Text style={styles.txt}>Back</Text>
+					<Text style={styles.txt}>Retour</Text>
 				</TouchableOpacity>
 			</View>
 			<Text style={styles.title}>Créer un compte</Text>
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
 	title:{fontSize:SIZES.h1,margin:30},
 	containerGlobal:{flex: 1, alignItems: 'center',width:'auto',height: 'auto',marginTop:30},
 	input:{height:70,backgroundColor:COLORS.greenLight,width:'80%',borderRadius: 10,margin:30},
-	enregistrer:{alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,margin:30},
+	enregistrer:{alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,marginTop:30},
 	Containercheckbox:{width:'100%',height:'auto',textAlign:'center', alignItems: 'center',margin:10},
 	checkbox: {paddingVertical:10,paddingHorizontal: 10, alignItems: 'center',width:'auto',height:'auto',marginLeft:25,marginTop:5},
 	label: {textAlign:'center'},

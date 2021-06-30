@@ -16,19 +16,19 @@ const Jardin = ({navigation}) => {
 						<Text style={styles.info}>Mes parcelles</Text>
 					</TouchableOpacity>
 					
-					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}>
+					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace()}>
 						<Text style={styles.info}>Liste des plantes</Text>
 					</TouchableOpacity>
 					
-					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}>
+					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Rappels')}>
 						<Text style={styles.info}>Actions à venir</Text>
 					</TouchableOpacity>
 					
-					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}>
+					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Rappels')}>
 						<Text style={styles.info}>Rappels d'aujourd'hui</Text>
 					</TouchableOpacity>
 					
-					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}>
+					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Conseils')}>
 						<Text style={styles.info}>Mes fiches</Text>
 					</TouchableOpacity>
 				</View>

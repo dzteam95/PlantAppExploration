@@ -12,7 +12,7 @@ const Login = ({ navigation }) => {
 	const [password, setPassword] = useState({ value: '', error: '' })
 	const [isSelected, setSelection] = useState({ isSelect: false });
 	useEffect(() => {
-    readData();
+        readData()
         // return (
         //     readData()
         // )
@@ -23,12 +23,12 @@ const Login = ({ navigation }) => {
             const usernameValue = await AsyncStorage.getItem('usernameStorage')
 			const passwordValue = await AsyncStorage.getItem('passwordStorage')
 			const rememberMe = await AsyncStorage.getItem('rememberMeStorage')
-
+            
             if (usernameValue !== null) {
                 //console.log(userValue)
 				if (passwordValue !== null) {
 					//console.log(passwordValue)
-
+					
 					setUsername({
 						value: usernameValue,
 					});
@@ -56,7 +56,7 @@ const Login = ({ navigation }) => {
             }
         } catch (e) {
           //alert('Failed to fetch the data from storage')
-        }
+        }  
     }
 
 	const onLoginPressed = () => {
@@ -76,7 +76,7 @@ const Login = ({ navigation }) => {
 		}
 
 		//fetch Statu == 200
-		fetch('https://seedy.adnanenabil.com/users/authenticate', data)
+		fetch('https://seedyapp.tk/users/authenticate', data)
 		.then( res => {
 
 			//Statut getted
@@ -84,7 +84,7 @@ const Login = ({ navigation }) => {
 			if (res.status === 200) {
 				//console.log('aut');
 
-				// Clearing old user registered
+				// Clearing old user registered 
 				const clearStorage = async () => {
 					try {
 					  await AsyncStorage.clear()
@@ -94,36 +94,52 @@ const Login = ({ navigation }) => {
 					}
 				}
 				clearStorage()
-
+				
 				  // Save user remember data if checkbox is checked
-				if (isSelected.isSelect == true){
+				if (isSelected.isSelect == true){	
 					saveData('usernameStorage',username.value);
 					saveData('passwordStorage',password.value);
 					saveData('rememberMeStorage','true');
 					// console.log('user saved');
 				}
-				// fetch get token
-				fetch('https://seedy.adnanenabil.com/users/authenticate', data)
+				// fetch get token 
+				fetch('https://seedyapp.tk/users/authenticate', data)
 				.then((response) => response.json())
+				
 				.then((responseData) => {
+					// console.log(responseData.sexe);
 					console.log(responseData.token);
 					// saveItem('id_token', responseData.token),
+					// if (responseData.sexe == true){
+					if (responseData.isP == true){
+						isP = "p";
+					}else{
+						isP = "f";
+					}
+					saveData('isP', isP),
+					saveData('userId', responseData.id),
+					// console.log(responseData.id);
+					// console.log(isP);
 					saveData('id_token', responseData.token),
-					// console.log('premiumLevelStorage : ',responseData.isP);
-					// saveData('premiumLevelStorage', responseData.isP),
+					saveData('levelSubscription', responseData.levelSubscription),
+					// saveData('levelSubscription', "4"),
+					console.log(responseData.levelSubscription);
+					// premium
+					console.log('premiumLevelStorage : ',isP);
+					saveData('premiumLevelStorage', isP),
 					navigation.reset({
 						index: 0,
 						routes: [{ name: 'Home' }],
 					})
 				})
-
+							  
 			}else{
 				//console.log('not authorized');
 				//do nothing
 			}
 		  })
 	}
-
+	
 	const saveData = async (item, token) => {
 		try {
 		  await AsyncStorage.setItem(item, token)
@@ -132,7 +148,7 @@ const Login = ({ navigation }) => {
 		  	//alert('Failed to save the data to the storage')
 		}
 	}
-
+	
 	const setSelect = async () => {
 		// console.log(isSelected);
 		if (isSelected.isSelect == false){
@@ -189,7 +205,6 @@ return(
 			secureTextEntry
 		/>
 		<View style={styles.container}>
-			{/* <Text>Se souvenir de moi ? {isSelected.isSelect ? "👍" : "👎"}</Text> */}
 			<View style={styles.checkboxContainer}>
 				<CheckBox
 					style={{flex: 1, padding:70}}
@@ -203,9 +218,9 @@ return(
 					leftText={"Se souvenir de moi ?"}
 				/>
 			</View>
-		</View>
+		</View>       
 		<View style={styles.connexion}>
-			<Button color="#ffffff" title={"Connexion"} mode="contained" onPress={onLoginPressed}/>
+			<Button  color={COLORS.white} title={"Connexion"} mode="contained" onPress={onLoginPressed}/>
 
 		</View>
 		<View style={styles.row}>
