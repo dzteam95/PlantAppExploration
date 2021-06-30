@@ -51,7 +51,7 @@ const Jardin = ({ navigation }) => {
                 </View>
                 <View style={styles.bodyContent}>
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Home', { item: "glossaire"})}>
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('GardenT')}>
                         <Text style={styles.info}>Mes Parcelles</Text>
                     </TouchableOpacity>
 

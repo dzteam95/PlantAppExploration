@@ -18,6 +18,7 @@ import {
     PanResponder, 
     Animated,
 } from 'react-native';
+import Draggable from 'react-native-draggable';
 import {COLORS} from "../constants";
 import {Boarding1} from "../constants/images";
 import {SunConseil} from "../constants/images";
@@ -36,7 +37,7 @@ import {SemisExt, SemisInt, Plantation} from "../constants/images";
 const GardenTListV2 = ({route, navigation,  props }) => {
     const [search, setSearch] = useState({ value: '', error: '' })
     const [token, setToken] = useState({ value: '', error: '' })
-    const [result, setResult] = useState({ value: '', error: '' })
+    const [result, setResult] = useState([])
     const [resultPlant, setResultPlant] = useState({ value: '', error: '' })
     const [userId, setUserId] = useState({ value: '', error: '' })
     const [plantsInfos, setPlantsInfos] = useState([])
@@ -52,7 +53,7 @@ const GardenTListV2 = ({route, navigation,  props }) => {
     // ];
     // const currentDayName = weekdays[currentDay.getDay()];
     // console.log(currentDayName);
-    const image = { uri: "https://cdn.wpmfc.enticdn.fr/wp-content/uploads/2021/03/20210316-maisons-france-confort-maison-traditionnelle-auzin-6213.jpg" };
+    const image = { uri: "https://conseils-thermiques.org/contenu/images/plan-MOB-paille-1.png" };
         
     // const gardenId = "60d8661043c93c169deb6248";
     // console.log(route.params.item);
@@ -60,7 +61,6 @@ const GardenTListV2 = ({route, navigation,  props }) => {
         readToken()
         // getParsedDate(currentDay)
         searchUserReminderFunction()
-        panacotta()
         return /*(
             //readData()
         )*/
@@ -181,9 +181,6 @@ const GardenTListV2 = ({route, navigation,  props }) => {
     }
 
     const pan = useRef(new Animated.ValueXY()).current;
-    const pan0 = useRef(new Animated.ValueXY()).current;
-    const pan1 = useRef(new Animated.ValueXY()).current;
-    const pan2 = useRef(new Animated.ValueXY()).current;
 
     const panResponder = useRef(
         PanResponder.create({
@@ -207,108 +204,95 @@ const GardenTListV2 = ({route, navigation,  props }) => {
             }
         })
         ).current;
-    const panResponder0 = useRef(
-        PanResponder.create({
-            onMoveShouldSetPanResponder: () => true,
-            onPanResponderGrant: () => {
-                console.log(pan0.x._value)
-                console.log(pan0.y._value)
-                pan0.setOffset({
-                x: pan0.x._value,
-                y: pan0.y._value
-            });
-            },
-            onPanResponderMove: Animated.event(
-            [
-                null,
-                { dx: pan0.x, dy: pan0.y }
-            ]
-            ),
-            onPanResponderRelease: () => {
-                pan0.flattenOffset();
-            }
-        })
-        ).current;
-    const panResponder1 = useRef(
-        PanResponder.create({
-            onMoveShouldSetPanResponder: () => true,
-            onPanResponderGrant: () => {
-                console.log(pan1.x._value)
-                console.log(pan1.y._value)
-            pan1.setOffset({
-                x: pan1.x._value,
-                y: pan1.y._value
-            });
-            },
-            onPanResponderMove: Animated.event(
-            [
-                null,
-                { dx: pan1.x, dy: pan1.y }
-            ]
-            ),
-            onPanResponderRelease: () => {
-                pan1.flattenOffset();
-            }
-        })
-        ).current;
-    const panResponder2 = useRef(
-        PanResponder.create({
-            onMoveShouldSetPanResponder: () => true,
-            onPanResponderGrant: () => {
-                console.log(pan2.x._value)
-                console.log(pan2.y._value)
-            pan2.setOffset({
-                x: pan2.x._value,
-                y: pan2.y._value
-            });
-            },
-            onPanResponderMove: Animated.event(
-            [
-                null,
-                { dx: pan2.x, dy: pan2.y }
-            ]
-            ),
-            onPanResponderRelease: () => {
-                pan2.flattenOffset();
-            }
-        })
-        ).current;
      
-    const panacotta = async ()  => {
-        for (res in plantsInfos ) {
-            idValue = plantsInfos[res]['id']
-            // console.log(res)//0,1,2
-            // console.log(idValue)//id
-            // title = "panRespond"+res
-            console.log("title")
+    // const panacotta = async ()  => {
+    //     for (res in plantsInfos ) {
+    //         idValue = plantsInfos[res]['id']
+    //         // console.log(res)//0,1,2
+    //         // console.log(idValue)//id
+    //         // title = "panRespond"+res
+    //         console.log("title")
             
-            // pan[res] = useRef(new Animated.ValueXY()).current;
-            // panResponder[res] = useRef(
-            //     PanResponder.create({
-            //         onMoveShouldSetPanResponder: () => true,
-            //         onPanResponderGrant: () => {
-            //             console.log(pan[res].x._value)
-            //             console.log(pan[res].y._value)
-            //         pan[res].setOffset({
-            //             x: pan[res].x._value,
-            //             y: pan[res].y._value
-            //         });
-            //         },
-            //         onPanResponderMove: Animated.event(
-            //         [
-            //             null,
-            //             { dx: pan[res].x, dy: pan[res].y }
-            //         ]
-            //         ),
-            //         onPanResponderRelease: () => {
-            //             pan[res].flattenOffset();
-            //         }
-            //     })
-            //     ).current;
+    //         // pan[res] = useRef(new Animated.ValueXY()).current;
+    //         // panResponder[res] = useRef(
+    //         //     PanResponder.create({
+    //         //         onMoveShouldSetPanResponder: () => true,
+    //         //         onPanResponderGrant: () => {
+    //         //             console.log(pan[res].x._value)
+    //         //             console.log(pan[res].y._value)
+    //         //         pan[res].setOffset({
+    //         //             x: pan[res].x._value,
+    //         //             y: pan[res].y._value
+    //         //         });
+    //         //         },
+    //         //         onPanResponderMove: Animated.event(
+    //         //         [
+    //         //             null,
+    //         //             { dx: pan[res].x, dy: pan[res].y }
+    //         //         ]
+    //         //         ),
+    //         //         onPanResponderRelease: () => {
+    //         //             pan[res].flattenOffset();
+    //         //         }
+    //         //     })
+    //         //     ).current;
+    //     }
+    // }
+ 
+    // console.log(result)
+    console.log(plantsInfos)
+    var g = result
+    var c = plantsInfos
+    // var g = [
+    //     { id: 36, name: 'AAA', goal: 'yes' },
+    //     { id: 40, name: 'BBB', goal: 'yes' },
+    //     { id: 57, name: 'CCC', goal: 'yes' },
+    //     { id: 4, name: 'DDD', goal: 'yes' },
+    //     { id: 39, name: 'EEE', goal: 'yes' },
+    //     { id: 37, name: 'FFF', goal: 'yes' },
+    //     { id: 59, name: 'GGG', goal: 'yes' },
+    //     { id: 50, name: 'III', goal: 'yes' },
+    //     { id: 43, name: 'HHH', goal: 'yes' },
+    //     { id: 35, name: 'JJJ', goal: 'yes' }
+    // ],
+    // c = [
+    //     { id: 36, name: 'AAA', circle: 'yes' },
+    //     { id: 40, name: 'BBB', circle: 'yes' },
+    //     { id: 57, name: 'CCC', circle: 'yes' },
+    //     { id: 42, name: 'ZZZ', circle: 'yes' },
+    //     { id: 4, name: 'DDD', circle: 'yes' },
+    //     { id: 39, name: 'EEE', circle: 'yes' },
+    //     { id: 37, name: 'FFF', circle: 'yes' },
+    //     { id: 59, name: 'GGG', circle: 'yes' },
+    //     { id: 43, name: 'HHH', circle: 'yes' },
+    //     { id: 35, name: 'JJJ', circle: 'yes' },
+    //     { id: 100, name: 'JJJ', circle: 'yes' }
+    // ],
+    arrayList = [], obj_c_processed = [];
+
+    for (var i in g) {
+        // var obj = {id: g[i].id, name: g[i].name, goal: g[i].goal};
+        var obj = {id: g[i].id, id_garden: g[i].id_garden, id_plant: g[i].id_plant, mode: g[i].mode, position_x: g[i].position_x, position_y: g[i].position_y};
+
+        for (var j in c) {
+            if (g[i].id_plant == c[j].id) {
+                obj.photourl = c[j].photourl;
+                obj.name = c[j].name;
+                obj_c_processed[c[j].id] = true;
+            }
+        }
+
+        // obj.circle = obj.circle || 'no';
+        arrayList.push(obj);
+    }
+
+    for (var j in c){
+        if (typeof obj_c_processed[c[j].id] == 'undefined') {
+            arrayList.push({id: c[j].id, name: c[j].name, goal: 'no', circle: c[j].circle});
         }
     }
- 
-    // console.log(plantsInfos)
+    console.log(arrayList)
+
     return (
         <View style={styles.container}>
 
@@ -327,7 +311,7 @@ const GardenTListV2 = ({route, navigation,  props }) => {
                 <View style={styles.container}>
                     <ImageBackground source={image} style={styles.image}>
                         {/* <Text style={styles.titleText}>Drag this box!</Text> */}
-                        {plantsInfos.map(r => 
+                        {/* {plantsInfos.map(r => 
                             <View>
                                 <Animated.View
                                     style={{
@@ -336,15 +320,15 @@ const GardenTListV2 = ({route, navigation,  props }) => {
                                     {...panResponder.panHandlers}
                                 >
                                     <View style={styles.box} >
-                                        {/* <Text>{r.id}</Text> */}
+                                        <Text>{r.id}</Text>
                                         <Text>{r.name}</Text>
                                         <Image style={styles.tinyLogo} source={{ uri: r.photourl}}/>
                                     </View>
                                 </Animated.View>
                             </View>
-                        )}
+                        )} */}
                             {/* Data Test */}
-                            <View>
+                            {/* <View>
                                 <Animated.View
                                     style={{
                                     transform: [{ translateX: pan0.x }, { translateY: pan0.y }]
@@ -375,6 +359,43 @@ const GardenTListV2 = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={{ uri: "https://images-na.ssl-images-amazon.com/images/I/71kYjiQBArL._AC_SX425_.jpg"}}/>
                                     </View>
                                 </Animated.View>
+                            </View> */}
+                            <View >
+                                {/* {plantsInfos.map(p => 
+                                    <Draggable x={50} y={50} onShortPressRelease={()=>alert(p.name)}>
+                                        <View style={styles.box} >
+                                            <Text>{p.id}</Text>
+                                            <Image style={styles.tinyLogo} source={{ uri: p.photourl}}/>
+                                        </View>
+                                    </Draggable>
+                                )} */}
+                                 {arrayList.map(p => 
+                                    <Draggable x={p.position_x} y={p.position_y} onShortPressRelease={()=>alert(p.name)}>
+                                    {/* <Draggable x={267} y={-300} onShortPressRelease={()=>alert(p.name)}> */}
+                                        <View style={styles.box} >
+                                            {/* <Text>{p.id}</Text> */}
+                                            <Image style={styles.tinyLogo} source={{ uri: p.photourl}}/>
+                                        </View>
+                                    </Draggable>
+                                )}
+                                {/* {result.map(r => 
+                                    <Draggable x={r.position_x} y={r.position_y} renderColor='black' onShortPressRelease={()=>alert("r.name")}>
+                                        
+                                        <View style={styles.box} >
+                                            <Text>{r.id_plant}</Text>
+
+                                            <Image style={styles.tinyLogo} source={{ uri: "r.photourl"}}/>
+                                        </View>
+                                    </Draggable>
+                                )} */}
+                                {/* <Draggable x={75} y={100} renderSize={56} renderColor='black' renderText='A' isCircle shouldReverse onShortPressRelease={()=>alert('touched!!')}/> 
+                                <Draggable x={200} y={300} renderColor='red' renderText='B'/>
+                                <Draggable/>
+                                <Draggable x={50} y={50}>
+                                        <View style={styles.box} >
+                                            <Image style={styles.tinyLogo} source={{ uri: "https://images-na.ssl-images-amazon.com/images/I/71kYjiQBArL._AC_SX425_.jpg"}}/>
+                                        </View>
+                                </Draggable> */}
                             </View>
                     </ImageBackground>
                 </View>   

@@ -136,7 +136,7 @@ const GardenT = ({route, navigation,  props }) => {
                 <View style={styles.header}>
                     <View style={styles.headerContent}>
                         <Text style={styles.name}>
-                           Rappels
+                           Mes Jardins
                         </Text>
                         <TouchableOpacity onPress={() => this.eventClickListener("row")}>
                             <Text style={styles.add}>

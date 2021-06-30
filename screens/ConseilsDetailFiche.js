@@ -123,7 +123,7 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
             </View>
             <View style={styles.body}>
                 <ImageBackground style={styles.bodyContent} /*source={{ uri: result.icon,}}*/>
-                    <ScrollView style={styles.eventList} >
+                    <ScrollView style={styles.eventList} showsVerticalScrollIndicator={false} >
                         <View>
                             <View style={styles.eventContentFirst}>
                                 <Image style={styles.presentationLogo} source={{ uri: result.photourl,}}/>
