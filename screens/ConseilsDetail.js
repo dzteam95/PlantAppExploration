@@ -180,12 +180,12 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                 title: title,
                 description: desc,
                 actionDate: requiredCompleteDate,
-
+                
                 plantImg: result.photourl,
                 plantName: result.name,
                 work: work,
                 imgwork: "https://leplanificateurdesciences.org/images/sae/drop-148199_640.png",
-
+                
                 mode: "ON"
 
 			}),
@@ -274,7 +274,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
             </View>
             <View style={styles.body}>
                 <ImageBackground style={styles.bodyContent} /*source={{ uri: result.icon,}}*/>
-                    <ScrollView style={styles.eventList} >
+                    <ScrollView style={styles.eventList} showsVerticalScrollIndicator={false} >
                         <View>
                             <View style={styles.eventContentHead}>
                                 <Image style={styles.presentationLogo} source={{ uri: result.photourl,}}/>
@@ -420,7 +420,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         {/* <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !",result.description_Germination_Arrosage_date,"Arrosez")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !",result.description_Germination_Arrosage_date,"Arrosez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>                                           
                                         </View> */}
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -458,7 +458,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         {/* <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est le moment de selectionner ses futurs "+result.name+"s","Il est temps d'agir !",result.description_Croissance_Selection_date,"Sélectionnez")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est le moment de selectionner ses futurs "+result.name+"s","Il est temps d'agir !",result.description_Croissance_Selection_date,"Sélectionnez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>                                           
                                         </View> */}
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -496,7 +496,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         {/* <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Plantez les "+result.name+"s","Il est temps d'agir !",result.description_Croissance_Plantation_date,"Plantez")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Plantez les "+result.name+"s","Il est temps d'agir !",result.description_Croissance_Plantation_date,"Plantez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>                                           
                                         </View> */}
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -553,7 +553,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         {/* <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est la première taille des "+result.name+"s","Il est temps d'agir !",result.description_Floraison_Un_date,"Ca pousse !")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est la première taille des "+result.name+"s","Il est temps d'agir !",result.description_Floraison_Un_date,"Ca pousse !")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>                                           
                                         </View> */}
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -591,7 +591,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         {/* <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est la seconde taille des "+result.name+"s","Il est temps d'agir !",result.description_Floraison_Deux_date,"Ca pousse !")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","C'est la seconde taille des "+result.name+"s","Il est temps d'agir !",result.description_Floraison_Deux_date,"Ca pousse !")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>                                           
                                         </View> */}
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -629,7 +629,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         </View>
                                         {/* <View style={styles.eventContentGuideR}>
                                             <Image style={styles.tinyLogoGuide} source={Plus}/>
-                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !",result.description_Production_Arrosage_date,"Arrosez")}>Rappel</Text>                                           
+                                            <Text style={styles.infoGuideR} onPress={() => this.eventClickListener("row","Arrosez les "+result.name+"s","Il est temps d'agir !",result.description_Production_Arrosage_date,"Arrosez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>                                           
                                         </View> */}
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -674,9 +674,9 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogo} source={SemisInt}/>
                                         <Text style={styles.infoName}>Semis d'interieur</Text>
-                                        <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en intérieur les "+result.name+"s","Il est temps d'agir !","01-06","Plantez en intérieur")}>Rappel</Text>
-                                        {/* <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en intérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_inte_from,"Plantez")}>Rappel</Text> */}
+                                        {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en intérieur les "+result.name+"s","Il est temps d'agir !","01-06","Plantez en intérieur")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
+                                        {/* <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en intérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_inte_from,"Plantez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text> */}
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
@@ -693,8 +693,8 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogo} source={SemisExt}/>
                                         <Text style={styles.infoName}>Semis d'extérieur</Text>
-                                        <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en extérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_exte_from,"Plantez en exterieur")}>Rappel</Text>
+                                        {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en extérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_exte_from,"Plantez en exterieur")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
@@ -711,8 +711,8 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogo} source={Plantation}/>
                                         <Text style={styles.infoName}>Plantation</Text>
-                                        <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_plantation_from,"Plantez")}>Rappel</Text>
+                                        {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_plantation_from,"Plantez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
@@ -729,8 +729,8 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogo} source={Floraison}/>
                                         <Text style={styles.infoName}>Floraison</Text>
-                                        <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","C'est la floraison de vos "+result.name+"s","Ne les manquez pas !",result.reminder_txt_floraison_from),"Ca Fleurit"}>Rappel</Text>
+                                        {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","C'est la floraison de vos "+result.name+"s","Ne les manquez pas !",result.reminder_txt_floraison_from),"Ca Fleurit"}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
@@ -747,8 +747,8 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogo} source={Fruit}/>
                                         <Text style={styles.infoName}>Récolte</Text>
-                                        <Image style={styles.tinyLogoReminder} source={Plus}/>
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Récoltez les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_recolte_from,"Récoltez")}>Rappel</Text>
+                                        {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Récoltez les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_recolte_from,"Récoltez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
@@ -902,10 +902,10 @@ const styles = StyleSheet.create({
         margin:20,
     },
     tinyLogoReminder: {
-        width: 20,
-        height: 20,
+        width: 10,
+        height: 10,
         // borderRadius:10,
-        marginTop:20,
+        //marginTop:20,
     },
     tinyLogoGuide:{
         maxHeight:19,
@@ -1038,6 +1038,14 @@ const styles = StyleSheet.create({
         marginTop:25,
         width: '100%',
         // paddingLeft:20,
+    },
+    eventContent:{
+        // flex:1,
+        // textAlign: 'justify',
+        // flexDirection: 'row',
+        // alignItems: 'flex-start',
+        // height:100,
+        paddingRight:20
     },
     eventContentHead: {
         // flex:1,

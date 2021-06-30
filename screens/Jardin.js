@@ -12,20 +12,20 @@ const Jardin = ({navigation}) => {
 			
 			<View style={styles.body}>
 				<View style={styles.bodyContent}>
-					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Parcelles')}>
+					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.replace('Parcelles')}>
 						<Text style={styles.info}>Mes parcelles</Text>
 					</TouchableOpacity>
 					
-					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace()}>
+					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.replace('Parcelles')}>
 						<Text style={styles.info}>Liste des plantes</Text>
 					</TouchableOpacity>
 					
-					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Rappels')}>
+					{/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Rappels')}>
 						<Text style={styles.info}>Actions à venir</Text>
-					</TouchableOpacity>
+					</TouchableOpacity> */}
 					
 					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Rappels')}>
-						<Text style={styles.info}>Rappels d'aujourd'hui</Text>
+						<Text style={styles.info}>Rappels</Text>
 					</TouchableOpacity>
 					
 					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Conseils')}>
@@ -49,28 +49,56 @@ const styles = StyleSheet.create({
 	},
 	body: {
 		flex: 2,
+		flexDirection:"column",
+        padding:20,
 	},
 	bodyContent: {
-		flexWrap: 'wrap',
-		fontWeight: '900',
-		width: 400 | '100%',
-		height: 400 | '100%',
+		fontWeight: "900",
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap'
 	},
 	menuBox:{
 		backgroundColor: "#ffffff",
-		borderRadius:10,
-		width:180,
-		height:100,
-		marginRight:10,
-		marginTop:10,
-		marginBottom:10,
-		shadowColor: 'black',
-		shadowOpacity: .2,
-		shadowOffset: {
-			height:2,
-			width:-2
-		},
-		elevation:4,
+        borderRadius:10,
+        width:"47%",
+        height:100,
+        marginRight:10,
+        marginTop:10,
+        marginBottom:10,
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
+        // height: 100, 
+        // width: 50, 
+        // borderWidth: 1, 
+        // backgroundColor: 'orange', 
+        // marginBottom: 5
+	},
+	menuBoxWait:{
+		backgroundColor: "#CDCDCD",
+        borderRadius:10,
+        width:"47%",
+        height:100,
+        marginRight:10,
+        marginTop:10,
+        marginBottom:10,
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
+        // height: 100, 
+        // width: 50, 
+        // borderWidth: 1, 
+        // backgroundColor: 'orange', 
+        // marginBottom: 5
 	},
 	info:{
 		fontSize:18,

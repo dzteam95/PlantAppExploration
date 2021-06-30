@@ -58,20 +58,20 @@ const Profile = ({ navigation }) => {
             <View style={styles.body}>
 
                 </View>
-                <Text style={styles.name}>Mon profil</Text>
+                <Text style={styles.name}>{/*Mon profil*/}</Text>
 
                 <View style={styles.bodyContent}>
                     <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Subscription')}>
                         <Text  style={styles.txt}>Mon abonnement</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Parrainage')}>
-                        <Text style={styles.txt} >Parrainage</Text>
+                        <Text style={styles.txt} >Offre et Parrainage</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonContainer}>
-                        <Text  style={styles.txt}>Mes favoris</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('ProfileDetail')}>
-                        <Text  style={styles.txt}>Mes informations</Text>
+                    {/* <TouchableOpacity style={styles.buttonContainer}>
+                        <Text  style={styles.txt}>Mes favoris x</Text>
+                    </TouchableOpacity> */}
+                    <TouchableOpacity style={styles.buttonContainerWait} onPress={() => navigation.replace('ProfileDetail')}>
+                        <Text  style={styles.txt}>Mes informations </Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('HelpUs')}>
                         <Text  style={styles.txt}>Améliorer mon application</Text>
@@ -85,7 +85,7 @@ const Profile = ({ navigation }) => {
                     <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Logout')}>
                         <Text  style={styles.txt}>Déconnexion</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Compte')}>
+                    <TouchableOpacity style={styles.buttonContainerWait} onPress={() => navigation.replace('Compte')}>
                         <Text style={styles.txt}>Mon compte</Text>
                     </TouchableOpacity>
                 </View>
@@ -114,9 +114,25 @@ const styles = StyleSheet.create({
     bodyContent: {
 
         alignItems: 'center',
-
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
     },
-
+    buttonContainerWait:{
+        marginTop:10,
+        height:45,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom:20,
+        width:350,
+        borderRadius:10,
+        backgroundColor: "#CDCDCD",
+    },
     buttonContainer: {
         marginTop:10,
         height:45,
@@ -126,7 +142,7 @@ const styles = StyleSheet.create({
         marginBottom:20,
         width:350,
         borderRadius:10,
-        backgroundColor: COLORS.lightGray,
+        backgroundColor: "#ffffff",
     },
 
     txt: {

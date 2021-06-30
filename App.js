@@ -1,7 +1,7 @@
 import React, {useState , useEffect, useContext, useLayoutEffect} from 'react';
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, TransitionPresets } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
-import {ActivityIndicator, AsyncStorage} from 'react-native';
+import {ActivityIndicator, AsyncStorage,LogBox} from 'react-native';
 
 // screens
 import { PlantDetail } from "./screens/";
@@ -35,10 +35,24 @@ import { GardenT } from "./screens/";
 import { GardenTList } from "./screens/";
 import { ProfileDetail } from "./screens/";
 
-
-
 // extra screens
 import Tabs from "./navigation/tabs";
+
+
+// const mode = "dev";
+const mode = "prod";
+
+
+
+if (mode === "prod"){
+    const url = "https://seedyapp.tk/";
+
+    //diseable all waring alerte
+    LogBox.ignoreAllLogs();
+}else{
+    const url = "http://localhost:4000/";
+
+};
 
 
 const theme = {
@@ -84,8 +98,13 @@ const App = () => {
         <NavigationContainer theme={theme}>
             <Stack.Navigator
                 screenOptions={{
+                    
+                    footerShown: true,
                     headerShown: false,
-                    footerShown: true
+                    
+                    // gestureEnabled: true,
+                    cardOverlayEnabled: true,
+                    // ...TransitionPresets.ModalPresentationIOS,
                 }}
                 initialRouteName={initialRoute}
             >

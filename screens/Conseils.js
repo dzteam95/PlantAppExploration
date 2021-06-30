@@ -46,7 +46,7 @@ const Conseils = ({ navigation }) => {
         )*/
     }, [])
 
-   const searchPlantFunction = (search) => {
+    searchPlantFunction = (search) => {
         //Met a jour le event text
         setSearch({ search });
         const newHandleSearch = search;
@@ -225,6 +225,7 @@ const Conseils = ({ navigation }) => {
                         ]}
                         renderItem={({item,section}) => 
                             <View style={styles.menuBoxList} >
+                                {/* <Text style={styles.sectionHeader}>{section.title}</Text> */}
                                 <TouchableOpacity 
                                     style={styles.containerLight}
                                     onPress={() => navigation.replace(
@@ -239,8 +240,8 @@ const Conseils = ({ navigation }) => {
                                 </TouchableOpacity>
                             </View>
                         }
-                        renderSectionHeader={({section}) => 
-                            <Text style={styles.sectionHeader}>{section.title}</Text>
+                        renderSectionHeader={({item,section}) => 
+                            <Text style={section.data == "" ? styles.menuBoxListNone : styles.sectionHeader}>{section.title}</Text>
                         }
                         keyExtractor={(item, index) => index}
                     />
@@ -285,10 +286,10 @@ const styles = StyleSheet.create({
         backgroundColor: "#F2F2F2",
     },
     tinyLogoGeneral: {
-        width: 20,
-        height: 20,
+        width: 50,
+        height: 50,
         borderRadius:10,
-        margin:20,
+        margin:5,
         // maxWidth: '60%',
         // height: '10%',
     },
@@ -309,6 +310,9 @@ const styles = StyleSheet.create({
         marginTop:10,
         marginBottom:10,
     },
+    menuBoxListNone:{
+        display:'none',
+    },
     displayNone:{
         height: 0,
         width: 0,
@@ -319,6 +323,7 @@ const styles = StyleSheet.create({
         padding:20,
     },
     inputs:{
+        paddingLeft:20,
         width:"100%",
     },
     headerContent:{
@@ -348,7 +353,7 @@ const styles = StyleSheet.create({
     menuBox:{
         backgroundColor: "#ffffff",
         borderRadius:10,
-        width:170,
+        width:"47%",
         height:100,
         marginRight:10,
         marginTop:10,
@@ -369,7 +374,7 @@ const styles = StyleSheet.create({
     menuBoxUnavailable:{
         backgroundColor: "#DADADA",
         borderRadius:10,
-        width:170,
+        width:"47%",
         height:100,
         marginRight:10,
         marginTop:10,

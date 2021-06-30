@@ -179,7 +179,7 @@ return(
 	<View style={styles.containerGlobal} >
 		<View style={styles.row}>
 			<TouchableOpacity onPress={() => navigation.replace('Welcome')}>
-				<Text style={styles.txt}>Back</Text>
+				<Text style={styles.txt}>Retour</Text>
 			</TouchableOpacity>
 		</View>
 		<Text style={styles.title}>Connexion</Text>
@@ -196,7 +196,8 @@ return(
 				<Text>Mot de passe oublié ?</Text>
 			</TouchableOpacity>
 		</View>
-		<TextInput  style={styles.input}
+		<TextInput
+			style={styles.input}
 			placeholder="Mot de passe"
 			label="Password"
 			returnKeyType="done"
@@ -204,10 +205,10 @@ return(
 			onChangeText={(text) => setPassword({ value: text, error: '' })}
 			secureTextEntry
 		/>
-		<View style={styles.container}>
+		{/* <View style={styles.container}> */}
 			<View style={styles.checkboxContainer}>
 				<CheckBox
-					style={{flex: 1, padding:70}}
+					style={{flex: 1, paddingTop:50, paddingLeft:70, paddingRight:70}}
 					onClick={()=>{
 						// setSelection({
 						// 	isChecked: 1
@@ -218,13 +219,13 @@ return(
 					leftText={"Se souvenir de moi ?"}
 				/>
 			</View>
-		</View>       
+		{/* </View>        */}
 		<View style={styles.connexion}>
 			<Button  color={COLORS.white} title={"Connexion"} mode="contained" onPress={onLoginPressed}/>
 
 		</View>
 		<View style={styles.row}>
-			<TouchableOpacity onPress={() => navigation.replace('Register')}>
+			<TouchableOpacity  onPress={() => navigation.replace('Register')}>
 				<Text style={styles.txt}>Pas encore de compte?<Text style={styles.link}> m'inscrire</Text></Text>
 			</TouchableOpacity>
 		</View>
@@ -237,22 +238,21 @@ return(
 const styles = StyleSheet.create({
 	title:{fontSize:SIZES.h1,marginTop:50,marginBottom:50,},
 	containerGlobal:{flex: 1, alignItems: 'center',width:'100%',height: '100%'},
-	input:{height:70,backgroundColor:COLORS.greenLight,marginTop:30,width:'80%',borderRadius: 10,},
+	input:{paddingLeft:20,height:70,backgroundColor:COLORS.greenLight,marginTop:30,width:'80%',borderRadius: 10,},
 	connexion:{marginTop:150,alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,},
 	row:{width:'100%',alignItems: 'center',marginTop:50},
 	rowInput:{width:'100%',alignItems: 'center',marginTop:20},
 	txt:{width:'45%',textAlign: 'right'},
 	link:{width:'45%',textAlign: 'right',color:COLORS.greenDark},
 	forgot:{color:COLORS.greenLight},
-	container: {
-		flex: 1,
+	checkboxContainer: {
+		// flex: 1,
 		alignItems: "center",
 		justifyContent: "center",
-		// backgroundColor: "#fff000"
-	  },
-	  checkboxContainer: {
+		// backgroundColor: "#fff000",
 		flexDirection: "row",
-		marginBottom: 20,
+		// marginBottom: 20,
+		// flex:1,
 	  },
 	  checkbox: {
 		// marginTop: 30,

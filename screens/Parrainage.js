@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 2,
+        flexDirection:"row"
     },
     subtitle: {
         fontSize:18,
@@ -82,6 +83,7 @@ const styles = StyleSheet.create({
     },
     bodyContent:{
         // flexWrap: "wrap",
+        flex: 1,
         paddingLeft:20,
         paddingRight:20,
         fontWeight: "900",
