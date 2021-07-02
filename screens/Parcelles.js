@@ -17,101 +17,50 @@ import {
     AsyncStorage,
 } from 'react-native';
 import {COLORS} from '../constants';
-import {Boarding1} from '../constants/images';
-import {SunConseil} from '../constants/images';
-import {WaterConseil} from '../constants/images';
-import {SpaceConseil} from '../constants/images';
-import {PHConseil} from '../constants/images';
-import {ClimatConseil} from '../constants/images';
-import {SizingConseil} from '../constants/images';
-import {Floraison} from '../constants/images';
-import {Germination} from '../constants/images';
-import {Plus} from '../constants/images';
-import {Fruit} from '../constants/images';
-import {SemisExt, SemisInt, Plantation} from '../constants/images';
+
 
 const Parcelles = ({route, navigation, props}) => {
-    const [search, setSearch] = useState({value: '', error: ''});
     const [token, setToken] = useState({value: '', error: ''});
-    const [result, setResult] = useState({value: '', error: ''});
-    const [resultPlant, setResultPlant] = useState({value: '', error: ''});
     const [userId, setUserId] = useState({value: '', error: ''});
+    const [result, setResult] = useState([]);
 
+    const displayParcelles = async () => {
 
+        const token = await AsyncStorage.getItem('id_token')
 
-    useEffect(() => {
-        readToken();
-        // getParsedDate(currentDay)
-        searchUserReminderFunction();
-        return; /*(
-            //readData()
-        )*/
-    }, []);
+        const userId = await AsyncStorage.getItem('userId')
 
-    searchUserReminderFunction = async () => {
-        // Aller cehrcher tokenLocal dans le data storage
-        let tokenLocal = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjUwMDIyMDksImV4cCI6MTYyNTYwNzAwOX0.7AIv9wJpCgtNkrQNE_Ot6Wqy0YTJTjvO1Nfc1PSJNOA';        // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ3OTMxMzgsImV4cCI6MTYyNTM5NzkzOH0.aN0m390nMLqI3CIs3Av4BQ_1t5tSH8jyduwkW_dvNgE";
         let data = {
             method: 'GET',
             credentials: 'same-origin',
             mode: 'same-origin',
             headers: {
-                Accept: '*/*',
+                'Accept': '*/*',
                 'Content-Type': 'application/json',
-                // 'Authorization': 'Bearer '+token,
-                Authorization: 'Bearer ' + tokenLocal,
+                'Authorization': 'Bearer ' + token,
             },
-        };
-        // Aller cehrcher useritemId dans le data storage
-        useritemId = '60d838a3dfba4207d80744c0';
-        // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-        fetch(`https://seedyapp.tk/reminder/user/60d838a3dfba4207d80744c0`, data)
-            // fetch(`https://seedyapp.tk/reminder/user/5f0b3c733aead305c2eec26d`, data)
-
-            //Passertoken\
-
-            .then((responsesearch) => responsesearch.json())
-            .then((jsonsearch) => {
-                // console.debug(jsonsearch);
-                // console.log(jsonsearch);
-
-                setResult(jsonsearch);
-                //this.setState({ datasearch: jsonsearch.data.plant });
+        }
+        fetch(`https://seedyapp.tk/gardens/user/${userId}`, data)
+            .then((response) => response.json())
+            .then((response) => {
+                setResult(response)
+                console.log("results:",response)
+                return (response);
             })
-            .catch((error) => console.error(error))
-            .finally(() => {
-                //this.setState({ isLoadingSearch: false });
-            });
-    };
+        console.log("testToken :", token)
+        console.log("test :", userId)
+         console.log("results:",result)
 
-    const readToken = async () => {
-        try {
-            const userJeton = await AsyncStorage.getItem('id_token');
-            if (userJeton !== null) {
-                console.log('jeton ok ! : ', userJeton);
-                setToken({
-                    value: userJeton,
-                });
-            } else {
-                console.log('jeton pas ok');
-            }
-        } catch (e) {
-            //alert('Failed to fetch the data from storage')
-        }
-        try {
-            const userId = await AsyncStorage.getItem('userId');
-            if (userId !== null) {
-                console.log('userId ok ! : ', userId);
-                setUserId({
-                    value: userId,
-                });
-            } else {
-                console.log('userId pas ok');
-            }
-        } catch (e) {
-            //alert('Failed to fetch the data from storage')
-        }
-    };
+
+
+    }
+    useEffect(async() => {
+        await displayParcelles()
+          console.log("Testetu:",result)
+        return
+    }, [])
+
+
 
     return (
         <ScrollView style={styles.container}>
@@ -129,16 +78,14 @@ const Parcelles = ({route, navigation, props}) => {
                             <TouchableOpacity
                                 style={styles.eventContent}
                                 onPress={() =>
-                                    navigation.replace('GardenTList', {
+                                    navigation.replace('PlantsParcelleListe', {
                                         item: item.id,
                                         tokenPass: token,
                                     })
                                 }>
                                 <View style={styles.eventContentSec}>
                                     <Text style={styles.eventTime}>{item.description}</Text>
-                                </View>
-                                <View style={styles.eventContentSec}>
-                                    <Text style={styles.description}>{item.id}</Text>
+                                    <Text style={styles.eventTime}>{item.id}</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
@@ -173,6 +120,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     eventBox: {
+        height:100,
+        width:"49%",
         padding: 10,
         marginTop: 5,
         marginBottom: 5,
@@ -236,8 +185,7 @@ const styles = StyleSheet.create({
         color: '#222222',
         fontWeight: '900',
     },
-    add:{marginTop:20,alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,fontWeight: "bold",color:COLORS.white
-    }
+    add:{width:"80%",marginTop:20,alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,fontWeight: "bold",color:COLORS.white,marginLeft:40,}
 });
 
 export default Parcelles;

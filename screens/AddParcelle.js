@@ -1,49 +1,101 @@
-import React, {useState,Component} from 'react';
+import React, {useState, Component, useEffect} from 'react';
 import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Button,
-  TouchableHighlight,
-  Alert, TouchableOpacity,
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    Button,
+    TouchableHighlight,
+    Alert, TouchableOpacity, AsyncStorage,
 } from 'react-native';
 import {COLORS, SIZES} from '../constants';
 
 
+/*{const GardenType = async () => {
+
+    const token = await AsyncStorage.getItem('id_token')
+
+    const userId = await AsyncStorage.getItem('userId')
+
+    const id_garden_type = await AsyncStorage.getItem('id_garden_type')
+
+
+
+    let data = {
+        method: 'GET',
+        credentials: 'same-origin',
+        mode: 'same-origin',
+        headers: {
+            'Accept': '*!/!*',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        },
+    }
+    fetch(`https://seedyapp.tk/gardenstypes/`, data)
+        .then((response) => response.json())
+        .then((response) => {
+            setResult(response)
+            console.log("results:",response)
+            return (response);
+        })
+
+
+
+
+}
+useEffect(async() => {
+    await GardenType()
+    return
+    [])
+},*/
 
 
 const AddParcelle = ({ navigation }) => {
 
+  const [token, setToken] = useState({value: '', error: ''})
+  const [userId, setUserId] = useState({value: '', error: ''})
   const [shape_area, setShape_area] = useState({ value: '', error: '' })
   const [size_l, setSize_l] = useState({ value: '', error: '' })
   const [size_y, setSize_y] = useState({ value: '', error: '' })
   const [size_c, setSize_c] = useState({ value: '', error: '' })
   const [size_d, setSize_d] = useState({ value: '', error: '' })
   const [description, setDescription] = useState({ value: '', error: '' })
-  const add = () => {
 
-    let data = {
-      method: 'POST',
-      credentials: 'same-origin',
-      mode: 'same-origin',
-      body: JSON.stringify({
-        shape_area:shape_area.value,
-        size_l:size_l.value,
-        size_y:size_y.value,
-        size_c:size_c.value,
-        size_d:size_d.value,
-        description:description.value,
+    const add =  async () => {
+        const token =  await AsyncStorage.getItem('id_token')
 
-      }),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        //'X-CSRFToken': cookie.load('csrftoken')
-      },
-    }
+        console.log("test:",token)
 
-    fetch('https://seedyapp.tk/gardens/register',data)
+        const userId = await AsyncStorage.getItem('userId')
+        console.log("idusertest:",userId)
+        console.log("size_l:",size_l)
+        console.log("size_l:",size_l.value)
+
+        let data = {
+            method: 'POST',
+            credentials: 'same-origin',
+            mode: 'same-origin',
+            body: JSON.stringify({
+                id_user:userId,
+               shape_area:shape_area.value,
+                size_c:0,
+                size_d:size_d.value,
+                size_total:size_d.value*size_c.value,
+                size_l:size_l.value,
+                size_y:size_y.value,
+                description:description.value,
+             id_garden_type:"60dcd4a8dfba4207d80744ee"
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+token,
+
+                //'X-CSRFToken': cookie.load('csrftoken')
+            },
+        }
+
+        fetch('https://seedyapp.tk/gardens/register',data)
         .then((response) => {
           //Statut getted
           console.log(response.status);
@@ -73,36 +125,30 @@ const AddParcelle = ({ navigation }) => {
           </View>
 
           <Text style={styles.title}>Créer une parcelle</Text>
+
           <TextInput style={styles.input}
-                     placeholder="shape_area"
+                     placeholder="Type de jardin"
                      label="shape_area"
                      returnKeyType="next"
                      value={shape_area.value}
                      onChangeText={(text) => setShape_area({ value: text, error: '' })}
           />
           <TextInput style={styles.input}
-                     placeholder="size_l"
+                     placeholder="Largeur"
                      label="size_l"
                      returnKeyType="next"
                      value={size_l.value}
                      onChangeText={(text) => setSize_l({ value: text, error: '' })}
           />
           <TextInput  style={styles.input}
-                      placeholder="size_y"
+                      placeholder="Hauteur"
                       label="size_y"
                       returnKeyType="next"
                       value={size_y.value}
                       onChangeText={(text) => setSize_y({ value: text, error: '' })}
           />
           <TextInput  style={styles.input}
-                      placeholder="size_c"
-                      label="size_c"
-                      returnKeyType="next"
-                      value={size_c.value}
-                      onChangeText={(text) => setSize_c({ value: text, error: '' })}
-          />
-          <TextInput  style={styles.input}
-                      placeholder="size_d"
+                      placeholder="Distance"
                       label="size_d"
                       returnKeyType="next"
                       value={size_d.value}
@@ -121,9 +167,7 @@ const styles = StyleSheet.create({
   title:{fontSize:SIZES.h1,margin:30},
   containerGlobal:{flex: 1, alignItems: 'center',width:'auto',height: 'auto',marginTop:30},
   input:{height:50,backgroundColor:COLORS.greenLight,width:'80%',borderRadius: 10,margin:30},
-  enregistrer:{alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,marginTop:30},
-  Containercheckbox:{width:'100%',height:'auto',textAlign:'center', alignItems: 'center',margin:10},
-  checkbox: {paddingVertical:10,paddingHorizontal: 10, alignItems: 'center',width:'auto',height:'auto',marginLeft:25,marginTop:5},
+  ajouter:{alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,marginTop:30},
   label: {textAlign:'center'},
   row:{marginTop:30},
   txt:{textAlign: 'left',marginLeft:0,},
