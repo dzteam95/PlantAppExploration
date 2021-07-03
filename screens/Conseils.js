@@ -163,33 +163,39 @@ const Conseils = ({ navigation }) => {
                 </View>
                 <View style={isEnabledSearch==1? styles.bodyContentFiche : styles.displayNone}>
 
-                    <View style={styles.menuBoxUnavailable} onPress={() => navigation.replace('ConseilsList', { item: "glossaire"})}   >
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('RecettesList', { item: "Recettes"})}   >
                         <Text style={styles.info}>Recettes</Text>
-                        <Text style={styles.infoSub}>Prochainnement</Text>
-                    </View>
+                        <Text style={styles.infoSubNew}>Nouveau</Text>
+                        {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
+                    </TouchableOpacity>
 
                     <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches espèces", itemlink: "plants", tokenPass: token})}  >
                         <Text style={styles.info}>Fiches espèces</Text>
+                        <Text style={styles.infoSubNew}>Nouveau</Text>
                         {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
                     </TouchableOpacity>
 
                     <View style={styles.menuBoxUnavailable} onPress={() => navigation.replace('ConseilsList', { item: "tutosvideos"})} >
                         <Text style={styles.info}>Tutos vidéos</Text>
+                        {/* <Text style={styles.infoSubNew}>Nouveau</Text> */}
                         <Text style={styles.infoSub}>Prochainnement</Text>
                     </View>
 
                     <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches ravages", itemlink: "infosravages", tokenPass: token})}  >
                         <Text style={styles.info}>Fiches ravages</Text>
+                        <Text style={styles.infoSubNew}>Nouveau</Text>
                         {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches maladies", itemlink: "infossicks", tokenPass: token})}  >
                         <Text style={styles.info}>Fiches maladies</Text>
+                        <Text style={styles.infoSubNew}>Nouveau</Text>
                         {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
                     </TouchableOpacity>
 
                     <View style={styles.menuBoxUnavailable} onPress={() => navigation.replace('ConseilsList', { item: "savoirfaire"})}    >
                         <Text style={styles.info}>Fiches savoir-faire</Text>
+                        {/* <Text style={styles.infoSubNew}>Nouveau</Text> */}
                         <Text style={styles.infoSub}>Prochainnement</Text>
                     </View>
 
@@ -392,6 +398,27 @@ const styles = StyleSheet.create({
         // backgroundColor: 'orange', 
         // marginBottom: 5
     },
+    menuBoxAvailable:{
+        backgroundColor: "#FF0000",
+        borderRadius:10,
+        width:"47%",
+        height:100,
+        marginRight:10,
+        marginTop:10,
+        marginBottom:10,
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
+        // height: 100, 
+        // width: 50, 
+        // borderWidth: 1, 
+        // backgroundColor: 'orange', 
+        // marginBottom: 5
+    },
     info:{
         fontSize:18,
         fontWeight:'300',
@@ -399,6 +426,13 @@ const styles = StyleSheet.create({
         textAlign:'center',
         marginTop:30,
 
+    },
+    infoSubNew:{
+        // fontSize:18,
+        fontWeight:'400',
+        color: "#FF0000",
+        textAlign:'center',
+        // marginTop:30,
     },
     infoSub:{
         // fontSize:18,

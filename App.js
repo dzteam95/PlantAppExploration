@@ -34,6 +34,8 @@ import { AddParcelle } from "./screens/";
 import { GardenT } from "./screens/";
 import { GardenTList } from "./screens/";
 import { ProfileDetail } from "./screens/";
+import { RecettesList } from "./screens/";
+import { RecettesDetail } from "./screens/";
 
 // extra screens
 import Tabs from "./navigation/tabs";
@@ -141,6 +143,8 @@ const App = () => {
                 <Stack.Screen name="GardenT" component={GardenT}/>
                 <Stack.Screen name="GardenTList" component={GardenTList}/>
                 <Stack.Screen name="ProfileDetail" component={ProfileDetail}/>
+                <Stack.Screen name="RecettesList" component={RecettesList}/>
+                <Stack.Screen name="RecettesDetail" component={RecettesDetail}/>
 
             </Stack.Navigator>
         </NavigationContainer>
