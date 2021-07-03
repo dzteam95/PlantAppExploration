@@ -59,7 +59,7 @@ const ProfileDetail = ({route, navigation,  props }) => {
                 <Text style={styles.txt}>{result.city}</Text>
             </View>
             <View style={styles.body}>
-                <TouchableOpacity onPress={() => navigation.replace('Profile')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
                     <Text style={styles.txt}>Retour</Text>
                 </TouchableOpacity>
 

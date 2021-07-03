@@ -18,16 +18,16 @@ const Compte = ({navigation}) => {
 
 
         <View style={styles.bodyContent}>
-            <TouchableOpacity style={styles.buttonContainerWait} onPress={() => navigation.replace('')}>
+            <TouchableOpacity style={styles.buttonContainerWait} onPress={() => navigation.navigate('')}>
                 <Text  style={styles.txt}>Changer l'adresse du compte</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('DataShare')}>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('DataShare')}>
                 <Text  style={styles.txt}>Confidentialité</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Delete')}>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('Delete')}>
                 <Text  style={styles.txt}>Supprimer mon compte</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Parrainage')}>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('Parrainage')}>
                 <Text  style={styles.txt}>J'ai un code promo</Text>
             </TouchableOpacity>
             <View style={styles.containerSwitch}>

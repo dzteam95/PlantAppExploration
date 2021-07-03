@@ -7,7 +7,7 @@ const OnboardingTwo = ({navigation}) => {
   return (
     <View style={styles.containerGlobal}>
       <View style={styles.container}>
-        <Button color="#222222" title="Passer" onPress={() => navigation.replace('Register')} />
+        <Button color="#222222" title="Passer" onPress={() => navigation.navigate('Register')} />
         <Text style={styles.title}>Organisez</Text>
         <Text style={styles.txt}>
           Imaginez et créez votre jardin grâce à notre outil de virtualisation
@@ -19,7 +19,7 @@ const OnboardingTwo = ({navigation}) => {
         <View style={styles.suivant}>
           <Button color={COLORS.greenLight}
             title="Suivant"
-            onPress={() => navigation.replace('OnboardingThree')}
+            onPress={() => navigation.navigate('OnboardingThree')}
           />
         </View>
       </View>

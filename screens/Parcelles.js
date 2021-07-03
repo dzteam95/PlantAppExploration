@@ -129,7 +129,7 @@ const Parcelles = ({route, navigation, props}) => {
                             <TouchableOpacity
                                 style={styles.eventContent}
                                 onPress={() =>
-                                    navigation.replace('GardenTList', {
+                                    navigation.navigate('GardenTList', {
                                         item: item.id,
                                         tokenPass: token,
                                     })
@@ -153,7 +153,7 @@ const Parcelles = ({route, navigation, props}) => {
                 <Button
                     color="#ffffff"
                     title="Ajouter une parcelle"
-                    onPress={() => navigation.replace('AddParcelle')}
+                    onPress={() => navigation.navigate('AddParcelle')}
                 />
             </View>
         </ScrollView>

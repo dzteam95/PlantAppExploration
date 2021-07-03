@@ -36,14 +36,14 @@ const Profile = ({ navigation }) => {
                             </Pressable>
                             <Text style={styles.modalText}>Envie de discuter ?</Text>
                             <Text style={styles.modalText}>Chez seedy, on est à l'écoute. Ne soyez pas timide, envoyez nous un petit email. on sera ravi de y'répondre</Text>
-                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace('HelpUs')}>
+                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.navigate('HelpUs')}>
                                 <Text  style={styles.txt}>Envoyer un mail</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace(Linking.openURL("https://www.facebook.com/"))}>
+                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.navigate(Linking.openURL("https://www.facebook.com/"))}>
 
                                 <Text  style={styles.txt}>Contacte nos sur messenger</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.replace( Linking.openURL("https://seedy.difego.fr/foire-au-question-faq/"))}>
+                            <TouchableOpacity style={styles.buttonOpen} onPress={() => navigation.navigate( Linking.openURL("https://seedy.difego.fr/foire-au-question-faq/"))}>
                                 <Text  style={styles.txt}>Consulter notre FAQ</Text>
                             </TouchableOpacity>
                         </View>
@@ -61,19 +61,19 @@ const Profile = ({ navigation }) => {
                 <Text style={styles.name}>{/*Mon profil*/}</Text>
 
                 <View style={styles.bodyContent}>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Subscription')}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('Subscription')}>
                         <Text  style={styles.txt}>Mon abonnement</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Parrainage')}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('Parrainage')}>
                         <Text style={styles.txt} >Offre et Parrainage</Text>
                     </TouchableOpacity>
                     {/* <TouchableOpacity style={styles.buttonContainer}>
                         <Text  style={styles.txt}>Mes favoris x</Text>
                     </TouchableOpacity> */}
-                    <TouchableOpacity style={styles.buttonContainerWait} onPress={() => navigation.replace('ProfileDetail')}>
+                    <TouchableOpacity style={styles.buttonContainerWait} onPress={() => navigation.navigate('ProfileDetail')}>
                         <Text  style={styles.txt}>Mes informations </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('HelpUs')}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('HelpUs')}>
                         <Text  style={styles.txt}>Améliorer mon application</Text>
                     </TouchableOpacity>
                     <Pressable
@@ -82,10 +82,10 @@ const Profile = ({ navigation }) => {
                     >
                         <Text  style={styles.txt}>Aide et contact</Text>
                     </Pressable>
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Logout')}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('Logout')}>
                         <Text  style={styles.txt}>Déconnexion</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.buttonContainerWait} onPress={() => navigation.replace('Compte')}>
+                    <TouchableOpacity style={styles.buttonContainerWait} onPress={() => navigation.navigate('Compte')}>
                         <Text style={styles.txt}>Mon compte</Text>
                     </TouchableOpacity>
                 </View>

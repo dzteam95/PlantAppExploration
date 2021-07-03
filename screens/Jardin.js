@@ -12,23 +12,23 @@ const Jardin = ({navigation}) => {
 			
 			<View style={styles.body}>
 				<View style={styles.bodyContent}>
-					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.replace('Parcelles')}>
+					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.navigate('Parcelles')}>
 						<Text style={styles.info}>Mes parcelles</Text>
 					</TouchableOpacity>
 					
-					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.replace('Parcelles')}>
+					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.navigate('Parcelles')}>
 						<Text style={styles.info}>Liste des plantes</Text>
 					</TouchableOpacity>
 					
-					{/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Rappels')}>
+					{/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.navigate('Rappels')}>
 						<Text style={styles.info}>Actions à venir</Text>
 					</TouchableOpacity> */}
 					
-					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Rappels')}>
+					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.navigate('Rappels')}>
 						<Text style={styles.info}>Rappels</Text>
 					</TouchableOpacity>
 					
-					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Conseils')}>
+					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.navigate('Conseils')}>
 						<Text style={styles.info}>Mes fiches</Text>
 					</TouchableOpacity>
 				</View>

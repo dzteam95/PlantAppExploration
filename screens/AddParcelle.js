@@ -67,7 +67,7 @@ const AddParcelle = ({ navigation }) => {
     return (
         <View style={styles.containerGlobal} >
           <View style={styles.row}>
-            <TouchableOpacity onPress={() => navigation.replace('Parcelles')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Parcelles')}>
               <Text style={styles.txt}>Retour</Text>
             </TouchableOpacity>
           </View>
