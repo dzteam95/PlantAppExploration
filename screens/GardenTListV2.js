@@ -67,8 +67,7 @@ const GardenTListV2 = ({route, navigation,  props }) => {
     }, [])
 
     searchUserReminderFunction = async () => {
-        // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjMzMTQyNDUsImV4cCI6MTYyMzkxOTA0NX0.F21DuctCC5oFKcl6_3iRQ05iaKH_t6KlsdE81Jdzbm8"; 
-        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ4ODM1MDUsImV4cCI6MTYyNTQ4ODMwNX0.yBtRJRua9JL_fnAuwX4OGG9nO08mbnvk0Fpm1UaR3fQ";
+        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGRjYjgyNGRmYmE0MjA3ZDgwNzQ0ZTgiLCJpYXQiOjE2MjUxMjY4NzUsImV4cCI6MTYyNTczMTY3NX0.5WvwP6VnYDcZ0QKHwKb0rjTyIAfuzslwCeFaFeOssCk";
         let data = {
 			method: 'GET',
 			credentials: 'same-origin',
@@ -301,6 +300,7 @@ const GardenTListV2 = ({route, navigation,  props }) => {
                         <Text style={styles.nameHeader}>
                            Jardin Virtuel
                         </Text>
+
                         <TouchableOpacity onPress={() => navigation.replace("GardenTList", { item: route.params.item, tokenPass: this.tokenLocal })}>
                             <Text style={styles.add}>
                             V2

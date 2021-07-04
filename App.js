@@ -34,6 +34,8 @@ import { AddParcelle } from "./screens/";
 import { GardenT } from "./screens/";
 import { GardenTList } from "./screens/";
 import { ProfileDetail } from "./screens/";
+import { RecettesList } from "./screens/";
+import { RecettesDetail } from "./screens/";
 import { AddPlantParcelle } from "./screens/";
 import { PlantsParcelleListe } from "./screens/";
 import { ParcellesV2 } from "./screens/";
@@ -147,6 +149,9 @@ const App = () => {
 	            <Stack.Screen name="AddParcelle" component={AddParcelle}/>
                 <Stack.Screen name="GardenT" component={GardenT}/>
                 <Stack.Screen name="GardenTList" component={GardenTList}/>
+                <Stack.Screen name="ProfileDetail" component={ProfileDetail}/>
+                <Stack.Screen name="RecettesList" component={RecettesList}/>
+                <Stack.Screen name="RecettesDetail" component={RecettesDetail}/>
                 <Stack.Screen name="ProfileDetail" component={Tabs}/>
                 <Stack.Screen name="AddPlantParcelle" component={AddPlantParcelle}/>
                 <Stack.Screen name="PlantsParcelleListe" component={PlantsParcelleListe}/>

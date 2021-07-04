@@ -28,6 +28,8 @@ import GardenTList from "./GardenTList"
 import Parcelles from "./Parcelles";
 import AddParcelle from "./AddParcelle";
 import ProfileDetail from "./ProfileDetail";
+import RecettesList from "./RecettesList";
+import RecettesDetail from "./RecettesDetail";
 import AddPlantParcelle from "./AddPlantParcelle";
 import PlantsParcelleListe from "./PlantsParcelleListe";
 import ParcellesV2 from "./ParcellesV2";
@@ -64,6 +66,8 @@ export {
     Parcelles,
     AddParcelle,
     ProfileDetail,
+    RecettesList,
+    RecettesDetail,
     AddPlantParcelle,
     PlantsParcelleListe,
     PlantsParcelleV2,
