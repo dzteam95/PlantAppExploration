@@ -174,9 +174,9 @@ const PlantsParcelleListe = ({route, navigation, props}) => {
             <View style={styles.header}>
                 <View style={styles.headerContent}>
                     <Text style={styles.name}>Jardin Digital</Text>
-                    <TouchableOpacity onPress={() => this.eventClickListener('row')}>
+                    {/* <TouchableOpacity onPress={() => this.eventClickListener('row')}>
                         <Text style={styles.add}>+</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     {/* <TextInput
                             style={styles.textInputStyle}
                             onChangeText={this.searchFilterFunction}
@@ -186,40 +186,49 @@ const PlantsParcelleListe = ({route, navigation, props}) => {
                         /> */}
                 </View>
             </View>
-            <SectionList
-                sections={[{title: '', data: plantsInfos}]}
-                renderItem={
-                    ({item}) => (
-                        // <View>
-                        <View style={styles.menuBoxList} >
-                            {/* <Text style={styles.sectionHeader}>{section.title}</Text> */}
-                            <TouchableOpacity
-                                style={styles.containerLight}
-                                onPress={() => navigation.replace(
-                                    section.title=="Plantes" ? "ConseilsDetail" : "ConseilsDetailFiche"
-                                    , { item: item.id, tokenPass: token})}
-                            >
-                                <View style={styles.eventContentFirst}>
-                                    <Image style={styles.tinyLogoGeneral} source={{ uri: item.photourl,}}/>
-                                    <Text style={styles.infoGeneral}>{item.name}</Text>
-                                    <Text style={styles.infoSun}></Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                    )
-                    // </View>
-                }
-                renderSectionHeader={({section}) => (
-                    <Text style={styles.sectionHeader}>{section.title}</Text>
-                )}
-                keyExtractor={(item, index) => index}
-            />
-
+            <View style={styles.boby}>
+                <SectionList
+                    sections={[{title: '', data: plantsInfos}]}
+                    renderItem={
+                        ({item}) => (
+                            // <View>
+                            <View style={styles.menuBoxList} >
+                                {/* <Text style={styles.sectionHeader}>{section.title}</Text> */}
+                                <TouchableOpacity
+                                    style={styles.containerLight}
+                                    onPress={() => navigation.replace("ConseilsDetail" , { item: item.id, tokenPass: token})}
+                                >
+                                    <View style={styles.eventContentFirst}>
+                                        <Image style={styles.tinyLogoGeneral} source={{ uri: item.photourl,}}/>
+                                        <Text style={styles.infoGeneral}>{item.name}</Text>
+                                        <Text style={styles.infoSun}></Text>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                        )
+                        // </View>
+                    }
+                    renderSectionHeader={({section}) => (
+                        <Text style={styles.sectionHeader}>{section.title}</Text>
+                    )}
+                    keyExtractor={(item, index) => index}
+                />
+                <View style={styles.add}>
+                    <Button
+                        color="#ffffff"
+                        title="Ajouter une plante"
+                        onPress={() => navigation.replace('AddPlantParcelle')}
+                    />
+                </View>
+            </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    boby:{
+        paddingLeft:20,
+    },
     tinyLogo: {
         width: '15%',
         height: '100%',
@@ -230,6 +239,7 @@ const styles = StyleSheet.create({
         borderRadius:10,
         // margin:10,
         marginTop:10,
+        marginRight:30,
         marginBottom:10,
     },
 
@@ -331,6 +341,17 @@ const styles = StyleSheet.create({
         color: '#222222',
         fontWeight: '900',
     },
+    add:{
+        width:"85%",
+        marginTop:20,
+        alignItems: 'center',
+        backgroundColor:COLORS.greenDark,
+        borderRadius: 10,
+        paddingVertical: 10,
+        fontWeight: "bold",
+        color:COLORS.white,
+        marginLeft:20
+    }
 });
 
 export default PlantsParcelleListe;

@@ -69,39 +69,44 @@ const Parcelles = ({route, navigation, props}) => {
                     <Text style={styles.name}>Parcelles</Text>
                 </View>
             </View>
-            <SectionList
-                sections={[{title: '', data: result}]}
-                renderItem={
-                    ({item}) => (
-                        // <View>
-                        <View style={styles.eventBox}>
-                            <TouchableOpacity
-                                style={styles.eventContent}
-                                onPress={() =>
-                                    navigation.replace('PlantsParcelleListe', {
-                                        item: item.id,
-                                        tokenPass: token,
-                                    })
-                                }>
-                                <View style={styles.eventContentSec}>
-                                    <Text style={styles.eventTime}>{item.description}</Text>
-                                    <Text style={styles.eventTime}>{item.id}</Text>
-                                </View>
-                            </TouchableOpacity>
-                        </View>
-                    )
-                }
-                renderSectionHeader={({section}) => (
-                    <Text style={styles.sectionHeader}>{section.title}</Text>
-                )}
-                keyExtractor={(item, index) => index}
-            />
-            <View style={styles.add}>
-                <Button
-                    color="#ffffff"
-                    title="Ajouter une parcelle"
-                    onPress={() => navigation.replace('AddParcelle')}
+            <View style={styles.boby}>
+                <FlatList
+                    columnWrapperStyle={styles.tagView}
+                    numColumns={5}
+                    data={result} 
+                    // sections={[{title: '', data: result}]}
+                    renderItem={
+                        ({item}) => (
+                            // <View>
+                            <View style={styles.eventBox}>
+                                <TouchableOpacity
+                                    style={styles.eventContent}
+                                    onPress={() =>
+                                        navigation.replace('PlantsParcelleListe', {
+                                            item: item.id,
+                                            tokenPass: token,
+                                        })
+                                    }>
+                                    <View style={styles.eventContentSec}>
+                                        <Text style={styles.eventTime}>{item.description}</Text>
+                                        {/* <Text style={styles.eventTime}>{item.id}</Text> */}
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                        )
+                    }
+                    renderSectionHeader={({section}) => (
+                        <Text style={styles.sectionHeader}>{section.title}</Text>
+                    )}
+                    keyExtractor={(item, index) => index}
                 />
+                <View style={styles.add}>
+                    <Button
+                        color="#ffffff"
+                        title="Ajouter une parcelle"
+                        onPress={() => navigation.replace('AddParcelle')}
+                    />
+                </View>
             </View>
         </ScrollView>
 
@@ -110,6 +115,26 @@ const Parcelles = ({route, navigation, props}) => {
 };
 
 const styles = StyleSheet.create({
+    boby:{
+        paddingLeft:20,
+    },
+    tagView: {
+        flexWrap: "wrap",
+        // backgroundColor: "#ffffff",
+        // borderRadius:10,
+        // width:"47%",
+        // height:100,
+        // marginRight:10,
+        // marginTop:10,
+        // marginBottom:10,
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
+      },
     tinyLogo: {
         width: '15%',
         height: '100%',
@@ -122,7 +147,9 @@ const styles = StyleSheet.create({
     eventBox: {
         height:100,
         width:"49%",
-        padding: 10,
+        paddingRight: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
         marginTop: 5,
         marginBottom: 5,
         flexDirection: 'row',
@@ -185,7 +212,17 @@ const styles = StyleSheet.create({
         color: '#222222',
         fontWeight: '900',
     },
-    add:{width:"80%",marginTop:20,alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,fontWeight: "bold",color:COLORS.white,marginLeft:40,}
+    add:{
+        width:"85%",
+        marginTop:20,
+        alignItems: 'center',
+        backgroundColor:COLORS.greenDark,
+        borderRadius: 10,
+        paddingVertical: 10,
+        fontWeight: "bold",
+        color:COLORS.white,
+        marginLeft:20
+    }
 });
 
 export default Parcelles;

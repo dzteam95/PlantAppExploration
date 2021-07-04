@@ -156,7 +156,7 @@ const AddParcelle = ({ navigation }) => {
           />
 
           <View style={styles.ajouter}>
-            <Button color="#ffffff" title={"ajouter"} mode="contained" onPress={add}/>
+            <Button color="#ffffff" title={"Ajouter"} mode="contained" onPress={add}/>
           </View>
         </View>
 )
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
 
   title:{fontSize:SIZES.h1,margin:30},
   containerGlobal:{flex: 1, alignItems: 'center',width:'auto',height: 'auto',marginTop:30},
-  input:{height:50,backgroundColor:COLORS.greenLight,width:'80%',borderRadius: 10,margin:30},
+  input:{height:50,backgroundColor:COLORS.greenLight,width:'80%',borderRadius: 10,margin:30,paddingLeft:20,},
   ajouter:{alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,marginTop:30},
   label: {textAlign:'center'},
   row:{marginTop:30},

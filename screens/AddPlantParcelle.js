@@ -37,14 +37,19 @@ const AddPlantParcelle = ({ navigation }) => {
     const add = async() => {
         try{
             const token = await AsyncStorage.getItem('id_token');
-            console.log(token)
+            console.log("token",token)
+            console.log("id_plant", id_plant,
+                "id_garden", id_garden,
+                "position_x", position_x.value,
+                "position_y", position_y.value,
+                "mode", mode.value)
             let data = {
                 method: 'POST',
                 credentials: 'same-origin',
                 mode: 'same-origin',
                 body: JSON.stringify({
-                    id_plant: id_plant.value,
-                    id_garden: id_garden.value,
+                    id_plant: id_plant,
+                    id_garden: id_garden,
                     position_x: position_x.value,
                     position_y: position_y.value,
                     mode: mode.value,
@@ -237,6 +242,7 @@ const AddPlantParcelle = ({ navigation }) => {
                     onValueChange={(itemValue, itemIndex) =>
                         setId_garden(itemValue)
                     }>
+                    <Picker.Item label="Choissiez" value="" />
                     {serviceItemsGarden}
                     {/* <Picker.Item label="Ma terasse" value="60dc7431dfba4207d80744e0" /> */}
                 </Picker>
@@ -254,11 +260,14 @@ const AddPlantParcelle = ({ navigation }) => {
                     onValueChange={(itemValue, itemIndex) =>
                         setId_plant(itemValue)
                     }>
+                    <Picker.Item label="Choissiez" value="" />
                     {serviceItemsPlant}
 
                 </Picker>
 
             </View>
+            <Text>{id_garden}</Text>
+            <Text>{id_plant}</Text>
             <View style={styles.ajouter}>
                 <Button color="#ffffff" title={"ajouter"} mode="contained" onPress={add}/>
             </View>
