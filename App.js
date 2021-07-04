@@ -152,7 +152,6 @@ const App = () => {
                 <Stack.Screen name="ProfileDetail" component={ProfileDetail}/>
                 <Stack.Screen name="RecettesList" component={RecettesList}/>
                 <Stack.Screen name="RecettesDetail" component={RecettesDetail}/>
-                <Stack.Screen name="ProfileDetail" component={Tabs}/>
                 <Stack.Screen name="AddPlantParcelle" component={AddPlantParcelle}/>
                 <Stack.Screen name="PlantsParcelleListe" component={PlantsParcelleListe}/>
                 <Stack.Screen name="ParcellesV2" component={ParcellesV2}/>
