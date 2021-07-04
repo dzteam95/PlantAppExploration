@@ -78,3 +78,8 @@ levelsubscription Rappels ...
 
 
 npm install react-native-draggable
+
+
+React-native draggable 
+
+npm install react-native-draggable

@@ -3,10 +3,11 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity, AsyncStorage, setState, FlatList,
+    TouchableOpacity, AsyncStorage, setState, FlatList,footer
 
 } from 'react-native';
 import {COLORS} from "../constants";
+import {tabs} from "../navigation/tabs";
 
 const ProfileDetail = ({route, navigation,  props }) => {
 
@@ -55,17 +56,12 @@ const ProfileDetail = ({route, navigation,  props }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.txt}>{result.city}</Text>
-            </View>
             <View style={styles.body}>
                 <TouchableOpacity onPress={() => navigation.replace('Profile')}>
                     <Text style={styles.txt}>Retour</Text>
                 </TouchableOpacity>
 
                 <View style={styles.bodyContent }>
-
-
                     <Text style={styles.name}>{result.username}</Text>
                     <Text style={styles.info}>{result.email}</Text>
                     <Text style={styles.info}>{result.firstName}</Text>
@@ -75,10 +71,11 @@ const ProfileDetail = ({route, navigation,  props }) => {
                     <Text style={styles.info}>{result.city}</Text>
                     <Text style={styles.info}>{result.city_code}</Text>
                     <Text style={styles.info}>{result.country}</Text>
-
                 </View>
             </View>
-
+            <View style={styles.container}>
+                {tabs}
+            </View>
 
         </View>
     );
@@ -124,6 +121,9 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         backgroundColor: COLORS.greenDark,
     },
+    Footer: {
+    bottom: 0
+    }
 });
 
 export default ProfileDetail

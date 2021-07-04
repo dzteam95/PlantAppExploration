@@ -105,7 +105,7 @@ const App = () => {
             <Stack.Navigator
                 screenOptions={{
                     
-                    footerShown: true,
+                    footerShown: false,
                     headerShown: false,
                     
                   //   gestureEnabled: true,
@@ -128,8 +128,8 @@ const App = () => {
                 <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} />
                 <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
                 <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown:false }}/>
-                <Stack.Screen name="Profile" component={Profile}  options={{ headerShown: false, footerShown:true }}/>
-                <Stack.Screen name="Jardin" component={Jardin}  options={{ Tabs }}/>
+                <Stack.Screen name="Profile" component={Tabs}/>
+                <Stack.Screen name="Jardin" component={Jardin}/>
                 <Stack.Screen name="Conseils" component={Conseils}/>
                 <Stack.Screen name="ConseilsList" component={ConseilsList}/>
                 <Stack.Screen name="ConseilsDetail" component={ConseilsDetail}/>
@@ -143,11 +143,11 @@ const App = () => {
                 <Stack.Screen name="DataShare" component={DataShare}/>
                 <Stack.Screen name="Rappels" component={Rappels}/>
                 <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen}/>
-	            <Stack.Screen name="Parcelles" component={Parcelles}  options={{ Tabs }}/>
+	            <Stack.Screen name="Parcelles" component={Parcelles} />
 	            <Stack.Screen name="AddParcelle" component={AddParcelle}/>
                 <Stack.Screen name="GardenT" component={GardenT}/>
                 <Stack.Screen name="GardenTList" component={GardenTList}/>
-                <Stack.Screen name="ProfileDetail" component={ProfileDetail}/>
+                <Stack.Screen name="ProfileDetail" component={Tabs}/>
                 <Stack.Screen name="AddPlantParcelle" component={AddPlantParcelle}/>
                 <Stack.Screen name="PlantsParcelleListe" component={PlantsParcelleListe}/>
                 <Stack.Screen name="ParcellesV2" component={ParcellesV2}/>

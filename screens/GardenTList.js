@@ -64,7 +64,7 @@ const GardenTList = ({route, navigation, props}) => {
   searchUserReminderFunction = async () => {
     // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGJkY2JhNDI0NWQxZjBiMDE0NDJlMjIiLCJpYXQiOjE2MjMzMTQyNDUsImV4cCI6MTYyMzkxOTA0NX0.F21DuctCC5oFKcl6_3iRQ05iaKH_t6KlsdE81Jdzbm8";
     let tokenLocal =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ3OTMxMzgsImV4cCI6MTYyNTM5NzkzOH0.aN0m390nMLqI3CIs3Av4BQ_1t5tSH8jyduwkW_dvNgE';
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGQ4MzhhM2RmYmE0MjA3ZDgwNzQ0YzAiLCJpYXQiOjE2MjQ3OTMxMzgsImV4cCI6MTYyNTM5NzkzOH0.aN0m390nMLqI3CIs3Av4BQ_1t5tSH8jyduwkW_dvNgE';
     let data = {
       method: 'GET',
       credentials: 'same-origin',
@@ -81,69 +81,69 @@ const GardenTList = ({route, navigation, props}) => {
     // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
     // fetch(`http://localhost:4000/plantspositions/${gardenId}`, data)
     fetch(
-      `http://localhost:4000/plantspositions/garden/${route.params.item}`,
-      data,
+        `http://localhost:4000/plantspositions/garden/${route.params.item}`,
+        data,
     )
-      // fetch(`https://seedyapp.tk/reminder/user/5f0b3c733aead305c2eec26d`, data)
+        // fetch(`https://seedyapp.tk/reminder/user/5f0b3c733aead305c2eec26d`, data)
 
-      //Passertoken\
+        //Passertoken\
 
-      .then((responsesearch) => responsesearch.json())
-      .then((jsonsearch) => {
-        // console.debug(jsonsearch);
-        // console.log(jsonsearch);
-        setResult(jsonsearch);
+        .then((responsesearch) => responsesearch.json())
+        .then((jsonsearch) => {
+          // console.debug(jsonsearch);
+          // console.log(jsonsearch);
+          setResult(jsonsearch);
 
-        for (var i = 0; i < jsonsearch.length; i++) {
-          var obj = jsonsearch[i];
+          for (var i = 0; i < jsonsearch.length; i++) {
+            var obj = jsonsearch[i];
 
-          for (var key in obj) {
-            var value = obj[key];
-            // console.log(key + " : " + value)
-            if (key === 'id_plant') {
-              // console.log([plantsInfos, {id_plant : value}, {id_plant : value}] )
-              // console.log(key)
-              // console.log(value)
+            for (var key in obj) {
+              var value = obj[key];
+              // console.log(key + " : " + value)
+              if (key === 'id_plant') {
+                // console.log([plantsInfos, {id_plant : value}, {id_plant : value}] )
+                // console.log(key)
+                // console.log(value)
 
-              fetch(`http://localhost:4000/plants/${value}`, data)
-                // .then((responsesearch) => responsesearch.json())
-                .then((jsonsearch) => {
-                  console.log(jsonsearch);
-                  setPlantsInfos((plantsInfos) => [...plantsInfos, value]);
-                })
-                .catch((error) => console.error(error))
-                .finally(() => {
-                  //this.setState({ isLoadingSearch: false });
-                });
+                fetch(`http://localhost:4000/plants/${value}`, data)
+                    // .then((responsesearch) => responsesearch.json())
+                    .then((jsonsearch) => {
+                      console.log(jsonsearch);
+                      setPlantsInfos((plantsInfos) => [...plantsInfos, value]);
+                    })
+                    .catch((error) => console.error(error))
+                    .finally(() => {
+                      //this.setState({ isLoadingSearch: false });
+                    });
+              }
             }
           }
-        }
 
-        // for (var i = 0; i < plantsInfos.length; i++){
-        //     var obj = plantsInfos[i];
+          // for (var i = 0; i < plantsInfos.length; i++){
+          //     var obj = plantsInfos[i];
 
-        //     for (var key in obj){
-        //         var value = obj[key];
-        //         // console.log(key + " : " + value)
-        //         console.log(plantsInfos)
-        //     }
-        // }
-        // fetch(`http://localhost:4000/plantspositions/garden/${route.params.item}`, data)
-        // .then((responsesearch) => responsesearch.json())
-        // .then((jsonsearch) => {
-        //     console.log("yea")
-        // })
-        // .catch((error) => console.error(error))
-        // .finally(() => {
-        // //this.setState({ isLoadingSearch: false });
-        // })
-        // console.log(plantsInfos)
-        //this.setState({ datasearch: jsonsearch.data.plant });
-      })
-      .catch((error) => console.error(error))
-      .finally(() => {
-        //this.setState({ isLoadingSearch: false });
-      });
+          //     for (var key in obj){
+          //         var value = obj[key];
+          //         // console.log(key + " : " + value)
+          //         console.log(plantsInfos)
+          //     }
+          // }
+          // fetch(`http://localhost:4000/plantspositions/garden/${route.params.item}`, data)
+          // .then((responsesearch) => responsesearch.json())
+          // .then((jsonsearch) => {
+          //     console.log("yea")
+          // })
+          // .catch((error) => console.error(error))
+          // .finally(() => {
+          // //this.setState({ isLoadingSearch: false });
+          // })
+          // console.log(plantsInfos)
+          //this.setState({ datasearch: jsonsearch.data.plant });
+        })
+        .catch((error) => console.error(error))
+        .finally(() => {
+          //this.setState({ isLoadingSearch: false });
+        });
   };
 
   eventClickListener = (viewId) => {
@@ -192,48 +192,48 @@ const GardenTList = ({route, navigation, props}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
-          <Text style={styles.name}>Rappels</Text>
-          <TouchableOpacity onPress={() => this.eventClickListener('row')}>
-            <Text style={styles.add}>+</Text>
-          </TouchableOpacity>
-          {/* <TextInput
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.headerContent}>
+            <Text style={styles.name}>Rappels</Text>
+            <TouchableOpacity onPress={() => this.eventClickListener('row')}>
+              <Text style={styles.add}>+</Text>
+            </TouchableOpacity>
+            {/* <TextInput
                             style={styles.textInputStyle}
                             onChangeText={this.searchFilterFunction}
                             value={this.state.search}
                             underlineColorAndroid="transparent"
                             placeholder="Rechercher ... "
                         /> */}
+          </View>
         </View>
-      </View>
-      <SectionList
-        sections={[{title: '', data: plantsInfos}]}
-        renderItem={
-          ({item}) => (
-            // <View>
-            <View style={styles.eventBox}>
-              <View style={styles.eventContent}>
-                <View style={styles.eventContentSec}>
-                  <Text style={styles.eventTime}>id_plant {item.id_plant}</Text>
-                </View>
-                <View style={styles.eventContentSec}>
-                  <Text style={styles.description}>
-                    position_x {item.position_x} & position_y {item.position_y}
-                  </Text>
-                </View>
-              </View>
-            </View>
-          )
-          // </View>
-        }
-        renderSectionHeader={({section}) => (
-          <Text style={styles.sectionHeader}>{section.title}</Text>
-        )}
-        keyExtractor={(item, index) => index}
-      />
-      {/* <FlatList
+        <SectionList
+            sections={[{title: '', data: plantsInfos}]}
+            renderItem={
+              ({item}) => (
+                  // <View>
+                  <View style={styles.eventBox}>
+                    <View style={styles.eventContent}>
+                      <View style={styles.eventContentSec}>
+                        <Text style={styles.eventTime}>id_plant {item.id_plant}</Text>
+                      </View>
+                      <View style={styles.eventContentSec}>
+                        <Text style={styles.description}>
+                          position_x {item.position_x} & position_y {item.position_y}
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+              )
+              // </View>
+            }
+            renderSectionHeader={({section}) => (
+                <Text style={styles.sectionHeader}>{section.title}</Text>
+            )}
+            keyExtractor={(item, index) => index}
+        />
+        {/* <FlatList
                     enableEmptySections={true}
                     style={styles.eventList}
                     data={weekdays}
@@ -276,7 +276,7 @@ const GardenTList = ({route, navigation, props}) => {
                             </TouchableOpacity>
                         )
                     }}/> */}
-    </View>
+      </View>
   );
 };
 
