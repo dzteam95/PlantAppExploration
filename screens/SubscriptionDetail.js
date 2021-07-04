@@ -14,9 +14,10 @@ import {COLORS} from "../constants";
 
 const SubscriptionDetail = ({route, navigation }) => {
         const data = [
-                {id:1, name:'Petite Graine', price:'4,99', priceyear:'49,99', slug:'PetiteGraine', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-petite-graine.png' , t1:"✓", t2:"✓", t3:"✓", t4:"✓" , t5:"✓" , t6:"5" , t7:"∞", url:"https://seedy.difego.fr/abonnement-petite-graine/"},
-                {id:2, name:'Jeune Pousse', price:'7,99', priceyear:'89,99', slug:'JeunePousse', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-Jeune-pousse-.png' , t1:"✓", t2:"✓", t3:"✓", t4:"✓" , t5:"✓" , t6:"20" , t7:"∞", url:"https://seedy.difego.fr/abonnement-jeune-pousse/"},
-                {id:3, name:'Sequoia', price:'13,99', priceyear:'159,99', slug:'Sequoia', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-Sequoia.png', t1:"✓", t2:"✓", t3:"✓", t4:"✓" , t5:"✓" , t6:"∞" , t7:"∞", url:"https://seedy.difego.fr/abonnement-sequoia/"},
+                {id:1, name:'Free', price:'0,00', priceyear:'0,00', slug:'Free', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-petite-graine.png' , t1:"✓", t2:"✓", t3:"✓", t4:"✓" , t5:"✓" , t6:"5" , t7:"∞", url:"https://seedy.difego.fr/abonnement-petite-graine/"},
+                {id:2, name:'Petite Graine', price:'4,99', priceyear:'49,99', slug:'PetiteGraine', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-petite-graine.png' , t1:"✓", t2:"✓", t3:"✓", t4:"✓" , t5:"✓" , t6:"5" , t7:"∞", url:"https://seedy.difego.fr/abonnement-petite-graine/"},
+                {id:3, name:'Jeune Pousse', price:'7,99', priceyear:'89,99', slug:'JeunePousse', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-Jeune-pousse-.png' , t1:"✓", t2:"✓", t3:"✓", t4:"✓" , t5:"✓" , t6:"20" , t7:"∞", url:"https://seedy.difego.fr/abonnement-jeune-pousse/"},
+                {id:4, name:'Sequoia', price:'13,99', priceyear:'159,99', slug:'Sequoia', icon:'https://seedy.difego.fr/wp-content/uploads/2021/04/Abonnement-Sequoia.png', t1:"✓", t2:"✓", t3:"✓", t4:"✓" , t5:"✓" , t6:"∞" , t7:"∞", url:"https://seedy.difego.fr/abonnement-sequoia/"},
             ];
         const { itemId } = route.params;
         const id = JSON.stringify(itemId)-1;
@@ -117,16 +118,23 @@ const styles = StyleSheet.create({
     bodyContent:{
         // flexWrap: "wrap",
         paddingLeft:20,
-        paddingRight:20,
+        paddingRight:40,
         fontWeight: "900",
         width: 400 | "100%",
         height: 400 | "100%",
 
     },
     menuBox:{
-        backgroundColor: "#DCDCDC",
+        backgroundColor: "#ffffff",
         borderRadius:10,
         margin:10,
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
     },
     actionRedirection:{
         // flex:1,
@@ -134,6 +142,13 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         height:50,
         paddingBottom:120,
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
     },
     linkL:{
         flex:1,
@@ -144,7 +159,7 @@ const styles = StyleSheet.create({
     },
     linkR:{
         flex:1,
-        backgroundColor: "#DCDCDC",
+        backgroundColor: "#ffffff",
         borderRadius:10,
         margin:10,
         height:100,

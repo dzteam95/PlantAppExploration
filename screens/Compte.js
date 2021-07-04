@@ -12,50 +12,48 @@ const Compte = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.body}>
+      <View style={styles.centeredView}>
+        
         <Text style={styles.name}>Mon compte</Text>
-        <TouchableOpacity onPress={() => navigation.replace('Profile')}>
-          <Text style={styles.txt}>Retour</Text>
-        </TouchableOpacity>
+
 
         <View style={styles.bodyContent}>
-          <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.txt}>Changer l'adresse du compte</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.buttonContainer}
-            onPress={() => navigation.replace('DataShare')}>
-            <Text style={styles.txt}>Confidentialité</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.buttonContainer}
-            onPress={() => navigation.replace('Delete')}>
-            <Text style={styles.txt}>Supprimer mon compte</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.txt}>J'ai un code promo</Text>
-          </TouchableOpacity>
-
-          <View style={styles.buttonContainer}>
-            <Text style={styles.txt}>Recevoir des notifications</Text>
-            <Switch
-              trackColor={{false: '#767577', true: '#81b0ff'}}
-              thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
-              ios_backgroundColor="#3e3e3e"
-              onValueChange={toggleSwitch}
-              value={isEnabled}
-            />
-          </View>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.txt}>Recevoir la newsletter</Text>
-            <Switch
-              trackColor={{false: '#767577', true: '#81b0ff'}}
-              thumbColor={isEnabledTwo ? '#f5dd4b' : '#f4f3f4'}
-              ios_backgroundColor="#3e3e3e"
-              onValueChange={toggleSwitchTwo}
-              value={isEnabledTwo}
-            />
-          </View>
+            <TouchableOpacity style={styles.buttonContainerWait} onPress={() => navigation.replace('')}>
+                <Text  style={styles.txt}>Changer l'adresse du compte</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('DataShare')}>
+                <Text  style={styles.txt}>Confidentialité</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Delete')}>
+                <Text  style={styles.txt}>Supprimer mon compte</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Parrainage')}>
+                <Text  style={styles.txt}>J'ai un code promo</Text>
+            </TouchableOpacity>
+            <View style={styles.containerSwitch}>
+              <TouchableOpacity style={styles.buttonContainerWait}>
+                  <Text  style={styles.txtSwitch}>Notifications</Text>
+                  <Switch
+                    style={styles.Switch}
+                    trackColor={{false: '#767577', true: COLORS.greenDark}}
+                    thumbColor={isEnabled ? COLORS.greenLight : '#f4f3f4'}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                  />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonContainerWait} >
+                  <Text  style={styles.txtSwitch}>Newsletter</Text>
+                  <Switch
+                    style={styles.Switch}
+                    trackColor={{false: '#767577', true: COLORS.greenDark}}
+                    thumbColor={isEnabledTwo ? COLORS.greenLight : '#f4f3f4'}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitchTwo}
+                    value={isEnabledTwo}
+                  />
+              </TouchableOpacity>
+              </View>
         </View>
       </View>
     </View>
@@ -63,6 +61,14 @@ const Compte = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  containerSwitch:{
+    // flex:12,
+    // flexDirection:"column"
+  },
+  Switch:{
+    // flex:1,
+    paddingRight:40,
+  },
   header: {
     backgroundColor: '#00BFFF',
     height: 'auto',
@@ -78,12 +84,26 @@ const styles = StyleSheet.create({
 
   bodyContent: {
     alignItems: 'center',
+    flex:1,
+    flexDirection: 'column',
   },
-
+  buttonContainerWait:{
+    marginTop: 10,
+    height: 45,
+    // flex:1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    width: 350,
+    borderRadius: 10,
+    backgroundColor: "#CDCDCD",
+  },
   buttonContainer: {
     marginTop: 10,
     height: 45,
-    flexDirection: 'row',
+    // flex:1,
+    // flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
@@ -94,6 +114,13 @@ const styles = StyleSheet.create({
 
   txt: {
     fontSize: 18,
+    fontWeight: '500',
+  },
+  txtSwitch: {
+    flex:8,
+    fontSize: 18,
+    textAlign:'center',
+    // paddingRight:40,
     fontWeight: '500',
   },
 });

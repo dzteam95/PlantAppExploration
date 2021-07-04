@@ -7,7 +7,7 @@ const OnboardingFour = ({navigation}) => {
   return (
     <View style={styles.containerGlobal}>
       <View style={styles.container}>
-        <Button  color="#222222" title="Passer" onPress={() => navigation.replace('Login')} />
+        <Button  color="#222222" title="Se connecter" onPress={() => navigation.replace('Register')} />
         <Text style={styles.title}>Ensuite profitez</Text>
         <Text style={styles.txt}>
           Et voila cuisinez et partagez votre production avec vos proches
@@ -19,7 +19,7 @@ const OnboardingFour = ({navigation}) => {
         <View style={styles.suivant}>
           <Button color={COLORS.greenDark}
             title="C'est parti"
-            onPress={() => navigation.replace('Login')}
+            onPress={() => navigation.replace('Register')}
           />
         </View>
       </View>
@@ -29,6 +29,7 @@ const OnboardingFour = ({navigation}) => {
 
 const styles = StyleSheet.create({
   title: {fontSize: SIZES.h1, marginBottom: 50},
+  txt: {fontSize:14, marginTop: 10,     alignItems: 'center',width:'90%'},
   container: {
     marginTop: 50,
     flex: 1,

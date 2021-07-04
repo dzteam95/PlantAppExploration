@@ -123,14 +123,14 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
             </View>
             <View style={styles.body}>
                 <ImageBackground style={styles.bodyContent} /*source={{ uri: result.icon,}}*/>
-                    <ScrollView style={styles.eventList} >
+                    <ScrollView style={styles.eventList} showsVerticalScrollIndicator={false} >
                         <View>
                             <View style={styles.eventContentFirst}>
                                 <Image style={styles.presentationLogo} source={{ uri: result.photourl,}}/>
                                 <View >
                                     <Text style={styles.infoPlantName}>{result.name}</Text>
                                     <Text style={styles.infoFamily}>{result.name}</Text>
-                                    <Text style={styles.infoFamily}>Info Maladie</Text>
+                                    {/*<Text style={styles.infoFamily}>Info Maladie</Text>*/}
                                 </View>
                             </View>
                             <View style={styles.menuRow}>
@@ -549,7 +549,7 @@ const styles = StyleSheet.create({
         // flex:1,
         flexDirection: 'row',
         alignItems: 'flex-start',
-        height:100,
+        //height:100,
     },
     eventContentSec: {
         // flex:1,
@@ -577,7 +577,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'flex-start',
         height:'auto',
-
+        
     },
 
     eventList:{

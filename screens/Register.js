@@ -88,7 +88,7 @@ const Register = ({ navigation }) => {
 				<Text style={styles.label}>En finalisant votre inscription, vous confirmez avoir lu et acceptez les conditions d'utilisation de cette application ainsi que la politique de confidentialité</Text>
 			</View>*/}
 			<View style={styles.enregistrer}>
-				<Button color="#ffffff" title={"enregistrer"} mode="contained" onPress={onLoginPressed}/>
+				<Button color="#ffffff" title={"S'enregistrer"} mode="contained" onPress={onLoginPressed}/>
 			</View>
 		</View>
 	)
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
 
 	title:{fontSize:SIZES.h1,margin:30},
 	containerGlobal:{flex: 1, alignItems: 'center',width:'auto',height: 'auto',marginTop:30},
-	input:{height:70,backgroundColor:COLORS.greenLight,width:'80%',borderRadius: 10,margin:30},
+	input:{height:70,backgroundColor:COLORS.greenLight,width:'80%',borderRadius: 10,margin:30,paddingLeft:20},
 	enregistrer:{alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,marginTop:30},
 	Containercheckbox:{width:'100%',height:'auto',textAlign:'center', alignItems: 'center',margin:10},
 	checkbox: {paddingVertical:10,paddingHorizontal: 10, alignItems: 'center',width:'auto',height:'auto',marginLeft:25,marginTop:5},

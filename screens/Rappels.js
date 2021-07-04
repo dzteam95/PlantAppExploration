@@ -142,9 +142,11 @@ const Rappels = ({route, navigation,  props }) => {
                     </View>
                 </View>
                 <SectionList
+                        style={styles.showCase}
                         sections={[
                             {title: "", data: result},                            
                         ]}
+                        showsVerticalScrollIndicator={false}
                         renderItem={({item}) => 
                             // <View>
                                 <View style={styles.eventBox}>
@@ -217,6 +219,17 @@ const Rappels = ({route, navigation,  props }) => {
 }
 
 const styles = StyleSheet.create({
+    showCase:{
+        // height:'auto',
+        shadowColor: 'black',
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
+        marginBottom:150,
+    },
     tinyLogo: {
         width: "15%",
         height: "100%",

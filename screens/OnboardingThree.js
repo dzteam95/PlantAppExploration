@@ -15,11 +15,11 @@ const OnboardingThree = ({navigation}) => {
   return (
     <View style={styles.containerGlobal}>
       <View style={styles.container}>
-        <Button color="#222222" title="Passer" onPress={() => navigation.replace('Login')} />
+        <Button color="#222222" title="Passer" onPress={() => navigation.replace('Register')} />
         <Text style={styles.title}>Programmez</Text>
         <Text style={styles.txt}>
           Programmez des rappels pour toutes les tâches que nécessite votre
-          jardin ou votre potager qu'il soit intérrieur ou exterieur
+           jardin ou votre potager qu'il soit intérrieur ou exterieur
         </Text>
         <View style={styles.images}>
           <Image source={Boarding3} />
@@ -37,6 +37,8 @@ const OnboardingThree = ({navigation}) => {
 
 const styles = StyleSheet.create({
   title: {fontSize: SIZES.h1, marginBottom: 50},
+  txt: {fontSize:14, marginTop: 10,     alignItems: 'center',width:'90%'},
+
   container: {
     marginTop: 50,
     flex: 1,
