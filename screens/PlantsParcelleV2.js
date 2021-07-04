@@ -34,7 +34,7 @@ import {Fruit} from "../constants/images";
 import {SemisExt, SemisInt, Plantation} from "../constants/images";
 
 
-const GardenTListV2 = ({route, navigation,  props }) => {
+const PlantsParcelleV2 = ({route, navigation,  props }) => {
     const [search, setSearch] = useState({ value: '', error: '' })
     const [token, setToken] = useState({ value: '', error: '' })
     const [result, setResult] = useState([])
@@ -67,7 +67,10 @@ const GardenTListV2 = ({route, navigation,  props }) => {
     }, [])
 
     searchUserReminderFunction = async () => {
-        let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGRjYjgyNGRmYmE0MjA3ZDgwNzQ0ZTgiLCJpYXQiOjE2MjUxMjY4NzUsImV4cCI6MTYyNTczMTY3NX0.5WvwP6VnYDcZ0QKHwKb0rjTyIAfuzslwCeFaFeOssCk";
+        // let tokenLocal = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGRjYjgyNGRmYmE0MjA3ZDgwNzQ0ZTgiLCJpYXQiOjE2MjUxMjY4NzUsImV4cCI6MTYyNTczMTY3NX0.5WvwP6VnYDcZ0QKHwKb0rjTyIAfuzslwCeFaFeOssCk";
+        const token = await AsyncStorage.getItem('id_token')
+        console.log(token) 
+        console.log(route.params.item) 
         let data = {
 			method: 'GET',
 			credentials: 'same-origin',
@@ -75,13 +78,13 @@ const GardenTListV2 = ({route, navigation,  props }) => {
 			headers: {
 				'Accept': '*/*',
 				'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+tokenLocal,
+                'Authorization': 'Bearer '+token,
                 // 'Authorization': 'Bearer '+token,
                 // 'Authorization': 'Bearer '+route.params.token,
             },
 		}
 
-        fetch(`http://localhost:4000/plantspositions/garden/${route.params.item}`, data)
+        fetch(`https://seedyapp.tk/plantspositions/garden/${route.params.item}`, data)
 
         //Passertoken\
         
@@ -105,7 +108,7 @@ const GardenTListV2 = ({route, navigation,  props }) => {
                     //         // console.log(key)
                     //         // console.log(value)
 
-                            fetch(`http://localhost:4000/plants/${value}`, data)
+                            fetch(`https://seedyapp.tk/plants/${value}`, data)
                                 .then((responseSecond) => responseSecond.json())
                                 .then((responseSecond) => {
                                     // console.log(value , responseSecond)
@@ -300,12 +303,11 @@ const GardenTListV2 = ({route, navigation,  props }) => {
                         <Text style={styles.nameHeader}>
                            Jardin Virtuel
                         </Text>
-
-                        <TouchableOpacity onPress={() => navigation.replace("GardenTList", { item: route.params.item, tokenPass: this.tokenLocal })}>
+                        {/* <TouchableOpacity onPress={() => navigation.replace("GardenTList", { item: route.params.item, tokenPass: this.tokenLocal })}>
                             <Text style={styles.add}>
                             V2
                             </Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                 </View>
                 <View style={styles.container}>
@@ -517,4 +519,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default GardenTListV2
+export default PlantsParcelleV2

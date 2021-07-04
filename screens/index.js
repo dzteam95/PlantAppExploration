@@ -30,7 +30,10 @@ import AddParcelle from "./AddParcelle";
 import ProfileDetail from "./ProfileDetail";
 import RecettesList from "./RecettesList";
 import RecettesDetail from "./RecettesDetail";
-
+import AddPlantParcelle from "./AddPlantParcelle";
+import PlantsParcelleListe from "./PlantsParcelleListe";
+import ParcellesV2 from "./ParcellesV2";
+import PlantsParcelleV2 from "./PlantsParcelleV2";
 
 export {
     Home,
@@ -65,4 +68,8 @@ export {
     ProfileDetail,
     RecettesList,
     RecettesDetail,
+    AddPlantParcelle,
+    PlantsParcelleListe,
+    PlantsParcelleV2,
+    ParcellesV2
 };

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {COLORS} from "../constants";
 
 const Jardin = ({navigation}) => {
 	return (
@@ -12,12 +13,13 @@ const Jardin = ({navigation}) => {
 			
 			<View style={styles.body}>
 				<View style={styles.bodyContent}>
-					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.replace('Parcelles')}>
+					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Parcelles')}>
 						<Text style={styles.info}>Mes parcelles</Text>
 					</TouchableOpacity>
 					
-					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.replace('Parcelles')}>
+					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Conseils')}>
 						<Text style={styles.info}>Liste des plantes</Text>
+                        {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
 					</TouchableOpacity>
 					
 					{/* <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Rappels')}>
@@ -27,9 +29,10 @@ const Jardin = ({navigation}) => {
 					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Rappels')}>
 						<Text style={styles.info}>Rappels</Text>
 					</TouchableOpacity>
-					
-					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Conseils')}>
-						<Text style={styles.info}>Mes fiches</Text>
+
+					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.replace('ParcellesV2')}>
+						<Text style={styles.info}>Mes parcelles virtuelles</Text>
+                        <Text style={styles.infoSub}>Prochainnement</Text>
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -38,6 +41,14 @@ const Jardin = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+	infoSub:{
+        // fontSize:18,
+        fontWeight:'400',
+        color: COLORS.greenLight,
+        textAlign:'center',
+        // marginTop:30,
+
+    },
 	headerContent: {
 		marginTop: 50,
 		padding: 30,

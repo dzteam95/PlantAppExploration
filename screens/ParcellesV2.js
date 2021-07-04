@@ -19,7 +19,7 @@ import {
 import {COLORS} from '../constants';
 
 
-const Parcelles = ({route, navigation, props}) => {
+const ParcellesV2 = ({route, navigation, props}) => {
     const [token, setToken] = useState({value: '', error: ''});
     const [userId, setUserId] = useState({value: '', error: ''});
     const [result, setResult] = useState([]);
@@ -73,7 +73,7 @@ const Parcelles = ({route, navigation, props}) => {
                 <FlatList
                     columnWrapperStyle={styles.tagView}
                     numColumns={5}
-                    data={result}
+                    data={result} 
                     // sections={[{title: '', data: result}]}
                     renderItem={
                         ({item}) => (
@@ -82,7 +82,7 @@ const Parcelles = ({route, navigation, props}) => {
                                 <TouchableOpacity
                                     style={styles.eventContent}
                                     onPress={() =>
-                                        navigation.replace('PlantsParcelleListe', {
+                                        navigation.replace('PlantsParcelleV2', {
                                             item: item.id,
                                             tokenPass: token,
                                         })
@@ -225,4 +225,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Parcelles;
+export default ParcellesV2;
