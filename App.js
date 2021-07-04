@@ -36,6 +36,8 @@ import { GardenTList } from "./screens/";
 import { ProfileDetail } from "./screens/";
 import { AddPlantParcelle } from "./screens/";
 import { PlantsParcelleListe } from "./screens/";
+import { ParcellesV2 } from "./screens/";
+import { PlantsParcelleV2 } from "./screens/";
 
 // extra screens
 import Tabs from "./navigation/tabs";
@@ -148,6 +150,8 @@ const App = () => {
                 <Stack.Screen name="ProfileDetail" component={ProfileDetail}/>
                 <Stack.Screen name="AddPlantParcelle" component={AddPlantParcelle}/>
                 <Stack.Screen name="PlantsParcelleListe" component={PlantsParcelleListe}/>
+                <Stack.Screen name="ParcellesV2" component={ParcellesV2}/>
+                <Stack.Screen name="PlantsParcelleV2" component={PlantsParcelleV2}/>
 
             </Stack.Navigator>
 

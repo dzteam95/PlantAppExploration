@@ -12,7 +12,7 @@ const Jardin = ({navigation}) => {
 			
 			<View style={styles.body}>
 				<View style={styles.bodyContent}>
-					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.replace('Parcelles')}>
+					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Parcelles')}>
 						<Text style={styles.info}>Mes parcelles</Text>
 					</TouchableOpacity>
 					
@@ -30,6 +30,10 @@ const Jardin = ({navigation}) => {
 					
 					<TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('Conseils')}>
 						<Text style={styles.info}>Mes fiches</Text>
+					</TouchableOpacity>
+
+					<TouchableOpacity style={styles.menuBoxWait} onPress={() => navigation.replace('ParcellesV2')}>
+						<Text style={styles.info}>Mes parcelles virtuelles</Text>
 					</TouchableOpacity>
 				</View>
 			</View>
