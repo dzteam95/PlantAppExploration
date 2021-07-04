@@ -73,13 +73,23 @@ const tabOptions = {
     tabBarVisible:false,
     showLabel: false,
     style: {
+        // height: '0%',
+        margin:-100
+        // paddingTop: -12
+    },
+};
+const tabOptionsCO = {
+    tabBarVisible:true,
+    showLabel: false,
+    style: {
         height: '10%',
+        // margin:-100
+        // paddingTop: -12
     },
 };
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
 
 function ConseilsApp() {
 return (
@@ -94,9 +104,8 @@ return (
         <Stack.Screen name="OnboardingTwo" component={OnboardingTwo} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingThree" component={OnboardingThree} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} />
-        <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} />
-        {/* <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} /> */}
+        <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} />
         <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
         {/* <Stack.Screen name="Profile" component={Profile}/> */}
         {/* <Stack.Screen name="Jardin" component={Jardin}/> */}
@@ -104,6 +113,8 @@ return (
         <Stack.Screen name="ConseilsList" component={ConseilsList}/>
         <Stack.Screen name="ConseilsDetail" component={ConseilsDetail}/>
         <Stack.Screen name="ConseilsDetailFiche" component={ConseilsDetailFiche}/>
+        <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
+
         {/* <Stack.Screen name="Parrainage" component={Parrainage}/> */}
         {/* <Stack.Screen name="Delete" component={Delete}/> */}
         {/* <Stack.Screen name="Compte" component={Compte}/> */}
@@ -273,7 +284,8 @@ const App = () => {
     }
 
     // console.log(isSession)
-    
+    // const userId = await AsyncStorage.getItem('userId');
+    // console.log(userJeton)
     useEffect(() => {
         readData()
         return /*(
@@ -281,85 +293,94 @@ const App = () => {
         )*/
     }, [])
 
-    // console.log(initialRoute)
-      
+    const [isLogged, setIsLogged] = useState(false)
+    // setIsLogged(true)
+    
     return (
         <NavigationContainer theme={theme}>
-            <Tab.Navigator
-                tabBarOptions={tabOptions}
-                screenOptions={{
-                    headerShown: false,
-                    footerShown: true
-                }}
-                initialRouteName={initialRoute}
-                screenOptions={({route}) => ({
-                tabBarIcon: ({focused}) => {
-                const tintColor = focused ? COLORS.greenLight : COLORS.gray;
-        
-                switch (route.name) {
-                    case 'Conseils':
-                    return (
-                        <Image
-                        source={require('./assets/icons/Fiches_vert_clair.png')}
-                        resizeMode="contain"
-                        style={{
-                            tintColor: tintColor,
-                            width: 25,
-                            height: 25,
-                        }}
-                        />
-                    );
-        
-                    case 'Jardin':
-                    return (
-                        <Image
-                        source={require('./assets/icons/Jardin_vert_clair.png')}
-                        resizeMode="contain"
-                        style={{
-                            tintColor: tintColor,
-                            width: 25,
-                            height: 25,
-                        }}
-                        />
-                    );
-                    case 'Rappels':
-                    return (
-                        <Image
-                        source={require('./assets/icons/Rappels_vert_clair.png')}
-                        resizeMode="contain"
-                        style={{
-                            tintColor: tintColor,
-                            width: 25,
-                            height: 25,
-                        }}
-                        />
-                    );
-                    case 'Profile':
-                        return (
-                            <Image
-                                source={require('./assets/icons/Profil_vert_clair.png')}
+            {/* { ready ? */}
+                <Tab.Navigator
+                    tabBarOptions={isLogged ? tabOptionsCO : tabOptions}
+                    // screenOptions={{
+                    //     headerShown: false,
+                    //     footerShown: true
+                    // }}
+                    initialRouteName={initialRoute}
+                    screenOptions={({route}) => ({
+                        tabBarIcon: ({focused}) => {
+                        const tintColor = focused ? COLORS.greenLight : COLORS.gray;
+                
+                        switch (route.name) {
+                            case 'Conseils':
+                            return (
+                                <Image
+                                source={require('./assets/icons/Fiches_vert_clair.png')}
                                 resizeMode="contain"
                                 style={{
                                     tintColor: tintColor,
                                     width: 25,
                                     height: 25,
                                 }}
-                            />
-                        );
-                }
-                },
-            })}
-            >
-                {/* {Tabs} */}
-                <Tab.Screen name="Conseils" component={ConseilsApp} />
-                <Tab.Screen name="Jardin" component={JardinApp} />
-                <Tab.Screen name="Rappels" component={RappelsApp} />
-                <Tab.Screen name="Profile" component={ProfileApp} />
-                {/* <Tab.Screen name="Conseils" component={Tabs}/>
-                <Tab.Screen name="Jardin" component={Jardin} />
-                <Tab.Screen name="Rappels" component={Rappels} />
-                <Tab.Screen name="Profile" component={Profile} /> */}
-            </Tab.Navigator>
+                                />
+                            );
+                
+                            case 'Jardin':
+                            return (
+                                <Image
+                                source={require('./assets/icons/Jardin_vert_clair.png')}
+                                resizeMode="contain"
+                                style={{
+                                    tintColor: tintColor,
+                                    width: 25,
+                                    height: 25,
+                                }}
+                                />
+                            );
+                            case 'Rappels':
+                            return (
+                                <Image
+                                source={require('./assets/icons/Rappels_vert_clair.png')}
+                                resizeMode="contain"
+                                style={{
+                                    tintColor: tintColor,
+                                    width: 25,
+                                    height: 25,
+                                }}
+                                />
+                            );
+                            case 'Profile':
+                                return (
+                                    <Image
+                                        source={require('./assets/icons/Profil_vert_clair.png')}
+                                        resizeMode="contain"
+                                        style={{
+                                            tintColor: tintColor,
+                                            width: 25,
+                                            height: 25,
+                                        }}
+                                    />
+                                );
+                        }
+                        },
+                    })}
+                >
+                    {/* {Tabs} */}
+                    <Tab.Screen name="Conseils" component={ConseilsApp} />
+                    <Tab.Screen name="Jardin" component={JardinApp} />
+                    <Tab.Screen name="Rappels" component={RappelsApp} />
+                    <Tab.Screen name="Profile" component={ProfileApp} />
+                    {/* <Tab.Screen name="Conseils" component={Tabs}/>
+                    <Tab.Screen name="Jardin" component={Jardin} />
+                    <Tab.Screen name="Rappels" component={Rappels} />
+                    <Tab.Screen name="Profile" component={Profile} /> */}
+                </Tab.Navigator>
+                
+                {/* </NavigationContainer> */}
+                {/* //     tabBarOptions={tabOptions}
+                //     >
+                //     <Tab.Screen name="Login" component={LoginApp} />
+                // </Tab.Navigator> */}
+            {/* // } */}
         </NavigationContainer>
         
         // <NavigationContainer theme={theme}>
