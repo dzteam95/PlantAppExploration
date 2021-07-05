@@ -69,7 +69,7 @@ const AddPlantParcelle = ({ navigation }) => {
 
                         navigation.reset({
                             index: 0,
-                            routes: [{ name: 'Parcelles' }],
+                            routes: [{ name: 'Jardin' }],
                         })
 
                     }else{
