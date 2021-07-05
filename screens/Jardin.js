@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-import '../js/global';
 
 const Jardin = ({navigation}) => {
-	global.isLogd = true;
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>

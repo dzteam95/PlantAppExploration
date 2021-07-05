@@ -42,8 +42,6 @@ import { ProfileDetail } from "./screens/";
 import { RecettesList } from "./screens/";
 import { RecettesDetail } from "./screens/";
 
-import './js/global'
-
 // extra screens
 import Tabs from "./navigation/tabs";
 
@@ -62,7 +60,6 @@ if (mode === "prod"){
     const url = "http://localhost:4000/";
 
 };
-
 
 const theme = {
     ...DefaultTheme,
@@ -238,7 +235,7 @@ const App = () => {
         )*/
     }, [])
 
-    const [isLogged, setIsLogged] = useState(false)
+    // const [isLogged, setIsLogged] = useState(false)
     // console.log(isLogged)
     // setIsLogged(true)
     // console.log(global.isLogd )

@@ -12,7 +12,7 @@ import {
     SectionList
 } from 'react-native';
 import {COLORS} from "../constants";
-import '../js/global';
+
 
 const Conseils = ({ navigation }) => {
     const [isEnabledSearch, setIsEnabledSearch] = useState(1);
@@ -40,7 +40,6 @@ const Conseils = ({ navigation }) => {
       ];
 
     useEffect(() => {
-        global.isLogd = true;
         readToken()
         return /*(
             //readData()
