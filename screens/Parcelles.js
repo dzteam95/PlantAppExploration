@@ -72,7 +72,7 @@ const Parcelles = ({route, navigation, props}) => {
             <View style={styles.boby}>
                 <FlatList
                     columnWrapperStyle={styles.tagView}
-                    numColumns={5}
+                    numColumns={2}
                     data={result}
                     // sections={[{title: '', data: result}]}
                     renderItem={

@@ -68,7 +68,7 @@ const AddParcelle = ({ navigation }) => {
 
         const userId = await AsyncStorage.getItem('userId')
         console.log("idusertest:",userId)
-        console.log("size_l:",size_l)
+        // console.log("size_l:",size_l)
         console.log("size_l:",size_l.value)
 
         let data = {
@@ -77,14 +77,21 @@ const AddParcelle = ({ navigation }) => {
             mode: 'same-origin',
             body: JSON.stringify({
                 id_user:userId,
-               shape_area:shape_area.value,
+                shape_area:0,
                 size_c:0,
+                // size_c:size_c.value,
                 size_d:size_d.value,
+                // size_d:0,
                 size_total:size_d.value*size_c.value,
+                // size_total:0,
+                size_total:size_d.value,
+                // size_l:0,
                 size_l:size_l.value,
+                // size_y:0,
                 size_y:size_y.value,
+                // description:"description.value",
                 description:description.value,
-             id_garden_type:"60dcd4a8dfba4207d80744ee"
+                id_garden_type:"60dcd4a8dfba4207d80744ee"
             }),
             headers: {
                 'Accept': 'application/json',
@@ -104,7 +111,7 @@ const AddParcelle = ({ navigation }) => {
 
             navigation.reset({
               index: 0,
-              routes: [{ name: 'Parcelles' }],
+              routes: [{ name: 'Jardin' }],
             })
 
           }else{
@@ -127,28 +134,28 @@ const AddParcelle = ({ navigation }) => {
           <Text style={styles.title}>Créer une parcelle</Text>
 
           <TextInput style={styles.input}
-                     placeholder="Type de jardin"
-                     label="shape_area"
+                     placeholder="Type de jardin (nom)"
+                     label="description"
                      returnKeyType="next"
-                     value={shape_area.value}
-                     onChangeText={(text) => setShape_area({ value: text, error: '' })}
+                     value={description.value}
+                     onChangeText={(text) => setDescription({ value: text, error: '' })}
           />
           <TextInput style={styles.input}
-                     placeholder="Largeur"
+                     placeholder="Largeur (cm)"
                      label="size_l"
                      returnKeyType="next"
                      value={size_l.value}
                      onChangeText={(text) => setSize_l({ value: text, error: '' })}
           />
           <TextInput  style={styles.input}
-                      placeholder="Hauteur"
+                      placeholder="Hauteur (cm)"
                       label="size_y"
                       returnKeyType="next"
                       value={size_y.value}
                       onChangeText={(text) => setSize_y({ value: text, error: '' })}
           />
           <TextInput  style={styles.input}
-                      placeholder="Distance"
+                      placeholder="Distance (cm)"
                       label="size_d"
                       returnKeyType="next"
                       value={size_d.value}
