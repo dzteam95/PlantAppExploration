@@ -15,7 +15,6 @@ import {COLORS} from "../constants";
 import '../js/global';
 
 const Conseils = ({ navigation }) => {
-    global.isLogd = true;
     const [isEnabledSearch, setIsEnabledSearch] = useState(1);
     const [search, setSearch] = useState({ value: 's', error: '' })
     const [token, setToken] = useState({ value: '', error: '' })
@@ -41,6 +40,7 @@ const Conseils = ({ navigation }) => {
       ];
 
     useEffect(() => {
+        global.isLogd = true;
         readToken()
         return /*(
             //readData()

@@ -337,9 +337,9 @@ const App = () => {
                     })}
                 >
                     {/* {Tabs} */}
-                        { global.isLogd === false && <Tab.Screen name="Welcome" component={WelcomeApp} options={{ tabBarVisible: false, }}/>}
+                        <Tab.Screen name="Welcome" component={WelcomeApp} options={{ tabBarVisible: false,tabBarButton: () => (<View style={{width:0, height:0}}></View>), }}/>
                         
-                        <Tab.Screen name="Conseils" component={Tabs}options={{tabBarVisible: true, }}/>
+                        <Tab.Screen name="Conseils" component={ConseilsApp}options={{tabBarVisible: true, }}/>
                         <Tab.Screen name="Jardin" component={JardinApp}options={{tabBarVisible: true,}}/>
                         <Tab.Screen name="Rappels" component={RappelsApp}options={{tabBarVisible: true,}}/>
                         <Tab.Screen name="Profile" component={ProfileApp}options={{tabBarVisible: true,}}/>
