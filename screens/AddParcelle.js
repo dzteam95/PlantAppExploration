@@ -58,7 +58,7 @@ const AddParcelle = ({ navigation }) => {
   const [size_l, setSize_l] = useState({ value: '', error: '' })
   const [size_y, setSize_y] = useState({ value: '', error: '' })
   const [size_c, setSize_c] = useState({ value: '', error: '' })
-  const [size_d, setSize_d] = useState({ value: '', error: '' })
+  const [size_d, setSize_d] = useState({ value: 0, error: '' })
   const [description, setDescription] = useState({ value: '', error: '' })
 
     const add =  async () => {
@@ -154,13 +154,13 @@ const AddParcelle = ({ navigation }) => {
                       value={size_y.value}
                       onChangeText={(text) => setSize_y({ value: text, error: '' })}
           />
-          <TextInput  style={styles.input}
+          {/* <TextInput  style={styles.input}
                       placeholder="Distance (cm)"
                       label="size_d"
                       returnKeyType="next"
                       value={size_d.value}
                       onChangeText={(text) => setSize_d({ value: text, error: '' })}
-          />
+          /> */}
 
           <View style={styles.ajouter}>
             <Button color="#ffffff" title={"Ajouter"} mode="contained" onPress={add}/>

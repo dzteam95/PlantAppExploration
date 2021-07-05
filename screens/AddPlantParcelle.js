@@ -266,8 +266,8 @@ const AddPlantParcelle = ({ navigation }) => {
                 </Picker>
 
             </View>
-            <Text>{id_garden}</Text>
-            <Text>{id_plant}</Text>
+            {/* <Text>{id_garden}</Text>
+            <Text>{id_plant}</Text> */}
             <View style={styles.ajouter}>
                 <Button color="#ffffff" title={"ajouter"} mode="contained" onPress={add}/>
             </View>
