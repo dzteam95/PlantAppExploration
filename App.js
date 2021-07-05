@@ -41,6 +41,10 @@ import { GardenTList } from "./screens/";
 import { ProfileDetail } from "./screens/";
 import { RecettesList } from "./screens/";
 import { RecettesDetail } from "./screens/";
+import { AddPlantParcelle } from "./screens/";
+import { PlantsParcelleListe } from "./screens/";
+import { ParcellesV2 } from "./screens/";
+import { PlantsParcelleV2 } from "./screens/";
 
 // extra screens
 import Tabs from "./navigation/tabs";
@@ -244,6 +248,7 @@ const App = () => {
 
 
     return (
+
         <NavigationContainer theme={theme}>
             {/* { ready ? */}
                 <Tab.Navigator
@@ -423,7 +428,6 @@ const App = () => {
         //   </Tab.Navigator>
         // </NavigationContainer>
       );
-    
 };
 
 export default () => {
