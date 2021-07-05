@@ -50,18 +50,18 @@ const Tabs = () => {
         footerShown: true
       }}
       >
-      <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown:false }}/>
+      {/* <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown:false }}/>
       <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
       <Stack.Screen name="OnboardingTwo" component={OnboardingTwo} options={{ headerShown: false }} />
       <Stack.Screen name="OnboardingThree" component={OnboardingThree} options={{ headerShown: false }} />
-      <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} />
+      <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} /> */}
+      <Stack.Screen name="Conseils" component={Conseils}/>
       <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} />
       <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} />
       <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
       <Stack.Screen name="Profile" component={Profile}/>
       <Stack.Screen name="Jardin" component={Jardin}/>
-      <Stack.Screen name="Conseils" component={Conseils}/>
       <Stack.Screen name="ConseilsList" component={ConseilsList}/>
       <Stack.Screen name="ConseilsDetail" component={ConseilsDetail}/>
       <Stack.Screen name="ConseilsDetailFiche" component={ConseilsDetailFiche}/>

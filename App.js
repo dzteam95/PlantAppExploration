@@ -42,6 +42,8 @@ import { ProfileDetail } from "./screens/";
 import { RecettesList } from "./screens/";
 import { RecettesDetail } from "./screens/";
 
+import './js/global'
+
 // extra screens
 import Tabs from "./navigation/tabs";
 
@@ -69,17 +71,17 @@ const theme = {
         border: "transparent",
     },
 };
+// const tabOptionsCO = {
+//     // tabBarVisible:false,
+//     showLabel: false,
+//     style: {
+//         // height: '0%',
+//         // margin:-100
+//         // paddingTop: -12
+//     },
+// };
 const tabOptions = {
-    tabBarVisible:false,
-    showLabel: false,
-    style: {
-        // height: '0%',
-        margin:-100
-        // paddingTop: -12
-    },
-};
-const tabOptionsCO = {
-    tabBarVisible:true,
+    // tabBarVisible:true,
     showLabel: false,
     style: {
         height: '10%',
@@ -91,6 +93,25 @@ const tabOptionsCO = {
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
+function WelcomeApp() {
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+                footerShown: false
+            }}
+        >
+            <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown: false }}/>
+            <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
+            <Stack.Screen name="OnboardingTwo" component={OnboardingTwo} options={{ headerShown: false }} />
+            <Stack.Screen name="OnboardingThree" component={OnboardingThree} options={{ headerShown: false }} />
+            <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} />
+            <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} />
+            <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} />
+            <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
+        </Stack.Navigator>
+    );
+}
 function ConseilsApp() {
 return (
     <Stack.Navigator
@@ -99,14 +120,14 @@ return (
             footerShown: false
         }}
     >
-        <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown: false }}/>
+        {/* <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown: false }}/>
         <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingTwo" component={OnboardingTwo} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingThree" component={OnboardingThree} options={{ headerShown: false }} />
         <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} />
         <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} />
-        <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
+        <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} /> */}
         {/* <Stack.Screen name="Profile" component={Profile}/> */}
         {/* <Stack.Screen name="Jardin" component={Jardin}/> */}
         <Stack.Screen name="Conseils" component={Conseils}/>
@@ -142,37 +163,9 @@ return (
             headerShown: false,
             footerShown: false
         }}>
-            {/* <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} /> */}
-            {/* <Stack.Screen name="OnboardingTwo" component={OnboardingTwo} options={{ headerShown: false }} /> */}
-            {/* <Stack.Screen name="OnboardingThree" component={OnboardingThree} options={{ headerShown: false }} /> */}
-            {/* <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} /> */}
-            {/* <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} /> */}
-            {/* <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} /> */}
-            {/* <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} /> */}
-            {/* <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} /> */}
-            {/* <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown:false }}/> */}
-            {/* <Stack.Screen name="Profile" component={Profile}/> */}
             <Stack.Screen name="Jardin" component={Jardin}/>
-            {/* <Stack.Screen name="Conseils" component={Conseils}/> */}
-            {/* <Stack.Screen name="ConseilsList" component={ConseilsList}/> */}
-            {/* <Stack.Screen name="ConseilsDetail" component={ConseilsDetail}/> */}
-            {/* <Stack.Screen name="ConseilsDetailFiche" component={ConseilsDetailFiche}/> */}
-            {/* <Stack.Screen name="Parrainage" component={Parrainage}/> */}
-            {/* <Stack.Screen name="Delete" component={Delete}/> */}
-            {/* <Stack.Screen name="Compte" component={Compte}/> */}
-            {/* <Stack.Screen name="Subscription" component={Subscription}/> */}
-            {/* <Stack.Screen name="SubscriptionDetail" component={SubscriptionDetail}/> */}
-            {/* <Stack.Screen name="HelpUs" component={HelpUs}/> */}
-            {/* <Stack.Screen name="DataShare" component={DataShare}/> */}
-            {/* <Stack.Screen name="Rappels" component={Rappels}/> */}
-            {/* <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen}/> */}
             <Stack.Screen name="Parcelles" component={Parcelles}/>
             <Stack.Screen name="AddParcelle" component={AddParcelle}/>
-            {/* <Stack.Screen name="GardenT" component={GardenT}/> */}
-            {/* <Stack.Screen name="GardenTList" component={GardenTList}/> */}
-            {/* <Stack.Screen name="ProfileDetail" component={ProfileDetail}/> */}
-            {/* <Stack.Screen name="RecettesList" component={RecettesList}/> */}
-            {/* <Stack.Screen name="RecettesDetail" component={RecettesDetail}/> */}
     </Stack.Navigator>
 );
 }
@@ -184,37 +177,7 @@ return (
             headerShown: false,
             footerShown: false
         }}>
-            {/* <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
-            <Stack.Screen name="OnboardingTwo" component={OnboardingTwo} options={{ headerShown: false }} />
-            <Stack.Screen name="OnboardingThree" component={OnboardingThree} options={{ headerShown: false }} />
-            <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} />
-            <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
-            <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} />
-            <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} />
-            <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
-            <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown:false }}/>
-            <Stack.Screen name="Profile" component={Profile}/>
-            <Stack.Screen name="Jardin" component={Jardin}/>
-            <Stack.Screen name="Conseils" component={Conseils}/>
-            <Stack.Screen name="ConseilsList" component={ConseilsList}/>
-            <Stack.Screen name="ConseilsDetail" component={ConseilsDetail}/>
-            <Stack.Screen name="ConseilsDetailFiche" component={ConseilsDetailFiche}/>
-            <Stack.Screen name="Parrainage" component={Parrainage}/>
-            <Stack.Screen name="Delete" component={Delete}/>
-            <Stack.Screen name="Compte" component={Compte}/>
-            <Stack.Screen name="Subscription" component={Subscription}/>
-            <Stack.Screen name="SubscriptionDetail" component={SubscriptionDetail}/>
-            <Stack.Screen name="HelpUs" component={HelpUs}/>
-            <Stack.Screen name="DataShare" component={DataShare}/> */}
             <Stack.Screen name="Rappels" component={Rappels}/>
-            {/* <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen}/>
-            <Stack.Screen name="Parcelles" component={Parcelles}/>
-            <Stack.Screen name="AddParcelle" component={AddParcelle}/>
-            <Stack.Screen name="GardenT" component={GardenT}/>
-            <Stack.Screen name="GardenTList" component={GardenTList}/>
-            <Stack.Screen name="ProfileDetail" component={ProfileDetail}/>
-            <Stack.Screen name="RecettesList" component={RecettesList}/>
-            <Stack.Screen name="RecettesDetail" component={RecettesDetail}/> */}
     </Stack.Navigator>
 );
 }
@@ -226,21 +189,10 @@ return (
             headerShown: false,
             footerShown: false
         }}>
-            {/* <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
-            <Stack.Screen name="OnboardingTwo" component={OnboardingTwo} options={{ headerShown: false }} />
-            <Stack.Screen name="OnboardingThree" component={OnboardingThree} options={{ headerShown: false }} />
-            <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} />
-            <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
-            <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} /> */}
             <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} />
             <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
             <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown:false }}/>
             <Stack.Screen name="Profile" component={Profile}/>
-            {/* <Stack.Screen name="Jardin" component={Jardin}/>
-            <Stack.Screen name="Conseils" component={Conseils}/>
-            <Stack.Screen name="ConseilsList" component={ConseilsList}/>
-            <Stack.Screen name="ConseilsDetail" component={ConseilsDetail}/>
-            <Stack.Screen name="ConseilsDetailFiche" component={ConseilsDetailFiche}/> */}
             <Stack.Screen name="Parrainage" component={Parrainage}/>
             <Stack.Screen name="Delete" component={Delete}/>
             <Stack.Screen name="Compte" component={Compte}/>
@@ -248,15 +200,8 @@ return (
             <Stack.Screen name="SubscriptionDetail" component={SubscriptionDetail}/>
             <Stack.Screen name="HelpUs" component={HelpUs}/>
             <Stack.Screen name="DataShare" component={DataShare}/>
-            {/* <Stack.Screen name="Rappels" component={Rappels}/> */}
             <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen}/>
-            {/* <Stack.Screen name="Parcelles" component={Parcelles}/>
-            <Stack.Screen name="AddParcelle" component={AddParcelle}/>
-            <Stack.Screen name="GardenT" component={GardenT}/>
-            <Stack.Screen name="GardenTList" component={GardenTList}/> */}
             <Stack.Screen name="ProfileDetail" component={ProfileDetail}/>
-            {/* <Stack.Screen name="RecettesList" component={RecettesList}/>
-            <Stack.Screen name="RecettesDetail" component={RecettesDetail}/> */}
     </Stack.Navigator>
 );
 }
@@ -294,13 +239,19 @@ const App = () => {
     }, [])
 
     const [isLogged, setIsLogged] = useState(false)
+    // console.log(isLogged)
     // setIsLogged(true)
-    
+    // console.log(global.isLogd )
+    // // global.isLogd = true;
+    // console.log(global.isLogd )
+
+
     return (
         <NavigationContainer theme={theme}>
             {/* { ready ? */}
                 <Tab.Navigator
-                    tabBarOptions={isLogged ? tabOptionsCO : tabOptions}
+                    tabBarOptions={tabOptions}
+                    
                     // screenOptions={{
                     //     headerShown: false,
                     //     footerShown: true
@@ -308,9 +259,31 @@ const App = () => {
                     initialRouteName={initialRoute}
                     screenOptions={({route}) => ({
                         tabBarIcon: ({focused}) => {
-                        const tintColor = focused ? COLORS.greenLight : COLORS.gray;
-                
+                            const tintColor = focused ? COLORS.greenLight : COLORS.gray;
+                        // if (route.name === "Conseils"){
+                        //     setIsLogged(true)
+                        // }
+                        // if (route.name != "Conseils") { setIsLogged(false)}else{setIsLogged(true)}
+                        // console.log(route.name)
+                        // console.log("focused",focused)
+
                         switch (route.name) {
+                            case 'Welcome':
+                                return (
+                                    <Image
+                                    // source={require('./assets/icons/Fiches_vert_clair.png')}
+                                    // resizeMode="contain"
+                                    style={{
+                                        // display:"none",
+                                        // display: "none",visibility:"hidden",opacity:0,
+                                        // display: "none",
+                                        // margin:-100,
+                                        tintColor: tintColor,
+                                        // width: 25,
+                                        // height: 25,
+                                    }}
+                                    />
+                                );      
                             case 'Conseils':
                             return (
                                 <Image
@@ -322,8 +295,7 @@ const App = () => {
                                     height: 25,
                                 }}
                                 />
-                            );
-                
+                            );       
                             case 'Jardin':
                             return (
                                 <Image
@@ -365,14 +337,13 @@ const App = () => {
                     })}
                 >
                     {/* {Tabs} */}
-                    <Tab.Screen name="Conseils" component={ConseilsApp} />
-                    <Tab.Screen name="Jardin" component={JardinApp} />
-                    <Tab.Screen name="Rappels" component={RappelsApp} />
-                    <Tab.Screen name="Profile" component={ProfileApp} />
-                    {/* <Tab.Screen name="Conseils" component={Tabs}/>
-                    <Tab.Screen name="Jardin" component={Jardin} />
-                    <Tab.Screen name="Rappels" component={Rappels} />
-                    <Tab.Screen name="Profile" component={Profile} /> */}
+                        { global.isLogd === false && <Tab.Screen name="Welcome" component={WelcomeApp} options={{ tabBarVisible: false, }}/>}
+                        
+                        <Tab.Screen name="Conseils" component={Tabs}options={{tabBarVisible: true, }}/>
+                        <Tab.Screen name="Jardin" component={JardinApp}options={{tabBarVisible: true,}}/>
+                        <Tab.Screen name="Rappels" component={RappelsApp}options={{tabBarVisible: true,}}/>
+                        <Tab.Screen name="Profile" component={ProfileApp}options={{tabBarVisible: true,}}/>
+                        
                 </Tab.Navigator>
                 
                 {/* </NavigationContainer> */}
