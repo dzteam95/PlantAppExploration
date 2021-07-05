@@ -301,7 +301,11 @@ const GardenTListV2 = ({route, navigation,  props }) => {
                            Jardin Virtuel
                         </Text>
 
+                        {/* <TouchableOpacity onPress={() => navigation.navigate("GardenTList", { item: route.params.item, tokenPass: this.tokenLocal })}>
+
+
                         <TouchableOpacity onPress={() => navigation.replace("GardenTList", { item: route.params.item, tokenPass: this.tokenLocal })}>
+
                             <Text style={styles.add}>
                             V2
                             </Text>
