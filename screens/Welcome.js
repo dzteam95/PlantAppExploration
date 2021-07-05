@@ -16,7 +16,7 @@ const Welcome = ({ navigation }) => {
 						// style={styles.btndiscovert}
 						color= {COLORS.greenDark}
 						title="Découvrir Seedy"
-						onPress={() => navigation.replace('Onboarding')}
+						onPress={() => navigation.navigate('Onboarding')}
 					/>
 				</View>
 				<View style={styles.connexion}>
@@ -24,10 +24,10 @@ const Welcome = ({ navigation }) => {
 						// style={styles.btnlogin}
 						color="#ffffff"
 						title="Me connecter"
-						onPress={() => navigation.replace('Login')}
+						onPress={() => navigation.navigate('Login')}
 					/>
 				</View>
-				<TouchableOpacity onPress={() => navigation.replace('Register')}>
+				<TouchableOpacity onPress={() => navigation.navigate('Register')}>
 				<Text style={styles.txt}>{/*Déja convaincu?*/}<Text style={styles.link}>S'inscrire</Text></Text>
 				</TouchableOpacity>
 			</View>

@@ -15,7 +15,7 @@ const OnboardingThree = ({navigation}) => {
   return (
     <View style={styles.containerGlobal}>
       <View style={styles.container}>
-        <Button color="#222222" title="Passer" onPress={() => navigation.replace('Register')} />
+        <Button color="#222222" title="Passer" onPress={() => navigation.navigate('Register')} />
         <Text style={styles.title}>Programmez</Text>
         <Text style={styles.txt}>
           Programmez des rappels pour toutes les tâches que nécessite votre
@@ -27,7 +27,7 @@ const OnboardingThree = ({navigation}) => {
         <View style={styles.suivant}>
           <Button color="#ffffff"
             title="Suivant"
-            onPress={() => navigation.replace('OnboardingFour')}
+            onPress={() => navigation.navigate('OnboardingFour')}
           />
         </View>
       </View>

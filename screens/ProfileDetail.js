@@ -57,7 +57,7 @@ const ProfileDetail = ({route, navigation,  props }) => {
     return (
         <View style={styles.container}>
             <View style={styles.body}>
-                <TouchableOpacity onPress={() => navigation.replace('Profile')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
                     <Text style={styles.txt}>Retour</Text>
                 </TouchableOpacity>
 

@@ -19,7 +19,7 @@ const OnboardingFour = ({navigation}) => {
         <View style={styles.suivant}>
           <Button color={COLORS.greenDark}
             title="C'est parti"
-            onPress={() => navigation.replace('Register')}
+            onPress={() => navigation.navigate('Register')}
           />
         </View>
       </View>

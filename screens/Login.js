@@ -129,7 +129,7 @@ const Login = ({ navigation }) => {
 					saveData('premiumLevelStorage', isP),
 					navigation.reset({
 						index: 0,
-						routes: [{ name: 'Home' }],
+						routes: [{ name: 'Conseils' }],
 					})
 				})
 							  
@@ -178,7 +178,7 @@ const Login = ({ navigation }) => {
 return(
 	<View style={styles.containerGlobal} >
 		<View style={styles.row}>
-			<TouchableOpacity onPress={() => navigation.replace('Welcome')}>
+			<TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
 				<Text style={styles.txt}>Retour</Text>
 			</TouchableOpacity>
 		</View>
@@ -192,7 +192,7 @@ return(
 
 		/>
 		<View style={styles.rowInput}>
-			<TouchableOpacity style={styles.forgot} onPress={() => navigation.replace('ForgotPasswordScreen')}>
+			<TouchableOpacity style={styles.forgot} onPress={() => navigation.navigate('ForgotPasswordScreen')}>
 				<Text>Mot de passe oublié ?</Text>
 			</TouchableOpacity>
 		</View>
@@ -225,7 +225,7 @@ return(
 
 		</View>
 		<View style={styles.row}>
-			<TouchableOpacity  onPress={() => navigation.replace('Register')}>
+			<TouchableOpacity  onPress={() => navigation.navigate('Register')}>
 				<Text style={styles.txt}>Pas encore de compte?<Text style={styles.link}> m'inscrire</Text></Text>
 			</TouchableOpacity>
 		</View>

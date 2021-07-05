@@ -138,7 +138,7 @@ const RecettesList = ({ route, navigation }) => {
                     {/* back  action*/}
                     <View style={styles.actionContent}>
                         <View style={styles.actionContentF}>
-                            <TouchableOpacity style={styles.backAction} onPress={() => navigation.replace('Conseils')}>
+                            <TouchableOpacity style={styles.backAction} onPress={() => navigation.navigate('Conseils')}>
                                 <Text style={styles.backText}>
                                     Nos conseils & recettes
                                 </Text>
@@ -162,7 +162,7 @@ const RecettesList = ({ route, navigation }) => {
                         renderItem={({item}) => {
                             return (
                                 <View style={styles.menuBox} >
-                                    <TouchableOpacity onPress={() => navigation.replace("RecettesDetail", { item: item.id})}>
+                                    <TouchableOpacity onPress={() => navigation.navigate("RecettesDetail", { item: item.id})}>
                                         <View style={styles.eventContent}>
                                             <View style={styles.eventContentF}>
                                                 <Text style={styles.infoName}>{item.title}</Text>

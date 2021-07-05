@@ -39,7 +39,7 @@ const SubscriptionDetail = ({route, navigation }) => {
                 <View style={styles.bodyContent}>
                     <View style={styles.eventList}>
                         <View style={styles.menuBox} >
-                            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('Subscription')}>
+                            <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('Subscription')}>
                                 <View style={styles.eventContentFirst}>
                                     <Image style={styles.tinyLogo} source={{ uri: result.icon,}}/>
                                     <Text style={styles.infoName}>{result.name}</Text>
