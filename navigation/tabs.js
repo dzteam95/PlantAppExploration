@@ -1,111 +1,85 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-// screens
+import { createStackNavigator, TransitionPresets, } from "@react-navigation/stack";
 
+// screens
+import { PlantDetail } from "../screens/";
+import { Login } from "../screens/";
+import { Logout } from "../screens/";
+import { Register } from "../screens/";
+import { Welcome } from "../screens/";
+import { Onboarding } from "../screens/";
+import { OnboardingTwo } from "../screens/";
+import { OnboardingThree} from "../screens/";
+import { OnboardingFour} from "../screens/";
+import { Home } from "../screens/";
 import { Profile } from "../screens/";
 import { Jardin } from "../screens/";
 import { Rappels } from "../screens/";
 import { Conseils } from "../screens/";
-
+import { ConseilsList } from "../screens/";
+import { ConseilsDetail } from "../screens/";
+import { ConseilsDetailFiche } from "../screens/";
+import { Subscription } from "../screens/";
+import { SubscriptionDetail } from "../screens/";
+import { HelpUs } from "../screens/";
+import { DataShare } from "../screens/";
+import { Parrainage } from "../screens/";
+import { Delete } from "../screens/";
+import { Compte } from "../screens/";
+import { ForgotPasswordScreen } from "../screens/";
+import { Parcelles } from "../screens/";
+import { AddParcelle } from "../screens/";
+import { GardenT } from "../screens/";
+import { GardenTList } from "../screens/";
+import { ProfileDetail } from "../screens/";
 
 import {COLORS} from '../constants';
 import {ProfilVertFonce} from "../constants/icons";
 
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-const tabOptions = {
-		showLabel: false,
-  style: {
-    height: '10%',
-  },
-};
-
-const CameraButton = () => {
-  return (
-    <View
-      style={{
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: COLORS.greenDark,
-       width:'100%',
-          height: '100%'
-      }}>
-      <Image
-        source={ProfilVertFonce}
-
-
-      />
-    </View>
-  );
-};
 
 const Tabs = () => {
   return (
-    <Tab.Navigator
-      tabBarOptions={tabOptions}
-      screenOptions={({route}) => ({
-        tabBarIcon: ({focused}) => {
-          const tintColor = focused ? COLORS.greenLight : COLORS.gray;
-
-          switch (route.name) {
-            case 'Conseils':
-              return (
-                <Image
-                  source={require('../assets/icons/Fiches_vert_clair.png')}
-                  resizeMode="contain"
-                  style={{
-                    tintColor: tintColor,
-                    width: 25,
-                    height: 25,
-                  }}
-                />
-              );
-
-            case 'Jardin':
-              return (
-                <Image
-                  source={require('../assets/icons/Jardin_vert_clair.png')}
-                  resizeMode="contain"
-                  style={{
-                    tintColor: tintColor,
-                    width: 25,
-                    height: 25,
-                  }}
-                />
-              );
-            case 'Rappels':
-              return (
-                <Image
-                  source={require('../assets/icons/Rappels_vert_clair.png')}
-                  resizeMode="contain"
-                  style={{
-                    tintColor: tintColor,
-                    width: 25,
-                    height: 25,
-                  }}
-                />
-              );
-              case 'Profile':
-                  return (
-                      <Image
-                          source={require('../assets/icons/Profil_vert_clair.png')}
-                          resizeMode="contain"
-                          style={{
-                              tintColor: tintColor,
-                              width: 25,
-                              height: 25,
-                          }}
-                      />
-                  );
-          }
-        },
-      })}>
-      <Tab.Screen name="Conseils" component={Conseils} />
-      <Tab.Screen name="Jardin" component={Jardin} />
-      <Tab.Screen name="Rappels" component={Rappels} />
-      <Tab.Screen name="Profile" component={Profile} />
-    </Tab.Navigator>
+    <Stack.Navigator
+      // tabBarOptions={tabOptions}
+      screenOptions={{
+        headerShown: false,
+        footerShown: true
+      }}
+      >
+      {/* <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false, footerShown:false }}/>
+      <Stack.Screen name="Onboarding" component={Onboarding} options={{ headerShown: false }} />
+      <Stack.Screen name="OnboardingTwo" component={OnboardingTwo} options={{ headerShown: false }} />
+      <Stack.Screen name="OnboardingThree" component={OnboardingThree} options={{ headerShown: false }} />
+      <Stack.Screen name="OnboardingFour" component={OnboardingFour} options={{ headerShown: false }} /> */}
+      <Stack.Screen name="Conseils" component={Conseils}/>
+      <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
+      <Stack.Screen name="Login" component={Login} options={{ headerShown: false,footerShown:false }} />
+      <Stack.Screen name="Logout" component={Logout} options={{ headerShown: false,footerShown:false }} />
+      <Stack.Screen name="Register" component={Register} options={{ headerShown: false,footerShown:false }} />
+      <Stack.Screen name="Profile" component={Profile}/>
+      <Stack.Screen name="Jardin" component={Jardin}/>
+      <Stack.Screen name="ConseilsList" component={ConseilsList}/>
+      <Stack.Screen name="ConseilsDetail" component={ConseilsDetail}/>
+      <Stack.Screen name="ConseilsDetailFiche" component={ConseilsDetailFiche}/>
+      <Stack.Screen name="Parrainage" component={Parrainage}/>
+      <Stack.Screen name="Delete" component={Delete}/>
+      <Stack.Screen name="Compte" component={Compte}/>
+      <Stack.Screen name="Subscription" component={Subscription}/>
+      <Stack.Screen name="SubscriptionDetail" component={SubscriptionDetail}/>
+      <Stack.Screen name="HelpUs" component={HelpUs}/>
+      <Stack.Screen name="DataShare" component={DataShare}/>
+      <Stack.Screen name="Rappels" component={Rappels}/>
+      <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen}/>
+      <Stack.Screen name="Parcelles" component={Parcelles}/>
+      <Stack.Screen name="AddParcelle" component={AddParcelle}/>
+      <Stack.Screen name="GardenT" component={GardenT}/>
+      <Stack.Screen name="GardenTList" component={GardenTList}/>
+      <Stack.Screen name="ProfileDetail" component={ProfileDetail}/>
+    </Stack.Navigator>
   );
 };
 

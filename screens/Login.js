@@ -129,7 +129,7 @@ const Login = ({ navigation }) => {
 					saveData('premiumLevelStorage', isP),
 					navigation.reset({
 						index: 0,
-						routes: [{ name: 'Home' }],
+						routes: [{ name: 'Conseils' }],
 					})
 				})
 							  
