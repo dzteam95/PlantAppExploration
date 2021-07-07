@@ -86,6 +86,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex:1,
     flexDirection: 'column',
+    // alignItems: 'center',
+    // shadowColor: 'black',
+    shadowOpacity: .2,
+    shadowOffset: {
+        height:2,
+        width:-2
+    },
+    elevation:4,
   },
   buttonContainerWait:{
     marginTop: 10,
@@ -109,7 +117,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     width: 350,
     borderRadius: 10,
-    backgroundColor: COLORS.lightGray,
+    backgroundColor: "#ffffff",
   },
 
   txt: {
