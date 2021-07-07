@@ -142,6 +142,38 @@ const PlantsParcelleV2 = ({route, navigation,  props }) => {
         console.log('Date:'+currentDay ,);
     }
 
+
+    udpatePosition = async (x,y,ppId) =>{
+        console.log(x,y);
+        const token = await AsyncStorage.getItem('id_token')		
+        let data = {
+			method: 'PUT',
+			credentials: 'same-origin',
+			mode: 'same-origin',
+            body: JSON.stringify({
+				position_x: x,
+				position_y: y,
+
+			}),
+			headers: {
+				'Accept': '*/*',
+				'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+token,
+            },
+		}
+		fetch(`https://seedyapp.tk/plantspositions/${ppId}`,data)
+		.then((response) => {
+			//Statut getted
+			console.log(response.status);
+			if (response.status === 200) {
+				console.log('updated');
+			  
+			}else{
+				console.log('not updated or contain error');
+				//do nothing
+			}
+		  })
+    } 
     // for (var i = 0; i < result.length; i++){
     //     var obj = result[i];
         
@@ -207,69 +239,13 @@ const PlantsParcelleV2 = ({route, navigation,  props }) => {
         })
         ).current;
      
-    // const panacotta = async ()  => {
-    //     for (res in plantsInfos ) {
-    //         idValue = plantsInfos[res]['id']
-    //         // console.log(res)//0,1,2
-    //         // console.log(idValue)//id
-    //         // title = "panRespond"+res
-    //         console.log("title")
-            
-    //         // pan[res] = useRef(new Animated.ValueXY()).current;
-    //         // panResponder[res] = useRef(
-    //         //     PanResponder.create({
-    //         //         onMoveShouldSetPanResponder: () => true,
-    //         //         onPanResponderGrant: () => {
-    //         //             console.log(pan[res].x._value)
-    //         //             console.log(pan[res].y._value)
-    //         //         pan[res].setOffset({
-    //         //             x: pan[res].x._value,
-    //         //             y: pan[res].y._value
-    //         //         });
-    //         //         },
-    //         //         onPanResponderMove: Animated.event(
-    //         //         [
-    //         //             null,
-    //         //             { dx: pan[res].x, dy: pan[res].y }
-    //         //         ]
-    //         //         ),
-    //         //         onPanResponderRelease: () => {
-    //         //             pan[res].flattenOffset();
-    //         //         }
-    //         //     })
-    //         //     ).current;
-    //     }
-    // }
+    
  
     // console.log(result)
-    console.log(plantsInfos)
+    // console.log(plantsInfos)
     var g = result
     var c = plantsInfos
-    // var g = [
-    //     { id: 36, name: 'AAA', goal: 'yes' },
-    //     { id: 40, name: 'BBB', goal: 'yes' },
-    //     { id: 57, name: 'CCC', goal: 'yes' },
-    //     { id: 4, name: 'DDD', goal: 'yes' },
-    //     { id: 39, name: 'EEE', goal: 'yes' },
-    //     { id: 37, name: 'FFF', goal: 'yes' },
-    //     { id: 59, name: 'GGG', goal: 'yes' },
-    //     { id: 50, name: 'III', goal: 'yes' },
-    //     { id: 43, name: 'HHH', goal: 'yes' },
-    //     { id: 35, name: 'JJJ', goal: 'yes' }
-    // ],
-    // c = [
-    //     { id: 36, name: 'AAA', circle: 'yes' },
-    //     { id: 40, name: 'BBB', circle: 'yes' },
-    //     { id: 57, name: 'CCC', circle: 'yes' },
-    //     { id: 42, name: 'ZZZ', circle: 'yes' },
-    //     { id: 4, name: 'DDD', circle: 'yes' },
-    //     { id: 39, name: 'EEE', circle: 'yes' },
-    //     { id: 37, name: 'FFF', circle: 'yes' },
-    //     { id: 59, name: 'GGG', circle: 'yes' },
-    //     { id: 43, name: 'HHH', circle: 'yes' },
-    //     { id: 35, name: 'JJJ', circle: 'yes' },
-    //     { id: 100, name: 'JJJ', circle: 'yes' }
-    // ],
+
     arrayList = [], obj_c_processed = [];
 
     for (var i in g) {
@@ -293,7 +269,7 @@ const PlantsParcelleV2 = ({route, navigation,  props }) => {
             arrayList.push({id: c[j].id, name: c[j].name, goal: 'no', circle: c[j].circle});
         }
     }
-    console.log(arrayList)
+    // console.log(arrayList)
 
     return (
         <View style={styles.container}>
@@ -303,76 +279,25 @@ const PlantsParcelleV2 = ({route, navigation,  props }) => {
                         <Text style={styles.nameHeader}>
                            Jardin Virtuel
                         </Text>
-                        {/* <TouchableOpacity onPress={() => navigation.replace("GardenTList", { item: route.params.item, tokenPass: this.tokenLocal })}>
-                            <Text style={styles.add}>
-                            V2
-                            </Text>
-                        </TouchableOpacity> */}
                     </View>
                 </View>
                 <View style={styles.container}>
                     <ImageBackground source={image} style={styles.image}>
-                        {/* <Text style={styles.titleText}>Drag this box!</Text> */}
-                        {/* {plantsInfos.map(r => 
-                            <View>
-                                <Animated.View
-                                    style={{
-                                    transform: [{ translateX: pan.x }, { translateY: pan.y }]
-                                    }}
-                                    {...panResponder.panHandlers}
-                                >
-                                    <View style={styles.box} >
-                                        <Text>{r.id}</Text>
-                                        <Text>{r.name}</Text>
-                                        <Image style={styles.tinyLogo} source={{ uri: r.photourl}}/>
-                                    </View>
-                                </Animated.View>
-                            </View>
-                        )} */}
-                            {/* Data Test */}
-                            {/* <View>
-                                <Animated.View
-                                    style={{
-                                    transform: [{ translateX: pan0.x }, { translateY: pan0.y }]
-                                    }}
-                                    {...panResponder0.panHandlers}
-                                >
-                                    <View style={styles.box} >
-                                        <Image style={styles.tinyLogo} source={{ uri: "https://images-na.ssl-images-amazon.com/images/I/71kYjiQBArL._AC_SX425_.jpg"}}/>
-                                    </View>
-                                </Animated.View>
-                                <Animated.View
-                                    style={{
-                                    transform: [{ translateX: pan1.x }, { translateY: pan1.y }]
-                                    }}
-                                    {...panResponder1.panHandlers}
-                                >
-                                    <View style={styles.box} >
-                                        <Image style={styles.tinyLogo} source={{ uri: "https://images-na.ssl-images-amazon.com/images/I/71kYjiQBArL._AC_SX425_.jpg"}}/>
-                                    </View>
-                                </Animated.View>
-                                <Animated.View
-                                    style={{
-                                    transform: [{ translateX: pan2.x }, { translateY: pan2.y }]
-                                    }}
-                                    {...panResponder2.panHandlers}
-                                >
-                                    <View style={styles.box} >
-                                        <Image style={styles.tinyLogo} source={{ uri: "https://images-na.ssl-images-amazon.com/images/I/71kYjiQBArL._AC_SX425_.jpg"}}/>
-                                    </View>
-                                </Animated.View>
-                            </View> */}
-                            <View >
-                                {/* {plantsInfos.map(p => 
-                                    <Draggable x={50} y={50} onShortPressRelease={()=>alert(p.name)}>
-                                        <View style={styles.box} >
-                                            <Text>{p.id}</Text>
-                                            <Image style={styles.tinyLogo} source={{ uri: p.photourl}}/>
-                                        </View>
-                                    </Draggable>
-                                )} */}
+                            {/* <View > */}
                                  {arrayList.map(p => 
-                                    <Draggable x={p.position_x} y={p.position_y} onShortPressRelease={()=>alert(p.name)}>
+                                    <Draggable reverse={false} x={p.position_x-40} y={p.position_y-132} minX={0} minY={0} maxX={299} maxY={675} onShortPressRelease={()=>alert(p.name)} 
+                                        onDragRelease={
+                                            (e) => {
+                                                // console.log("p.id = " + p.nativeEvent.pageX + " , "+p.position_x),
+
+                                                udpatePosition((e.nativeEvent.pageX-e.nativeEvent.locationX),(e.nativeEvent.pageY-e.nativeEvent.locationY),p.id);
+                                                // console.log("pageX, pageY = " + (e.nativeEvent.pageX-e.nativeEvent.locationX)+ ", " + (e.nativeEvent.pageY-e.nativeEvent.locationX));
+                                                // console.log("pageX, pageY = " + (e.pageX-e.locationX)+ ", " + (e.nativeEvent.pageY-e.nativeEvent.locationX));
+                                                // console.log("locX, locY = " + e.nativeEvent.locationX + ", " + e.nativeEvent.locationY);
+                                                // console.log("p.id = " + e.nativeEvent.x + " , "+e.y);
+                                                // console.log("locX, locY = " + (e.nativeEvent.pageX-e.nativeEvent.locationX) + ", " + (e.nativeEvent.pageY-e.nativeEvent.locationY))
+                                            }
+                                        }>
                                     {/* <Draggable x={267} y={-300} onShortPressRelease={()=>alert(p.name)}> */}
                                         <View style={styles.box} >
                                             {/* <Text>{p.id}</Text> */}
@@ -380,24 +305,8 @@ const PlantsParcelleV2 = ({route, navigation,  props }) => {
                                         </View>
                                     </Draggable>
                                 )}
-                                {/* {result.map(r => 
-                                    <Draggable x={r.position_x} y={r.position_y} renderColor='black' onShortPressRelease={()=>alert("r.name")}>
-                                        
-                                        <View style={styles.box} >
-                                            <Text>{r.id_plant}</Text>
-                                            <Image style={styles.tinyLogo} source={{ uri: "r.photourl"}}/>
-                                        </View>
-                                    </Draggable>
-                                )} */}
-                                {/* <Draggable x={75} y={100} renderSize={56} renderColor='black' renderText='A' isCircle shouldReverse onShortPressRelease={()=>alert('touched!!')}/> 
-                                <Draggable x={200} y={300} renderColor='red' renderText='B'/>
-                                <Draggable/>
-                                <Draggable x={50} y={50}>
-                                        <View style={styles.box} >
-                                            <Image style={styles.tinyLogo} source={{ uri: "https://images-na.ssl-images-amazon.com/images/I/71kYjiQBArL._AC_SX425_.jpg"}}/>
-                                        </View>
-                                </Draggable> */}
-                            </View>
+                               
+                            {/* </View> */}
                     </ImageBackground>
                 </View>   
             </View>
