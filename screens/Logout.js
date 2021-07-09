@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import { TouchableOpacity, StyleSheet, View,Text,TextInput,Button ,BackHandler, Alert, AsyncStorage} from 'react-native';
+import { TouchableOpacity, StyleSheet, View,Text,TextInput,Button ,BackHandler, Alert, AsyncStorage,NativeModules} from 'react-native';
 
 import {COLORS, SIZES} from "../constants";
 
@@ -17,10 +17,7 @@ const Logout = ({ navigation }) => {
 
   clearStorage()
 
-  navigation.reset({
-      index: 0,
-      routes: [{ name: 'Welcome' }],
-  })
+  NativeModules.DevSettings.reload();
   return (
       <View>
       </View>

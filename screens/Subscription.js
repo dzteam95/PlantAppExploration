@@ -66,7 +66,7 @@ const Subscription = ({ navigation }) => {
                         renderItem={({item}) => {
                             return (
                                 <View style={ item.idStr === userLevel.value ? styles.menuBoxLevel : styles.menuBox} >
-                                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.replace('SubscriptionDetail', { itemId: item.id})}>
+                                    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('SubscriptionDetail', { itemId: item.id})}>
                                         <View style={styles.eventContentFirst}>
                                             <Image style={styles.tinyLogo} source={{ uri: item.icon,}}/>
                                             <Text style={styles.infoName}>{item.name}</Text>

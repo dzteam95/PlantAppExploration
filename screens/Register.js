@@ -39,7 +39,7 @@ const Register = ({ navigation }) => {
 				
 				navigation.reset({
 					index: 0,
-					routes: [{ name: 'Welcome' }],
+					routes: [{ name: 'Login' }],
 				})
 			  
 			}else{
@@ -52,7 +52,7 @@ const Register = ({ navigation }) => {
 	return(
 		<View style={styles.containerGlobal} >
 			<View style={styles.row}>
-				<TouchableOpacity onPress={() => navigation.replace('Welcome')}>
+				<TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
 					<Text style={styles.txt}>Retour</Text>
 				</TouchableOpacity>
 			</View>

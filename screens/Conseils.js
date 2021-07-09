@@ -163,37 +163,37 @@ const Conseils = ({ navigation }) => {
                 </View>
                 <View style={isEnabledSearch==1? styles.bodyContentFiche : styles.displayNone}>
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('RecettesList', { item: "Recettes"})}   >
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.navigate('RecettesList', { item: "Recettes"})}   >
                         <Text style={styles.info}>Recettes</Text>
                         <Text style={styles.infoSubNew}>Nouveau</Text>
                         {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches espèces", itemlink: "plants", tokenPass: token})}  >
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.navigate('ConseilsList', { item: "Fiches espèces", itemlink: "plants", tokenPass: token})}  >
                         <Text style={styles.info}>Fiches espèces</Text>
                         <Text style={styles.infoSubNew}>Nouveau</Text>
                         {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
                     </TouchableOpacity>
 
-                    <View style={styles.menuBoxUnavailable} onPress={() => navigation.replace('ConseilsList', { item: "tutosvideos"})} >
+                    <View style={styles.menuBoxUnavailable} onPress={() => navigation.navigate('ConseilsList', { item: "tutosvideos"})} >
                         <Text style={styles.info}>Tutos vidéos</Text>
                         {/* <Text style={styles.infoSubNew}>Nouveau</Text> */}
                         <Text style={styles.infoSub}>Prochainnement</Text>
                     </View>
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches ravages", itemlink: "infosravages", tokenPass: token})}  >
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.navigate('ConseilsList', { item: "Fiches ravages", itemlink: "infosravages", tokenPass: token})}  >
                         <Text style={styles.info}>Fiches ravages</Text>
                         <Text style={styles.infoSubNew}>Nouveau</Text>
                         {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.replace('ConseilsList', { item: "Fiches maladies", itemlink: "infossicks", tokenPass: token})}  >
+                    <TouchableOpacity style={styles.menuBox} onPress={() => navigation.navigate('ConseilsList', { item: "Fiches maladies", itemlink: "infossicks", tokenPass: token})}  >
                         <Text style={styles.info}>Fiches maladies</Text>
                         <Text style={styles.infoSubNew}>Nouveau</Text>
                         {/* <Text style={styles.infoSub}>Prochainnement</Text> */}
                     </TouchableOpacity>
 
-                    <View style={styles.menuBoxUnavailable} onPress={() => navigation.replace('ConseilsList', { item: "savoirfaire"})}    >
+                    <View style={styles.menuBoxUnavailable} onPress={() => navigation.navigate('ConseilsList', { item: "savoirfaire"})}    >
                         <Text style={styles.info}>Fiches savoir-faire</Text>
                         {/* <Text style={styles.infoSubNew}>Nouveau</Text> */}
                         <Text style={styles.infoSub}>Prochainnement</Text>
@@ -213,7 +213,7 @@ const Conseils = ({ navigation }) => {
                          <View style={styles.menuBoxList} >
                              <TouchableOpacity 
                                  style={styles.containerLight}
-                                 onPress={() => navigation.replace('ConseilsDetailFiche', { item: item.id, tokenPass: token})}
+                                 onPress={() => navigation.navigate('ConseilsDetailFiche', { item: item.id, tokenPass: token})}
                                  >
                                  <View style={styles.eventContentFirst}>
                                      <Image style={styles.tinyLogoGeneral} source={{ uri: item.photourl,}}/>
@@ -234,7 +234,7 @@ const Conseils = ({ navigation }) => {
                                 {/* <Text style={styles.sectionHeader}>{section.title}</Text> */}
                                 <TouchableOpacity 
                                     style={styles.containerLight}
-                                    onPress={() => navigation.replace(
+                                    onPress={() => navigation.navigate(
                                         section.title=="Plantes" ? "ConseilsDetail" : "ConseilsDetailFiche"
                                         , { item: item.id, tokenPass: token})}
                                     >
@@ -348,6 +348,9 @@ const styles = StyleSheet.create({
         // height: 400 | "100%",
         // flex: 1,
         // paddingTop: 22
+        // paddingBottom: 150
+        // marginBottom:150,
+        height: "74%",
         // height: 10000,
     },
     bodyContentFiche:{

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {
     StyleSheet,
     Text,
@@ -15,6 +16,7 @@ import {
     setState,
     SectionList,
     AsyncStorage,
+    Animated,
 } from 'react-native';
 import {COLORS} from '../constants';
 
@@ -23,6 +25,7 @@ const Parcelles = ({route, navigation, props}) => {
     const [token, setToken] = useState({value: '', error: ''});
     const [userId, setUserId] = useState({value: '', error: ''});
     const [result, setResult] = useState([]);
+    const [item, setItemToDelete] = useState([]);
 
     const displayParcelles = async () => {
 
@@ -44,23 +47,72 @@ const Parcelles = ({route, navigation, props}) => {
             .then((response) => response.json())
             .then((response) => {
                 setResult(response)
-                console.log("results:",response)
+                //console.log("results:",response)
                 return (response);
             })
-        console.log("testToken :", token)
-        console.log("test :", userId)
-         console.log("results:",result)
+        //console.log("testToken :", token)
+        //console.log("test :", userId)
+         //console.log("results:",result)
 
 
 
     }
+    
     useEffect(async() => {
         await displayParcelles()
-          console.log("Testetu:",result)
+          //console.log("Testetu:",result)
         return
     }, [])
 
+    const leftSwipe = (progress, dragX) => {
+        const scale = dragX.interpolate({
+            inputRange: [0,100],
+            outputRange: [0,1],
+            extrapolate: 'clamp',
+        })
+        return (
+            // <TouchableOpacity onPress={this.handleDelete} activeOpacity={0,6}>
+            <View style={styles.eventBoxTD} >
+                <TouchableOpacity style={styles.eventContentTD} onPress={deleteItem(item)} activeOpacity={0,6}>
+                {/* <TouchableOpacity onPress={deleteItem()} activeOpacity={0,6}> */}
+                    <View style={styles.deleteBox}>
+                        <Animated.Text>X</Animated.Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+        )
 
+    }
+    // handleDelete=(id)=> deleteItem(id)
+
+    const deleteItem = async (id) => {
+        // console.log(id)
+        const token = await AsyncStorage.getItem('id_token')
+        // console.log(token);
+
+        let dataDelete = {
+            method: 'DELETE',
+            credentials: 'same-origin',
+            mode: 'same-origin',
+            headers: {
+                'Accept': '*/*',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+token,
+                // 'Authorization': 'Bearer '+tokenLocal,
+            },
+        }
+
+        fetch(`https://seedyapp.tk/gardens/${id}`, dataDelete)
+            .then( res => {
+                console.log(res.status)
+                if (res.status === 200) {
+                    console.log('garden deleted'); 
+                    navigation.navigate('Jardin')                       
+                }else{
+                    console.log('not authorized');
+                }
+            })
+    }
 
     return (
         <ScrollView style={styles.container}>
@@ -72,13 +124,13 @@ const Parcelles = ({route, navigation, props}) => {
             <View style={styles.boby}>
                 <FlatList
                     columnWrapperStyle={styles.tagView}
-                    numColumns={5}
+                    numColumns={2}
                     data={result}
                     // sections={[{title: '', data: result}]}
                     renderItem={
                         ({item}) => (
                             // <View>
-                            <View style={styles.eventBox}>
+                            <View style={styles.eventBox} >
                                 <TouchableOpacity
                                     style={styles.eventContent}
                                     onPress={() =>
@@ -87,10 +139,10 @@ const Parcelles = ({route, navigation, props}) => {
                                             tokenPass: token,
                                         })
                                     }>
-                                    <View style={styles.eventContentSec}>
+                                    <Swipeable style={styles.eventContentSec} renderLeftActions={leftSwipe} onSwipeableLeftOpen={() =>setItemToDelete(item.id)}>
                                         <Text style={styles.eventTime}>{item.description}</Text>
                                         {/* <Text style={styles.eventTime}>{item.id}</Text> */}
-                                    </View>
+                                    </Swipeable>
                                 </TouchableOpacity>
                             </View>
                         )
@@ -146,6 +198,7 @@ const styles = StyleSheet.create({
     },
     eventBox: {
         height:100,
+        justifyContent:'center',
         width:"49%",
         paddingRight: 10,
         paddingTop: 10,
@@ -170,8 +223,10 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10,
         backgroundColor: '#FFFFFF',
+        // backgroundColor: '#AAA000',
         padding: 10,
         borderRadius: 10,
+        width:"100%",
     },
     eventContentFirst: {
         flex: 1,
@@ -185,6 +240,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         height: 20,
         marginTop: 10,
+        
     },
     description: {
         fontSize: 15,

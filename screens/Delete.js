@@ -9,6 +9,7 @@ import {
   BackHandler,
   Alert,
   AsyncStorage,
+  NativeModules,
 } from 'react-native';
 import {COLORS, SIZES} from '../constants';
 
@@ -90,10 +91,7 @@ const Delete = ({navigation}) => {
                         console.log('purge connection');
                         clearStorage()
                         console.log('restart app');
-                        navigation.reset({
-                          index: 0,
-                          routes: [{ name: 'Welcome' }],
-                        })
+                        NativeModules.DevSettings.reload();
                                 
                       }else{
                         console.log('not authorized');

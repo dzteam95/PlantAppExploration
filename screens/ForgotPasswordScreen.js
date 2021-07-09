@@ -19,7 +19,7 @@ const Login = ({ navigation }) => {
 return(
 	<View style={styles.containerGlobal} >
 		<View style={styles.row}>
-			<TouchableOpacity onPress={() => navigation.replace('Welcome')}>
+			<TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
 				<Text style={styles.txt}>Back</Text>
 			</TouchableOpacity>
 		</View>
@@ -33,7 +33,7 @@ return(
 
 		/>
 		{/* <View style={styles.rowInput}>
-			<TouchableOpacity style={styles.forgot} onPress={() => navigation.replace('ForgotPasswordScreen')}>
+			<TouchableOpacity style={styles.forgot} onPress={() => navigation.navigate('ForgotPasswordScreen')}>
 				<Text>Mot de passe oublié ?</Text>
 			</TouchableOpacity>
 		</View> */}
@@ -65,12 +65,12 @@ return(
 
 		</View>
 		<View style={styles.row}>
-			<TouchableOpacity onPress={() => navigation.replace('Login')}>
+			<TouchableOpacity onPress={() => navigation.navigate('Login')}>
 				<Text style={styles.txt}>Je me souviens du mot de passe !<Text style={styles.link}> me connecter</Text></Text>
 			</TouchableOpacity>
 		</View>
 		<View style={styles.row}>
-			<TouchableOpacity onPress={() => navigation.replace('Register')}>
+			<TouchableOpacity onPress={() => navigation.navigate('Register')}>
 				<Text style={styles.txt}>Pas encore de compte?<Text style={styles.link}> m'inscrire</Text></Text>
 			</TouchableOpacity>
 		</View>

@@ -156,7 +156,7 @@ const GardenT = ({route, navigation, props}) => {
               <TouchableOpacity
                 style={styles.eventContent}
                 onPress={() =>
-                  navigation.replace('GardenTList', {
+                  navigation.navigate('GardenTList', {
                     item: item.id,
                     tokenPass: token,
                   })

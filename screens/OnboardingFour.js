@@ -7,7 +7,7 @@ const OnboardingFour = ({navigation}) => {
   return (
     <View style={styles.containerGlobal}>
       <View style={styles.container}>
-        <Button  color="#222222" title="Se connecter" onPress={() => navigation.replace('Register')} />
+        <Button  color="#222222" title="Se connecter" onPress={() => navigation.replace('Login')} />
         <Text style={styles.title}>Ensuite profitez</Text>
         <Text style={styles.txt}>
           Et voila cuisinez et partagez votre production avec vos proches
@@ -19,7 +19,7 @@ const OnboardingFour = ({navigation}) => {
         <View style={styles.suivant}>
           <Button color={COLORS.greenDark}
             title="C'est parti"
-            onPress={() => navigation.replace('Register')}
+            onPress={() => navigation.navigate('Register')}
           />
         </View>
       </View>
