@@ -39,7 +39,7 @@ const Register = ({ navigation }) => {
 				
 				navigation.reset({
 					index: 0,
-					routes: [{ name: 'Welcome' }],
+					routes: [{ name: 'Login' }],
 				})
 			  
 			}else{

@@ -336,7 +336,13 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         // backgroundColor: "blue",
-        borderRadius: 5
+        borderRadius: 5,
+        shadowOpacity: .2,
+        shadowOffset: {
+            height:2,
+            width:-2
+        },
+        elevation:4,
       },
     tinyLogo: {
         width: "100%",

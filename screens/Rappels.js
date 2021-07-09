@@ -62,7 +62,7 @@ const Rappels = ({route, navigation,  props }) => {
         }*/
     }, [])
 
-    const searchUserReminderFunction = async () => {
+    searchUserReminderFunction = async () => {
         try {
             const token = await AsyncStorage.getItem('id_token')
             if (token !== null) {
@@ -173,6 +173,7 @@ const Rappels = ({route, navigation,  props }) => {
             })
     }
 
+    const image = {uri : "https://www.icone-png.com/png/54/53570.png"}
     // console.log(result[0].id_plant)
     return (
         <View style={styles.container}>
@@ -186,6 +187,9 @@ const Rappels = ({route, navigation,  props }) => {
                             <Text style={styles.add}>
                             +
                             </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.searchUserReminderFunction("row")}>
+                            <Image style={styles.refresh} source={image}/>
                         </TouchableOpacity>
                         {/* <TextInput
                             style={styles.textInputStyle}
@@ -380,12 +384,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     name:{
+        flex:8,
         fontSize:22,
         color:"#222222",
         fontWeight:'900',
     },
     add:{
-        paddingLeft:"60%",
+        flex:1,
+        // paddingLeft:"10%",
+        fontSize:22,
+        color:"#222222",
+        fontWeight:'900',
+    },
+    refresh:{
+        flex:1,
+        paddingLeft:"10%",
         fontSize:22,
         color:"#222222",
         fontWeight:'900',
