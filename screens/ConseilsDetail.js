@@ -730,7 +730,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={Floraison}/>
                                         <Text style={styles.infoName}>Floraison</Text>
                                         {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","C'est la floraison de vos "+result.name+"s","Ne les manquez pas !",result.reminder_txt_floraison_from),"Ca Fleurit"}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
+                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","C'est la floraison de vos "+result.name+"s","Ne les manquez pas !",result.reminder_txt_floraison_from,"Ca Fleurit")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>

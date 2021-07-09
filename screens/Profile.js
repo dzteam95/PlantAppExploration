@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
     },
 
     bodyContent: {
-
         alignItems: 'center',
         shadowColor: 'black',
         shadowOpacity: .2,

@@ -348,6 +348,9 @@ const styles = StyleSheet.create({
         // height: 400 | "100%",
         // flex: 1,
         // paddingTop: 22
+        // paddingBottom: 150
+        // marginBottom:150,
+        height: "74%",
         // height: 10000,
     },
     bodyContentFiche:{
