@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+
 import {
     StyleSheet,
     Text,
@@ -15,6 +17,7 @@ import {
     setState,
     SectionList,
     AsyncStorage,
+    Animated,
 } from 'react-native';
 import {COLORS} from '../constants';
 
@@ -26,6 +29,7 @@ const PlantsParcelleListe = ({route, navigation, props}) => {
     const [resultPlant, setResultPlant] = useState({value: '', error: ''});
     const [userId, setUserId] = useState({value: '', error: ''});
     const [plantsInfos, setPlantsInfos] = useState([]);
+    const [item, setItemToDelete] = useState([]);
 
     useEffect(() => {
         readToken();
@@ -169,6 +173,59 @@ const PlantsParcelleListe = ({route, navigation, props}) => {
         }
     };
 
+    const leftSwipe = (progress, dragX) => {
+        const scale = dragX.interpolate({
+            inputRange: [0,100],
+            outputRange: [0,1],
+            extrapolate: 'clamp',
+        })
+        return (
+            // <TouchableOpacity onPress={this.handleDelete} activeOpacity={0,6}>
+            <View style={styles.eventBoxTD} >
+                <TouchableOpacity style={styles.eventContentTD} onPress={deleteItem(item)} activeOpacity={0,6}>
+                {/* <TouchableOpacity onPress={deleteItem()} activeOpacity={0,6}> */}
+                    <View style={styles.deleteBox}>
+                        <Animated.Text>X</Animated.Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+        )
+
+    }
+    // handleDelete=(id)=> deleteItem(id)
+
+    const deleteItem = async (index) => {
+        console.log(result[index].id)
+        let id = result[index].id
+        // id = id[0]
+        console.log(id)
+        const token = await AsyncStorage.getItem('id_token')
+        console.log(token);
+
+        let dataDelete = {
+            method: 'DELETE',
+            credentials: 'same-origin',
+            mode: 'same-origin',
+            headers: {
+                'Accept': '*/*',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+token,
+                // 'Authorization': 'Bearer '+tokenLocal,
+            },
+        }
+
+        fetch(`https://seedyapp.tk/plantspositions/${id}`, dataDelete)
+            .then( res => {
+                console.log(res.status)
+                if (res.status === 200) {
+                    console.log('plantspositions deleted'); 
+                    navigation.navigate('Jardin')                       
+                }else{
+                    console.log('not authorized');
+                }
+            })
+    }
+    // console.log("result[0]",result[0].id_plant[0])
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -190,19 +247,21 @@ const PlantsParcelleListe = ({route, navigation, props}) => {
                 <SectionList
                     sections={[{title: '', data: plantsInfos}]}
                     renderItem={
-                        ({item}) => (
+                        ({item, index}) => (
                             // <View>
-                            <View style={styles.menuBoxList} >
+                            <View /*style={styles.menuBoxList}*/ >
                                 {/* <Text style={styles.sectionHeader}>{section.title}</Text> */}
                                 <TouchableOpacity
-                                    style={styles.containerLight}
+                                    style={styles.menuBoxList}
                                     onPress={() => navigation.replace("ConseilsDetail" , { item: item.id, tokenPass: token})}
                                 >
+                                    <Swipeable style={styles.containerLight} renderLeftActions={leftSwipe} onSwipeableLeftOpen={() =>setItemToDelete(index)}>
                                     <View style={styles.eventContentFirst}>
-                                        <Image style={styles.tinyLogoGeneral} source={{ uri: item.photourl,}}/>
-                                        <Text style={styles.infoGeneral}>{item.name}</Text>
-                                        <Text style={styles.infoSun}></Text>
-                                    </View>
+                                            <Image style={styles.tinyLogoGeneral} source={{ uri: item.photourl,}}/>
+                                            <Text style={styles.infoGeneral}>{item.name}</Text>
+                                            {/* <Text style={styles.infoGeneral}>{item.id}</Text> */}
+                                        </View>
+                                    </Swipeable>
                                 </TouchableOpacity>
                             </View>
                         )
@@ -300,7 +359,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'flex-start',
-        height: 50,
+        height: 60,
     },
     eventContentSec: {
         flex: 1,
