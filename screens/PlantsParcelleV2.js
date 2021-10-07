@@ -84,7 +84,7 @@ const PlantsParcelleV2 = ({route, navigation,  props }) => {
             },
 		}
 
-        fetch(`https://seedyapp.tk/plantspositions/garden/${route.params.item}`, data)
+        fetch(`http://localhost:4000/plantspositions/garden/${route.params.item}`, data)
 
         //Passertoken\
         
@@ -108,7 +108,7 @@ const PlantsParcelleV2 = ({route, navigation,  props }) => {
                     //         // console.log(key)
                     //         // console.log(value)
 
-                            fetch(`https://seedyapp.tk/plants/${value}`, data)
+                            fetch(`http://localhost:4000/plants/${value}`, data)
                                 .then((responseSecond) => responseSecond.json())
                                 .then((responseSecond) => {
                                     // console.log(value , responseSecond)
@@ -161,7 +161,7 @@ const PlantsParcelleV2 = ({route, navigation,  props }) => {
                 'Authorization': 'Bearer '+token,
             },
 		}
-		fetch(`https://seedyapp.tk/plantspositions/${ppId}`,data)
+		fetch(`http://localhost:4000/plantspositions/${ppId}`,data)
 		.then((response) => {
 			//Statut getted
 			console.log(response.status);

@@ -33,7 +33,7 @@ const ProfileDetail = ({route, navigation,  props }) => {
                 'Authorization': 'Bearer ' + token,
             },
         }
-        fetch(`https://seedyapp.tk/users/${userId}`, data)
+        fetch(`http://localhost:4000/users/${userId}`, data)
             .then((response) => response.json())
             .then((response) => {
                 setResult(response)

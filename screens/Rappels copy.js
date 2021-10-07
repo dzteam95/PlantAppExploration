@@ -75,8 +75,8 @@ const Rappels = ({route, navigation,  props }) => {
 		}
 
         // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-        fetch(`https://seedyapp.tk/reminder/`, data)
-        // fetch(`https://seedyapp.tk/reminder/user/5f0b3c733aead305c2eec26d`, data)
+        fetch(`http://localhost:4000/reminder/`, data)
+        // fetch(`http://localhost:4000/reminder/user/5f0b3c733aead305c2eec26d`, data)
 
         //Passertoken\
         

@@ -86,8 +86,8 @@ const Rappels = ({route, navigation,  props }) => {
                         }
                         // console.log("test :",userId)
 
-                        // fetch(`https://seedyapp.tk/reminder/user/60d838a3dfba4207d80744c0`, data)
-                        fetch(`https://seedyapp.tk/reminder/user/${userId}`, data)
+                        // fetch(`http://localhost:4000/reminder/user/60d838a3dfba4207d80744c0`, data)
+                        fetch(`http://localhost:4000/reminder/user/${userId}`, data)
 
                         //Passertoken\
 
@@ -161,7 +161,7 @@ const Rappels = ({route, navigation,  props }) => {
             },
         }
 
-        fetch(`https://seedyapp.tk/reminder/${id}`, dataDelete)
+        fetch(`http://localhost:4000/reminder/${id}`, dataDelete)
             .then( res => {
                 console.log(res.status)
                 if (res.status === 200) {

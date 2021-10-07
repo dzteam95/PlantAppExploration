@@ -53,7 +53,7 @@ const Delete = ({navigation}) => {
                   },
                 }
                 //fetch Statu == 200
-                fetch('https://seedyapp.tk/users/authenticate', dataConnect)
+                fetch('http://localhost:4000/users/authenticate', dataConnect)
                 .then( res => {
                   if (res.status === 200) {
                     console.log('autenticate successfuly');
@@ -73,7 +73,7 @@ const Delete = ({navigation}) => {
                       },
                   }
                     
-                  fetch(`https://seedyapp.tk/users/${userId}`, dataDelete)
+                  fetch(`http://localhost:4000/users/${userId}`, dataDelete)
                     .then( res => {
                       console.log(res.status)
                       if (res.status === 200) {

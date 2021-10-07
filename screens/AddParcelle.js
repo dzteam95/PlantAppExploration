@@ -31,7 +31,7 @@ import {COLORS, SIZES} from '../constants';
             'Authorization': 'Bearer ' + token,
         },
     }
-    fetch(`https://seedyapp.tk/gardenstypes/`, data)
+    fetch(`http://localhost:4000/gardenstypes/`, data)
         .then((response) => response.json())
         .then((response) => {
             setResult(response)
@@ -102,7 +102,7 @@ const AddParcelle = ({ navigation }) => {
             },
         }
 
-        fetch('https://seedyapp.tk/gardens/register',data)
+        fetch('http://localhost:4000/gardens/register',data)
         .then((response) => {
           //Statut getted
           console.log(response.status);

@@ -14,6 +14,7 @@ import {
     ScrollView,
     setState,
     AsyncStorage,
+    TextInput
 } from 'react-native';
 import {COLORS} from "../constants";
 import {Boarding1} from "../constants/images";
@@ -30,7 +31,7 @@ import {Fruit} from "../constants/images";
 import {SemisExt, SemisInt, Plantation} from "../constants/images";
 
 
-const ConseilsDetail = ({route, navigation,  props }) => {
+const ConseilsDetailEdit = ({route, navigation,  props }) => {
     // const data = [
     //         {id:1, name:'Rosier', slug:'Rosier', icon:'https://static.aujardin.info/cache/th/img9/rosa-fleur-600x450.webp' , url:"https://seedy.difego.fr" , desc:"Les roses sont cultivées depuis le moyen-âge, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Depuis, de nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent.", description:"Cupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isoléCupidon s'étant approché un peu trop près des rosiers du jardin de l'Olympe que butinaient des abeilles, fut cruellement piqué. De chaque piqûre jaillit une goutte de sang qui transforma les fleurs blanches en fleurs vermeilles. Vénus, affolée, se précipita à son secours et, dans sa hâte, renversa le flacon d'odeurs qu'elle portait à la ceinture. Depuis ce jour, les roses sont parfumées… Histoire du rosier C'est au moyen-âge que les premières roses ont été cultivées, elles furent importées par les croisés en provenance de l'orient. C'est ensuite au XVIIIème siècle que les français commençèrent à les croiser pour créer de nouvelles variétés. Aujourd'hui encore, les français occupent la première place parmi les créateurs de roses. Il n'y qu'à citer leur nom que tout le monde connait; Delbard, Meilland, Guyot,... Sachez toutefois que vous ne pouvez pas multiplier leurs roses, sans autorisation. Les variétés de rosiers De nouvelles variétés de rosiers apparaissent tous les ans pendant que d'autres disparaissent. Il est impossible de toutes les décrire. Repérez au moment de la floraison les variétés qui vous plaisent, et achetez-les ensuite à la bonne saison. Visitez également les roseraies pour faire votre choix.Il existe différents type de rosiers : les rosiers arbustifs ou de paysage à utiliser dans les haies, en fond de massif ou isolé"},
     //         ];
@@ -47,8 +48,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
     // // l'utilisation de `this` dans la fonction de rappel.
     // const handleClick = handleClick.bind(this);
 
-    // const id = JSON.stringify(itemId)-1;
-    //fetch
+
     useEffect(() => {
         readToken()
         searchPlantBasicDetailFunction()
@@ -74,7 +74,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
     // }
 
     searchPlantBasicDetailFunction = async () => {
-
+        const userJeton = await AsyncStorage.getItem('id_token')      
         //Met a jour le event text
         // setSearch({ search });
         // const newHandleSearch = search;
@@ -93,7 +93,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
 			headers: {
 				'Accept': '*/*',
 				'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+route.params.tokenPass.value,
+                'Authorization': 'Bearer '+userJeton,
             },
 		}
 
@@ -251,6 +251,249 @@ const ConseilsDetail = ({route, navigation,  props }) => {
         }  
     }
 
+    editNewPlant = (info,key) => {
+        // console.log(info,key)
+        switch (key){
+            case ("name"):
+                setResult({
+                    ...result,
+                    name : info,
+                });
+                break;
+            case ("family"):
+                setResult({
+                    ...result,
+                    family : info,
+                })
+                break;
+            case ("sun"):
+                setResult({
+                    ...result,
+                    sun : info,
+                })
+                break;
+            case ("water"):
+                setResult({
+                    ...result,
+                    water : info,
+                })
+                break;
+            case ("zone_range"):
+                setResult({
+                    ...result,
+                    zone_range : info,
+                })
+                break;
+            case ("weight"):
+                setResult({
+                    ...result,
+                    weight : info,
+                })
+                break;
+            case ("soil_ph"):
+                setResult({
+                    ...result,
+                    soil_ph : info,
+                })
+                break; 
+            case ("zone"):
+                setResult({
+                    ...result,
+                    zone : info,
+                })
+                break;   
+            case ("description_Germination"):
+                setResult({
+                    ...result,
+                    description_Germination : info,
+                })
+                break;
+            case ("description_Germination_Arrosage"):
+                setResult({
+                    ...result,
+                    description_Germination_Arrosage : info,
+                })
+                break;
+            case ("description_Croissance"):
+                setResult({
+                    ...result,
+                    description_Croissance : info,
+                })
+                break;
+            case ("description_Croissance_Selection"):
+                setResult({
+                    ...result,
+                    description_Croissance_Selection : info,
+                })
+                break;
+            case ("description_Croissance_Arrosage"):
+                setResult({
+                    ...result,
+                    description_Croissance_Arrosage : info,
+                })
+                break;
+            case ("description_Croissance_Plantation"):
+                setResult({
+                    ...result,
+                    description_Croissance_Plantation : info,
+                })
+                break;
+            case ("description_Croissance_Paillage"):
+                setResult({
+                    ...result,
+                    description_Croissance_Paillage : info,
+                })
+                break;   
+            case ("description_Floraison"):
+                setResult({
+                    ...result,
+                    description_Floraison : info,
+                })
+                break;      
+            case ("description_Floraison_Un"):
+                setResult({
+                    ...result,
+                    description_Floraison_Un : info,
+                })
+                break;
+            case ("description_Floraison_Arrosage"):
+                setResult({
+                    ...result,
+                    description_Floraison_Arrosage : info,
+                })
+                break;
+            case ("description_Floraison_Deux"):
+                setResult({
+                    ...result,
+                    description_Floraison_Deux : info,
+                })
+                break;
+            case ("description_Production"):
+                setResult({
+                    ...result,
+                    description_Production : info,
+                })
+                break;
+            case ("description_Production_Arrosage"):
+                setResult({
+                    ...result,
+                    description_Production_Arrosage : info,
+                })
+                break;
+            case ("description_Production_Recolte"):
+                setResult({
+                    ...result,
+                    description_Production_Recolte : info,
+                })
+                break;
+           
+            case ("reminder_txt_semis_inte_from"):
+                setResult({
+                    ...result,
+                    reminder_txt_semis_inte_from : info,
+                })
+                break;
+            case ("reminder_txt_semis_inte_to"):
+                setResult({
+                    ...result,
+                    reminder_txt_semis_inte_to : info,
+                })
+                break;
+            case ("reminder_txt_semis_exte_from"):
+                setResult({
+                    ...result,
+                    reminder_txt_semis_exte_from : info,
+                })
+                break;
+            case ("reminder_txt_semis_exte_to"):
+                setResult({
+                    ...result,
+                    reminder_txt_semis_exte_to : info,
+                })
+                break;
+            case ("reminder_txt_plantation_from"):
+                setResult({
+                    ...result,
+                    reminder_txt_plantation_from : info,
+                })
+                break;
+            case ("reminder_txt_plantation_to"):
+                setResult({
+                    ...result,
+                    reminder_txt_plantation_to : info,
+                })
+                break;
+            case ("reminder_txt_floraison_from"):
+                setResult({
+                    ...result,
+                    reminder_txt_floraison_from : info,
+                })
+                break;
+            case ("reminder_txt_floraison_to"):
+                setResult({
+                    ...result,
+                    reminder_txt_floraison_to : info,
+                })
+                break;
+            case ("reminder_txt_recolte_from"):
+                setResult({
+                    ...result,
+                    reminder_txt_recolte_from : info,
+                })
+                break;
+            case ("reminder_txt_recolte_to"):
+                setResult({
+                    ...result,
+                    reminder_txt_recolte_to : info,
+                })
+                break;
+            /*
+            case ("description_Production_Recolte"):
+                setResult({
+                    ...result,
+                    description_Production_Recolte : info,
+                })
+                break;
+            */
+        }
+    }
+    // console.log(result)
+
+    save = async() => {
+        const userJeton = await AsyncStorage.getItem('id_token') 
+        
+        let data = {
+			method: 'PUT',
+			credentials: 'same-origin',
+			mode: 'same-origin',
+			body: JSON.stringify(
+				result
+			),
+			headers: {
+				'Accept': '*/*',
+				'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+userJeton,
+            },
+		}
+		
+		fetch(`http://localhost:4000/plants/${route.params.item}`,data)
+		.then((response) => {
+			//Statut getted
+			// console.log(response.status);
+			if (response.status === 200) {
+				console.log('updated');
+				
+				navigation.reset({
+					routes: [{ name: 'Conseils' }],
+				})
+			  
+			}else{
+				console.log('not registrer or contain error');
+				//do nothing
+			}
+		  })
+    
+    }
     const [isEnabledGuideOne, setIsEnabledGuideOne] = useState(true);
     const [isEnabledGuideTwo, setIsEnabledGuideTwo] = useState(true);
     const [isEnabledGuideThr, setIsEnabledGuideThr] = useState(true);
@@ -259,23 +502,26 @@ const ConseilsDetail = ({route, navigation,  props }) => {
         const toggleSwitchGuideTwo = () => setIsEnabledGuideTwo(previousState => !previousState);
         const toggleSwitchGuideThr = () => setIsEnabledGuideThr(previousState => !previousState);
         const toggleSwitchGuideFou = () => setIsEnabledGuideFou(previousState => !previousState);
-    
-
     const [isEnabledMenu, setIsEnabledMenu] = useState(1);
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <View style={styles.headerContent}>
-                    <Text style={styles.name}>
-                        {result.name}
-                    </Text>
-                    <TouchableOpacity style={styles.name} onPress={() => navigation.navigate('ConseilsDetailEdit', { item: route.params.item})}  >
+                    <TextInput 
+                        style={styles.name}
+                        onChangeText={(name) => this.editNewPlant(name, "name")}
+                        value={result.name}
+                        underlineColorAndroid="transparent"
+                        placeholder="Nom"
+                    >
+                    </TextInput>
+                </View>
+                <TouchableOpacity style={styles.name} onPress={this.save}  >
                         <Text style={styles.name}>
-                            Edit
+                            Save
                         </Text>
                     </TouchableOpacity>
-                </View>
             </View>
             <View style={styles.body}>
                 <ImageBackground style={styles.bodyContent} /*source={{ uri: result.icon,}}*/>
@@ -286,7 +532,18 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View >
                                     <Text style={styles.infoPlantName}>{result.name}</Text>
                                     <Text style={styles.infoFamily}>{result.name}</Text>
-                                    <Text style={styles.infoFamily}>Famille : {result.family}</Text>
+                                    <View style={styles.infoFamily}>
+                                        <Text >
+                                            Famille : 
+                                        </Text>
+                                        <TextInput
+                                            onChangeText={(family) => this.editNewPlant(family, "family")}
+                                            value={result.family}
+                                            underlineColorAndroid="transparent"
+                                            placeholder="Famille"
+                                        >
+                                        </TextInput>
+                                    </View>
                                 </View>
                             </View>
                             <View style={styles.menuRow}>
@@ -335,7 +592,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={SunConseil}/>
                                         <Text style={styles.infoGeneral}>Besoin en soleil</Text>
-                                        <Text style={styles.infoSun}>{this.isP === "p" ? result.sun : "Info Premium"}</Text>
+                                        {/* <View > {this.isP === "p" ? result.sun : "Info Premium"} </View> */}
+                                        <TextInput
+                                            style={styles.infoSun}
+                                            onChangeText={(sun) => this.editNewPlant(sun, "sun")}
+                                            value={result.sun}
+                                            underlineColorAndroid="transparent"
+                                            placeholder="Sun"
+                                        >
+                                        </TextInput>
                                     </View>
                                 </View>
                             </View>
@@ -346,7 +611,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={WaterConseil}/>
                                         <Text style={styles.infoGeneral}>Besoin en eau</Text>
-                                        <Text style={styles.infoWater}>{this.isP === "p" ? result.water : "Info Premium"}</Text>
+                                        {/* <Text style={styles.infoWater}>{this.isP === "p" ? result.water : "Info Premium"}</Text> */}
+                                        <TextInput
+                                            style={styles.infoWater}
+                                            onChangeText={(water) => this.editNewPlant(water, "water")}
+                                            value={result.water}
+                                            underlineColorAndroid="transparent"
+                                            placeholder="Water"
+                                        >
+                                        </TextInput>
                                     </View>
                                 </View>
                             </View>
@@ -357,7 +630,17 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={SpaceConseil}/>
                                         <Text style={styles.infoGeneral}>Distanciation au sol</Text>
-                                        <Text style={styles.info}>{this.isP === "p" ? (result.zone_range+" x "+result.zone_range+" cm")  : "Info Premium"}</Text>
+                                        {/* <Text style={styles.info}>{this.isP === "p" ? (result.zone_range+" x "+result.zone_range+" cm")  : "Info Premium"}</Text> */}
+                                        <TextInput
+                                            style={styles.info}
+                                            onChangeText={(zone_range) => this.editNewPlant(zone_range, "zone_range")}
+                                            value={result.zone_range}
+                                            underlineColorAndroid="transparent"
+                                            placeholder="Zone_range"
+                                        >
+                                        </TextInput>
+                                        <Text style={styles.info}>{this.isP === "p" ? (" x "+result.zone_range+" cm")  : "Info Premium"}</Text>
+
                                     </View>
                                 </View>
                             </View>
@@ -368,7 +651,16 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={SizingConseil}/>
                                         <Text style={styles.infoGeneral}>Dimensions</Text>
-                                        <Text style={styles.info}>{result.weight} cm</Text>
+                                        {/* <Text style={styles.info}>{result.weight} cm</Text> */}
+                                        <TextInput
+                                            style={styles.info}
+                                            onChangeText={(weight) => this.editNewPlant(weight, "weight")}
+                                            value={""+result.weight}
+                                            underlineColorAndroid="transparent"
+                                            placeholder="Weight"
+                                        >
+                                        </TextInput>
+                                        <Text style={styles.info}> cm</Text>
                                     </View>
                                 </View>
                             </View>
@@ -379,7 +671,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={PHConseil}/>
                                         <Text style={styles.infoGeneral}>Ph</Text>
-                                        <Text style={styles.infoPH}>{this.isP === "p" ? result.soil_ph : "Info Premium"}</Text>
+                                        {/* <Text style={styles.infoPH}>{this.isP === "p" ? result.soil_ph : "Info Premium"}</Text> */}
+                                        <TextInput
+                                            style={styles.infoPH}
+                                            onChangeText={(soil_ph) => this.editNewPlant(soil_ph, "soil_ph")}
+                                            value={""+result.soil_ph}
+                                            underlineColorAndroid="transparent"
+                                            placeholder="Soil_ph"
+                                        >
+                                        </TextInput>     
                                     </View>
                                 </View>
                             </View>
@@ -390,7 +690,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     <View style={styles.eventContentFirst}>
                                         <Image style={styles.tinyLogoGeneral} source={ClimatConseil}/>
                                         <Text style={styles.infoGeneral}>Climat</Text>
-                                        <Text style={styles.infoClimat}>{result.zone}</Text>
+                                        {/* <Text style={styles.infoClimat}>{result.zone}</Text> */}
+                                        <TextInput
+                                            style={styles.infoClimat}
+                                            onChangeText={(zone) => this.editNewPlant(zone, "zone")}
+                                            value={result.zone}
+                                            underlineColorAndroid="transparent"
+                                            placeholder="Zone"
+                                        >
+                                        </TextInput>  
                                     </View>
                                 </View>
                             </View>
@@ -412,7 +720,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={isEnabledGuideOne? styles.containerLightCard : styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Germination}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Germination}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Germination) => this.editNewPlant(description_Germination, "description_Germination")}
+                                                value={result.description_Germination}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Germination"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     <View style={styles.eventContentSec}>
@@ -430,7 +746,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Germination_Arrosage}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Germination_Arrosage}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Germination_Arrosage) => this.editNewPlant(description_Germination_Arrosage, "description_Germination_Arrosage")}
+                                                value={result.description_Germination_Arrosage}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Germination_Arrosage"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                 </View>
@@ -449,7 +773,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={isEnabledGuideTwo? styles.containerLightCard : styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Croissance}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Croissance}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Croissance) => this.editNewPlant(description_Croissance, "description_Croissance")}
+                                                value={result.description_Croissance}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Croissance"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -468,7 +800,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Croissance_Selection}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Croissance_Selection}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Croissance_Selection) => this.editNewPlant(description_Croissance_Selection, "description_Croissance_Selection")}
+                                                value={result.description_Croissance_Selection}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Croissance_Selection"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     {/* Liste  */}
@@ -487,7 +827,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Croissance_Arrosage}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Croissance_Arrosage}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Croissance_Arrosage) => this.editNewPlant(description_Croissance_Arrosage, "description_Croissance_Arrosage")}
+                                                value={result.description_Croissance_Arrosage}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="description_Croissance_Arrosage"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     {/* Liste  */}
@@ -506,7 +854,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Croissance_Plantation}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Croissance_Plantation}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Croissance_Plantation) => this.editNewPlant(description_Croissance_Plantation, "description_Croissance_Plantation")}
+                                                value={result.description_Croissance_Plantation}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Croissance_Plantation"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     {/* Liste  */}
@@ -525,7 +881,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Croissance_Paillage}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Croissance_Paillage}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Croissance_Paillage) => this.editNewPlant(description_Croissance_Paillage, "description_Croissance_Paillage")}
+                                                value={result.description_Croissance_Paillage}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Croissance_Paillage"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                 </View>
@@ -544,7 +908,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={isEnabledGuideThr? styles.containerLightCard : styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Floraison}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Floraison}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Floraison) => this.editNewPlant(description_Floraison, "description_Floraison")}
+                                                value={result.description_Floraison}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Floraison"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -563,7 +935,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Floraison_Un}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Floraison_Un}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Floraison_Un) => this.editNewPlant(description_Floraison_Un, "description_Floraison_Un")}
+                                                value={result.description_Floraison_Un}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Floraison_Un"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -582,7 +962,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Floraison_Arrosage}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Floraison_Arrosage}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Floraison_Arrosage) => this.editNewPlant(description_Floraison_Arrosage, "description_Floraison_Arrosage")}
+                                                value={result.description_Floraison_Arrosage}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Floraison_Arrosage"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -601,7 +989,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Floraison_Deux}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Floraison_Deux}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Floraison_Deux) => this.editNewPlant(description_Floraison_Deux, "description_Floraison_Deux")}
+                                                value={result.description_Floraison_Deux}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Floraison_Deux"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                 </View>
@@ -620,7 +1016,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={isEnabledGuideFou? styles.containerLightCard : styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Production}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Production}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Production) => this.editNewPlant(description_Production, "description_Production")}
+                                                value={result.description_Production}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Production"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -639,7 +1043,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Production_Arrosage}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Production_Arrosage}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Production_Arrosage) => this.editNewPlant(description_Production_Arrosage, "description_Production_Arrosage")}
+                                                value={result.description_Production_Arrosage}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Production_Arrosage"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     {/* Liste */}
@@ -658,7 +1070,15 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                     </View>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>{result.description_Production_Recolte}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>{result.description_Production_Recolte}</Text> */}
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(description_Production_Recolte) => this.editNewPlant(description_Production_Recolte, "description_Production_Recolte")}
+                                                value={result.description_Production_Recolte}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Description_Production_Recolte"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                     <View style={styles.actionRedirection} >
@@ -680,7 +1100,7 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={SemisInt}/>
                                         <Text style={styles.infoName}>Semis d'interieur</Text>
                                         {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en intérieur les "+result.name+"s","Il est temps d'agir !","01-06","Plantez en intérieur")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
+                                        {/* <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en intérieur les "+result.name+"s","Il est temps d'agir !","01-06","Plantez en intérieur")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text> */}
                                         {/* <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en intérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_inte_from,"Plantez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text> */}
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
@@ -688,7 +1108,25 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                 <View style={styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>De {result.reminder_txt_semis_inte_from} à {result.reminder_txt_semis_inte_to}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>De {result.reminder_txt_semis_inte_from} à {result.reminder_txt_semis_inte_to}</Text> */}
+                                            <Text>De </Text>
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(reminder_txt_semis_inte_from) => this.editNewPlant(reminder_txt_semis_inte_from, "reminder_txt_semis_inte_from")}
+                                                value={result.reminder_txt_semis_inte_from}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Reminder_txt_semis_inte_from"
+                                            >
+                                            </TextInput>
+                                            <Text> à </Text>
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(reminder_txt_semis_inte_to) => this.editNewPlant(reminder_txt_semis_inte_to, "reminder_txt_semis_inte_to")}
+                                                value={result.reminder_txt_semis_inte_to}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Reminder_txt_semis_inte_to"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                 </View>
@@ -699,14 +1137,32 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={SemisExt}/>
                                         <Text style={styles.infoName}>Semis d'extérieur</Text>
                                         {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en extérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_exte_from,"Plantez en exterieur")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
+                                        {/* <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez en extérieur les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_semis_exte_from,"Plantez en exterieur")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text> */}
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
                                 <View style={styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>De {result.reminder_txt_semis_exte_from} à {result.reminder_txt_semis_exte_to}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>De {result.reminder_txt_semis_exte_from} à {result.reminder_txt_semis_exte_to}</Text> */}
+                                            <Text>De </Text>
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(reminder_txt_semis_exte_from) => this.editNewPlant(reminder_txt_semis_exte_from, "reminder_txt_semis_exte_from")}
+                                                value={result.reminder_txt_semis_exte_from}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Reminder_txt_semis_exte_from"
+                                            >
+                                            </TextInput>
+                                            <Text> à </Text>
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(reminder_txt_semis_exte_to) => this.editNewPlant(reminder_txt_semis_exte_to, "reminder_txt_semis_exte_to")}
+                                                value={result.reminder_txt_semis_exte_to}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Reminder_txt_semis_exte_to"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                 </View>
@@ -717,14 +1173,32 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={Plantation}/>
                                         <Text style={styles.infoName}>Plantation</Text>
                                         {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_plantation_from,"Plantez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
+                                        {/* <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Plantez les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_plantation_from,"Plantez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text> */}
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
                                 <View style={styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>De {result.reminder_txt_plantation_from} à {result.reminder_txt_plantation_to}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>De {result.reminder_txt_plantation_from} à {result.reminder_txt_plantation_to}</Text> */}
+                                            <Text>De </Text>
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(reminder_txt_plantation_from) => this.editNewPlant(reminder_txt_plantation_from, "reminder_txt_plantation_from")}
+                                                value={result.reminder_txt_plantation_from}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Reminder_txt_plantation_from"
+                                            >
+                                            </TextInput>
+                                            <Text> à </Text>
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(reminder_txt_plantation_to) => this.editNewPlant(reminder_txt_plantation_to, "reminder_txt_plantation_to")}
+                                                value={result.reminder_txt_plantation_to}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Reminder_txt_plantation_to"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                 </View>
@@ -735,14 +1209,32 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={Floraison}/>
                                         <Text style={styles.infoName}>Floraison</Text>
                                         {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","C'est la floraison de vos "+result.name+"s","Ne les manquez pas !",result.reminder_txt_floraison_from,"Ca Fleurit")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
+                                        {/* <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","C'est la floraison de vos "+result.name+"s","Ne les manquez pas !",result.reminder_txt_floraison_from,"Ca Fleurit")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text> */}
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
                                 <View style={styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>De {result.reminder_txt_floraison_from} à {result.reminder_txt_floraison_to}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>De {result.reminder_txt_floraison_from} à {result.reminder_txt_floraison_to}</Text> */}
+                                            <Text>De </Text>
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(reminder_txt_floraison_from) => this.editNewPlant(reminder_txt_floraison_from, "reminder_txt_floraison_from")}
+                                                value={result.reminder_txt_floraison_from}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Reminder_txt_floraison_from"
+                                            >
+                                            </TextInput>
+                                            <Text> à </Text>
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(reminder_txt_floraison_to) => this.editNewPlant(reminder_txt_floraison_to, "reminder_txt_floraison_to")}
+                                                value={result.reminder_txt_floraison_to}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Reminder_txt_floraison_to"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                 </View>
@@ -753,14 +1245,32 @@ const ConseilsDetail = ({route, navigation,  props }) => {
                                         <Image style={styles.tinyLogo} source={Fruit}/>
                                         <Text style={styles.infoName}>Récolte</Text>
                                         {/*<Image style={styles.tinyLogoReminder} source={Plus}/>*/}
-                                        <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Récoltez les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_recolte_from,"Récoltez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text>
+                                        {/* <Text style={styles.infoGuideReminder} onPress={() => this.eventClickListener("row","Récoltez les "+result.name+"s","Il est temps d'agir !",result.reminder_txt_recolte_from,"Récoltez")}><Image style={styles.tinyLogoReminder} source={Plus}/>Rappel</Text> */}
                                         {/* <Image style={styles.tinyLogo} source={{ uri: "https://cdn4.iconfinder.com/data/icons/navigation-40/24/chevron-down-512.png"}}/> */}
                                     </View>
                                 </View>
                                 <View style={styles.buttonContainerE}>
                                     <View style={styles.eventContentSec}>
                                         <View style={styles.eventContent}>
-                                            <Text style={styles.infoGuideSpe}>De {result.reminder_txt_recolte_from} à {result.reminder_txt_recolte_to}</Text>
+                                            {/* <Text style={styles.infoGuideSpe}>De {result.reminder_txt_recolte_from} à {result.reminder_txt_recolte_to}</Text> */}
+                                            <Text>De </Text>
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(reminder_txt_recolte_from) => this.editNewPlant(reminder_txt_recolte_from, "reminder_txt_recolte_from")}
+                                                value={result.reminder_txt_recolte_from}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Reminder_txt_recolte_from"
+                                            >
+                                            </TextInput>
+                                            <Text> à </Text>
+                                            <TextInput 
+                                                style={styles.infoGuideSpe}
+                                                onChangeText={(reminder_txt_recolte_to) => this.editNewPlant(reminder_txt_recolte_to, "reminder_txt_recolte_to")}
+                                                value={result.reminder_txt_recolte_to}
+                                                underlineColorAndroid="transparent"
+                                                placeholder="Reminder_txt_recolte_to"
+                                            >
+                                            </TextInput>
                                         </View>
                                     </View>
                                 </View>
@@ -1137,4 +1647,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default ConseilsDetail
+export default ConseilsDetailEdit

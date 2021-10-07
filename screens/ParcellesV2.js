@@ -40,7 +40,7 @@ const ParcellesV2 = ({route, navigation, props}) => {
                 'Authorization': 'Bearer ' + token,
             },
         }
-        fetch(`https://seedyapp.tk/gardens/user/${userId}`, data)
+        fetch(`http://localhost:4000/gardens/user/${userId}`, data)
             .then((response) => response.json())
             .then((response) => {
                 setResult(response)

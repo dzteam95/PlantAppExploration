@@ -1,6 +1,9 @@
+
 import React, {useState, useEffect } from 'react';
-import { TouchableOpacity, StyleSheet, View,Text,TextInput,Button ,BackHandler, Alert, AsyncStorage} from 'react-native';
+import { Image,  TouchableOpacity, StyleSheet, View,Text,TextInput,Button ,BackHandler, Alert, AsyncStorage,TouchableHighlight} from 'react-native';
 import CheckBox from 'react-native-check-box';
+import TouchID from 'react-native-touch-id';
+import {Face_ID_icon,faceIdOk} from '../constants/images';
 
 
 import {COLORS, SIZES} from "../constants";
@@ -11,8 +14,12 @@ const Login = ({ navigation }) => {
 	const [username, setUsername] = useState({ value: '', error: '' })
 	const [password, setPassword] = useState({ value: '', error: '' })
 	const [isSelected, setSelection] = useState({ isSelect: false });
+	const [biometryType, setBiometryType] = useState(null);
+	const [connection, setConnection] = useState(false);
+
 	useEffect(() => {
-        readData()
+        // readData()
+		face()
         // return (
         //     readData()
         // )
@@ -76,7 +83,7 @@ const Login = ({ navigation }) => {
 		}
 
 		//fetch Statu == 200
-		fetch('https://seedyapp.tk/users/authenticate', data)
+		fetch('http://localhost:4000/users/authenticate', data)
 		.then( res => {
 
 			//Statut getted
@@ -103,7 +110,7 @@ const Login = ({ navigation }) => {
 					// console.log('user saved');
 				}
 				// fetch get token 
-				fetch('https://seedyapp.tk/users/authenticate', data)
+				fetch('http://localhost:4000/users/authenticate', data)
 				.then((response) => response.json())
 				
 				.then((responseData) => {
@@ -174,38 +181,67 @@ const Login = ({ navigation }) => {
 	// 		console.log('Failed to save the data to the storage')
 	// 	}
 	// }
+	const face = async () => {
+		TouchID.isSupported()
+			.then(biometryType => {
+				setBiometryType({ biometryType });
+			})
+		// console.log("biometryType 1 : "+ biometryType);
+	}
 
-return(
-	<View style={styles.containerGlobal} >
-		<View style={styles.row}>
-			<TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
-				<Text style={styles.txt}>Retour</Text>
-			</TouchableOpacity>
-		</View>
-		<Text style={styles.title}>Connexion</Text>
-		<TextInput style={styles.input}
-			placeholder="Pseudo"
-			label="Username"
-			returnKeyType="next"
-			value={username.value}
-			onChangeText={(text) => setUsername({ value: text, error: '' })}
+	const optionalConfigObject = {
+		title: "Authentication Required", // Android
+		color: "#e00606", // Android,
+		fallbackLabel: "Show Passcode" // iOS (if empty, then label is hidden)
+	  }
 
-		/>
-		<View style={styles.rowInput}>
-			<TouchableOpacity style={styles.forgot} onPress={() => navigation.navigate('ForgotPasswordScreen')}>
-				<Text>Mot de passe oublié ?</Text>
-			</TouchableOpacity>
-		</View>
-		<TextInput
-			style={styles.input}
-			placeholder="Mot de passe"
-			label="Password"
-			returnKeyType="done"
-			value={password.value}
-			onChangeText={(text) => setPassword({ value: text, error: '' })}
-			secureTextEntry
-		/>
-		{/* <View style={styles.container}> */}
+	const pressHandler = async () => {
+		// console.log('ez');
+		console.log("biometryType 2 : "+ biometryType[0]);
+
+			TouchID.authenticate('to demo this react-native component', optionalConfigObject)
+				.then(success => {
+					console.log('success');
+					readData();
+					onLoginPressed();
+				})
+				.catch(error => {
+					console.log('error');
+					// console.log(error);
+					Alert.alert('Authentication Failed');
+				});
+	}
+
+	 
+	return(
+		<View style={styles.containerGlobal} >
+			<View style={styles.row}>
+				<TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+					<Text style={styles.txt}>Retour</Text>
+				</TouchableOpacity>
+			</View>
+			<Text style={styles.title}>Connexion</Text>
+			<TextInput style={styles.input}
+				placeholder="Pseudo"
+				label="Username"
+				returnKeyType="next"
+				value={username.value}
+				onChangeText={(text) => setUsername({ value: text, error: '' })}
+			/>
+			<View style={styles.rowInput}>
+				<TouchableOpacity style={styles.forgot} onPress={() => navigation.navigate('ForgotPasswordScreen')}>
+					<Text>Mot de passe oublié ?</Text>
+				</TouchableOpacity>
+			</View>
+			<TextInput
+				style={styles.input}
+				placeholder="Mot de passe"
+				label="Password"
+				returnKeyType="done"
+				value={password.value}
+				onChangeText={(text) => setPassword({ value: text, error: '' })}
+				secureTextEntry
+			/>
 			<View style={styles.checkboxContainer}>
 				<CheckBox
 					style={{flex: 1, paddingTop:50, paddingLeft:70, paddingRight:70}}
@@ -219,19 +255,29 @@ return(
 					leftText={"Se souvenir de moi ?"}
 				/>
 			</View>
-		{/* </View>        */}
-		<View style={styles.connexion}>
-			<Button  color={COLORS.white} title={"Connexion"} mode="contained" onPress={onLoginPressed}/>
-
+			<TouchableHighlight onPress={pressHandler}
+				// style={this.biometryType ? styles.btnOn : styles.btnOff}
+				style={styles.btnOn}
+				// onPress={this.clickHandler}
+				underlayColor="#000"
+				// activeOpacity={1}
+				>
+					<Image source={Face_ID_icon} style={styles.faceid}/>					
+			</TouchableHighlight>
+				{/* <Text style={styles.bio}>
+					{`Authenticate with ${this.biometryType ? this.biometryType : this.biometryType}`}
+					{`Authenticate with ${this.biometryType}`}
+				</Text> */}
+			<View style={styles.connexion}>
+				<Button  color={COLORS.white} title={"Connexion"} mode="contained" onPress={onLoginPressed}/>
+			</View>
+			<View style={styles.row}>
+				<TouchableOpacity  onPress={() => navigation.navigate('Register')}>
+					<Text style={styles.txt}>Pas encore de compte?<Text style={styles.link}> m'inscrire</Text></Text>
+				</TouchableOpacity>
+			</View>
 		</View>
-		<View style={styles.row}>
-			<TouchableOpacity  onPress={() => navigation.navigate('Register')}>
-				<Text style={styles.txt}>Pas encore de compte?<Text style={styles.link}> m'inscrire</Text></Text>
-			</TouchableOpacity>
-		</View>
-	</View>
-
-)
+	)
 
 }
 
@@ -239,7 +285,7 @@ const styles = StyleSheet.create({
 	title:{fontSize:SIZES.h1,marginTop:50,marginBottom:50,},
 	containerGlobal:{flex: 1, alignItems: 'center',width:'100%',height: '100%'},
 	input:{paddingLeft:20,height:70,backgroundColor:COLORS.greenLight,marginTop:30,width:'80%',borderRadius: 10,},
-	connexion:{marginTop:150,alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,},
+	connexion:{/*marginTop:150,*/marginTop:50,alignItems: 'center', backgroundColor:COLORS.greenDark,borderRadius: 10, paddingVertical: 10,paddingHorizontal: 120,fontWeight: "bold",color:COLORS.white,},
 	row:{width:'100%',alignItems: 'center',marginTop:50},
 	rowInput:{width:'100%',alignItems: 'center',marginTop:20},
 	txt:{width:'45%',textAlign: 'right'},
@@ -262,6 +308,35 @@ const styles = StyleSheet.create({
 	  },
 	  label: {
 		margin: 8,
+	  },
+	  btnOn: {
+		borderRadius: 3,
+		// marginTop: 200,
+		paddingTop: 15,
+		paddingBottom: 15,
+		paddingLeft: 15,
+		paddingRight: 15,
+		backgroundColor: '#0391D7'
+	  },
+	  btnOn: {
+		// borderRadius: 3,
+		marginTop: 15,
+		// paddingTop: 15,
+		// paddingBottom: 15,
+		// paddingLeft: 15,
+		// paddingRight: 15,
+		// backgroundColor: '#0391D7'
+	  },
+	  btnOff: {
+		display:'none',
+	  },
+	  bio: {
+		color: '#000',
+		fontWeight: '600'
+	  },
+	  faceid: {
+		width: 50,
+		height: 50,
 	  },
 })
 

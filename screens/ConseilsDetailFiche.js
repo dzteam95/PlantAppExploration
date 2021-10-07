@@ -64,7 +64,7 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
             case 'infossicks':
             //   console.log('infossicks');
                 // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-                fetch(`https://seedyapp.tk/infossicks/${route.params.item}`, data)
+                fetch(`http://localhost:4000/infossicks/${route.params.item}`, data)
 
                 //Passertoken\
                 
@@ -83,7 +83,7 @@ const ConseilsDetailFiche = ({route, navigation,  props }) => {
             case 'infosravages':
             //   console.log('infosravages');
                 // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
-                fetch(`https://seedyapp.tk/infosravages/${route.params.item}`, data)
+                fetch(`http://localhost:4000/infosravages/${route.params.item}`, data)
 
                 //Passertoken\
                 

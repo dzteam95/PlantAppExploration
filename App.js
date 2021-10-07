@@ -45,6 +45,7 @@ import { AddPlantParcelle } from "./screens/";
 import { PlantsParcelleListe } from "./screens/";
 import { ParcellesV2 } from "./screens/";
 import { PlantsParcelleV2 } from "./screens/";
+import { ConseilsDetailEdit } from "./screens/";
 
 // extra screens
 import Tabs from "./navigation/tabs";
@@ -56,7 +57,7 @@ const mode = "prod";
 
 
 if (mode === "prod"){
-    const url = "https://seedyapp.tk/";
+    const url = "http://localhost:4000/";
 
     //diseable all waring alerte
     LogBox.ignoreAllLogs();
@@ -128,6 +129,8 @@ return (
         <Stack.Screen name="PlantDetail" component={PlantDetail} options={{ headerShown: true }} />
         <Stack.Screen name="RecettesList" component={RecettesList}/>
         <Stack.Screen name="RecettesDetail" component={RecettesDetail}/>
+        <Stack.Screen name="ConseilsDetailEdit" component={ConseilsDetailEdit}/>
+
     </Stack.Navigator>
 );
 }

@@ -43,7 +43,7 @@ const Parcelles = ({route, navigation, props}) => {
                 'Authorization': 'Bearer ' + token,
             },
         }
-        fetch(`https://seedyapp.tk/gardens/user/${userId}`, data)
+        fetch(`http://localhost:4000/gardens/user/${userId}`, data)
             .then((response) => response.json())
             .then((response) => {
                 setResult(response)
@@ -102,7 +102,7 @@ const Parcelles = ({route, navigation, props}) => {
             },
         }
 
-        fetch(`https://seedyapp.tk/gardens/${id}`, dataDelete)
+        fetch(`http://localhost:4000/gardens/${id}`, dataDelete)
             .then( res => {
                 console.log(res.status)
                 if (res.status === 200) {

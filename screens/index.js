@@ -34,6 +34,8 @@ import AddPlantParcelle from "./AddPlantParcelle";
 import PlantsParcelleListe from "./PlantsParcelleListe";
 import ParcellesV2 from "./ParcellesV2";
 import PlantsParcelleV2 from "./PlantsParcelleV2";
+import ConseilsDetailEdit from "./ConseilsDetailEdit";
+
 
 export {
     Home,
@@ -71,5 +73,7 @@ export {
     AddPlantParcelle,
     PlantsParcelleListe,
     PlantsParcelleV2,
-    ParcellesV2
+    ParcellesV2,
+    ConseilsDetailEdit
+
 };

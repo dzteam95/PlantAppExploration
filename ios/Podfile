@@ -8,6 +8,8 @@ target 'PlantAppExploration' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'TouchID', :path => '../node_modules/react-native-touch-id'
+
   target 'PlantAppExplorationTests' do
     inherit! :complete
     # Pods for testing

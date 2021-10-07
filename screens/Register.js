@@ -30,7 +30,7 @@ const Register = ({ navigation }) => {
 			},
 		}
 		
-		fetch('https://seedyapp.tk/users/register',data)
+		fetch('http://localhost:4000/users/register',data)
 		.then((response) => {
 			//Statut getted
 			console.log(response.status);

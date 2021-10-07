@@ -61,7 +61,7 @@ const AddPlantParcelle = ({ navigation }) => {
                 },
             }
 
-            fetch('https://seedyapp.tk/plantspositions/register',data)
+            fetch('http://localhost:4000/plantspositions/register',data)
                 .then((response) => {
                     console.log(response.status);
                     if (response.status === 200) {
@@ -107,7 +107,7 @@ const AddPlantParcelle = ({ navigation }) => {
                 },
             };
 
-            fetch(`https://seedyapp.tk/plants/`, data)
+            fetch(`http://localhost:4000/plants/`, data)
 
 
                 .then((responsesearch) => responsesearch.json())
@@ -123,7 +123,7 @@ const AddPlantParcelle = ({ navigation }) => {
                 .finally(() => {
                 });
 
-            fetch(`https://seedyapp.tk/gardens/user/${userId}`, data)
+            fetch(`http://localhost:4000/gardens/user/${userId}`, data)
 
 
                 .then((responsesearch) => responsesearch.json())
@@ -192,7 +192,7 @@ const AddPlantParcelle = ({ navigation }) => {
         // console.log(search)
 
         if (search ){
-            fetch(`https://seedyapp.tk/plants/name/${search}`, data)
+            fetch(`http://localhost:4000/plants/name/${search}`, data)
                 .then((responsesearch) => responsesearch.json())
                 .then((jsonsearch) => {
                     setResult(jsonsearch);
@@ -203,7 +203,7 @@ const AddPlantParcelle = ({ navigation }) => {
                 })
         }else{
             // console.log("search")
-            fetch(`https://seedyapp.tk/plants/`, data)
+            fetch(`http://localhost:4000/plants/`, data)
                 .then((responsesearch) => responsesearch.json())
                 .then((jsonsearch) => {
                     setResult(jsonsearch);

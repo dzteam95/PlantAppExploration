@@ -30,6 +30,9 @@ export const Fruit = require("../assets/images/Fruit.png");
 export const SemisExt = require("../assets/images/arbre.png");
 export const SemisInt = require("../assets/images/SemisInterieur.png");
 export const Plantation = require("../assets/images/Plantation.png");
+export const Face_ID_icon = require("../assets/images/Face_ID.png");
+export const faceIdOk = require("../assets/images/faceIdOk.gif");
+
 
 
 
@@ -66,4 +69,6 @@ export default {
     SemisExt,
     SemisInt,
     Plantation,
+    Face_ID_icon,
+    faceIdOk,
 }

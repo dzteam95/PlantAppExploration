@@ -78,7 +78,7 @@ const GardenT = ({route, navigation, props}) => {
     useritemId = '5f0b3d696aceb4067dfcc51e';
     // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
     fetch(`http://localhost:4000/gardens/user/${useritemId}`, data)
-      // fetch(`https://seedyapp.tk/reminder/user/5f0b3c733aead305c2eec26d`, data)
+      // fetch(`http://localhost:4000/reminder/user/5f0b3c733aead305c2eec26d`, data)
 
       //Passertoken\
 

@@ -60,8 +60,8 @@ const PlantsParcelleListe = ({route, navigation, props}) => {
         //console.log("route.params.item",route.params.item);
         // fetch(`https://seedy.adnanenabil.com/plants/${itemId}`, data)
         // fetch(`http://localhost:4000/plantspositions/${gardenId}`, data)
-        fetch(`https://seedyapp.tk/plantspositions/garden/${route.params.item}`, data)
-        //fetch(`https://seedyapp.tk/plantspositions/garden/60dce067dfba4207d80744f0`, data)
+        fetch(`http://localhost:4000/plantspositions/garden/${route.params.item}`, data)
+        //fetch(`http://localhost:4000/plantspositions/garden/60dce067dfba4207d80744f0`, data)
 
             //Passertoken\
 
@@ -82,7 +82,7 @@ const PlantsParcelleListe = ({route, navigation, props}) => {
                             //console.log(key)
                             //console.log(value)
 
-                            fetch(`https://seedyapp.tk/plants/${value}`, data)
+                            fetch(`http://localhost:4000/plants/${value}`, data)
                                 .then((responseSecond) => responseSecond.json())
                                 .then((responseSecond) => {
                                     console.log(jsonsearch);
@@ -214,7 +214,7 @@ const PlantsParcelleListe = ({route, navigation, props}) => {
             },
         }
 
-        fetch(`https://seedyapp.tk/plantspositions/${id}`, dataDelete)
+        fetch(`http://localhost:4000/plantspositions/${id}`, dataDelete)
             .then( res => {
                 console.log(res.status)
                 if (res.status === 200) {

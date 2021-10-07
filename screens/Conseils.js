@@ -75,7 +75,7 @@ const Conseils = ({ navigation }) => {
 
 
         // fetch(`http://localhost:4000/plants/name/${search}`, data)
-        fetch(`https://seedyapp.tk/plants/name/${search}`, data)
+        fetch(`http://localhost:4000/plants/name/${search}`, data)
             .then((responsesearch) => responsesearch.json())
             .then((jsonsearch) => {
                 setResult(jsonsearch);
@@ -86,7 +86,7 @@ const Conseils = ({ navigation }) => {
             })
 
         // fetch(`http://localhost:4000/infossicks/name/${search}`, data)
-        fetch(`https://seedyapp.tk/infossicks/name/${search}`, data)
+        fetch(`http://localhost:4000/infossicks/name/${search}`, data)
              .then((responsesearch) => responsesearch.json())
              .then((secondjsonsearch) => {
                  setSecondResult(secondjsonsearch);
@@ -97,7 +97,7 @@ const Conseils = ({ navigation }) => {
              })
 
         // fetch(`http://localhost:4000/infosravages/name/${search}`, data)
-        fetch(`https://seedyapp.tk/infosravages/name/${search}`, data)
+        fetch(`http://localhost:4000/infosravages/name/${search}`, data)
              .then((responsesearch) => responsesearch.json())
              .then((thirdjsonsearch) => {
                  setThirdResult(thirdjsonsearch);
@@ -461,8 +461,8 @@ const styles = StyleSheet.create({
         height:50,
         flexDirection: 'row',
         alignItems:'center',
-        flex:1,
-        marginTop:20,
+        // flex:1,
+        // marginTop:20,
     },
 })
 
